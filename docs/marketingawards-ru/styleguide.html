@@ -55,8 +55,8 @@
   <div class="wrap">
     <p class="eyebrow">Стайлгайд · marketingawards.ru</p>
     <h1>Дизайн-система</h1>
-    <p class="lead" style="max-width:840px;margin-top:18px">Живой справочник по цвету, типографике, компонентам и эффектам «Суровой премии». Собран из <code style="font:inherit">css/tokens.css</code> и <code style="font:inherit">docs/ДИЗАЙН-СИСТЕМА.md</code>; внешний вид рабочих страниц не меняет.</p>
-    <p class="small muted" style="max-width:840px;margin-top:10px">Источник правды — <code style="font:inherit">docs/ДИЗАЙН-СИСТЕМА.md</code>. Правило: новый размер сначала попадает в реестр (раздел 1.2), потом в <span style="font-weight:600">tokens.css</span> и только потом в вёрстку. На этой странице цвета и типографика не задаются заново — они читаются из токенов.</p>
+    <p class="lead" style="max-width:840px;margin-top:18px">Живой справочник по цвету, типографике, компонентам и эффектам «Суровой премии». Собран из <code style="font:inherit">tokens.css</code> и <code style="font:inherit">DESIGN.md</code>; внешний вид рабочих страниц не меняет.</p>
+    <p class="small muted" style="max-width:840px;margin-top:10px">Источник правды — <code style="font:inherit">DESIGN.md</code>. Правило: новый размер сначала попадает в реестр (раздел 1.2), потом в <span style="font-weight:600">tokens.css</span> и только потом в вёрстку. На этой странице цвета и типографика не задаются заново — они читаются из токенов.</p>
     <p class="pv-intro__links" style="margin-top:14px">Гайд сайта — <a href="index.html">index.html</a>, полный текст — <a href="DESIGN.md">DESIGN.md</a>, переменные — <a href="tokens.css">tokens.css</a>.</p>
     <nav class="pv-toc" aria-label="Разделы стайлгайда">
       <a href="#color">01 Цвет</a>
@@ -596,9 +596,9 @@
 
       <h3>Как добавить размер</h3>
       <ol style="padding-left:20px;margin-top:8px">
-        <li style="margin-top:8px">Сверить значение с таблицей 1.2 в docs/ДИЗАЙН-СИСТЕМА.md: возможно, подходящая ступень уже есть.</li>
+        <li style="margin-top:8px">Сверить значение с таблицей 1.2 в DESIGN.md: возможно, подходящая ступень уже есть.</li>
         <li style="margin-top:8px">Добавить строку в реестр 1.2 и место применения в 1.3.</li>
-        <li style="margin-top:8px">Добавить токен --fs-* в site/css/tokens.css.</li>
+        <li style="margin-top:8px">Добавить токен --fs-* в tokens.css.</li>
         <li style="margin-top:8px">Применить var(--fs-*) в компоненте, а не сырой px.</li>
         <li style="margin-top:8px">Пересобрать site/css/index-bundle.css скриптом scripts/build-css.py и обновить ?v= в HTML.</li>
       </ol>
@@ -614,7 +614,7 @@
       <p style="margin-top:8px">Добавить живой пример в раздел 3 дизайн-дока и на эту страницу, чтобы компонент не жил только в одном месте.</p>
 
       <h3 style="margin-top:32px">Связанные документы</h3>
-      <p class="small" style="margin-top:8px"><code style="font:inherit">docs/ДИЗАЙН-СИСТЕМА.md</code> — источник правды · <code style="font:inherit">docs/ШРИФТЫ.md</code> — шрифты и лицензии · <code style="font:inherit">README.md</code> — краткая сводка проекта. Пути указаны от корня репозитория; на хостинг заливается только <code style="font:inherit">site/</code>, поэтому это не ссылки.</p>
+      <p class="small" style="margin-top:8px"><code style="font:inherit">DESIGN.md</code> — источник правды · <code style="font:inherit">fonts/NOTICE.md</code> и <code style="font:inherit">OFL.txt</code> — лицензии шрифтов · <code style="font:inherit">tokens.css</code> — переменные.</p>
     </div>
   </section>
 
