@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дизайн-система — marketingawards.ru («Суровая премия»)</title>
+<meta name="description" content="Дизайн-система marketingawards.ru: тёмная сцена, Dela Award, Involve и Golos Award, кнопки с бегущей рамкой, сетка, токены и контраст по WCAG.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#080607">
+<link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Каталог дизайн-систем">
+<meta property="og:title" content="Дизайн-система marketingawards.ru — визуальный гайд">
+<meta property="og:description" content="Тёмная сцена, Dela Award, Involve, кнопки с бегущей рамкой, сетка и токены marketingawards.ru.">
+<meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/">
+<meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Дизайн-система marketingawards.ru">
+<meta name="twitter:description" content="Палитра, типографика, кнопки, сетка и токены marketingawards.ru.">
+<meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/og.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="../assets/favicon-192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="../assets/favicon-96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../assets/favicon-48.png" sizes="48x48">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="tokens.css?v=2">
+<link rel="stylesheet" href="../assets/dsbar.css">
+<style>
+    html, body { background: var(--ground); }
+    body { color: var(--scene-ink); }
+
+    .pv-wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--edge); }
+    .pv-sec { padding: 40px 0; border-top: 1px solid #ffffff14; }
+    .pv-label {
+        font-family: var(--font-ui);
+        font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+        color: #a49e98; margin-bottom: 18px;
+    }
+    .pv-note { font-family: var(--font-base); font-size: 13px; line-height: 1.5; color: #a49e98; margin-top: 10px; }
+
+    /* витрина первого экрана */
+    .pv-hero {
+        display: grid;
+        justify-items: center;
+        gap: 22px;
+        padding: 46px var(--edge) 34px;
+        text-align: center;
+        background: var(--ground);
+        border-bottom: 1px solid #ffffff14;
+    }
+    .pv-hero .award-slogan { font-size: clamp(30px, 5vw, 52px); }
+    .pv-hero .brand-stage { width: min(100%, 420px); }
+
+    .pv-pal { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+    .pv-swatch { height: 64px; border-radius: 4px; border: 1px solid #ffffff1f; }
+    .pv-pal-name { font-family: var(--font-ui); font-size: 12px; margin-top: 7px; }
+    .pv-pal-use { font-size: 12px; color: #a49e98; }
+
+    .pv-type-row { display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; padding: 14px 0; border-bottom: 1px solid #ffffff12; }
+    .pv-type-sample { flex: 1 1 380px; min-width: 220px; }
+    .pv-type-meta { font-size: 12px; color: #a49e98; }
+
+    .pv-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+    .pv-state { font-size: 11px; color: #a49e98; text-align: center; margin-top: 8px; font-family: var(--font-ui); letter-spacing: .08em; text-transform: uppercase; }
+    .pv-cell { display: grid; justify-items: center; }
+
+    table.pv-table { width: 100%; border-collapse: collapse; font-family: var(--font-base); font-size: 13px; }
+    table.pv-table th, table.pv-table td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #ffffff12; vertical-align: top; }
+    table.pv-table th { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #a49e98; }
+    table.pv-table code { font-family: ui-monospace, monospace; font-size: 12px; color: #F5F0EB; }
+
+    /* --- полоса каталога на тёмной сцене --- */
+    .dsbar {
+        --dsbar-bg: #0E0C0B;
+        --dsbar-line: #2A2422;
+        --dsbar-ink: #F5F0EB;
+        --dsbar-muted: #A49E98;
+        --dsbar-accent: #FF8A5B;
+    }
+
+    /* --- шапка гайда каталога --- */
+    .pv-intro { padding: 54px 0 6px; }
+    .pv-eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; font-family: var(--font-ui); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #A49E98; }
+    .pv-eyebrow i { display: block; width: 26px; height: 2px; background: var(--scene-ink); }
+    .pv-intro__title { margin: 0 0 20px; font-family: var(--slogan-font); font-weight: 400; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -.012em; text-transform: uppercase; }
+    .pv-intro__lead { margin: 0 0 14px; max-width: 720px; font-family: var(--font-base); font-size: 16px; line-height: 1.55; color: #A49E98; }
+    .pv-intro__links { margin: 0; font-family: var(--font-base); font-size: 13px; color: #A49E98; }
+    .pv-intro__links a { color: var(--scene-ink); }
+    .pv-intro__links a:hover { color: #FF8A5B; }
+    .pv-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 4px; }
+    .pv-toc a { padding: 8px 15px; border: 1px solid #ffffff2b; border-radius: var(--radius-pill); font-family: var(--font-ui); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--scene-ink); }
+    .pv-toc a:hover, .pv-toc a:focus-visible { background: #ffffff14; border-color: #ffffff5c; outline: none; }
+    @media (max-width: 600px) {
+        .pv-intro { padding: 38px 0 2px; }
+        .pv-intro__lead { font-size: 15px; }
+    }
+</style>
+</head>
+<body>
+<nav class="dsbar" aria-label="Каталог дизайн-систем">
+    <div class="dsbar__in">
+        <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
+        <span class="dsbar__meta">aaateh.github.io/eventologia-design-systems</span>
+    </div>
+</nav>
+
+<section class="pv-intro pv-wrap">
+    <p class="pv-eyebrow"><i aria-hidden="true"></i>Дизайн-система · одностраничный лендинг премии</p>
+    <h1 class="pv-intro__title">«Суровая премия»</h1>
+    <p class="pv-intro__lead">Marketingawards.ru: почти чёрная сцена, тёплый белый, Dela Award и Involve, прозрачные кнопки с бегущей рамкой. Пять разделов — палитра, типографика, кнопки, сетка и токены, ограничения. Снято с живого DOM 31/10/2026.</p>
+    <p class="pv-intro__links">Полный текст гайда — <a href="DESIGN.md">DESIGN.md</a>, переменные — <a href="tokens.css">tokens.css</a>, логотип — <a href="logo.svg">logo.svg</a>.</p>
+    <nav class="pv-toc" aria-label="Разделы гайда">
+        <a href="#s1">01 Палитра</a>
+        <a href="#s2">02 Типографика</a>
+        <a href="#s3">03 Кнопки</a>
+        <a href="#s4">04 Сетка и токены</a>
+        <a href="#s5">05 Чего нет</a>
+    </nav>
+</section>
+
+<!-- первый экран -->
+<section class="pv-hero">
+    <div class="brand-stage">
+        <img src="logo.svg" alt="Суровая премия" style="width:100%;height:auto">
+    </div>
+    <p class="award-slogan"><span>Получи свой Оскар</span><span>в маркетинге</span></p>
+    <p class="invitation" style="max-width:356px">Оставьте заявку на участие
+и получите приглашение
+в числе первых</p>
+    <a class="star-border apply-button" href="#" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:transparent;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
+</section>
+
+<main class="pv-wrap">
+
+    <section class="pv-sec" id="s1">
+        <div class="pv-label">1. Палитра</div>
+        <div class="pv-pal">
+            <div><div class="pv-swatch" style="background:#080607"></div><div class="pv-pal-name">#080607</div><div class="pv-pal-use">фон · --ground</div></div>
+            <div><div class="pv-swatch" style="background:#F5F0EB"></div><div class="pv-pal-name">#F5F0EB</div><div class="pv-pal-use">текст · --scene-ink</div></div>
+            <div><div class="pv-swatch" style="background:#C8C2BC"></div><div class="pv-pal-name">#C8C2BC</div><div class="pv-pal-use">рамка · --action-border</div></div>
+            <div><div class="pv-swatch" style="background:#ECE9E3"></div><div class="pv-pal-name">#ECE9E3</div><div class="pv-pal-use">бумага · --paper</div></div>
+            <div><div class="pv-swatch" style="background:#25292E"></div><div class="pv-pal-name">#25292E</div><div class="pv-pal-use">текст на бумаге</div></div>
+            <div><div class="pv-swatch" style="background:#A62C18"></div><div class="pv-pal-name">#A62C18</div><div class="pv-pal-use">ошибка</div></div>
+        </div>
+        <div class="pv-note">Тёмная сцена — основная. Светлые токены нужны только для панелей и служебных экранов.</div>
+    </section>
+
+    <section class="pv-sec" id="s2">
+        <div class="pv-label">2. Типографика</div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <div class="award-slogan" style="font-size:44px;line-height:1.06"><span>Суровая премия</span></div>
+            </div>
+            <div class="pv-type-meta">Dela Award · 400 · uppercase · −0.012em · 1.06</div>
+        </div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <p class="invitation" style="font-size:18px">Оставьте заявку на участие и получите приглашение в числе первых</p>
+            </div>
+            <div class="pv-type-meta">Involve · 400 · 18px · 1.4</div>
+        </div>
+
+        <div class="pv-type-row" style="border-bottom:0">
+            <div class="pv-type-sample">
+                <p style="font-family:var(--font-base);font-size:16px;margin:0">Базовый текст — Golos Award 16px. Им набраны служебные экраны и подписи вне сцены.</p>
+            </div>
+            <div class="pv-type-meta">Golos Award · 400 · 16px</div>
+        </div>
+    </section>
+
+    <section class="pv-sec" id="s3">
+        <div class="pv-label">3. Кнопки — 244×54 · радиус 4px · рамка 1px</div>
+        <div class="pv-btns">
+            <div class="pv-cell">
+                <a class="star-border apply-button" href="#" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:transparent;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
+                <div class="pv-state">обычная</div>
+            </div>
+            <div class="pv-cell">
+                <a class="organizers-button" href="#">Связь с организаторами</a>
+                <div class="pv-state">вторичная</div>
+            </div>
+            <div class="pv-cell">
+                <a class="star-border apply-button" href="#" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:#15111280;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
+                <div class="pv-state">hover</div>
+            </div>
+            <div class="pv-cell">
+                <a class="star-border apply-button" href="#" aria-disabled="true" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:transparent;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
+                <div class="pv-state">disabled</div>
+            </div>
+        </div>
+        <div class="pv-note">Блик по рамке рисуется canvas-слоем 340×150 (вынесен на 48px за кнопку). В CSS остаётся только трек 1px — он и показан здесь. Фокус — outline 2px с отступом 3px.</div>
+    </section>
+
+    <section class="pv-sec" id="s4">
+        <div class="pv-label">4. Сетка и токены</div>
+        <table class="pv-table">
+            <tr><th>Параметр</th><th>Значение</th></tr>
+            <tr><td>Экран</td><td><code>grid-template-rows: 96px 1fr auto</code>, <code>min-height: 100svh</code>, <code>overflow: clip</code></td></tr>
+            <tr><td>Отступ от края</td><td><code>--edge: clamp(24px, 4vw, 72px)</code> (≤599 — 24px, ≤360 — 20px)</td></tr>
+            <tr><td>Колонка контента</td><td>1040px по центру, логотип 44% ширины</td></tr>
+            <tr><td>Кнопки</td><td><code>--action-w: 244px</code>, <code>--action-h: 54px</code> (≤599 — 238×52)</td></tr>
+            <tr><td>Радиусы</td><td>4px кнопки · 6px мелкие контролы · 40px пилюли</td></tr>
+            <tr><td>Тени</td><td>нет, только canvas-свечение</td></tr>
+            <tr><td>Брейкпоинты</td><td>900 · 700 · 599 · 360 + запросы по высоте</td></tr>
+        </table>
+    </section>
+
+    <section class="pv-sec" id="s5">
+        <div class="pv-label">5. Чего на сайте нет</div>
+        <div class="pv-note" style="margin-top:0">
+            Форм, полей и чекбоксов — заявка открывается внешним Salebot-лендингом (Nunito, синяя кнопка Telegram). Этот UI к системе не относится.<br>
+            Секций, карточек и скролла — экран один. Шапки нет, в подвале одна ссылка.<br>
+            Иконок нет: единственный графический элемент — логотип. Фон — canvas-частицы огня, а не картинка и не градиент.
+        </div>
+    </section>
+
+</main>
+
+<div class="pv-wrap" style="padding-bottom:36px">
+    <div class="pv-note" style="font-size:12px">
+        Снято с https://marketingawards.ru 31/10/2026. Полный гайд — <code>DESIGN.md</code>, переменные — <code>tokens.css</code>, логотип — <code>logo.svg</code>.
+    </div>
+</div>
+
+<script src="star-border.js"></script>
+<script>
+    document.querySelectorAll('.star-border').forEach(function (el) {
+        var cs = getComputedStyle(el);
+        StarBorder.init(el, {
+            radius: parseFloat(cs.getPropertyValue('--star-border-radius')) || 4,
+            thickness: parseFloat(cs.getPropertyValue('--star-border-thickness')) || 1,
+            duration: 4,
+            glow: .6,
+            hover: 'lap',
+            theme: 'dark'
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+/* ============================================================
+   dsbar.css — верхняя навигационная полоса каталога дизайн-систем.
+   Одна и та же разметка и геометрия на всех страницах каталога:
+   ссылка «Все дизайн-системы» слева, адрес каталога справа.
+   Цвета задаются переменными, тёмные страницы переопределяют их.
+   ============================================================ */
+
+@font-face {
+  font-family: "DSBarDemi";
+  src: url("../eventologia-ru/assets/fonts/FuturaDemiC.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.dsbar {
+  --dsbar-bg: #ffffff;
+  --dsbar-line: #d9d9d9;
+  --dsbar-ink: #1a1a1a;
+  --dsbar-muted: #6b6b6b;
+  --dsbar-accent: #c03400;
+
+  position: relative;
+  z-index: 80;
+  background: var(--dsbar-bg);
+  border-bottom: 1px solid var(--dsbar-line);
+  color: var(--dsbar-ink);
+  font-family: "DSBarDemi", "Futura", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dsbar__in {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1180px;
+  min-height: 44px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.dsbar__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--dsbar-accent);
+  text-decoration: none;
+}
+
+.dsbar__back:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dsbar__back span[aria-hidden="true"] {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.dsbar__meta {
+  margin-left: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--dsbar-muted);
+  white-space: nowrap;
+}
+
+.dsbar a:focus-visible,
+.dsbar__back:focus-visible {
+  outline: 2px solid var(--dsbar-accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .dsbar__in {
+    min-height: 40px;
+    padding: 0 14px;
+  }
+  .dsbar__meta {
+    display: none;
+  }
+}

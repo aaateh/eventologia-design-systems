@@ -1,0 +1,341 @@
+/* ==========================================================================
+   marketingawards.ru — «Суровая премия»
+   Токены и базовые компоненты. Снято 31/10/2026 с живого сайта
+   (Vite-бандл /assets/index-Bj4pxjPM.css + вычисленные стили DOM при 1441px).
+   Шрифты лежат рядом в папке fonts/ — файл работает без сети и без CORS.
+   ========================================================================== */
+
+@font-face {
+    font-family: "Dela Award";
+    src: url("fonts/dela-gothic-one-cyrillic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+    font-family: "Dela Award";
+    src: url("fonts/dela-gothic-one-latin.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Involve";
+    src: url("fonts/Involve-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Golos Award";
+    src: url("fonts/golos-text-cyrillic.woff2") format("woff2");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+    font-family: "Golos Award";
+    src: url("fonts/golos-text-latin.woff2") format("woff2");
+    font-weight: 400 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    /* --- тёмная сцена (по умолчанию) --- */
+    --ground : #080607;
+    --scene-ink : #F5F0EB;
+    --control-surface : #15111280;   /* hover-подложка кнопок */
+    --action-border : #C8C2BC;       /* рамка кнопок и трек блика */
+
+    /* --- светлые поверхности (панели, служебные экраны) --- */
+    --paper : #ECE9E3;
+    --panel : #ECE9E3;
+    --form-surface : #ECE9E3;
+    --ink : #25292E;
+    --muted : #585952;
+    --line : #555957;
+    --field-line : #94958E;
+    --placeholder : #696B64;
+    --disabled-ink : #7E8077;
+    --disabled-line : #AAA99F;
+    --error : #A62C18;
+    --close-hover : #DEDBD3;
+    --backdrop : #0A090BB3;
+    --scroll-thumb : #8A8882;
+    --scroll-track : #252426;
+
+    /* --- сетка --- */
+    --edge : clamp(24px, 4vw, 72px);
+    --action-w : 244px;
+    --action-h : 54px;
+    --page-col : 1040px;
+
+    /* --- радиусы --- */
+    --radius : 4px;      /* кнопки */
+    --radius-sm : 6px;   /* мелкие контролы */
+    --radius-pill : 40px;
+
+    /* --- типографика --- */
+    --slogan-font : "Dela Award", sans-serif;
+    --slogan-size : clamp(56px, 6vw, 72px);
+    --slogan-optical : .84;                       /* оптическая поправка сцены */
+    --slogan-weight : 400;
+    --slogan-leading : 1.06;
+    --slogan-tracking : -.012em;
+
+    --invitation-font : "Involve", serif;
+    --invitation-tracking : 0em;
+
+    --font-base : "Golos Award", Arial, sans-serif;
+    --font-ui : "Involve", sans-serif;
+
+    /* --- анимация --- */
+    --ease : cubic-bezier(.22, 1, .36, 1);
+}
+
+/* ==========================================================================
+   База
+   ========================================================================== */
+
+*, *:before, *:after { box-sizing: border-box; }
+
+html {
+    font-family: var(--font-base);
+    font-size: 16px;
+    background: #151112;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+}
+
+body { margin: 0; }
+
+img, svg, canvas { display: block; max-width: 100%; }
+
+/* ==========================================================================
+   Экран
+   ========================================================================== */
+
+.page {
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 96px 1fr auto;
+    background: var(--ground);
+    color: var(--scene-ink);
+    --action-width: var(--action-w);
+    --action-height: var(--action-h);
+    --slogan-size: clamp(56px, 6vw, 72px);
+    --display-size: calc(var(--slogan-size) * var(--slogan-optical));
+}
+
+.intro {
+    grid-row: 2;
+    align-self: center;
+    width: calc(100% - 2 * var(--edge));
+    max-width: var(--page-col);
+    margin: 24px auto;
+    display: grid;
+    justify-items: center;
+    gap: 32px;
+    text-align: center;
+}
+
+.brand-stage {
+    display: grid;
+    place-items: center;
+    width: 44%;
+}
+
+.hero-details {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.award-slogan {
+    margin: 0;
+    font-family: var(--slogan-font);
+    font-size: var(--display-size);
+    font-weight: var(--slogan-weight);
+    line-height: var(--slogan-leading);
+    letter-spacing: var(--slogan-tracking);
+    text-transform: uppercase;
+    font-variation-settings: normal;
+}
+
+.award-slogan > span { display: block; white-space: nowrap; }
+
+.invitation-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    max-width: 100%;
+}
+
+.invitation {
+    margin: 0;
+    font-family: var(--invitation-font);
+    font-size: clamp(16px, calc(var(--display-size) * .3), 28.8px);
+    font-weight: 400;
+    line-height: 1.4;
+    letter-spacing: var(--invitation-tracking);
+    white-space: pre-wrap;
+}
+
+/* ==========================================================================
+   Кнопки
+   ========================================================================== */
+
+.star-border {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: var(--star-border-radius, var(--radius));
+    background: var(--star-border-surface, transparent);
+    color: var(--star-border-text, var(--scene-ink));
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* трек рамки: 1px внутрь, как на сайте */
+.star-border:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 var(--star-border-thickness, 1px) var(--star-border-track, var(--action-border));
+    pointer-events: none;
+}
+
+/* слой блика: canvas, вынесенный на 48px за кнопку.
+   Рисуется скриптом star-border.js — без него останется только трек рамки. */
+.star-border__light {
+    position: absolute;
+    top: -48px;
+    left: -48px;
+    z-index: -1;
+    width: calc(100% + 96px);
+    height: calc(100% + 96px);
+    max-width: none;          /* иначе глобальный max-width:100% обрежет свечение */
+    pointer-events: none;
+}
+
+.star-border:focus-visible {
+    outline: 2px solid var(--star-border-track, var(--action-border));
+    outline-offset: 3px;
+}
+
+.star-border:disabled,
+.star-border[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+/* главная кнопка */
+.apply-button {
+    width: var(--action-width);
+    min-width: var(--action-width);
+    height: var(--action-height);
+    min-height: var(--action-height);
+    padding: 15px 20px;
+    font-family: var(--font-ui);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: background .2s var(--ease);
+}
+
+.apply-button:hover { background: var(--control-surface); }
+
+/* вторичная кнопка */
+.organizers-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: var(--action-width);
+    min-width: var(--action-width);
+    height: var(--action-height);
+    min-height: var(--action-height);
+    padding: 15px 20px;
+    border: 1px solid color-mix(in srgb, currentColor 55%, transparent);
+    border-radius: var(--radius);
+    background: color-mix(in srgb, var(--ground) 50%, transparent);
+    color: inherit;
+    font-family: var(--font-ui);
+    font-size: 15px;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .2s var(--ease), border-color .2s var(--ease);
+}
+
+.organizers-button:hover { background: color-mix(in srgb, var(--ground) 65%, transparent); }
+
+/* ==========================================================================
+   Подвал
+   ========================================================================== */
+
+.page-footer {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+    align-items: center;
+    gap: 24px;
+    padding: 14px var(--edge) 24px;
+}
+
+.page-footer > .organizers-button {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+}
+
+/* ==========================================================================
+   Адаптив
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .page { grid-template-rows: 88px 1fr auto; }
+    .intro { max-width: 1180px; }
+    .page { --slogan-size: clamp(44px, 6.5vw, 60px); }
+    .apply-button { min-width: 230px; font-size: 14px; }
+    .organizers-button { font-size: 12px; gap: 12px; }
+    .page-footer { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
+    .page-footer > .organizers-button { grid-column: 1; grid-row: auto; }
+}
+
+@media (max-width: 599px) {
+    .page { --edge: 24px; --action-w: 238px; --action-h: 52px; }
+    .page { --slogan-size: 36px; }
+    .award-slogan { line-height: 1.14; }
+    .award-slogan > span { white-space: normal; }
+    .apply-button { min-width: 250px; min-height: 56px; }
+    .organizers-button { max-width: 166px; min-height: 44px; padding: 9px 12px; }
+}
+
+@media (max-width: 360px) {
+    .page { --edge: 20px; }
+    .page { --slogan-size: 32px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *:before, *:after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

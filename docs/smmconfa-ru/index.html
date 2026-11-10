@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дизайн-система — smmconfa.ru («Суровый Питерский Форум»)</title>
+<meta name="description" content="Дизайн-система smmconfa.ru: палитра, типографика Liberation Sans, шапка и меню, кнопки 88px, формы, карточки, аккордеон, таймер, тарифы, декор и токены.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FF3838">
+<link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/smmconfa-ru/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Каталог дизайн-систем">
+<meta property="og:title" content="Дизайн-система smmconfa.ru — визуальный гайд">
+<meta property="og:description" content="Палитра, типографика, шапка, кнопки, формы, карточки, аккордеон, таймер, тарифы и токены smmconfa.ru.">
+<meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/smmconfa-ru/">
+<meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/smmconfa-ru/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Дизайн-система smmconfa.ru">
+<meta name="twitter:description" content="Палитра, типографика, компоненты и токены smmconfa.ru.">
+<meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/smmconfa-ru/og.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="../assets/favicon-192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="../assets/favicon-96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../assets/favicon-48.png" sizes="48x48">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="../assets/dsbar.css">
+<style>
+    body { background:#fff; color:var(--b); font-family:var(--font); }
+
+    .pv-wrap { max-width:1240px; margin:0 auto; padding:0 20px; }
+    .pv-sec { padding:46px 0; border-top:1px solid var(--border-soft); }
+    .pv-sec:first-of-type { border-top:0; }
+    .pv-label {
+        font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+        color:var(--gray-mid); margin-bottom:16px; font-weight:700;
+    }
+    .pv-note { font-size:12px; color:var(--gray-mid); margin-top:6px; }
+    .pv-row { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; }
+    .pv-col { flex:1 1 260px; min-width:220px; }
+
+    /* шапка-образец */
+    .pv-header { background:var(--b); color:var(--w); padding:22px 0; }
+    .pv-header .pv-wrap { display:flex; align-items:center; gap:26px; flex-wrap:wrap; }
+    .pv-logo { font-weight:700; font-size:20px; letter-spacing:-.02em; text-transform:uppercase; }
+    .pv-nav { display:flex; gap:22px; font-size:18px; letter-spacing:-.03rem; flex:1 1 auto; justify-content:center; flex-wrap:wrap; }
+    .pv-nav a:hover { color:var(--r); }
+    .pv-nav a.red { color:var(--r); }
+    .pv-contacts { text-align:right; line-height:1.25; }
+    .pv-contacts .tel { font-size:24px; font-weight:700; color:var(--r); }
+    .pv-contacts .mail { font-size:24px; }
+
+    /* hero */
+    .pv-hero { background:var(--b); color:var(--w); padding:26px 0 54px; }
+    .pv-hero .title-display { margin:0 0 26px; max-width:16em; }
+    .pv-hero .title-display em { color:var(--r); font-style:normal; display:block; }
+    .pv-meta { display:flex; gap:34px; flex-wrap:wrap; font-size:26px; font-weight:700; text-transform:uppercase; margin-bottom:28px; }
+    .pv-stats { display:flex; gap:44px; flex-wrap:wrap; margin-bottom:34px; }
+    .pv-stats b { display:block; font-size:54px; line-height:1; letter-spacing:-.04em; }
+    .pv-stats span { display:block; font-size:26px; color:var(--r); text-transform:uppercase; font-weight:700; }
+
+    /* палитра */
+    .pv-pal { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; }
+    .pv-swatch { border-radius:4px; height:78px; border:1px solid var(--border-soft); }
+    .pv-pal-name { font-size:12px; margin-top:7px; font-weight:700; }
+    .pv-pal-use { font-size:12px; color:var(--gray-mid); }
+
+    /* типографика */
+    .pv-type-row { display:flex; align-items:baseline; gap:20px; flex-wrap:wrap; padding:14px 0; border-bottom:1px solid var(--border-soft); }
+    .pv-type-sample { flex:1 1 420px; min-width:240px; }
+    .pv-type-meta { font-size:12px; color:var(--gray-mid); flex:0 0 auto; }
+
+    /* формы */
+    .pv-dark { background:var(--b); color:var(--w); border-radius:10px; padding:34px 30px; }
+    .pv-dark .input { margin-top:0; }
+    .pv-dark .input + .input { margin-top:12px; }
+    .pv-dark .input select { appearance:none; }
+
+    /* карточки */
+    .pv-cards { display:flex; gap:20px; flex-wrap:wrap; }
+    .pv-cards .card { flex:1 1 280px; }
+    .pv-cards .card__text { color:var(--gray-mid); }
+
+    /* таблица */
+    table.pv-table { width:100%; border-collapse:collapse; font-size:14px; }
+    table.pv-table th, table.pv-table td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--border-soft); vertical-align:top; }
+    table.pv-table th { font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--gray-mid); }
+    table.pv-table td code { font-family:var(--font-mono); font-size:13px; }
+
+    /* подвал */
+    .pv-footer { background:#fff; padding:50px 0; border-top:1px solid var(--border-soft); }
+    .pv-footer .pv-wrap { display:flex; gap:30px; justify-content:space-between; flex-wrap:wrap; align-items:flex-end; }
+    .pv-flinks { display:flex; gap:26px; flex-wrap:wrap; }
+    .pv-flinks a { color:var(--r); text-decoration:underline; font-size:16px; }
+    .pv-flinks a:hover { text-decoration:none; }
+    .pv-copy { font-size:14px; }
+    .pv-credits { font-size:14px; color:var(--gray-mid); }
+
+    /* --- шапка гайда каталога --- */
+    .pv-intro { padding:54px 0 10px; }
+    .pv-eyebrow { display:flex; align-items:center; gap:10px; margin:0 0 16px; font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--gray-mid); }
+    .pv-eyebrow i { display:block; width:28px; height:3px; background:var(--r); }
+    .pv-intro h1 { margin:0 0 18px; font-size:clamp(34px,6vw,64px); line-height:1.02; letter-spacing:-.03em; text-transform:uppercase; }
+    .pv-intro__lead { margin:0 0 14px; max-width:780px; font-size:18px; line-height:1.5; color:var(--gray-mid); }
+    .pv-intro__links { margin:0; font-size:13px; color:var(--gray-mid); }
+    .pv-intro__links a { color:var(--b); }
+    .pv-intro__links a:hover { color:var(--r); }
+    .pv-toc { display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 4px; padding:0; }
+    .pv-toc a { display:inline-block; padding:7px 14px; border:1px solid var(--border-soft); border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; text-decoration:none; color:var(--b); }
+    .pv-toc a:hover, .pv-toc a:focus-visible { background:var(--b); border-color:var(--b); color:#fff; outline:none; }
+    @media (max-width:600px){
+        .pv-intro { padding:34px 0 8px; }
+        .pv-intro__lead { font-size:16px; }
+    }
+</style>
+</head>
+<body>
+<nav class="dsbar" aria-label="Каталог дизайн-систем">
+    <div class="dsbar__in">
+        <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
+        <span class="dsbar__meta">aaateh.github.io/eventologia-design-systems</span>
+    </div>
+</nav>
+
+<section class="pv-intro">
+    <div class="pv-wrap">
+        <p class="pv-eyebrow"><i aria-hidden="true"></i>Дизайн-система · форумская тема smmconfa24</p>
+        <h1>Smmconfa.ru</h1>
+        <p class="pv-intro__lead">«Суровый Питерский Форум»: красный акцент, Liberation Sans, капс-заголовки, кнопки 88px на рамке 2px и жёсткая сетка без теней. 12 разделов — от шапки и кнопок до декора. Значения сняты с прода 30/10/2026.</p>
+        <p class="pv-intro__links">Полный текст гайда — <a href="DESIGN.md">DESIGN.md</a>, переменные и компоненты — <a href="tokens.css">tokens.css</a>.</p>
+        <nav class="pv-toc" aria-label="Разделы гайда">
+            <a href="#s1">01 Палитра</a>
+            <a href="#s2">02 Типографика</a>
+            <a href="#s3">03 Кнопки</a>
+            <a href="#s4">04 Формы</a>
+            <a href="#s5">05 Карточки</a>
+            <a href="#s6">06 Сетка</a>
+            <a href="#s7">07 Подвал</a>
+            <a href="#s8">08 Аккордеон</a>
+            <a href="#s9">09 Стрелки</a>
+            <a href="#s10">10 Таймер</a>
+            <a href="#s11">11 Тариф</a>
+            <a href="#s12">12 Декор</a>
+        </nav>
+    </div>
+</section>
+
+<!-- образец шапки -->
+<header class="pv-header">
+    <div class="pv-wrap">
+        <div class="pv-logo">Суровый<br>Питерский</div>
+        <nav class="pv-nav">
+            <a href="#">О форуме</a>
+            <a href="#">Программа</a>
+            <a href="#">Спикеры</a>
+            <a href="#">Партнёры</a>
+            <a href="#" class="red">Купить</a>
+        </nav>
+        <div class="pv-contacts">
+            <a class="tel" href="tel:+70000000000">+7 000 000-00-00</a><br>
+            <a class="mail" href="mailto:mail@example.ru">mail@example.ru</a>
+        </div>
+        <a href="#" class="btn v1">Купить видеозаписи</a>
+    </div>
+</header>
+
+<!-- тёмный hero -->
+<section class="pv-hero">
+    <div class="pv-wrap">
+        <div class="title-display">Ваш бизнес<em>растёт на докладах</em></div>
+        <div class="pv-meta">
+            <span>24–25 октября 2026</span>
+            <span>10:00 — 19:00</span>
+            <span>Cosmos Pribaltiyskaya</span>
+        </div>
+        <div class="pv-stats">
+            <div><b>2 дня</b><span>программы</span></div>
+            <div><b>150+</b><span>спикеров</span></div>
+            <div><b>25+</b><span>потоков</span></div>
+        </div>
+        <div class="btn_group">
+            <a href="#" class="btn v1">Купить видеозаписи</a>
+            <a href="#" class="btn v2">Вступить в клуб</a>
+        </div>
+    </div>
+</section>
+
+<main class="pv-wrap">
+
+    <!-- палитра -->
+    <section class="pv-sec" id="s1">
+        <div class="pv-label">1. Палитра</div>
+        <div class="pv-pal">
+            <div><div class="pv-swatch" style="background:#FF3838"></div><div class="pv-pal-name">#FF3838</div><div class="pv-pal-use">акцент · --r</div></div>
+            <div><div class="pv-swatch" style="background:#101010"></div><div class="pv-pal-name">#101010</div><div class="pv-pal-use">текст / тёмный · --b</div></div>
+            <div><div class="pv-swatch" style="background:#FFFFFF"></div><div class="pv-pal-name">#FFFFFF</div><div class="pv-pal-use">фон · --w</div></div>
+            <div><div class="pv-swatch" style="background:#A8A8A8"></div><div class="pv-pal-name">#A8A8A8</div><div class="pv-pal-use">вторичный · --g1</div></div>
+            <div><div class="pv-swatch" style="background:#F6F6F6"></div><div class="pv-pal-name">#F6F6F6</div><div class="pv-pal-use">подложка · --g2</div></div>
+            <div><div class="pv-swatch" style="background:#E8E8E8"></div><div class="pv-pal-name">#E8E8E8</div><div class="pv-pal-use">границы карточек</div></div>
+            <div><div class="pv-swatch" style="background:#D60000"></div><div class="pv-pal-name">#D60000</div><div class="pv-pal-use">обводка красного</div></div>
+            <div><div class="pv-swatch" style="background:#F74200"></div><div class="pv-pal-name">#F74200</div><div class="pv-pal-use">ошибка формы</div></div>
+            <div><div class="pv-swatch" style="background:#8C8C8C"></div><div class="pv-pal-name">#8C8C8C</div><div class="pv-pal-use">плейсхолдер</div></div>
+        </div>
+        <div class="pv-note">Теней и градиентов в системе нет. Глубина — рамки 2px и чёрные секции.</div>
+    </section>
+
+    <!-- типографика -->
+    <section class="pv-sec" id="s2">
+        <div class="pv-label">2. Типографика — Liberation Sans</div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <div style="font-size:84px;font-weight:700;line-height:.92;letter-spacing:-.06em;text-transform:uppercase">Плакат</div>
+            </div>
+            <div class="pv-type-meta">84px · 700 · uppercase · −0.06em · v2</div>
+        </div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <div style="font-size:64px;font-weight:700;line-height:.94;letter-spacing:-3px;text-transform:uppercase">Заголовок</div>
+            </div>
+            <div class="pv-type-meta">64px · 700 · uppercase · −3px · h1/h2</div>
+        </div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <div class="title-sub">Подзаголовок секции</div>
+            </div>
+            <div class="pv-type-meta">32px · 700 · uppercase · −0.06em</div>
+        </div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <div style="font-size:20px;line-height:1.4;max-width:44em">Основной текст блоков v2 — 20px с высотой строки 1.4. Так набираются описания, абзацы и подписи под заголовками.</div>
+            </div>
+            <div class="pv-type-meta">20px · 400 · 1.4 · v2</div>
+        </div>
+
+        <div class="pv-type-row">
+            <div class="pv-type-sample">
+                <div style="font-size:18px;line-height:1.4;max-width:44em">Основной текст легаси-блоков — 18px. Им набраны главная и старые внутренние страницы.</div>
+            </div>
+            <div class="pv-type-meta">18px · 400 · 1.4 · легаси</div>
+        </div>
+
+        <div class="pv-type-row" style="border-bottom:0">
+            <div class="pv-type-sample">
+                <div style="font-size:14px;line-height:1.4;color:var(--gray-mid)">Мелкий текст, примечания, подписи полей — 14px, вторичный цвет #8C8C8C.</div>
+            </div>
+            <div class="pv-type-meta">14px · 400 · база сайта</div>
+        </div>
+    </section>
+
+    <!-- кнопки -->
+    <section class="pv-sec" id="s3">
+        <div class="pv-label">3. Кнопки — 88px · радиус 4px · рамка 2px · капс</div>
+        <div class="pv-row" style="margin-bottom:22px">
+            <a href="#" class="btn v1">Основная</a>
+            <a href="#" class="btn v4">Контурная</a>
+            <a href="#" class="btn v3">Тихая</a>
+        </div>
+        <div class="pv-row" style="background:#101010;padding:22px;border-radius:10px;margin-bottom:16px">
+            <a href="#" class="btn v2">На тёмном</a>
+            <a href="#" class="btn v1">Купить</a>
+        </div>
+        <div class="pv-note">Логика: заливка → при наведении контур, у вторичных наоборот. На мобильном кнопка 66px, паддинг 0 20px.</div>
+    </section>
+
+    <!-- формы -->
+    <section class="pv-sec" id="s4">
+        <div class="pv-label">4. Формы — поля 46px, прямые углы, тёмная плашка</div>
+        <div class="pv-dark" style="max-width:520px">
+            <div class="input"><input type="text" placeholder="ФИО*"></div>
+            <div class="input"><input type="text" placeholder="Контакт в Telegram*"></div>
+            <div class="input">
+                <select>
+                    <option value="">Тема обращения</option>
+                    <option>Партнёрство</option>
+                    <option>Спикер</option>
+                </select>
+            </div>
+            <div class="input"><input type="text" class="error" placeholder="E-mail*" value="неверный@адрес"><p>Укажите корректный e-mail</p></div>
+            <label class="checkbox" style="margin-top:14px">
+                <input type="checkbox" checked>
+                <span><i></i>Согласен с политикой обработки данных</span>
+            </label>
+            <a href="#" class="btn v1" style="margin-top:18px;height:46px;border-radius:0;font-size:18px;letter-spacing:-.06em">Отправить</a>
+        </div>
+        <div class="pv-note">Фокус — белая рамка. Ошибка — рамка и текст #F74200. Капча — блок 100px.</div>
+    </section>
+
+    <!-- карточки -->
+    <section class="pv-sec" id="s5">
+        <div class="pv-label">5. Карточки v2 — 4px, рамка 2px, «срезанный угол»</div>
+        <div class="pv-cards">
+            <div class="card card--cut">
+                <div class="card__title" style="color:var(--r)">Светлая карточка</div>
+                <div class="card__text">Подложка #F6F6F6, рамка 2px #E8E8E8. Так выглядят блоки «почему», «что внутри», шаги.</div>
+            </div>
+            <div class="card card--cut card--red">
+                <div class="card__title">Акцентная</div>
+                <div class="card__text" style="color:#fff;opacity:.9">Заливка #FF3838 и рамка 2px #D60000. Срез — правый верхний угол, диагональ под 40°.</div>
+            </div>
+        </div>
+        <div class="pv-note">Срез — правый верхний угол: диагональ под 40° от 72px левее правого края до 60px ниже верхнего. Заливка выреза равна фону секции (<code>--cut-bg</code>), линия — только по диагонали.</div>
+
+        <div class="pv-row" style="margin-top:26px">
+            <div class="pill"><span style="padding:0 20px">ВКонтакте</span><i><span style="width:34px;height:34px;border-radius:50%;background:#FF3838;display:block"></span></i></div>
+            <div class="pill"><span style="padding:0 20px">Telegram</span><i><span style="width:34px;height:34px;border-radius:50%;background:#FF3838;display:block"></span></i></div>
+            <div class="pill"><span style="padding:0 20px">Яндекс</span><i><span style="width:34px;height:34px;border-radius:50%;background:#FF3838;display:block"></span></i></div>
+        </div>
+        <div class="pv-note">Пилюли тем: радиус 35–100px, красная заливка, иконка в белом круге 66px.</div>
+    </section>
+
+    <!-- сетка -->
+    <section class="pv-sec" id="s6">
+        <div class="pv-label">6. Сетка, отступы, радиусы</div>
+        <table class="pv-table">
+            <tr><th>Параметр</th><th>Значение</th><th>Где</th></tr>
+            <tr><td>Контейнер</td><td>1600px → 1240px на ≤1570px, паддинг 20px (10px на мобильном)</td><td><code>.container</code></td></tr>
+            <tr><td>Блок v2</td><td>1560px фиксированной ширины</td><td><code>body.partners_v2 .block</code></td></tr>
+            <tr><td>Ритм секций</td><td>90px сверху/снизу, 30px на мобильном; внутренние страницы 110px</td><td><code>.section</code></td></tr>
+            <tr><td>Крупная панель</td><td>ширина 100% − 80px, радиус 30px</td><td><code>.wrap_container</code></td></tr>
+            <tr><td>Радиусы</td><td>4 · 5 · 10 · 20 · 30 · 35 · 50%</td><td>кнопки, поля, карточки, тарифы, пилюли</td></tr>
+            <tr><td>Тени</td><td>нет (единственная — 0 0 1px 0 #FF3838)</td><td>вся система</td></tr>
+            <tr><td>Брейкпоинты</td><td>1600 · 1570 · 1400 · 1300 · 1240 · 1200 · 992 · 768 · 641</td><td><code>adaptive.css</code></td></tr>
+        </table>
+    </section>
+
+    <!-- подвал -->
+    <section class="pv-sec" id="s7">
+        <div class="pv-label">7. Подвал — белый, 90px, ссылки красные подчёркнутые</div>
+        <div class="pv-footer" style="padding:26px 0 0;border-top:0">
+            <div class="pv-wrap" style="padding:0">
+                <div class="pv-copy">© 2026. «Ивентология»</div>
+                <div class="pv-flinks">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Оферта</a>
+                    <a href="#">Контакты</a>
+                </div>
+                <div class="pv-credits">Дизайн: @urrsunn · Разработка: Webking</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- аккордеон -->
+    <section class="pv-sec" id="s8">
+        <div class="pv-label">8. Аккордеон («спойлер») — единственный на сайте, FAQ</div>
+        <div style="max-width:794px">
+            <div class="accordion">
+                <div class="accordion__item">
+                    <button class="accordion__head" type="button" aria-expanded="true">Можно ли купить только один доклад?</button>
+                    <div class="accordion__body" style="display:block">Да, видеозаписи продаются и поштучно. Открытый пункт помечается красным кругом с повёрнутым на 135° плюсом.</div>
+                </div>
+                <div class="accordion__item">
+                    <button class="accordion__head" type="button" aria-expanded="false">Как проходит регистрация?</button>
+                    <div class="accordion__body">Одновременно открыт только один пункт: при клике остальные закрываются анимацией 500 мс.</div>
+                </div>
+                <div class="accordion__item">
+                    <button class="accordion__head" type="button" aria-expanded="false">Будут ли записи после форума?</button>
+                    <div class="accordion__body">Круг 56×56, иконка плюса 24px на чёрном фоне; на мобильном — 40×40.</div>
+                </div>
+            </div>
+        </div>
+        <div class="pv-note">Пункт: padding 20px 0, линия 2px #F6F6F6. Кнопка-плюс поворачивается на 135° и краснеет.</div>
+    </section>
+
+    <!-- стрелки и слайдер -->
+    <section class="pv-sec" id="s9">
+        <div class="pv-label">9. Стрелки: слайдер, ссылка «назад», маркеры списков</div>
+
+        <div class="slider" style="height:150px;background:#F6F6F6;border-radius:10px;position:relative;margin-bottom:14px">
+            <button class="slider-btn slider-btn--prev" type="button" aria-label="Назад"></button>
+            <button class="slider-btn slider-btn--next" type="button" aria-label="Вперёд"></button>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#8C8C8C;font-size:14px">Слайд</div>
+        </div>
+        <div class="slider-dots">
+            <span class="is-active"><button type="button"></button></span>
+            <span><button type="button"></button></span>
+            <span><button type="button"></button></span>
+        </div>
+
+        <div style="margin-top:24px;background:#101010;border-radius:10px;padding:18px 22px">
+            <a href="#" class="link-back" style="margin-bottom:0">Назад к программе</a>
+        </div>
+
+        <ul style="margin-top:16px;display:grid;gap:10px">
+            <li style="display:flex;gap:10px;align-items:flex-start;font-size:16px"><span style="width:20px;height:20px;flex:0 0 auto;background:url('https://smmconfa.ru/wp-content/themes/smmconfa24/img/list_arrow.svg') no-repeat 50% 50% / contain"></span>Маркер списка — 20px, красная стрелка</li>
+            <li style="display:flex;gap:10px;align-items:flex-start;font-size:16px"><span style="width:20px;height:20px;flex:0 0 auto;background:url('https://smmconfa.ru/wp-content/themes/smmconfa24/img/red_arrows_right.svg') no-repeat 50% 50% / contain"></span>Красная стрелка-акцент — 20px, есть версия 10px</li>
+        </ul>
+        <div class="pv-note">Стрелки слайдера — 64×64, фон #FF3838, отступ 60px от края (20px на узком). «Назад» по умолчанию приглушена фильтром, при наведении становится красной.</div>
+    </section>
+
+    <!-- таймер, sticky-бар, сегменты -->
+    <section class="pv-sec" id="s10">
+        <div class="pv-label">10. Таймер, sticky-бар, сегмент-контрол</div>
+
+        <div class="timer" style="position:static;border-radius:10px;padding:22px 26px;margin-bottom:20px">
+            <div class="timer__row">
+                <div class="timer__title">До повышения цен осталось:</div>
+                <div class="timer__items">
+                    <div class="timer__item"><span class="timer__num">00</span><span class="timer__text">дней</span></div>
+                    <div class="timer__item"><span class="timer__num">01</span><span class="timer__text">час</span></div>
+                    <div class="timer__item"><span class="timer__num">12</span><span class="timer__text">минут</span></div>
+                    <div class="timer__item"><span class="timer__num">52</span><span class="timer__text">секунды</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sticky-bar" style="position:relative;transform:none;border-radius:4px;margin-bottom:20px">
+            <div class="sticky-bar__inner">
+                <div class="sticky-bar__text">Оставьте заявку и получите скидку 10% на покупку видеозаписей</div>
+                <button class="btn v1" type="button">Заполнить</button>
+                <button class="sticky-bar__close" type="button" aria-label="Закрыть">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M1 13L13 1" stroke="#fff" stroke-width="2"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="segmented">
+            <a href="#" class="is-active">Таблица</a>
+            <a href="#">Список</a>
+            <a href="#">Потоки</a>
+        </div>
+        <div class="pv-note">Таймер — фикс-бар внизу, цифры 62px. Sticky-бар — фон #2A2A2A, кнопка 42px. Сегменты — 50px, рамка 2px, активный залит красным.</div>
+    </section>
+
+    <!-- карточки-компоненты -->
+    <section class="pv-sec" id="s11">
+        <div class="pv-label">11. Тариф, лайк, зум карты, видео</div>
+
+        <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+            <div class="ticket ticket--light" style="flex:1 1 240px;background:#fff;color:#101010;border-color:#E8E8E8">
+                <div class="ticket__head" style="border-bottom-color:#A8A8A8">
+                    <h5 style="margin:0;font-size:32px;line-height:1.1;font-weight:700;text-transform:uppercase;color:#FF3838">Онлайн</h5>
+                </div>
+                <div class="ticket__body" style="font-size:14px;color:#101010">Доступ к видеозаписям всех докладов</div>
+                <div class="ticket__foot" style="padding:24px 40px 30px">
+                    <div class="ticket__price" style="font-size:32px">1 900 ₽</div>
+                </div>
+            </div>
+
+            <div style="flex:1 1 240px">
+                <div style="display:flex;align-items:center;gap:22px;padding:18px;background:#101010;border-radius:10px">
+                    <span class="like">
+                        <svg viewBox="0 0 256 256"><path d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"/></svg>
+                        <span class="like__badge">12</span>
+                    </span>
+                    <span style="color:#fff;font-size:14px">Лайк в шапке и бейдж-счётчик</span>
+                </div>
+                <div class="zoom" style="background:#F6F6F6;border-radius:10px;padding:8px;margin-top:14px">
+                    <button class="zoom__btn zoom__btn--plus" type="button" aria-label="Приблизить"></button>
+                    <button class="zoom__btn zoom__btn--minus" type="button" aria-label="Отдалить"></button>
+                    <span style="align-self:center;margin-left:8px;font-size:13px;color:#8C8C8C">Зум карты 34×34</span>
+                </div>
+            </div>
+
+            <div class="video-frame" style="flex:1 1 240px;background:#101010;border-radius:10px;position:relative;overflow:hidden">
+                <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+                    <span style="width:64px;height:64px;border-radius:50%;background:#FF3838;background-image:url('https://smmconfa.ru/wp-content/themes/smmconfa24/img/play_icon.svg');background-repeat:no-repeat;background-position:50% 50%"></span>
+                </div>
+            </div>
+        </div>
+        <div class="pv-note">Видео — пропорция 16:9 через padding-top 56.25%. Тариф — рамка 2px, радиус 20px, три варианта: тёмный, красный, белый.</div>
+    </section>
+
+    <!-- декор -->
+    <section class="pv-sec" id="s12">
+        <div class="pv-label">12. Декор: топор, уголок тарифа, планета</div>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+            <div style="flex:1 1 240px">
+                <div style="position:relative;height:190px;background:#F6F6F6;border-radius:10px;overflow:hidden">
+                    <img src="https://smmconfa.ru/wp-content/themes/smmconfa24/img/topor_img_act.png" alt="Топор" style="position:absolute;left:-20px;bottom:-40px;width:150px;height:auto;transition:1s;transform-origin:100% 100%" onmouseover="this.style.transform='rotate(25deg)'" onmouseout="this.style.transform='rotate(0)'">
+                </div>
+                <div class="pv-note">Топор со страницы /activity/ — сейчас на сайте выключен (display:none). При наведении поворачивается на 25°.</div>
+            </div>
+            <div style="flex:1 1 240px">
+                <div style="position:relative;height:190px;background:#F6F6F6;border:2px solid #E8E8E8;border-radius:20px;overflow:hidden">
+                    <div style="position:absolute;top:-2px;right:-2px;width:57px;height:57px;background:#101010 url('https://smmconfa.ru/wp-content/themes/smmconfa24/img/ticket_corner.svg') no-repeat 50% 50%"></div>
+                    <div style="position:absolute;left:18px;bottom:16px;font-size:13px;color:#8C8C8C">Уголок тарифа 57×57</div>
+                </div>
+                <div class="pv-note">`.ticket:before` — тоже выключен в CSS (display:none), но рисунок на месте.</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div class="pv-wrap" style="padding-bottom:40px">
+    <div class="pv-note" style="font-size:13px">
+        Значения сняты с https://smmconfa.ru 30/10/2026. Локальный CSS темы совпадает с продом байт-в-байт.
+        Полный гайд — <code>DESIGN.md</code>, переменные — <code>tokens.css</code> в этой же папке.
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.accordion__head').forEach(function (head) {
+        head.addEventListener('click', function () {
+            var isOpen = head.classList.contains('is-open');
+            document.querySelectorAll('.accordion__head').forEach(function (h) {
+                h.classList.remove('is-open');
+                h.setAttribute('aria-expanded', 'false');
+                var body = h.parentElement.querySelector('.accordion__body');
+                if (body) body.style.display = 'none';
+            });
+            if (!isOpen) {
+                head.classList.add('is-open');
+                head.setAttribute('aria-expanded', 'true');
+                var body = head.parentElement.querySelector('.accordion__body');
+                if (body) body.style.display = 'block';
+            }
+        });
+    });
+
+    document.querySelectorAll('.segmented a').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            e.preventDefault();
+            a.parentElement.querySelectorAll('a').forEach(function (x) { x.classList.remove('is-active'); });
+            a.classList.add('is-active');
+        });
+    });
+</script>
+
+</body>
+</html>

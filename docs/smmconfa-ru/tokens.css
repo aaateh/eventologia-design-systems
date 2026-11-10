@@ -1,0 +1,571 @@
+/* ==========================================================================
+   smmconfa.ru — дизайн-система, готовые токены и базовые компоненты
+   Снято 30/10/2026 с https://smmconfa.ru (тема smmconfa24).
+   Значения совпадают с css/style.css (sha1 efb7082d…) — это копия правил сайта,
+   а не переосмысление. Подключать либо вместо копирования стилей, либо как
+   справочник при верстке новых блоков.
+   ========================================================================== */
+
+:root {
+    /* --- палитра (как в :root сайта) --- */
+    --r : #FF3838;              /* акцент: кнопки, ссылки, цифры, телефоны */
+    --b : #101010;              /* текст и тёмные секции */
+    --w : #FFFFFF;              /* белый */
+    --pbg : rgba(16, 16, 16, .2);
+    --rbg : rgba(255, 56, 56, .7);
+    --g1 : #A8A8A8;             /* вторичный текст/границы */
+    --g2 : #F6F6F6;             /* светлая подложка */
+
+    /* --- производные (встречаются в стилях без переменных) --- */
+    --border-soft : #E8E8E8;    /* рамка 2px светлых карточек v2 */
+    --red-dark : #D60000;       /* рамка 2px красных карточек v2 */
+    --error : #F74200;          /* ошибки форм */
+    --gray-mid : #8C8C8C;       /* плейсхолдеры, вторичный текст на тёмном */
+    --gray-line : #ABABAB;      /* линии-разделители */
+    --ink-900 : #101010;
+    --ink-800 : #121212;
+    --ink-700 : #252525;
+    --overlay : rgba(0, 0, 0, .7);      /* .black_layout под попапами */
+    --overlay-photo : rgba(0, 0, 0, .3); /* затемнение фото при hover */
+
+    /* --- типографика --- */
+    --font : "Liberation Sans", Arial, sans-serif;
+    --font-mono : "Liberation Mono", monospace;
+    --fs-body : 14px;
+    --lh-body : 1.4;
+    --fs-small : 12px;
+    --fs-text : 18px;           /* основной текст легаси-блоков */
+    --fs-text-v2 : 20px;        /* текст блоков v2, line-height 1.4 */
+    --fs-lead : 32px;           /* подзаголовки секций, капс */
+    --fs-h-md : 64px;           /* h1/h2 страниц */
+    --fs-h-xl : 84px;           /* заголовки-плакаты */
+    --fs-stat : 70px;           /* цифры в hero */
+    --tracking-display : -.06em; /* крупные заголовки v2 */
+    --tracking-h : -3px;         /* h1/h2 */
+    --tracking-h3 : -5px;        /* h3 84px */
+
+    /* --- сетка и ритм --- */
+    --container : 1600px;
+    --container-inner : 1240px;
+    --container-pad : 20px;
+    --container-pad-mobile : 10px;
+    --block-v2 : 1560px;        /* фиксированный блок v2-страниц */
+    --section-y : 90px;
+    --section-y-page : 110px;   /* внутренние страницы */
+    --section-y-mobile : 30px;
+    --header-y : 30px;          /* padding шапки */
+
+    /* --- радиусы --- */
+    --radius-btn : 4px;
+    --radius-input : 5px;
+    --radius-card : 10px;
+    --radius-lg : 20px;
+    --radius-wrap : 30px;
+    --radius-pill : 35px;       /* до 100px у пилюль тем */
+
+    /* цвет «выреза» карточки: должен совпадать с фоном секции */
+    --cut-bg : #FFFFFF;
+
+    /* --- рамки, тени, анимация --- */
+    --border-w : 2px;
+    --shadow-focus : 0 0 1px 0 var(--r);
+    --t : .3s;
+    --z-header : 40;
+    --z-layout : 90;
+    --z-popup : 95;
+}
+
+/* ==========================================================================
+   Базовый сброс и типографика (копия правил сайта)
+   ========================================================================== */
+
+*, *:before, *:after {
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: var(--font);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: var(--b);
+}
+
+img { display: block; max-width: 100%; height: auto; }
+li { list-style: none; }
+a { text-decoration: none; color: inherit; }
+
+/* Шкала заголовков сайта */
+h1, h2 {
+    font-size: var(--fs-h-md);
+    line-height: .94;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-h);
+}
+
+h3 {
+    font-size: var(--fs-h-xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: var(--tracking-h3);
+}
+
+/* Заголовки-плакаты v2: приглушённый трекинг, плотная строка */
+.title-display,
+.block_title {
+    margin: 0 0 40px;
+    font-weight: 700;
+    font-size: var(--fs-h-xl);
+    line-height: 92%;
+    letter-spacing: var(--tracking-display);
+    text-transform: uppercase;
+    position: relative;
+}
+.title-display strong,
+.block_title strong { color: var(--r); }
+
+/* Подзаголовок секции */
+.title-sub {
+    font-weight: 700;
+    font-size: var(--fs-lead);
+    letter-spacing: var(--tracking-display);
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Раскладка
+   ========================================================================== */
+
+.container {
+    max-width: var(--container);
+    width: 100%;
+    padding: 0 var(--container-pad);
+    margin: 0 auto;
+}
+
+.wrap_container {
+    max-width: calc(1920px - 80px);
+    width: calc(100% - 80px);
+    margin: 0 auto;
+    border-radius: var(--radius-wrap);
+}
+
+.section { padding: var(--section-y) 0; }
+.section--dark { background: var(--b); color: var(--w); }
+
+@media (max-width: 1570px) {
+    .container { max-width: var(--container-inner); }
+}
+
+@media (max-width: 641px) {
+    .container { padding: 0 var(--container-pad-mobile); }
+    .wrap_container { width: calc(100% - 6px); }
+    .section { padding: var(--section-y-mobile) 0; }
+    h1, h2 { font-size: 32px; letter-spacing: -1px; }
+    h3 { font-size: 64px; letter-spacing: -3.7px; }
+}
+
+/* ==========================================================================
+   Кнопки (копия .btn из css/style.css)
+   ========================================================================== */
+
+.btn_group {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 -10px;
+}
+.btn_group.centered { justify-content: center; }
+.btn_group > * { margin: 0 10px; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    height: 88px;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: var(--border-w) solid transparent;
+    border-radius: var(--radius-btn);
+    line-height: 1.2;
+    transition: var(--t);
+}
+
+.btn.fw { display: flex; width: 100%; }
+
+/* Основная: заливка -> при hover контур */
+.btn.v1 { background: var(--r); color: var(--w); }
+.btn.v1:hover { background: transparent; border-color: var(--r); color: var(--r); }
+
+/* Вторичная на тёмном: контур белый -> белая заливка */
+.btn.v2 { background: transparent; border-color: var(--w); color: var(--w); }
+.btn.v2:hover { background: var(--w); color: var(--g1); }
+
+/* Тихая: серый контур -> красный */
+.btn.v3 { background: transparent; border-color: var(--g1); color: var(--g1); }
+.btn.v3:hover { border-color: var(--r); color: var(--r); }
+.btn.v3:focus { background: var(--r); color: var(--w); }
+
+/* Контурная красная: контур -> красная заливка */
+.btn.v4 { background: transparent; border-color: var(--r); color: var(--r); }
+.btn.v4:hover { border-color: var(--r); color: var(--w); background: var(--r); }
+.btn.v4:focus { background: transparent; color: var(--r); }
+
+/* Мобильный размер кнопки */
+@media (max-width: 641px) {
+    .btn { padding: 0 20px; height: 66px; }
+    .btn_group { flex-direction: column; margin: 0; }
+    .btn_group > * { width: 100%; margin: 10px 0 0 0; }
+}
+
+/* ==========================================================================
+   Формы (попапы заявок — актуальный вариант)
+   ========================================================================== */
+
+.input { margin-top: 20px; display: block; }
+.input label { display: block; margin-bottom: 10px; font-size: 16px; font-weight: 400; }
+
+/* Поле на тёмной плашке: 46px, прямые углы */
+.input input,
+.input select {
+    height: 46px;
+    padding: 0 30px;
+    width: 100%;
+    border: 1px solid var(--w);
+    background: transparent;
+    color: var(--w);
+    border-radius: 0;
+    font-family: var(--font);
+    font-size: 14px;
+}
+
+.input input::placeholder { color: var(--gray-mid); opacity: 1; }
+.input input:focus { outline: none; border-color: var(--w); }
+
+.input input.error,
+.input select.error { border-color: var(--error); }
+.input input.error + p,
+.input select.error + p {
+    padding: 4px 0 0;
+    margin: 0;
+    font-size: 14px;
+    line-height: 110%;
+    color: var(--error);
+}
+
+/* Крупное поле «старого» типа */
+.input--lg input {
+    height: 70px;
+    border-radius: var(--radius-input);
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+/* Чекбокс согласия */
+.checkbox { display: flex; flex-direction: column; cursor: pointer; position: relative; }
+.checkbox input { position: absolute; top: -1000px; left: -1000px; visibility: hidden; }
+.checkbox span { display: flex; align-items: flex-start; }
+.checkbox span i {
+    display: block;
+    flex: 0 0 auto;
+    margin-right: 10px;
+    position: relative;
+    border: 1px solid var(--w);
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+}
+.checkbox span i:before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 1px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background: var(--w);
+    display: none;
+}
+.checkbox input:checked ~ span i:before { display: block; }
+.checkbox p { order: 5; color: var(--r); font-size: 12px; margin-top: 5px; }
+
+/* ==========================================================================
+   Карточки (слой v2 — актуальный)
+   ========================================================================== */
+
+.card {
+    position: relative;
+    padding: 30px;
+    background: var(--g2);
+    border: var(--border-w) solid var(--border-soft);
+    border-radius: var(--radius-btn);
+    box-sizing: border-box;
+    overflow: hidden;            /* обязательно: обрезает «срезанный угол» по карточке */
+}
+
+/* «Срезанный угол» — фирменный приём v2-карточек.
+   Геометрия как на сайте: прямоугольник 100×60, повёрнут на 40°, сдвинут за угол
+   (right:-33px, top:-23px) и обрезан по карточке через overflow:hidden.
+   Внутри карточки видна только диагональ: она идёт от точки 72px левее правого
+   края на верхней кромке до 60px ниже верхнего края на правой кромке (угол 40°).
+   Заливка = цвет фона секции: она закрывает угол карточки вместе с её рамкой.
+   Линия — только по диагонали (border-bottom), остальные стороны не рисуем. */
+.card--cut:after {
+    content: "";
+    z-index: 1;
+    width: 100px;
+    height: 60px;
+    transform: rotate(40deg);
+    right: -33px;
+    top: -23px;
+    background: var(--cut-bg, var(--w));
+    border: 0;
+    border-bottom: var(--border-w) solid var(--border-soft);
+    position: absolute;
+}
+
+/* Акцентная карточка */
+.card--red {
+    background: var(--r);
+    border-color: var(--red-dark);
+    color: var(--w);
+}
+.card--red:after { border-bottom-color: var(--red-dark); }
+
+.card__title {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: var(--tracking-display);
+    text-transform: uppercase;
+}
+.card__text { padding: 20px 0 0; font-size: 18px; line-height: 1.4; color: var(--g1); }
+
+/* Пилюля-тема с иконкой в белом круге */
+.pill {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-pill);
+    padding: 1px 1px 1px 20px;
+    background: var(--r);
+    color: var(--w);
+    font-weight: 700;
+}
+.pill i {
+    background: var(--w);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    margin-left: auto;
+}
+.pill i img { width: 34px; height: 34px; object-fit: contain; }
+
+/* ==========================================================================
+   Компоненты
+   Иконки подключаются с прода: в теме это img/…, но файл токенов лежит вне
+   папки темы, поэтому пути абсолютные и вынесены в переменные.
+   ========================================================================== */
+
+:root {
+    --icon-plus : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/plus_icon.svg");
+    --icon-arrow-prev : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/slider_prev_arrow.svg");
+    --icon-arrow-next : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/slider_next_arrow.svg");
+    --icon-back : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/back_link.svg");
+    --icon-zoom-in : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/pp_plus_icon.svg");
+    --icon-zoom-out : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/pp_minus_icon.svg");
+    --icon-play : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/play_icon.svg");
+    --icon-arrow : url("https://smmconfa.ru/wp-content/themes/smmconfa24/img/red_arrows_right.svg");
+}
+
+/* --- Аккордеон / спойлер (единственный на сайте — FAQ) --- */
+.accordion__item { padding: 20px 0; border-top: 2px solid var(--g2); }
+.accordion__item:last-child { border-bottom: 2px solid var(--g2); }
+
+.accordion__head {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 0; border: 0; background: none;
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+}
+.accordion__head:after {
+    content: ""; width: 56px; height: 56px; flex: 0 0 auto; margin-left: 24px;
+    border-radius: 50%; transition: .5s;
+    background-color: var(--b);
+    background-image: var(--icon-plus);
+    background-repeat: no-repeat; background-position: 50% 50%; background-size: 24px auto;
+}
+.accordion__head.is-open:after { background-color: var(--r); transform: rotate(135deg); }
+.accordion__body { display: none; padding-top: 10px; }
+
+/* --- Слайдер: стрелки и точки --- */
+.slider { position: relative; }
+
+.slider-btn {
+    position: absolute; top: 0; bottom: 0; margin: auto;
+    width: 64px; height: 64px; padding: 0; border: 0;
+    background-color: var(--r); background-repeat: no-repeat;
+    background-position: 50% 50%; background-size: contain;
+    font-size: 0; cursor: pointer; transition: var(--t);
+}
+.slider-btn--prev { left: 60px; background-image: var(--icon-arrow-prev); }
+.slider-btn--next { right: 60px; background-image: var(--icon-arrow-next); }
+
+.slider-dots { display: flex; justify-content: center; }
+.slider-dots button {
+    width: 10px; height: 10px; margin: 0 2px; padding: 0;
+    border: 0; border-radius: 50%; background: var(--r);
+    font-size: 0; opacity: .5; cursor: pointer;
+}
+.slider-dots .is-active button { opacity: 1; }
+
+/* --- Ссылка «назад» --- */
+.link-back {
+    display: inline-flex; align-items: center; margin-bottom: 20px;
+    font-size: 18px; font-weight: 700; letter-spacing: -1px;
+    text-transform: uppercase; color: var(--r);
+    filter: brightness(0) invert(1) opacity(.4);
+}
+.link-back:before {
+    content: ""; width: 30px; height: 30px; flex: 0 0 auto; margin-right: 10px;
+    background-image: var(--icon-back);
+    background-repeat: no-repeat; background-position: 50% 50%; background-size: contain;
+}
+.link-back:hover { filter: none; }
+
+/* --- Таймер обратного отсчёта (фикс-бар внизу) --- */
+.timer {
+    position: fixed; left: 0; bottom: 0; width: 100%; z-index: 30;
+    padding: 30px 0; background: #050505; color: var(--w);
+}
+.timer__row { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.timer__title { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -1.5px; }
+.timer__items { display: flex; justify-content: center; padding: 10px 0; }
+.timer__item { width: 68px; margin: 0 20px; text-align: center; }
+.timer__num { display: block; color: var(--r); font-size: 62px; line-height: 1; letter-spacing: -1.5px; font-weight: 700; }
+.timer__text { font-size: 18px; line-height: 1; }
+
+/* --- Sticky-бар (акция) --- */
+.sticky-bar {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 39;
+    background: #2A2A2A; transform: translateY(-200px);
+    transition: transform .4s ease;
+}
+.sticky-bar.is-visible { transform: translateY(0); }
+.sticky-bar--bottom { top: auto; bottom: 0; transform: translateY(200px); }
+.sticky-bar--bottom.is-visible { transform: translateY(0); }
+
+.sticky-bar__inner {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    gap: 24px; max-width: 1280px; margin: 0 auto; padding: 16px 60px;
+}
+.sticky-bar__text { font-size: 18px; line-height: 1.3; color: var(--w); text-align: center; }
+.sticky-bar .btn { height: 42px; padding: 0 32px; font-size: 16px; flex-shrink: 0; }
+.sticky-bar__close {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    width: 32px; height: 32px; padding: 0; border: 0; background: none; cursor: pointer;
+}
+.sticky-bar__close:hover { opacity: .7; }
+
+/* --- Сегмент-контрол (переключатель вида программы) --- */
+.segmented { display: flex; align-items: center; flex-wrap: wrap; font-size: 16px; }
+.segmented a {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 50px; margin-left: 20px; padding: 0 20px;
+    border: var(--border-w) solid var(--r); border-radius: var(--radius-btn);
+    color: var(--r); font-weight: 500;
+}
+.segmented a.is-active { background: var(--r); color: var(--w); }
+
+/* --- Видео 16:9 --- */
+.video-frame { position: relative; width: 100%; }
+.video-frame:before { content: ""; display: block; padding-top: 56.25%; }
+.video-frame > iframe,
+.video-frame > video { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* --- Лайк (сердечко) --- */
+.like { position: relative; display: inline-flex; align-items: center; }
+.like svg { width: 28px; height: 28px; }
+.like svg path { fill: none; stroke: var(--w); stroke-width: 20px; transition: .2s; }
+.like:hover svg path { fill: var(--r); stroke: var(--r); }
+.like__badge {
+    position: absolute; top: -5px; right: -8px; min-width: 16px; height: 16px;
+    padding: 0 5px; border-radius: 50%; background: var(--r); color: #fff;
+    font-size: 11px; font-weight: 700; line-height: 16px; text-align: center;
+}
+
+/* --- Тариф --- */
+.ticket {
+    position: relative; display: flex; flex-direction: column;
+    border: var(--border-w) solid var(--w); border-radius: var(--radius-lg);
+    color: var(--w);
+}
+.ticket__head { padding: 40px; border-bottom: var(--border-w) solid var(--w); }
+.ticket__head h5 {
+    margin: 0; font-size: 48px; line-height: 1.1; font-weight: 700;
+    text-transform: uppercase; color: var(--r);
+}
+.ticket__body { padding: 40px; flex: 1 1 auto; }
+.ticket__foot { padding: 80px 40px 40px; }
+.ticket__price { font-size: 64px; font-weight: 700; line-height: 1; text-align: center; }
+.ticket--red { background: var(--r); }
+.ticket--light { background: var(--w); color: var(--b); }
+.ticket--light .ticket__head { border-bottom-color: var(--g1); }
+
+/* --- Зум карты --- */
+.zoom { display: inline-flex; }
+.zoom__btn {
+    width: 34px; height: 34px; margin: 6px; padding: 0; border: 0;
+    background-color: var(--r); background-repeat: no-repeat; background-position: 50% 50%;
+    font-size: 0; cursor: pointer;
+}
+.zoom__btn--plus { background-image: var(--icon-zoom-in); }
+.zoom__btn--minus { background-image: var(--icon-zoom-out); }
+
+/* --- Декор: топор (страница активностей, сейчас выключен на сайте) --- */
+.deco-axe { position: absolute; left: 0; bottom: -340px; width: 420px; height: 450px; overflow: hidden; z-index: 3; }
+.deco-axe img { position: absolute; top: 0; right: 150px; width: auto; height: auto; transform-origin: 100% 100%; transition: 1s; }
+.deco-axe:hover img { transform: rotate(25deg); }
+
+/* ==========================================================================
+   Шапка и подвал (базовые правила)
+   ========================================================================== */
+
+.header-fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--z-header);
+    padding: var(--header-y) 0;
+    color: var(--w);
+    transition: background-color .5s;
+}
+.header-fixed.is-scrolled { background: var(--b); }
+
+.header-fixed nav ul { display: flex; justify-content: space-evenly; font-size: 18px; }
+.header-fixed nav ul li a { transition: var(--t); line-height: 20px; letter-spacing: -.03rem; }
+.header-fixed nav ul li a:hover { color: var(--r); }
+
+.site-footer { padding: 90px 0; }
+
+/* ==========================================================================
+   Служебное: доступность
+   В системе нет видимого фокуса (outline: none глобально) — для новых блоков
+   добавляйте свой, не полагаясь на браузер.
+   ========================================================================== */
+
+:focus-visible {
+    outline: 2px solid var(--r);
+    outline-offset: 2px;
+}
+
+@media (max-width: 641px) {
+    .site-footer { padding: 30px 0; }
+}
