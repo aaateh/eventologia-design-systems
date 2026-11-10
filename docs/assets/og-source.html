@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Ивентология — дизайн-системы · OG 1200×630</title>
+<style>
+  @font-face {
+    font-family: "FuturaDemiC";
+    src: url("../eventologia-ru/assets/fonts/FuturaDemiC.woff") format("woff");
+    font-weight: 400; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: "FuturaLightC";
+    src: url("../eventologia-ru/assets/fonts/FuturaLightC.woff") format("woff");
+    font-weight: 400; font-style: normal; font-display: block;
+  }
+  @font-face {
+    font-family: "OpenSansRegular";
+    src: url("../eventologia-ru/assets/fonts/OpenSansRegular.woff") format("woff");
+    font-weight: 400; font-style: normal; font-display: block;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; background: #F2F2F2; }
+
+  .page {
+    position: relative;
+    width: 1200px; height: 630px;
+    background: #F2F2F2;
+    border: 1px solid #D9D9D9;
+    overflow: hidden;
+  }
+
+  .wrap {
+    position: absolute; inset: 0;
+    padding: 48px 48px 44px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    column-gap: 30px;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+
+  .logo { display: block; height: 56px; width: auto; align-self: flex-start; }
+
+  .mid { margin-top: 8px; }
+
+  h1 {
+    margin: 0;
+    font-family: "FuturaDemiC", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 72px;
+    line-height: 1.02;
+    letter-spacing: -0.5px;
+    color: #1A1A1A;
+    max-width: 672px;
+  }
+
+  .sub {
+    margin: 18px 0 0;
+    font-family: "FuturaLightC", "Helvetica Neue", Arial, sans-serif;
+    font-size: 30px;
+    line-height: 1.25;
+    color: #5F5F5F;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .swatches { display: flex; gap: 8px; flex: none; }
+
+  .sw {
+    width: 48px; height: 48px;
+    display: block;
+  }
+
+  .sw.bordered { border: 1px solid #C9C9C9; }
+
+  .caption {
+    font-family: "OpenSansRegular", "SF Mono", Menlo, monospace;
+    font-size: 22px;
+    line-height: 1.2;
+    color: #5F5F5F;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+
+  /* ---- превью-«окна» ---- */
+  .visual {
+    position: relative;
+    height: 100%;
+  }
+
+  .window {
+    position: absolute;
+    background: #FFFFFF;
+    border: 1px solid #BFBFBF;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+
+  .window .bar {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    border-bottom: 1px solid #E2E2E2;
+    background: #FAFAFA;
+  }
+
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: #D2D2D2; }
+  .dot.a { background: #F74200; }
+  .dot.b { background: #9A9A9A; }
+
+  .bar .label {
+    margin-left: auto;
+    font-family: "OpenSansRegular", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.4px;
+    color: #9A9A9A;
+  }
+
+  .window .shot {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border: 0;
+  }
+
+  .w1 {
+    width: 404px; height: 306px;
+    top: 6px; right: -34px;
+    transform: rotate(-3.2deg);
+    z-index: 1;
+  }
+  .w1 .shot { height: 274px; }
+
+  .w2 {
+    width: 372px; height: 288px;
+    bottom: -8px; left: -8px;
+    transform: rotate(2.6deg);
+    z-index: 2;
+  }
+  .w2 .shot { height: 256px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="wrap">
+    <div class="left">
+      <img class="logo" src="../eventologia-ru/assets/logos/logo.svg" alt="Ивентология">
+
+      <div class="mid">
+        <h1>Дизайн-системы<br>Ивентологии</h1>
+        <p class="sub">eventologia.ru · Event-профи</p>
+      </div>
+
+      <div class="foot">
+        <div class="swatches">
+          <span class="sw" style="background:#F74200"></span>
+          <span class="sw" style="background:#000000"></span>
+          <span class="sw" style="background:#3D3D3D"></span>
+          <span class="sw bordered" style="background:#F2F2F2"></span>
+          <span class="sw" style="background:#6B7275"></span>
+        </div>
+        <div class="caption">31 цвет · 7 начертаний · 2 системы</div>
+      </div>
+    </div>
+
+    <div class="visual">
+      <div class="window w1">
+        <div class="bar">
+          <span class="dot a"></span><span class="dot b"></span><span class="dot"></span>
+          <span class="label">eventologia.ru</span>
+        </div>
+        <img class="shot" src="../eventologia-ru/preview.png" alt="">
+      </div>
+
+      <div class="window w2">
+        <div class="bar">
+          <span class="dot a"></span><span class="dot b"></span><span class="dot"></span>
+          <span class="label">event-manager</span>
+        </div>
+        <img class="shot" src="../event-manager1/preview.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Готовность к скриншоту: ждём шрифты + 300 мс и ставим маркер на <html>.
+  // Метрики пишутся в data-metrics для проверки обрезки/загрузки ресурсов.
+  document.fonts.ready.then(function () {
+    var h1 = document.querySelector('h1');
+    var r = h1.getBoundingClientRect();
+    var range = document.createRange();
+    var lineWidths = [];
+    for (var i = 0; i < h1.childNodes.length; i++) {
+      var node = h1.childNodes[i];
+      if (node.nodeType === 3 && node.textContent.trim() !== '') {
+        range.selectNodeContents(node);
+        lineWidths.push(Math.round(range.getBoundingClientRect().width));
+      }
+    }
+    var page = document.querySelector('.page').getBoundingClientRect();
+    var logo = document.querySelector('.logo');
+    var foot = document.querySelector('.foot');
+    document.documentElement.setAttribute('data-metrics', JSON.stringify({
+      futuraDemi: document.fonts.check('72px FuturaDemiC'),
+      futuraLight: document.fonts.check('30px FuturaLightC'),
+      openSans: document.fonts.check('22px OpenSansRegular'),
+      titleLines: Math.round(r.height / (72 * 1.02)),
+      titleBox: [Math.round(r.left), Math.round(r.top), Math.round(r.width), Math.round(r.height)],
+      lineWidths: lineWidths,
+      logoBox: [Math.round(logo.getBoundingClientRect().width), Math.round(logo.getBoundingClientRect().height)],
+      logoLoaded: logo.naturalWidth > 0,
+      footOverflow: foot.scrollWidth - foot.clientWidth,
+      page: [Math.round(page.width), Math.round(page.height)],
+      shotsLoaded: Array.prototype.every.call(document.querySelectorAll('.shot'), function (im) {
+        return im.complete && im.naturalWidth > 0;
+      })
+    }));
+    setTimeout(function () {
+      document.documentElement.setAttribute('data-fonts-ready', '1');
+    }, 300);
+  });
+</script>
+</body>
+</html>
