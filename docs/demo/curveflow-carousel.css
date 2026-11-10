@@ -1,0 +1,189 @@
+/* CurveFlowCarousel — базовые стили компонента. */
+
+/* Хост: сцена карусели. Размер задаёт пользователь (демо — 100vh). */
+.cfc-host {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #ececec;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* WebGL-канвас */
+.cfc-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  /* намеренно без will-change: слой не нужен */
+}
+
+.cfc-canvas:active {
+  cursor: grabbing;
+}
+
+.cfc-canvas:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+  border-radius: 2px;
+}
+
+/* Скрытый текст для скринридеров */
+.cfc-sr {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.cfc-list {
+  list-style: none;
+}
+
+.cfc-live {
+  pointer-events: none;
+}
+
+/* Невидимый контейнер для <video>: метаданные грузятся надёжнее, чем у detached-элемента. */
+.cfc-media-sink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  clip-path: inset(50%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Fallback без WebGL: горизонтальная flex-лента со scroll-snap        */
+/* ------------------------------------------------------------------ */
+
+.cfc-fallback {
+  --cfc-card-h: 360px;
+  --cfc-card-w: 450px;
+  --cfc-gap: 18px;
+  --cfc-corner: 0px;
+  --cfc-shift: 0px;
+
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--cfc-gap);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding-inline: calc(50% - var(--cfc-card-w) / 2);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  outline: none;
+  background: transparent;
+}
+
+.cfc-fallback::-webkit-scrollbar {
+  display: none;
+}
+
+.cfc-fallback:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+
+.cfc-card {
+  position: relative;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: var(--cfc-card-w);
+  height: var(--cfc-card-h);
+  overflow: hidden;
+  border-radius: var(--cfc-corner);
+  background: rgba(128, 128, 128, 0.22);
+  scroll-snap-align: center;
+  transform: translateY(var(--cfc-shift));
+  outline: none;
+}
+
+/* Двухцветное кольцо: белая линия на чёрной подложке остаётся видимой
+   и на светлом, и на тёмном фото (контраст пары #fff/#000 — 21:1). */
+.cfc-card:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -3px;
+  box-shadow: inset 0 0 0 4px #000;
+}
+
+.cfc-card__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.cfc-card__video {
+  cursor: pointer;
+  background: #111;
+}
+
+.cfc-card__video:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+/* Плашка play появляется, когда видео на паузе. */
+.cfc-card__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.18));
+  transition: opacity 180ms ease;
+}
+
+.cfc-card__play::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  border-left: 18px solid rgba(255, 255, 255, 0.92);
+  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.45));
+}
+
+.cfc-card.is-playing .cfc-card__play {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cfc-fallback {
+    scroll-behavior: auto;
+  }
+
+  .cfc-card__play {
+    transition: none;
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "source": "https://curveflowcarousel.framer.website/",
+  "generated": "22:41 - 10/11/2026",
+  "slides": [
+    {
+      "order": 1,
+      "type": "image",
+      "file": "slides/01-photo.png",
+      "original": "bw0gFHiTF8Q4IDcQFWSfWh6pyg.png_1796.png",
+      "width": 1796,
+      "height": 2400,
+      "bytes": 1124074,
+      "sha256": "0d959d9cb61ca56893c390c911fb32a5d1071a709ef03b24fc952c27330dd13f"
+    },
+    {
+      "order": 2,
+      "type": "video",
+      "file": "slides/02-video.mp4",
+      "original": "roSTU06jbgGlsYXGIPH26maBtQQ.mp4",
+      "width": 720,
+      "height": 1280,
+      "duration": 6.8,
+      "bytes": 5793887,
+      "sha256": "01358994d89072dd31645aa181e9d5ce1a1934f81c3212348d718ca795c112e9"
+    },
+    {
+      "order": 3,
+      "type": "image",
+      "file": "slides/03-photo.png",
+      "original": "FnA0lOktORlmJAnlNebTalpe6ZM.png_1796.png",
+      "width": 1796,
+      "height": 2400,
+      "bytes": 1157678,
+      "sha256": "1bc146a1d7c4bd10efc7084d767de8a82e98161c2a87f62c837812f713c3e9f7"
+    },
+    {
+      "order": 4,
+      "type": "video",
+      "file": "slides/04-video.mp4",
+      "original": "NN6Lx6k4t7M9vGURDbnyq40sQ.mp4",
+      "width": 720,
+      "height": 1280,
+      "duration": 3.566667,
+      "bytes": 280179,
+      "sha256": "fd899317f978810e37cf2b0bcad7695498b5f96072cf556f7a53113e670a9505"
+    },
+    {
+      "order": 5,
+      "type": "image",
+      "file": "slides/05-photo.png",
+      "original": "Gb986C4tbdyApYQbC5KGjcYzuE.png_1536.png",
+      "width": 1536,
+      "height": 1318,
+      "bytes": 910762,
+      "sha256": "93d420876ad454e569cd0739cb5d2673bbdc6da0b9419acfa26cc52860fa8d22"
+    },
+    {
+      "order": 6,
+      "type": "video",
+      "file": "slides/06-video.mp4",
+      "original": "evzABRU4WEqu8p0fD9C5sDiGY9s.mp4",
+      "width": 720,
+      "height": 1280,
+      "duration": 17.625,
+      "bytes": 2405347,
+      "sha256": "9028eabf0ba9b8b3aaee989aa55507e1848674c7d9e913052144f248c1758d6f"
+    },
+    {
+      "order": 7,
+      "type": "image",
+      "file": "slides/07-photo.png",
+      "original": "QapAaJ2KHmevlvfb47v3xqUdMr0.png_1536.png",
+      "width": 1536,
+      "height": 1422,
+      "bytes": 1072259,
+      "sha256": "5deaabd821f6ca3a363918e0c942dd2b239af38d1765e134bc55b658d59c1f74"
+    },
+    {
+      "order": 8,
+      "type": "video",
+      "file": "slides/08-video.mp4",
+      "original": "kGZt3pMAG52JXRenq65ma0fZw.mp4",
+      "width": 720,
+      "height": 900,
+      "duration": 45.333333,
+      "bytes": 2160012,
+      "sha256": "c2ef06470f7192ae2601eabeb1dad5615e1cad8b90bb908cd2cf10b40dc0c7e6"
+    }
+  ],
+  "posters": [
+    {
+      "file": "posters/02-video.jpg",
+      "for": "slides/02-video.mp4",
+      "width": 720,
+      "height": 1280,
+      "bytes": 397762,
+      "sha256": "250dcc2855d735676c3a888e532a8c2936370011e5a89fccea314a4bf65fad63"
+    },
+    {
+      "file": "posters/04-video.jpg",
+      "for": "slides/04-video.mp4",
+      "width": 720,
+      "height": 1280,
+      "bytes": 19280,
+      "sha256": "430b11f6c99f794001ffc6ee1ab759bcc67970f6408660d3a197133e259f10da"
+    },
+    {
+      "file": "posters/06-video.jpg",
+      "for": "slides/06-video.mp4",
+      "width": 720,
+      "height": 1280,
+      "bytes": 27973,
+      "sha256": "01b4b46abdf240050e444d28735b423043efae16c83013b112e6802ce527e75f"
+    },
+    {
+      "file": "posters/08-video.jpg",
+      "for": "slides/08-video.mp4",
+      "width": 720,
+      "height": 900,
+      "bytes": 20788,
+      "sha256": "3d361539ddc0c30fa4632ca32e907bbb56c4183847d1cae0f61f9ef9cf0cb4c7"
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ECECEC">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23ECECEC'/%3E%3Cpath d='M3 22c5-10 21-10 26 0' fill='none' stroke='%23111' stroke-width='2'/%3E%3C/svg%3E">
+  <title>Curve Flow Carousel — демо</title>
+  <meta name="description" content="Автономная WebGL-карусель с изгибом ленты: drag, инерция, autoplay и доступный fallback.">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <link rel="stylesheet" href="curveflow-carousel.css">
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #ECECEC;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .demo {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100svh;
+    }
+
+    .demo__stage {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Кнопка паузы/воспроизведения (WCAG 2.2.2). */
+    .demo__toggle {
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.86);
+      color: #111;
+      cursor: pointer;
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    .demo__toggle:hover {
+      background: #ffffff;
+    }
+
+    .demo__toggle:focus-visible {
+      outline: 2px solid #111111;
+      outline-offset: 2px;
+    }
+
+    .demo__toggle svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+    }
+
+    .demo__toggle svg[hidden] {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .demo__toggle {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="demo">
+    <h1 class="cfc-sr">Curve Flow Carousel — демонстрационная лента</h1>
+    <div class="demo__stage" id="carousel"></div>
+    <button class="demo__toggle" id="demo-toggle" type="button" aria-pressed="false" aria-label="Поставить на паузу">
+      <svg class="demo__icon-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+        <rect x="3" y="2" width="4" height="12" rx="1" fill="currentColor"></rect>
+        <rect x="9" y="2" width="4" height="12" rx="1" fill="currentColor"></rect>
+      </svg>
+      <svg class="demo__icon-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false" hidden>
+        <path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5Z" fill="currentColor"></path>
+      </svg>
+    </button>
+    <noscript>
+      <p style="position:absolute;inset:auto 0 24px;text-align:center;font:14px/1.4 sans-serif;color:#333">
+        Для показа карусели нужен JavaScript.
+      </p>
+    </noscript>
+  </main>
+
+  <script type="module">
+    import CurveFlowCarousel from './curveflow-carousel.js';
+
+    // Демо-медиа взяты с curveflowcarousel.framer.website только для примера.
+    // Для продакшена замените файлы в assets/slides/ и assets/posters/ своими.
+    const slides = [
+      { type: 'image', src: 'assets/slides/01-photo.png', alt: 'Портрет в голубой куртке и панаме' },
+      { type: 'video', src: 'assets/slides/02-video.mp4', poster: 'assets/posters/02-video.jpg', alt: 'Видео: красные горы' },
+      { type: 'image', src: 'assets/slides/03-photo.png', alt: 'Портрет на ветру в тёмной куртке' },
+      { type: 'video', src: 'assets/slides/04-video.mp4', poster: 'assets/posters/04-video.jpg', alt: 'Видео: размытый силуэт с поднятыми руками' },
+      { type: 'image', src: 'assets/slides/05-photo.png', alt: 'Портрет в синем свитере' },
+      { type: 'video', src: 'assets/slides/06-video.mp4', poster: 'assets/posters/06-video.jpg', alt: 'Видео: красный туннель с огнями' },
+      { type: 'image', src: 'assets/slides/07-photo.png', alt: 'Портрет с букетом полевых цветов' },
+      { type: 'video', src: 'assets/slides/08-video.mp4', poster: 'assets/posters/08-video.jpg', alt: 'Видео: синий силуэт с поднятыми руками' },
+    ];
+
+    const carousel = new CurveFlowCarousel(document.getElementById('carousel'), {
+      slides,
+      frame: {
+        heightPct: 40,
+        heightCap: 560,
+        fit: 'fixed',
+        ratio: 1.25,
+        spacing: 18,
+        corner: 0,
+        anchor: 21,
+        offset: 3,
+        centreSmall: true,
+      },
+      curve: {
+        flatPct: 50,
+        edgeScale: 1.93,
+        speedFlare: 1,
+        fringe: 0,
+        split: 1,
+      },
+      drive: {
+        autoplay: 60,
+        drag: 1,
+        glide: 0.38,
+        holdOnHover: false,
+        keys: true,
+        wheel: 'any',
+        wheelGain: 1,
+      },
+      reveal: { mode: 'lift', time: 1, gap: 0.07, wait: 0.15, repeat: false },
+      press: { behaviour: 'focus', newTab: false },
+      backdrop: { fill: 'rgb(236, 236, 236)', grid: false },
+      ariaLabel: 'Лента медиа',
+      labels: {
+        slides: 'Слайды',
+        slide: 'Слайд',
+        of: 'из',
+        playVideo: 'Воспроизвести видео',
+        pauseVideo: 'Приостановить видео',
+        canvas: 'Перетаскивайте ленту или используйте стрелки ← →',
+        instructions:
+          'Стрелки ← → листают ленту, Home и End — к началу и концу, Enter открывает ссылку центрального слайда.',
+        scrollHint: 'прокрутка стрелками',
+        newTab: 'откроется в новой вкладке',
+        roleDescription: 'лента медиа',
+      },
+    });
+
+    // Кнопка паузы/воспроизведения: останавливает autoplay и видео,
+    // оставляя drag, колесо и клавиатуру рабочими.
+    const toggle = document.getElementById('demo-toggle');
+    const iconPause = toggle.querySelector('.demo__icon-pause');
+    const iconPlay = toggle.querySelector('.demo__icon-play');
+    const renderToggle = (paused) => {
+      toggle.setAttribute('aria-pressed', String(paused));
+      toggle.setAttribute('aria-label', paused ? 'Запустить автопрокрутку' : 'Поставить на паузу');
+      iconPause.hidden = paused;
+      iconPlay.hidden = !paused;
+    };
+    toggle.addEventListener('click', () => {
+      const paused = !carousel.getStats().paused;
+      if (paused) carousel.pause();
+      else carousel.resume();
+      renderToggle(paused);
+    });
+
+    // Удобно для отладки и проверок в демо.
+    window.carousel = carousel;
+  </script>
+</body>
+</html>

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /demo/
 
 Sitemap: https://aaateh.github.io/eventologia-design-systems/sitemap.xml
