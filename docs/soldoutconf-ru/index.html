@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дизайн-система SOLD OUT — визуальный гайд</title>
+  <meta name="description" content="Визуальный гайд дизайн-системы SOLD OUT: тёмная сцена #090316, оранжевый #F74200, Alumni Sans и Montserrat, шапка, кнопки, формы, карточки, паттерны, попапы, токены и доступность.">
+  <link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/soldoutconf-ru/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#090316">
+  <link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="../assets/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Дизайн-системы Ивентологии">
+  <meta property="og:title" content="Дизайн-система SOLD OUT — визуальный гайд">
+  <meta property="og:description" content="Палитра, типографика, сетка, кнопки, формы, карточки, паттерны, попапы, анимации, токены и доступность SOLD OUT.">
+  <meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/soldoutconf-ru/">
+  <meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/assets/og-cover.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Дизайн-системы Ивентологии — обложка со свотчами и превью">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Дизайн-система SOLD OUT — визуальный гайд">
+  <meta name="twitter:description" content="Тёмная сцена, оранжевый акцент, Alumni Sans и Montserrat: живые компоненты и правила.">
+  <meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/assets/og-cover.png">
+  <link rel="stylesheet" href="../assets/dsbar.css">
+  <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+  <nav class="dsbar" aria-label="Каталог дизайн-систем">
+    <div class="dsbar__in">
+      <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
+      <span class="dsbar__meta">aaateh.github.io/eventologia-design-systems</span>
+    </div>
+  </nav>
+
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="#main" aria-label="SOLD OUT — дизайн-система, к содержанию">
+      <img class="topbar__logo" src="assets/logos/logo.svg" alt="SOLD OUT" width="158" height="69">
+      <span class="topbar__divider" aria-hidden="true"></span>
+      <span class="topbar__label">Дизайн-система</span>
+    </a>
+    <div class="topbar__right">
+      <a class="topbar__domain" href="https://soldoutconf.ru/">soldoutconf.ru</a>
+      <span class="badge-version">v1.0 · 12/11/2026</span>
+    </div>
+  </header>
+
+  <nav class="mnav" aria-label="Разделы гайда — мобильное меню">
+    <button class="mnav__toggle" type="button" id="mnavToggle" aria-expanded="false" aria-controls="mnavPanel">
+      <span class="mnav__toggle-mark">Разделы гайда</span>
+      <span aria-hidden="true">13</span>
+    </button>
+    <div class="mnav__panel" id="mnavPanel">
+      <ul class="mnav__list">
+        <li><a class="mnav__link" href="#osnova" data-nav-link><span class="num">01</span> Основа</a></li>
+        <li><a class="mnav__link" href="#color" data-nav-link><span class="num">02</span> Цвет</a></li>
+        <li><a class="mnav__link" href="#typography" data-nav-link><span class="num">03</span> Типографика</a></li>
+        <li><a class="mnav__link" href="#grid" data-nav-link><span class="num">04</span> Сетка и отступы</a></li>
+        <li><a class="mnav__link" href="#header" data-nav-link><span class="num">05</span> Шапка и меню</a></li>
+        <li><a class="mnav__link" href="#buttons" data-nav-link><span class="num">06</span> Кнопки</a></li>
+        <li><a class="mnav__link" href="#forms" data-nav-link><span class="num">07</span> Формы</a></li>
+        <li><a class="mnav__link" href="#cards" data-nav-link><span class="num">08</span> Карточки</a></li>
+        <li><a class="mnav__link" href="#patterns" data-nav-link><span class="num">09</span> Секции и паттерны</a></li>
+        <li><a class="mnav__link" href="#footer" data-nav-link><span class="num">10</span> Подвал</a></li>
+        <li><a class="mnav__link" href="#overlays" data-nav-link><span class="num">11</span> Попапы и оверлеи</a></li>
+        <li><a class="mnav__link" href="#motion" data-nav-link><span class="num">12</span> Анимации и состояния</a></li>
+        <li><a class="mnav__link" href="#tokens" data-nav-link><span class="num">13</span> Токены и доступность</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="layout">
+    <nav class="sidebar" aria-label="Разделы гайда">
+      <p class="sidebar__title">Разделы</p>
+      <ul class="sidebar__list">
+        <li><a class="sidebar__link" href="#osnova" data-nav-link><span class="num">01</span> Основа</a></li>
+        <li><a class="sidebar__link" href="#color" data-nav-link><span class="num">02</span> Цвет</a></li>
+        <li><a class="sidebar__link" href="#typography" data-nav-link><span class="num">03</span> Типографика</a></li>
+        <li><a class="sidebar__link" href="#grid" data-nav-link><span class="num">04</span> Сетка и отступы</a></li>
+        <li><a class="sidebar__link" href="#header" data-nav-link><span class="num">05</span> Шапка и меню</a></li>
+        <li><a class="sidebar__link" href="#buttons" data-nav-link><span class="num">06</span> Кнопки</a></li>
+        <li><a class="sidebar__link" href="#forms" data-nav-link><span class="num">07</span> Формы</a></li>
+        <li><a class="sidebar__link" href="#cards" data-nav-link><span class="num">08</span> Карточки</a></li>
+        <li><a class="sidebar__link" href="#patterns" data-nav-link><span class="num">09</span> Секции и паттерны</a></li>
+        <li><a class="sidebar__link" href="#footer" data-nav-link><span class="num">10</span> Подвал</a></li>
+        <li><a class="sidebar__link" href="#overlays" data-nav-link><span class="num">11</span> Попапы и оверлеи</a></li>
+        <li><a class="sidebar__link" href="#motion" data-nav-link><span class="num">12</span> Анимации и состояния</a></li>
+        <li><a class="sidebar__link" href="#tokens" data-nav-link><span class="num">13</span> Токены и доступность</a></li>
+      </ul>
+      <p class="sidebar__foot">Источник: site-static<br>style.css · 1823 строки<br>проверено 12/11/2026</p>
+    </nav>
+
+    <main class="content" id="main">
+      <div class="page-intro">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> гайд по стилю · v1.0</p>
+        <h1>Дизайн-система SOLD OUT</h1>
+        <p class="lead">Рабочий справочник по стилю форума: палитра, шрифты, сетка, кнопки, формы, карточки и правила доступности. Всё показано живыми компонентами на реальных шрифтах и логотипе.</p>
+        <ul class="meta-strip">
+          <li>13 разделов</li>
+          <li>5 цветов ядра</li>
+          <li>19 файлов шрифтов</li>
+          <li>обновлено 12/11/2026</li>
+        </ul>
+      </div>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <span class="stage__tag">живой первый экран</span>
+          <span class="stage__class">.intro_block · .intro · .marquee</span>
+        </div>
+        <div class="stage__body stage__body--flush">
+          <div class="sd">
+            <div class="sd-hero">
+              <div class="sd-hero__inner">
+                <img class="sd-hero__logo" src="assets/logos/soldout.svg" alt="SOLD OUT — форум об организации и продвижении событий" width="1520" height="337">
+                <p class="sd-hero__subtitle">Ключевой форум об организации и продвижении событий</p>
+                <div class="sd-hero__btns">
+                  <a class="btn v1" href="#cards">Узнать цену</a>
+                  <a class="btn v4" href="#forms">Стать партнером</a>
+                </div>
+                <div class="sd-hero__soc">
+                  <div class="sd-soc">
+                    <a href="https://t.me/markevent" target="_blank" rel="noopener" aria-label="Telegram-канал форума SOLD OUT">
+                      <img src="assets/icons/tg_icon.svg" alt="" aria-hidden="true" width="41" height="34">
+                    </a>
+                    <a href="https://vk.com/soldoutconf" target="_blank" rel="noopener" aria-label="SOLD OUT во ВКонтакте">
+                      <img src="assets/icons/vk_icon.svg" alt="" aria-hidden="true" width="47" height="28">
+                    </a>
+                    <a href="https://max.ru/join/PstZBWMblkbochsp-2kStlSTl43Zp8ad3l2JqIDvuYI" target="_blank" rel="noopener" aria-label="Канал SOLD OUT в MAX">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" aria-hidden="true"><path fill="#fff" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="sd-hero__foot">
+                <p>22-23 марта 2027</p>
+                <p>Санкт-Петербург</p>
+              </div>
+              <div class="marquee" aria-hidden="true">
+                <span class="marquee-text">INTERNATIONAL <span>EVENT</span> FORUM <span>INTERNATIONAL</span> EVENT FORUM INTERNATIONAL <span>EVENT</span> FORUM <span>INTERNATIONAL</span> EVENT FORUM INTERNATIONAL <span>EVENT</span> FORUM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="stage__caption">Живой пример: реальные логотип, шрифты и кнопки. Бегущая строка декоративная и скрыта от скринридеров.</p>
+      </div>
+
+      <!-- 01 -->
+      <section class="section" id="osnova">
+        <div class="sec-head">
+          <span class="sec-head__num">01</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">основа</p>
+            <h2>Четыре правила сцены</h2>
+          </div>
+          <span class="sec-head__note">04 принципа</span>
+        </div>
+        <p class="lead">SOLD OUT — афиша, а не корпоративный сайт. Тёмный фон, крупная конденсата, один оранжевый акцент и жёсткие прямые углы. Всё остальное подчинено этому.</p>
+
+        <div class="block">
+          <div class="grid grid--4">
+            <article class="card">
+              <span class="card__index">01</span>
+              <h3>Один акцент</h3>
+              <p>Оранжевый #F74200 только для действий, дат, цифр и активных состояний. Второго акцента нет: синий MAX — только hover иконки соцсети.</p>
+              <p class="card__meta">--color-accent</p>
+            </article>
+            <article class="card">
+              <span class="card__index">02</span>
+              <h3>Афишная конденсата</h3>
+              <p>Alumni Sans 600, uppercase, line-height .8, кегли 40–180px. Текст — Montserrat 14–22px. Никакого sentence case в заголовках.</p>
+              <p class="card__meta">--font-display</p>
+            </article>
+            <article class="card">
+              <span class="card__index">03</span>
+              <h3>Тёмная сцена</h3>
+              <p>Фон #090316, белый текст. Беж — поверхности карточек, оранжевый — заливка действий и целых секций. Фото — реальные события, grayscale по умолчанию.</p>
+              <p class="card__meta">--color-bg / --color-surface</p>
+            </article>
+            <article class="card">
+              <span class="card__index">04</span>
+              <h3>Острые углы и линии</h3>
+              <p>Radius 0. Границы 1px белые или оранжевые. Тени почти не используются: только мягкая тень у попапа в этом гайде.</p>
+              <p class="card__meta">--radius: 0</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Правила</h3>
+            <span class="tag tag--accent">обязательно</span>
+          </div>
+          <ul class="rules">
+            <li>Не добавлять градиенты: сцена держится на плоском цвете и фотографии.</li>
+            <li>Не использовать оранжевый для больших текстов на беже — контраст 2.87:1. На беже текст только #090316.</li>
+            <li>Фото — реальные события, по умолчанию grayscale. Цветное фото включается только как статус «куплено».</li>
+            <li>CAPS — только заголовки и служебные подписи. Основной текст — обычный регистр Montserrat.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 02 -->
+      <section class="section" id="color">
+        <div class="sec-head">
+          <span class="sec-head__num">02</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">цвет</p>
+            <h2>Пять переменных, четыре цвета</h2>
+          </div>
+          <span class="sec-head__note">--o · --y · --w · --b · --g</span>
+        </div>
+        <p class="lead">Ядро системы — четыре цвета и один дубль. Переменные короткие, потому что писались под большой сайт: <code>--o</code>, <code>--y</code>, <code>--w</code>, <code>--b</code>, <code>--g</code>. В новом коде им нужны говорящие имена.</p>
+
+        <div class="block">
+          <div class="swatch-grid">
+            <div class="swatch swatch--accent">
+              <div class="swatch__chip"><span class="swatch__chip-label">Accent</span></div>
+              <div class="swatch__body">
+                <p class="swatch__name">Оранжевый <span>--o</span></p>
+                <button class="swatch__hex" type="button" data-hex="#F74200">#F74200</button>
+                <p class="swatch__role">Действия, даты, цифры, активные состояния. Заливка кнопок и целых секций.</p>
+                <span class="ratio">5.53:1 на #090316 <span class="pass pass--aa">AA</span></span>
+              </div>
+            </div>
+            <div class="swatch swatch--beige">
+              <div class="swatch__chip"><span class="swatch__chip-label">Beige</span></div>
+              <div class="swatch__body">
+                <p class="swatch__name">Беж <span>--y и --g</span></p>
+                <button class="swatch__hex" type="button" data-hex="#E8E3DD">#E8E3DD</button>
+                <p class="swatch__role">Тёплые поверхности карточек и секций. На беже текст только #090316.</p>
+                <span class="ratio">15.89:1 с #090316 <span class="pass pass--aaa">AAA</span></span>
+              </div>
+            </div>
+            <div class="swatch swatch--white">
+              <div class="swatch__chip"><span class="swatch__chip-label">White</span></div>
+              <div class="swatch__body">
+                <p class="swatch__name">Белый <span>--w</span></p>
+                <button class="swatch__hex" type="button" data-hex="#FFFFFF">#FFFFFF</button>
+                <p class="swatch__role">Основной текст на тёмном, заливка вторичных кнопок и hover-состояний.</p>
+                <span class="ratio">20.27:1 на #090316 <span class="pass pass--aaa">AAA</span></span>
+              </div>
+            </div>
+            <div class="swatch swatch--dark">
+              <div class="swatch__chip"><span class="swatch__chip-label">Black</span></div>
+              <div class="swatch__body">
+                <p class="swatch__name">Сцена <span>--b</span></p>
+                <button class="swatch__hex" type="button" data-hex="#090316">#090316</button>
+                <p class="swatch__role">Фон страницы и тёмные поверхности. Не чистый чёрный: в нём есть синий подтон.</p>
+                <span class="ratio">базовый цвет <span class="pass pass--base">base</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dup-card" style="margin-top:14px">
+            <div class="dup-card__text"><b>--g дублирует --y без причины.</b> Обе переменные равны #E8E3DD и используются как взаимозаменяемые. Это пятая запись в палитре, но не пятый цвет: в новом коде оставить один <code>--color-beige</code>.</div>
+            <div class="dup-card__chips" aria-hidden="true"><span>--y</span><span>--g</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Служебные и легаси-цвета</h3>
+            <span class="tag">встречаются в стилях</span>
+          </div>
+          <div class="legacy-grid">
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#000000"></span><span class="legacy__hex">#000000</span></div><p class="legacy__where">Оверлей попапа <code>.popup_back</code>, opacity .7.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#ABABAB"></span><span class="legacy__hex">#ABABAB</span></div><p class="legacy__where">Границы таблицы партнёров <code>.part_partners_item</code>.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:rgba(255,255,255,.55)"></span><span class="legacy__hex">#ffffff8c</span></div><p class="legacy__where">Плашка логотипа спикера <code>.expert_logo</code>.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:rgba(255,255,255,.24)"></span><span class="legacy__hex">#ffffff3d</span></div><p class="legacy__where">Рамка той же плашки + <code>backdrop-filter: blur(50px)</code>.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#FFC55A"></span><span class="legacy__hex">#FFC55A</span></div><p class="legacy__where">Легаси-бегущая строка программы <code>.program-marquee</code>.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#FF5900"></span><span class="legacy__hex">#FF5900</span></div><p class="legacy__where">Акценты программы и ссылки в ней.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#325683"></span><span class="legacy__hex">#325683</span></div><p class="legacy__where">Столбец «ужин» в таблице программы.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#6996CD"></span><span class="legacy__hex">#6996CD</span></div><p class="legacy__where">Ячейки программы <code>.mp_tr_item</code>.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#D4CABF"></span><span class="legacy__hex">#D4CABF</span></div><p class="legacy__where">Первый столбец программы.</p></div>
+            <div class="legacy"><div class="legacy__top"><span class="legacy__chip" style="background:#0026fc"></span><span class="legacy__hex">#0026fc</span></div><p class="legacy__where">Hover иконки MAX <code>.max_link:hover path</code>.</p></div>
+            <div class="legacy legacy--empty" aria-hidden="true"></div>
+            <div class="legacy legacy--empty" aria-hidden="true"></div>
+          </div>
+          <p class="note note--warn"><span class="note__mark">важно</span><span>Это легаси-модуль программы. В новом дизайне эти цвета не использовать: они не входят в ядро и не проверены на контраст.</span></p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Правила цвета</h3><span class="tag">WCAG</span></div>
+          <ul class="rules">
+            <li>Оранжевый на белом — только крупным кеглем: 3.66:1. Мелкий текст на оранжевом запрещён.</li>
+            <li>Белый на оранжевом — только ≥24px или ≥18.66px/700. У кнопки 18px/600 контраст на границе: 3.66:1.</li>
+            <li>Оранжевый на беже — 2.87:1, для текста запрещён. Заменять на #090316.</li>
+            <li>Серый #ABABAB — только для линий. Как текст на белом он даёт 2.30:1.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 03 -->
+      <section class="section" id="typography">
+        <div class="sec-head">
+          <span class="sec-head__num">03</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">типографика</p>
+            <h2>Конденсата и гротеск</h2>
+          </div>
+          <span class="sec-head__note">2 семейства</span>
+        </div>
+        <p class="lead">Два шрифта, две роли. Alumni Sans SemiBold кричит заголовками, Montserrat говорит текстом. Оба локальные, без CDN.</p>
+
+        <div class="block">
+          <div class="type-cards">
+            <div class="type-card">
+              <div class="type-card__head">
+                <span class="type-card__name">Alumni Sans SemiBold</span>
+                <span class="type-card__meta">600 · только заголовки</span>
+              </div>
+              <p class="type-card__sample">SOLD OUT 2027</p>
+              <p class="type-card__alpha">АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ 0123456789</p>
+              <p class="type-card__foot">Uppercase, line-height .8, без letter-spacing. Кегли 40–180px. В CSS нет h1–h3 — только h4–h6.</p>
+            </div>
+            <div class="type-card">
+              <div class="type-card__head">
+                <span class="type-card__name">Montserrat</span>
+                <span class="type-card__meta">100–900 · текст и интерфейс</span>
+              </div>
+              <p class="type-card__sample type-card__sample--body">Событие, которое собирает людей</p>
+              <p class="type-card__alpha type-card__alpha--body">АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ 0123456789</p>
+              <p class="type-card__foot">9 весов × 2 начертания = 18 файлов. Реально используются 400, 500, 600 и 700. В гайде подключены 5 файлов.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Роли и размеры</h3><span class="tag">vw-масштаб</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption>Типографическая шкала из style.css</caption>
+              <thead>
+                <tr><th>Роль</th><th>&gt;1920px</th><th>≤1920px</th><th>≤1000px</th><th>≤641px</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>h4</td><td class="val">180px</td><td class="val">9.375vw</td><td class="val">9.375vw</td><td class="val">42px</td></tr>
+                <tr><td>h5</td><td class="val">100px</td><td class="val">5.2vw</td><td class="val">5.2vw</td><td class="val">36px</td></tr>
+                <tr><td>h6</td><td class="val">40px</td><td class="val">2.08vw</td><td class="val">2.08vw</td><td class="val">36px</td></tr>
+                <tr><td>p</td><td class="val">22px</td><td class="val">1.14vw</td><td class="val">16px / 1.2</td><td class="val">16px</td></tr>
+                <tr><td>small</td><td class="val">14px</td><td class="val">14px</td><td class="val">14px</td><td class="val">14px</td></tr>
+                <tr><td>micro</td><td class="val">12px</td><td class="val">12px</td><td class="val">12px</td><td class="val">12px</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Правила</h3><span class="tag">типографика</span></div>
+          <ul class="rules">
+            <li><code>br</code> в заголовках скрывать на мобайле: в теме есть <code>.br_mob</code> и глобальное <code>br { display: none }</code>.</li>
+            <li>Не использовать h1–h3: в CSS темы их нет, стилизованы только h4–h6.</li>
+            <li>Не задавать заголовкам sentence case: только uppercase, иначе ломается афишный ритм.</li>
+            <li>Не уменьшать line-height ниже .8: строки должны стоять плотно, как на плакате.</li>
+          </ul>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Живая шкала</h3><span class="tag">180 → 12</span></div>
+          <div class="scale">
+            <div class="scale__row"><span class="scale__num">180</span><span class="scale__sample s-h4">SOLD OUT 2027</span><span class="scale__spec">Alumni Sans 600<br>h4 / 9.375vw</span></div>
+            <div class="scale__row"><span class="scale__num">100</span><span class="scale__sample s-h5">SOLD OUT 2027</span><span class="scale__spec">Alumni Sans 600<br>h5 / 5.2vw</span></div>
+            <div class="scale__row"><span class="scale__num">64</span><span class="scale__sample s-h6">SOLD OUT 2027</span><span class="scale__spec">Alumni Sans 600<br>подзаголовок</span></div>
+            <div class="scale__row"><span class="scale__num">40</span><span class="scale__sample s-40">SOLD OUT 2027</span><span class="scale__spec">Alumni Sans 600<br>h6 / 2.08vw</span></div>
+            <div class="scale__row"><span class="scale__num">22</span><span class="scale__sample scale__sample--body s-22">Форум организаторов и продвижения событий</span><span class="scale__spec">Montserrat 400<br>p / 1.14vw</span></div>
+            <div class="scale__row"><span class="scale__num">16</span><span class="scale__sample scale__sample--body s-16">Форум организаторов и продвижения событий</span><span class="scale__spec">Montserrat 400<br>p на мобайле</span></div>
+            <div class="scale__row"><span class="scale__num">14</span><span class="scale__sample scale__sample--body s-14">Служебная подпись, сноска, дисклеймер</span><span class="scale__spec">Montserrat 400<br>small</span></div>
+            <div class="scale__row"><span class="scale__num">12</span><span class="scale__sample scale__sample--body s-12">Микроподпись, номер раздела, метка</span><span class="scale__spec">Montserrat 400<br>micro</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 -->
+      <section class="section" id="grid">
+        <div class="sec-head">
+          <span class="sec-head__num">04</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">сетка и отступы</p>
+            <h2>1560 и двенадцать колонок</h2>
+          </div>
+          <span class="sec-head__note">gap 10px</span>
+        </div>
+        <p class="lead">Контейнер 1560px с padding 20px, рабочая ширина 1520px. Сетка 12 колонок с зазором 10px. На мобайле padding падает до 10px, а крупные секции — с 74 до 34.</p>
+
+        <div class="block">
+          <div class="container-diagram">
+            <div class="container-diagram__frame">
+              <span class="container-diagram__label">контейнер 1560px · padding 20px</span>
+              <div class="container-diagram__inner" aria-hidden="true">
+                <span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span><span class="container-diagram__col"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Шкала отступов</h3><span class="tag">6 шагов</span></div>
+          <div class="space-scale">
+            <div class="space-row"><span class="space-row__name">148</span><span class="space-row__bar" style="width:148px"></span><span class="space-row__use">герой, полноэкранные секции</span></div>
+            <div class="space-row"><span class="space-row__name">74</span><span class="space-row__bar" style="width:74px"></span><span class="space-row__use">крупные секции по вертикали; мобайл — 34</span></div>
+            <div class="space-row"><span class="space-row__name">52</span><span class="space-row__bar" style="width:52px"></span><span class="space-row__use">карточки, блоки, отступы внутри секций</span></div>
+            <div class="space-row"><span class="space-row__name">34</span><span class="space-row__bar" style="width:34px"></span><span class="space-row__use">внутренние отступы карточек и панелей</span></div>
+            <div class="space-row"><span class="space-row__name">20</span><span class="space-row__bar" style="width:20px"></span><span class="space-row__use">padding контейнера, поля, мелкие зазоры</span></div>
+            <div class="space-row"><span class="space-row__name">10</span><span class="space-row__bar" style="width:10px"></span><span class="space-row__use">gap сетки, мобильный padding контейнера</span></div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Брейкпоинты</h3><span class="tag">19 значений</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption>Все media-запросы из style.css</caption>
+              <thead><tr><th>px</th><th>Что меняется</th><th>Тип</th></tr></thead>
+              <tbody>
+                <tr><td class="val">1920</td><td>Типографика переходит с px на vw: h4 9.375vw, p 1.14vw.</td><td>системный</td></tr>
+                <tr><td class="val">1560</td><td>Контейнер упирается в максимум 1560px.</td><td>системный</td></tr>
+                <tr><td class="val">1525</td><td>Меню: 15px, отступы 8px, активная плашка 0 15px.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr><td class="val">1440</td><td>Спикеры — 3 в ряд, уменьшаются отступы карточек.</td><td>системный</td></tr>
+                <tr><td class="val">1410</td><td>Названия отелей и второстепенные заголовки на 2px меньше.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr><td class="val">1400</td><td>Активный пункт меню перестаёт переноситься.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr class="is-key"><td class="val">1350</td><td>Шапка → бургер: полноэкранное меню с blur, телефон и почта по центру.</td><td>ключевой</td></tr>
+                <tr><td class="val">1250</td><td>Двухколоночные блоки «о нас» складываются в один.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr><td class="val">1200</td><td>Второстепенные размеры отелей и карточек.</td><td>системный</td></tr>
+                <tr><td class="val">1024</td><td>Гала-блок и часть сеток переходят в одну колонку.</td><td>системный</td></tr>
+                <tr class="is-key"><td class="val">1000</td><td>p → 16px / 1.2. Основной текст больше не масштабируется через vw.</td><td>ключевой</td></tr>
+                <tr><td class="val">991</td><td>Программа, отели и карточка спикера складываются в колонку.</td><td>системный</td></tr>
+                <tr><td class="val">900</td><td>Служебная таблица программы меняет высоту служебных полос.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr><td class="val">769</td><td>Сетка спикеров — 2 в ряд.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr><td class="val">768</td><td>Галерея партнёрской страницы меняет высоту рядов.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr><td class="val">750</td><td>Иконка MAX уменьшается с 32 до 24px.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr class="is-key"><td class="val">641</td><td>Мобильная типографика (h4 42px, h5/h6 36px), padding 10px, marquee 40px.</td><td>ключевой</td></tr>
+                <tr><td class="val">614</td><td>Видео, тур-панель и таймер получают мобильные размеры.</td><td><span class="tag">одноразовый</span></td></tr>
+                <tr class="is-key"><td class="val">480</td><td>Спикеры — 1 в колонку, карточки отзывов упрощаются.</td><td>ключевой</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+          <p class="note note--warn"><span class="note__mark">долг</span><span><b>19 брейкпоинтов, из них 9 одноразовых.</b> Девять значений обслуживают один-два селектора и создают дырки между состояниями. Рекомендация: свести к пяти — <b>1440, 1200, 991, 768, 641</b> — и переписать оставшиеся правила через <code>clamp()</code>.</span></p>
+        </div>
+      </section>
+
+      <!-- 05 -->
+      <section class="section" id="header">
+        <div class="sec-head">
+          <span class="sec-head__num">05</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">шапка и меню</p>
+            <h2>Прозрачная и после скролла</h2>
+          </div>
+          <span class="sec-head__note">fixed · .3s</span>
+        </div>
+        <p class="lead">Шапка fixed: на первом экране прозрачная, после скролла — rgba(9,3,22,.8) с blur 10px. До 1350px превращается в бургер и полноэкранное меню.</p>
+
+        <div class="block">
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">состояние 1 · прозрачная</span><span class="stage__class">header · .header</span></div>
+            <div class="stage__body stage__body--flush">
+              <div class="sd">
+                <div class="sd-head-photo">
+                  <header class="sd-head">
+                    <a class="sd-head__brand" href="#header" aria-label="SOLD OUT — к началу раздела"><img class="sd-head__logo" src="assets/logos/logo.svg" alt="SOLD OUT" width="158" height="69"></a>
+                    <nav class="sd-head__nav" aria-label="Меню сайта — прозрачная шапка">
+                      <ul>
+                        <li class="active-nav"><a href="#cards">Купить билет</a></li>
+                        <li><a href="#forms">Стать партнёром</a></li>
+                        <li><a href="#patterns">FAQ</a></li>
+                        <li><a href="#footer">Контакты</a></li>
+                      </ul>
+                    </nav>
+                    <div class="sd-soc">
+                      <a href="https://t.me/markevent" target="_blank" rel="noopener" aria-label="Telegram"><img src="assets/icons/tg_icon.svg" alt="" aria-hidden="true" width="41" height="34"></a>
+                      <a href="https://vk.com/soldoutconf" target="_blank" rel="noopener" aria-label="ВКонтакте"><img src="assets/icons/vk_icon.svg" alt="" aria-hidden="true" width="47" height="28"></a>
+                    </div>
+                    <div class="sd-head__contacts">
+                      <a href="tel:+79014177605">+7 901 417 76 05</a>
+                      <a href="mailto:info@soldoutconf.ru">info@soldoutconf.ru</a>
+                    </div>
+
+                    <div class="sd-head__mob">
+                      <a class="sd-head__mob-logo" href="#header" aria-label="SOLD OUT — к началу раздела"><img src="assets/logos/logo.svg" alt="SOLD OUT" width="158" height="69"></a>
+                      <a class="buy_mob" href="#cards">Купить билет</a>
+                      <span class="sd-head__burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                    </div>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">Прозрачная шапка лежит поверх фотографии. Логотип 118px, меню 15–16px, телефон оранжевый 500. На ≤768px — мобильная строка: логотип 32px, кнопка 28px и бургер 36×36.</p>
+          </div>
+
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">состояние 2 · после скролла</span><span class="stage__class">header.scrolled</span></div>
+            <div class="stage__body stage__body--flush">
+              <div class="sd">
+                <div class="sd-head-photo">
+                  <header class="sd-head sd-head--scrolled">
+                    <a class="sd-head__brand" href="#header" aria-label="SOLD OUT — к началу раздела"><img class="sd-head__logo" src="assets/logos/logo.svg" alt="SOLD OUT" width="158" height="69"></a>
+                    <nav class="sd-head__nav" aria-label="Меню сайта — шапка после скролла">
+                      <ul>
+                        <li class="active-nav"><a href="#cards">Купить билет</a></li>
+                        <li><a href="#forms">Стать партнёром</a></li>
+                        <li><a href="#patterns">FAQ</a></li>
+                        <li><a href="#footer">Контакты</a></li>
+                      </ul>
+                    </nav>
+                    <div class="sd-soc">
+                      <a href="https://t.me/markevent" target="_blank" rel="noopener" aria-label="Telegram"><img src="assets/icons/tg_icon.svg" alt="" aria-hidden="true" width="41" height="34"></a>
+                      <a href="https://vk.com/soldoutconf" target="_blank" rel="noopener" aria-label="ВКонтакте"><img src="assets/icons/vk_icon.svg" alt="" aria-hidden="true" width="47" height="28"></a>
+                    </div>
+                    <div class="sd-head__contacts">
+                      <a href="tel:+79014177605">+7 901 417 76 05</a>
+                      <a href="mailto:info@soldoutconf.ru">info@soldoutconf.ru</a>
+                    </div>
+
+                    <div class="sd-head__mob">
+                      <a class="sd-head__mob-logo" href="#header" aria-label="SOLD OUT — к началу раздела"><img src="assets/logos/logo.svg" alt="SOLD OUT" width="158" height="69"></a>
+                      <a class="buy_mob" href="#cards">Купить билет</a>
+                      <span class="sd-head__burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                    </div>
+                  </header>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">После скролла: полупрозрачная сцена и blur. Активный пункт — оранжевая плашка 36px с padding 0 26px. На ≤768px — та же мобильная строка.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Состав и состояния</h3><span class="tag">спецификация</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <thead><tr><th>Элемент</th><th>Размер / стиль</th><th>Состояние</th></tr></thead>
+              <tbody>
+                <tr><td>Логотип</td><td class="val">118px, svg 158×69</td><td>—</td></tr>
+                <tr><td>Меню</td><td class="val">15–16px / 400</td><td>hover — #F74200</td></tr>
+                <tr><td>Активный пункт</td><td class="val">36px · padding 0 26px</td><td>фон #F74200 → hover белый</td></tr>
+                <tr><td>Телефон</td><td class="val">18px / 500</td><td>цвет #F74200</td></tr>
+                <tr><td>Почта</td><td class="val">18px / 400</td><td>hover — беж + underline</td></tr>
+                <tr><td>Соцсети</td><td class="val">22px, filter invert</td><td>hover — цветной оригинал</td></tr>
+                <tr><td>Бургер</td><td class="val">36×36 · полосы 30×2</td><td>≤1350 · активный — оранжевый крест</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Состояния шапки</h3><span class="tag">4 состояния</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <thead><tr><th>Состояние</th><th>Фон</th><th>Поведение</th></tr></thead>
+              <tbody>
+                <tr><td>default</td><td class="val">прозрачный</td><td>лежит поверх первого экрана, логотип и меню белые</td></tr>
+                <tr><td>scrolled</td><td class="val">rgba(9,3,22,.8)</td><td>backdrop blur 10px, transition .3s</td></tr>
+                <tr><td>active</td><td class="val">#F74200</td><td>плашка активного пункта 36px, padding 0 26px</td></tr>
+                <tr><td>hover</td><td class="val">#FFFFFF</td><td>у активного пункта — белый фон и оранжевый текст; у ссылок — оранжевый текст</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Мобильная шапка</h3><span class="tag">≤1350</span></div>
+          <div class="demo-split">
+            <div class="stage">
+              <div class="stage__body">
+                <div class="sd">
+                  <div class="sd-mobhead">
+                    <div class="logo"><a href="#header" aria-label="SOLD OUT"><img src="assets/logos/logo.svg" alt="SOLD OUT" width="158" height="69"></a></div>
+                    <a class="buy_mob" href="#cards">Купить билет</a>
+                    <button class="sd-burger" type="button" aria-expanded="true" aria-controls="sdMobMenu" aria-label="Меню сайта"><span></span><span></span><span></span></button>
+                  </div>
+                  <div class="sd-mobmenu" id="sdMobMenu">
+                    <a href="#cards">Купить билет</a>
+                    <a href="#forms">Стать партнёром</a>
+                    <a href="#patterns">FAQ</a>
+                    <a href="#footer">Контакты</a>
+                    <a class="sd-mobmenu__phone" href="tel:+79014177605">+7 901 417 76 05</a>
+                    <a class="sd-mobmenu__mail" href="mailto:info@soldoutconf.ru">info@soldoutconf.ru</a>
+                  </div>
+                </div>
+              </div>
+              <p class="stage__caption">Мобильная шапка: логотип, кнопка 28px / 12px и бургер 36×36. Меню открыто по умолчанию — нажмите бургер.</p>
+            </div>
+            <div>
+              <ul class="spec-list">
+                <li><span>Высота шапки</span><b>70px</b></li>
+                <li><span>Кнопка «Купить билет»</span><b>28px · 12px/600</b></li>
+                <li><span>Бургер</span><b>36×36 · 30×2</b></li>
+                <li><span>Оверлей меню</span><b>blur(10px)</b></li>
+                <li><span>Порядок пунктов</span><b>телефон, почта, соцсети</b></li>
+                <li><span>На мобайле</span><b>телефон и почта по центру</b></li>
+              </ul>
+              <p class="note note--warn"><span class="note__mark">a11y</span><span>Телефон и почта в меню — единственные крупные цели. Кнопка 28px ниже нормы 44px: увеличить зону нажатия padding’ом, не меняя визуал.</span></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 -->
+      <section class="section" id="buttons">
+        <div class="sec-head">
+          <span class="sec-head__num">06</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">кнопки</p>
+            <h2>Четыре роли, ноль радиуса</h2>
+          </div>
+          <span class="sec-head__note">46px · 18px/600</span>
+        </div>
+        <p class="lead">База: 46px, padding 0 20px, 18px/600, inline-flex, radius 0, transition .3s. Четыре роли отличаются заливкой и поведением на hover. Наведите курсор на живые кнопки.</p>
+
+        <div class="block">
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">живые кнопки · hover работает</span><span class="stage__class">.btn.v1 · .v2 · .v3 · .v4</span></div>
+            <div class="stage__body">
+              <div class="sd">
+                <div class="btn-matrix">
+                  <div class="btn-cell">
+                    <div class="btn-cell__label"><span>v1 · основной</span><b>#F74200 → белый</b></div>
+                    <div class="btn-row"><a class="btn v1" href="#forms">Узнать цену</a><a class="btn v1 is-hover" href="#forms" tabindex="-1" aria-hidden="true">Узнать цену</a></div>
+                  </div>
+                  <div class="btn-cell">
+                    <div class="btn-cell__label"><span>v2 · бежевый</span><b>беж → оранжевый</b></div>
+                    <div class="btn-row"><a class="btn v2" href="#cards">Купить билет</a><a class="btn v2 is-hover" href="#cards" tabindex="-1" aria-hidden="true">Купить билет</a></div>
+                  </div>
+                  <div class="btn-cell">
+                    <div class="btn-cell__label"><span>v3 · тёмный</span><b>сцена → белый</b></div>
+                    <div class="btn-row"><a class="btn v3" href="#patterns">Смотреть программу</a><a class="btn v3 is-hover" href="#patterns" tabindex="-1" aria-hidden="true">Смотреть программу</a></div>
+                  </div>
+                  <div class="btn-cell">
+                    <div class="btn-cell__label"><span>v4 · контур</span><b>рамка → заливка</b></div>
+                    <div class="btn-row"><a class="btn v4" href="#forms">Стать партнером</a><a class="btn v4 is-hover" href="#forms" tabindex="-1" aria-hidden="true">Стать партнером</a></div>
+                  </div>
+                </div>
+                <p class="block__note">Второй экземпляр в каждой паре — статичный снимок hover-состояния (класс <code>.is-hover</code>), чтобы поведение было видно на скриншоте и в отчёте.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Группы и ширина</h3><span class="tag">.btn_group</span></div>
+          <div class="demo-split">
+            <div class="sd">
+              <div class="btn_group">
+                <a class="btn v1" href="#cards">Купить билет</a>
+                <a class="btn v4" href="#forms">Стать партнёром</a>
+              </div>
+              <div class="btn_group column" style="margin-top:16px">
+                <a class="btn v1 fw" href="#cards">Купить офлайн-билет</a>
+                <a class="btn v2" href="#forms">Оплатить частями</a>
+              </div>
+              <div class="btn_group mob-column" style="margin-top:16px">
+                <a class="btn v2" href="#cards">Кнопка 1</a>
+                <a class="btn v4" href="#forms">Кнопка 2</a>
+              </div>
+              <div class="btn-row" style="margin-top:16px">
+                <a class="btn v1 fw" href="#cards">Кнопка .fw на всю ширину</a>
+              </div>
+            </div>
+            <div>
+              <ul class="spec-list">
+                <li><span>База</span><b>46px · 0 20px</b></li>
+                <li><span>Текст</span><b>18px / 600</b></li>
+                <li><span>.btn_group</span><b>2 колонки · gap 8px</b></li>
+                <li><span>.btn_group.column</span><b>вертикально</b></li>
+                <li><span>.fw</span><b>width 100%</b></li>
+                <li><span>.mob-column</span><b>столбец ≤641</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Малые формы и ссылки</h3><span class="tag">мобайл</span></div>
+          <div class="sd">
+            <div class="btn-row">
+              <a class="buy_mob" href="#cards">Купить билет</a>
+              <a class="more_info" href="#cards">Подробнее о спикере</a>
+              <a class="btn v4" href="#forms">Стать партнером</a>
+            </div>
+            <div class="themes_list" style="justify-content:flex-start;margin:20px 0 0;padding:0">
+              <span class="themes_item">Организация событий</span>
+              <span class="themes_item themes_item--short">Продвижение</span>
+              <span class="themes_item themes_item--short">Партнёрства</span>
+              <span class="themes_item themes_item--short">Сервисы</span>
+            </div>
+          </div>
+          <p class="block__note"><code>.buy_mob</code> — 28px / 12px, только мобильная шапка. <code>.more_info</code> — 18px с иконкой 24×24. <code>.themes_item</code> — пилюля 46px, padding 0 30–58, radius 30.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Состояния</h3><span class="tag">default / hover / active / focus</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <thead><tr><th>Роль</th><th>Default</th><th>Hover</th><th>Active</th><th>Focus</th></tr></thead>
+              <tbody>
+                <tr><td>v1</td><td>оранжевый / белый</td><td>белый / оранжевый</td><td>не задан</td><td>нет — outline:none</td></tr>
+                <tr><td>v2</td><td>беж / оранжевый</td><td>оранжевый / белый</td><td>не задан</td><td>нет</td></tr>
+                <tr><td>v3</td><td>сцена / белый</td><td>белый / сцена</td><td>не задан</td><td>нет</td></tr>
+                <tr><td>v4</td><td>сцена / белый + рамка</td><td>оранжевый / белый</td><td>не задан</td><td>нет</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+          <p class="note note--warn"><span class="note__mark">контраст</span><span><b>v2 — оранжевый на беже 2.87:1.</b> Так в оригинале; для текста это нарушение. В новом коде — тёмный текст на беже или оранжевая заливка с белым крупным текстом.</span></p>
+          <p class="note note--warn"><span class="note__mark">проблема</span><span><b>Focus отсутствует:</b> глобальное правило <code>* { outline: none }</code> убирает кольцо у всех элементов. В этом гайде возвращён видимый <code>:focus-visible</code> — 2px #F74200 с отступом 3px. Проверить Tab’ом.</span></p>
+        </div>
+      </section>
+
+      <!-- 07 -->
+      <section class="section" id="forms">
+        <div class="sec-head">
+          <span class="sec-head__num">07</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">формы</p>
+            <h2>Поля на тёмной сцене</h2>
+          </div>
+          <span class="sec-head__note">46px · 1px</span>
+        </div>
+        <p class="lead">Форма партнёрства: тёмные поля с белой рамкой 1px, без радиусов, с placeholder вместо подписи. В гайде у полей есть скрытые label — визуал тот же, доступность выше.</p>
+
+        <div class="block">
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">живая форма · заявка на партнёрство</span><span class="stage__class">.form · .input · .checkbox</span></div>
+            <div class="stage__body">
+              <div class="demo-split">
+                <div class="sd">
+                  <form class="form" action="#" method="post" data-demo-form>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-name">Ваше имя</label>
+                      <input id="demo-name" name="name" type="text" placeholder="Ваше имя *" autocomplete="name" required>
+                    </div>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-phone">Ваш телефон</label>
+                      <input id="demo-phone" name="phone" type="tel" placeholder="Ваш телефон *" autocomplete="tel" required>
+                    </div>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-email">E-mail</label>
+                      <input id="demo-email" name="email" type="email" placeholder="E-mail" autocomplete="email">
+                    </div>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-org">Название организации</label>
+                      <input id="demo-org" name="org" type="text" placeholder="Название организации *" autocomplete="organization" required>
+                    </div>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-tg">Ник в Telegram</label>
+                      <input id="demo-tg" name="tg" type="text" placeholder="Ник в Telegram">
+                    </div>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-budget">Какой бюджет вы рассматриваете на партнерскую интеграцию?</label>
+                      <select id="demo-budget" name="budget" required>
+                        <option value="" disabled selected>Какой бюджет вы рассматриваете на партнерскую интеграцию? *</option>
+                        <option>до 200 000 рублей</option>
+                        <option>200 000 - 350 000 рублей</option>
+                        <option>350 000 - 700 000 рублей</option>
+                        <option>700 000 - 1 000 000 рублей</option>
+                        <option>Более 1 000 000 рублей</option>
+                        <option>Рассматриваем бартер / услуги</option>
+                      </select>
+                    </div>
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-site">Ссылка на сайт вашей компании</label>
+                      <input id="demo-site" name="site" type="url" placeholder="Ссылка на сайт вашей компании *" required>
+                    </div>
+                    <div class="captcha" aria-hidden="true">Yandex SmartCaptcha · 100 px</div>
+                    <button class="btn v1 fw" type="submit">Отправить</button>
+                    <label class="checkbox">
+                      <input type="checkbox" name="access" required>
+                      <i aria-hidden="true"></i>
+                      <span>Согласен с <a href="https://soldoutconf.ru/privacy" target="_blank" rel="noopener">Политикой в отношении обработки персональных данных</a></span>
+                    </label>
+                  </form>
+                </div>
+                <div>
+                  <ul class="spec-list">
+                    <li><span>Поле</span><b>46px · 1px #FFF</b></li>
+                    <li><span>Фон / текст</span><b>#090316 / #FFF</b></li>
+                    <li><span>Кегль</span><b>18px / 400</b></li>
+                    <li><span>Padding</span><b>0 30px</b></li>
+                    <li><span>Зазор полей</span><b>16px</b></li>
+                    <li><span>Чекбокс</span><b>20×20 · галочка 8×8</b></li>
+                    <li><span>Капча</span><b>блок 100px</b></li>
+                  </ul>
+                  <p class="note note--warn"><span class="note__mark">долг</span><span>В оригинале у полей нет label и подписей — только placeholder; <code>textarea</code> не предусмотрена; focus не стилизован; капча — пустой блок 100px. Здесь добавлены скрытые label и <code>:focus-visible</code>.</span></p>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">Кнопка «Отправить» — v1 на всю ширину. Форма демонстрационная: отправка отключена, данные никуда не уходят.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Select, ошибка, чекбокс</h3><span class="tag">состояния</span></div>
+          <div class="grid grid--3">
+            <div class="stage">
+              <div class="stage__body">
+                <div class="sd">
+                  <div class="input">
+                    <label class="visually-hidden" for="demo-section">Выберите раздел программы</label>
+                    <select id="demo-section">
+                      <option>Поток 1</option>
+                      <option>Поток 2</option>
+                      <option>Поток 3</option>
+                    </select>
+                  </div>
+                  <p class="field-hint">Select в секциях: 56px, Alumni Sans 40px, оранжевый на белом.</p>
+                </div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage__body">
+                <div class="sd">
+                  <div class="sd-field--popup">
+                    <div class="input">
+                      <label class="visually-hidden" for="demo-popup-select">Бюджет</label>
+                      <select id="demo-popup-select">
+                        <option>до 200 000 рублей</option>
+                        <option>200 000 - 350 000 рублей</option>
+                      </select>
+                    </div>
+                  </div>
+                  <p class="field-hint">Select в попапе: 46px, Montserrat 18px, белая рамка.</p>
+                </div>
+              </div>
+            </div>
+            <div class="stage">
+              <div class="stage__body">
+                <div class="sd">
+                  <div class="input">
+                    <label class="visually-hidden" for="demo-error">Телефон</label>
+                    <input class="error" id="demo-error" type="tel" value="+7 901" aria-describedby="demo-error-msg" aria-invalid="true">
+                    <p class="error" id="demo-error-msg">Введите номер полностью</p>
+                  </div>
+                  <label class="checkbox" style="margin-top:16px">
+                    <input type="checkbox" checked>
+                    <i aria-hidden="true"></i>
+                    <span>Согласие получено</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 -->
+      <section class="section" id="cards">
+        <div class="sec-head">
+          <span class="sec-head__num">08</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">карточки</p>
+            <h2>Пять живых компонентов</h2>
+          </div>
+          <span class="sec-head__note">hover · .3s</span>
+        </div>
+        <p class="lead">Тариф, спикер, отзыв, партнёр и строка программы. У каждой карточки — свой класс и своё поведение. Наведите, чтобы увидеть заливку.</p>
+
+        <div class="block">
+          <div class="block__head"><h3>1 · Тариф</h3><span class="stage__class">.ticket · .ticket_body · .ticket.soldout</span></div>
+          <div class="sd">
+            <div class="tickets_list">
+              <article class="ticket">
+                <div class="ticket_body">
+                  <p class="t-h5">Офлайн</p>
+                  <p class="t-h6">В тариф входит:</p>
+                  <div class="ticket_info">
+                    <p>— Офлайн-участие в двух днях форума</p>
+                    <p>— Презентации спикеров в PDF-формате</p>
+                    <p>— Сертификат участника</p>
+                    <p>— Чат в Telegram</p>
+                  </div>
+                  <div class="ticket_footer">
+                    <p class="t-h6">22-23 марта 2027 года</p>
+                    <div class="ticket_price"><p class="t-h5">20.900</p></div>
+                  </div>
+                </div>
+                <div class="btn_group column">
+                  <a class="btn fw v1" href="#forms">Купить офлайн-билет</a>
+                  <a class="btn v2" href="#forms">Оплатить частями</a>
+                </div>
+              </article>
+              <article class="ticket soldout">
+                <div class="ticket_body">
+                  <p class="t-h5">Офлайн для компаний</p>
+                  <p class="t-h6">В тариф входит:</p>
+                  <div class="ticket_info">
+                    <p>— Офлайн-участие в двух днях форума</p>
+                    <p>— Скидка 10% при покупке билетов 5-9 человек</p>
+                    <p>— Скидка 15% при покупке билетов более 10 человек</p>
+                    <p>— Презентации спикеров в PDF-формате</p>
+                    <p>— Сертификат участника</p>
+                  </div>
+                  <div class="ticket_footer">
+                    <p class="t-h6">22-23 марта 2027 года</p>
+                    <span class="ticket__status">продано</span>
+                  </div>
+                </div>
+                <div class="btn_group column">
+                  <a class="btn fw v1" href="#forms">Оставить заявку</a>
+                </div>
+              </article>
+            </div>
+          </div>
+          <p class="block__note">Бежевая карточка, h5 100px, список «— …», цена, две кнопки. Hover — фон #F74200, текст белый. <code>.soldout</code> — без hover, приглушённая поверхность.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>2 · Спикер</h3><span class="stage__class">.expert_item · .expert_photo · .expert_logo</span></div>
+          <div class="demo-split">
+            <div class="sd">
+              <article class="expert_item expert-demo">
+                <div class="expert_photo">
+                  <img src="assets/img/expert_photo.jpg" alt="Портрет Наталии Франкель, продюсера форума SOLD OUT" width="373" height="411" loading="lazy">
+                  <p class="t-h5">01</p>
+                  <div class="expert_logo"><img src="assets/logos/logo.svg" alt="Логотип компании спикера" width="158" height="69" loading="lazy"></div>
+                </div>
+                <div class="expert_item_info">
+                  <p class="t-h6">Наталия Франкель</p>
+                  <p>Создатель и продюсер трёх онлайн-школ: «Точка доступа», «Ивентология», «Белый EdTech &amp; Elearn». Продюсер и организатор крупнейших в СНГ бизнес-конференций в нишах SMM, онлайн-образования и event. Автор трёх книг, включая лонгселлер «Event-маркетинг. Всё об организации и продвижении событий».</p>
+                  <a class="more_info" href="#cards">Подробнее</a>
+                </div>
+              </article>
+            </div>
+            <div>
+              <ul class="spec-list">
+                <li><span>Фото</span><b>110% · grayscale(1)</b></li>
+                <li><span>Номер</span><b>h5 100px · #F74200</b></li>
+                <li><span>Плашка логотипа</span><b>220×70 · blur 50</b></li>
+                <li><span>Инфо-зона</span><b>белая · padding 30 20 52</b></li>
+                <li><span>Имя</span><b>h6 40px · #F74200</b></li>
+                <li><span>Описание</span><b>7 строк · ellipsis</b></li>
+                <li><span>Hover</span><b>инфо-зона #F74200, имя белое</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>3 · Отзыв</h3><span class="stage__class">.review · .review_body · .review_info</span></div>
+          <div class="sd">
+            <article class="review review--demo">
+              <div class="review_body">
+                <p>Организовать событие для организаторов — подвиг. Все знают, как надо делать, и, конечно, все делают лучше. Но проходит два-три доклада коллег, разговор в перерыве — и остаётся только любовь к делу, одинаковые проблемы и такие разные решения.</p>
+                <p>Очень много говорили о состояниях. Уже недостаточно просто качественной программы и интересных спикеров: организатор думает о том, в каком состоянии уйдёт человек с форума.</p>
+              </div>
+              <div class="review_info">
+                <div class="review_photo"><img src="assets/img/review-01.jpg" alt="Светлана Мещерякова, участница форума" width="300" height="300" loading="lazy"></div>
+                <div class="review_info_text">
+                  <p class="t-h6">Светлана Мещерякова</p>
+                  <p>Директор ООО «Первое выставочное объединение», Челябинск</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <p class="block__note">Бежевый «пузырь» с двумя треугольниками, фото 122×122 кругом и grayscale, имя h6. Хвост пузыря собран на псевдоэлементах.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>4 · Партнёр</h3><span class="stage__class">.partner · .partners_list</span></div>
+          <div class="sd">
+            <div class="sd-partners">
+              <p class="t-h6">Генеральный партнёр</p>
+              <div class="sd-partners__row">
+                <div class="partner">
+                  <a href="#cards" aria-label="Партнёр SOLD OUT — логотип"><span class="partner-logo-plate"><img src="assets/logos/f_logo.svg" alt="Логотип партнёра SOLD OUT" width="246" height="136" loading="lazy"></span></a>
+                </div>
+                <p class="sd-partners__note">Логотип вписывается по <code>max-height: 140px</code> и центрируется на тёмной плашке. Подпись — h6 32px оранжевым.</p>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Белая секция, логотип до 140px, подпись h6 32px #F74200. В реальном блоке логотипы цветные; здесь логотип оставлен в оригинальных цветах на тёмной плашке.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>5 · Программа</h3><span class="stage__class">.program_item · .program_expert_item</span></div>
+          <div class="sd">
+            <div class="program_item">
+              <div class="program_item_potok">Поток 1</div>
+              <div class="program_item_speaker_list">
+                <a class="program_expert_item" href="#patterns">
+                  <p class="t-h6">Как собрать событие на 1000 человек</p>
+                  <p>10:00 — 11:00 · Большой зал · Дмитрий Румянцев</p>
+                </a>
+                <a class="program_expert_item" href="#patterns">
+                  <p class="t-h6">Партнёрство без бюджета</p>
+                  <p>11:15 — 12:15 · Большой зал · Светлана Мещерякова</p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Белая строка, h6 40px оранжевый, p 22px. Hover — оранжевый фон, белый текст. Слева — оранжевый ярлык потока.</p>
+        </div>
+      </section>
+
+      <!-- 09 -->
+      <section class="section" id="patterns">
+        <div class="sec-head">
+          <span class="sec-head__num">09</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">секции и паттерны</p>
+            <h2>Афиша целиком</h2>
+          </div>
+          <span class="sec-head__note">6 паттернов</span>
+        </div>
+        <p class="lead">Секции собираются из одних и тех же приёмов: бежевая панель, оранжевая панель, сетка с линиями, нумерованный список, полноэкранный оранжевый блок и бегущая строка.</p>
+
+        <div class="block">
+          <div class="block__head"><h3>Beige-панель · .target</h3><span class="stage__class">padding 66 / 78</span></div>
+          <div class="sd">
+            <div class="sd-target">
+              <p class="t-h5">Ключевая цель форума — обмен реальным опытом</p>
+              <p>Никаких рассуждений «вот пройдёт 10 лет, и вы увидите». Никаких гаданий на кофейной гуще. Только проверенные на практике приёмы, стратегии и инструменты, которые работают уже сейчас.</p>
+              <div class="btn_group">
+                <a class="btn v1" href="#forms">Участвовать в форуме</a>
+                <a class="btn v3" href="#forms">Стать партнёром</a>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">В оригинале заголовок оранжевый на беже — 2.87:1. Для текста это нарушение; в новом коде заменить на #090316 или использовать крупный кегль с другим цветом.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Orange-панель · .tour</h3><span class="stage__class">max 1137 · padding 58 / 54</span></div>
+          <div class="sd">
+            <div class="sd-tour">
+              <p class="t-h6">Тур по event-индустрии</p>
+              <p>Один день, четыре площадки, шесть команд и разбор того, как устроены события изнутри. Без теории: только живые процессы, люди и решения.</p>
+              <p class="t-h6">Санкт-Петербург · 22 марта</p>
+              <div class="btn_group">
+                <a class="btn v2" href="#forms">Узнать подробнее</a>
+                <a class="btn v3" href="#forms">Оставить заявку</a>
+              </div>
+              <p class="small_text">Количество мест ограничено.</p>
+            </div>
+          </div>
+          <p class="block__note">Белый текст 16px и подпись 14px на оранжевом дают 3.66:1. В оригинале так; для нового кода — крупнее/жирнее или тёмный текст.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Сетка с линиями · .highlight_list</h3><span class="stage__class">4 колонки · 1px</span></div>
+          <div class="sd">
+            <div class="highlight_list">
+              <div class="highlight_item"><p class="t-h6">Практика</p><p>Только работающие приёмы: без «когда-нибудь потом».</p></div>
+              <div class="highlight_item"><p class="t-h6">Люди</p><p>Организаторы, площадки, подрядчики и партнёры в одном зале.</p></div>
+              <div class="highlight_item"><p class="t-h6">Цифры</p><p>Экономика событий, воронки, возврат и стоимость лида.</p></div>
+              <div class="highlight_item"><p class="t-h6">Разбор</p><p>Кейсы участников и честные ответы на неудобные вопросы.</p></div>
+              <div class="highlight_item"><p class="t-h6">Среда</p><p>Нетворкинг без случайных людей: 85 000+ участников за десять лет.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Нумерованный список · .help_item</h3><span class="stage__class">counter · 100px</span></div>
+          <div class="sd">
+            <div class="help_list">
+              <div class="help_item"><p>Купите билет на сайте. Оплата картой, частями или по счёту для компаний.</p></div>
+              <div class="help_item"><p>Получите письмо с деталями. За неделю до форума придёт программа и схема площадки.</p></div>
+              <div class="help_item"><p>Приезжайте к 9:30. Регистрация, кофе и знакомство с участниками — до первого доклада.</p></div>
+              <div class="help_item"><p>Заберите записи и презентации. Доступ остаётся у вас после форума.</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Полноэкранная оранжевая · .where</h3><span class="stage__class">padding 148 · центр 755</span></div>
+          <div class="sd">
+            <div class="sd-where">
+              <div class="sd-where__in">
+                <p class="t-h6">22-23 марта 2027 / 10:00 — 19:00</p>
+                <p class="t-h6">Санкт-Петербург</p>
+                <div class="btn_group column">
+                  <a class="btn v3" href="#forms">Забронировать билет</a>
+                </div>
+              </div>
+              <div class="marquee" aria-hidden="true">
+                <span class="marquee-text">SOLD OUT <span>SOLD OUT</span> SOLD OUT <span>SOLD OUT</span> SOLD OUT <span>SOLD OUT</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Бегущая строка · .marquee</h3><span class="stage__class">120px · 240s</span></div>
+          <div class="sd">
+            <div class="marquee" aria-label="INTERNATIONAL EVENT FORUM">
+              <span class="marquee-text">INTERNATIONAL <span>EVENT</span> FORUM <span>INTERNATIONAL</span> EVENT FORUM INTERNATIONAL <span>EVENT</span> FORUM <span>INTERNATIONAL</span> EVENT FORUM</span>
+            </div>
+          </div>
+          <p class="block__note">В герое — 240 секунд на круг, внутри <code>.where</code> — 60 секунд. При <code>prefers-reduced-motion</code> анимация останавливается.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Видео с кольцом · .history_video_preview</h3><span class="stage__class">круг 266px</span></div>
+          <div class="sd">
+            <div class="history_video_preview">
+              <a href="#motion" aria-label="Смотреть видео о форуме SOLD OUT"></a>
+            </div>
+          </div>
+          <p class="block__note">Круг 266px, hover — рамка толщиной 133px и мягкое оранжевое свечение. Это единственное место, где тень допустима.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Пилюли тем · .themes_list</h3><span class="stage__class">46px · radius 30</span></div>
+          <div class="sd">
+            <div class="themes_list" style="padding:0">
+              <span class="themes_item">Организация событий</span>
+              <span class="themes_item">Продвижение и маркетинг</span>
+              <span class="themes_item themes_item--short">Партнёрства</span>
+              <span class="themes_item themes_item--short">Площадки</span>
+              <span class="themes_item themes_item--short">Сервисы</span>
+              <span class="themes_item themes_item--short">Команда</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>FAQ-аккордеон · .faq_item</h3><span class="stage__class">aria-expanded</span></div>
+          <div class="sd">
+            <div class="faq_item">
+              <button class="faq_head" type="button" aria-expanded="false" aria-controls="faqBody1"><span class="faq-title">Как купить билет?</span></button>
+              <div class="faq_body" id="faqBody1"><p>На сайте, картой или частями. Для компаний — по счёту, от пяти билетов действует скидка.</p></div>
+            </div>
+            <div class="faq_item">
+              <button class="faq_head" type="button" aria-expanded="false" aria-controls="faqBody2"><span class="faq-title">Будут ли записи?</span></button>
+              <div class="faq_body" id="faqBody2"><p>Да. Презентации и видеозаписи докладов получат все участники после форума.</p></div>
+            </div>
+            <div class="faq_item">
+              <button class="faq_head" type="button" aria-expanded="false" aria-controls="faqBody3"><span class="faq-title">Можно ли вернуть билет?</span></button>
+              <div class="faq_body" id="faqBody3"><p>Условия возврата описаны в публичной оферте. До начала форума возврат возможен с удержанием фактических расходов.</p></div>
+            </div>
+          </div>
+          <p class="block__note">Кнопка на всю строку, <code>aria-expanded</code> и <code>aria-controls</code>. Без JS все ответы видны — деградация без потери контента.</p>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="section" id="footer">
+        <div class="sec-head">
+          <span class="sec-head__num">10</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">подвал</p>
+            <h2>Даты, соцсети, документы</h2>
+          </div>
+          <span class="sec-head__note">3 колонки</span>
+        </div>
+        <p class="lead">Верхняя строка: даты и город слева, соцсети в центре, телефон и почта справа. Ниже — линия, логотип по центру и юридические ссылки.</p>
+
+        <div class="block">
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">живой подвал</span><span class="stage__class">.footer_top · footer</span></div>
+            <div class="stage__body stage__body--flush">
+              <div class="sd">
+                <div class="sd-footer">
+                  <div class="sd-footer__top">
+                    <div class="sd-footer__left">
+                      <p>22–23 марта 2027</p>
+                      <p>Санкт-Петербург</p>
+                    </div>
+                    <div class="sd-footer__center">
+                      <div class="sd-soc">
+                        <a href="https://t.me/markevent" target="_blank" rel="noopener" aria-label="Telegram"><img src="assets/icons/tg_icon.svg" alt="" aria-hidden="true" width="41" height="34"></a>
+                        <a href="https://vk.com/soldoutconf" target="_blank" rel="noopener" aria-label="ВКонтакте"><img src="assets/icons/vk_icon.svg" alt="" aria-hidden="true" width="47" height="28"></a>
+                        <a href="https://max.ru/join/PstZBWMblkbochsp-2kStlSTl43Zp8ad3l2JqIDvuYI" target="_blank" rel="noopener" aria-label="MAX"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" aria-hidden="true"><path fill="#fff" d="M350.4,9.6C141.8,20.5,4.1,184.1,12.8,390.4c3.8,90.3,40.1,168,48.7,253.7,2.2,22.2-4.2,49.6,21.4,59.3,31.5,11.9,79.8-8.1,106.2-26.4,9-6.1,17.6-13.2,24.2-22,27.3,18.1,53.2,35.6,85.7,43.4,143.1,34.3,299.9-44.2,369.6-170.3C799.6,291.2,622.5-4.6,350.4,9.6h0ZM269.4,504c-11.3,8.8-22.2,20.8-34.7,27.7-18.1,9.7-23.7-.4-30.5-16.4-21.4-50.9-24-137.6-11.5-190.9,16.8-72.5,72.9-136.3,150-143.1,78-6.9,150.4,32.7,183.1,104.2,72.4,159.1-112.9,316.2-256.4,218.6h0Z"/></svg></a>
+                      </div>
+                    </div>
+                    <div class="sd-footer__right">
+                      <p><a href="tel:+79014177605">+7 901 417 76 05</a></p>
+                      <p><a href="mailto:info@soldoutconf.ru">info@soldoutconf.ru</a></p>
+                    </div>
+                  </div>
+                  <div class="sd-footer__rule">
+                    <div class="sd-footer__bottom">
+                      <div class="sd-footer__left">
+                        <p>© 2026. «Ивентология»</p>
+                        <p>Дизайн: <a href="https://archakovadasha.tilda.ws/" target="_blank" rel="noopener">Дарья Арчакова</a></p>
+                        <p>Программирование: <a href="https://webking.pro/" target="_blank" rel="noopener">WebKing</a></p>
+                        <p>Ребрендинг сайта при поддержке <a href="https://v-events.ru/" target="_blank" rel="noopener">V-events</a></p>
+                      </div>
+                      <div class="sd-footer__center">
+                        <img class="sd-footer__logo" src="assets/logos/f_logo.svg" alt="SOLD OUT" width="246" height="136" loading="lazy">
+                      </div>
+                      <div class="sd-footer__right sd-footer__legal">
+                        <p><a href="https://soldoutconf.ru/privacy" target="_blank" rel="noopener">Политика в отношении обработки персональных данных</a></p>
+                        <p><a href="https://soldoutconf.ru/oferta" target="_blank" rel="noopener">Публичная оферта (покупка билетов)</a></p>
+                        <p><a href="https://soldoutconf.ru/oferta-records" target="_blank" rel="noopener">Публичная оферта (покупка записей)</a></p>
+                        <p><a href="https://soldoutconf.ru/personal" target="_blank" rel="noopener">Согласие на обработку персональных данных</a></p>
+                        <p><a href="https://soldoutconf.ru/#rass" target="_blank" rel="noopener">Условия рассрочки</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">Мобайл: логотип первым, юридические ссылки выше копирайта, всё в одну колонку.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="section" id="overlays">
+        <div class="sec-head">
+          <span class="sec-head__num">11</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">попапы и оверлеи</p>
+            <h2>Форма поверх сцены</h2>
+          </div>
+          <span class="sec-head__note">466 / 600 / 565</span>
+        </div>
+        <p class="lead">Три размера: форма 466px, широкая модалка 600px и «Спасибо» 565px. Фон — rgba(9,3,22,.82) с blur 10px. В оригинале попапы не имеют role="dialog" и ломают фокус; здесь сделано правильно.</p>
+
+        <div class="block">
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">живая модалка · Escape и фон</span><span class="stage__class">role="dialog" · aria-modal</span></div>
+            <div class="stage__body">
+              <div class="sd">
+                <button class="btn v1" type="button" data-modal-open="partnerModal">Открыть форму партнёра</button>
+                <p class="form-note">Откроется попап 466px: фокус уйдёт внутрь, Tab останется в диалоге, Escape и клик по фону закроют, фокус вернётся на кнопку.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Статичные варианты</h3><span class="tag">разметка как в modals.php</span></div>
+          <div class="sd-overlay">
+            <div class="sd">
+              <div class="popup">
+                <button class="close_popup" type="button" aria-label="Закрыть попап"></button>
+                <p class="t-h5">Заполните форму и мы с вами свяжемся!</p>
+                <form class="form" action="#" method="post" data-demo-form>
+                  <div class="input"><label class="visually-hidden" for="popup-name">Ваше имя</label><input id="popup-name" type="text" placeholder="Ваше имя *" required></div>
+                  <div class="input"><label class="visually-hidden" for="popup-phone">Ваш телефон</label><input id="popup-phone" type="tel" placeholder="Ваш телефон *" required></div>
+                  <div class="input"><label class="visually-hidden" for="popup-email">E-mail</label><input id="popup-email" type="email" placeholder="E-mail"></div>
+                  <div class="input"><label class="visually-hidden" for="popup-org">Название организации</label><input id="popup-org" type="text" placeholder="Название организации *" required></div>
+                  <button class="btn v1 fw" type="submit">Отправить</button>
+                  <label class="checkbox"><input type="checkbox" required><i aria-hidden="true"></i><span>Согласен с <a href="https://soldoutconf.ru/privacy" target="_blank" rel="noopener">политикой обработки данных</a></span></label>
+                </form>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Основной попап: 466px, padding 48/40, фон #090316, крестик 20×20 в 20px от угла.</p>
+        </div>
+
+        <div class="block">
+          <div class="grid grid--2">
+            <div class="sd-overlay">
+              <div class="sd">
+                <div class="popup_v2">
+                  <button class="popup_close" type="button" aria-label="Закрыть">×</button>
+                  <div class="popup_content">
+                    <p class="t-h5">Программа скоро появится</p>
+                    <p class="form-note">Широкая модалка 600px. Крестик — круг 40px с оранжевой рамкой, вынесен за угол.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="sd-overlay popup-demo">
+              <div class="sd">
+                <div class="popup thanks_popup">
+                  <button class="close_popup" type="button" aria-label="Закрыть"></button>
+                  <p class="t-h6">Спасибо за заявку</p>
+                  <p>Мы свяжемся с вами в ближайшее время!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <p class="note"><span class="note__mark">вне системы</span><span>Cookie-баннер и чат-виджет подключаются внешними скриптами и в теме не стилизованы. Их цвета, размеры и состояния в дизайн-систему не входят и в этом гайде не проверялись.</span></p>
+          <p class="note note--warn"><span class="note__mark">a11y</span><span><b>В оригинале:</b> попапы открываются без <code>role="dialog"</code>, без <code>aria-modal</code>, без ловушки фокуса и без возврата фокуса. В гайде диалог получает имя, фокус-трап и корректное закрытие. Крестик 20×20 меньше 44px — увеличьте зону нажатия.</span></p>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="section" id="motion">
+        <div class="sec-head">
+          <span class="sec-head__num">12</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">анимации и состояния</p>
+            <h2>Движение по делу</h2>
+          </div>
+          <span class="sec-head__note">.3s → 240s</span>
+        </div>
+        <p class="lead">Анимация здесь — не украшение, а обратная связь: кнопка меняет заливку, карточка — фон, кольцо — рамку. Всё линейно и предсказуемо.</p>
+
+        <div class="block">
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption>Тайминги из style.css</caption>
+              <thead><tr><th>Время</th><th>Где</th><th>Что происходит</th></tr></thead>
+              <tbody>
+                <tr><td class="val">.3s</td><td>кнопки, меню, карточки, шапка</td><td>background-color, color, border-color, backdrop-filter</td></tr>
+                <tr><td class="val">.7s</td><td>«О нас»</td><td>появление фотографии при hover (opacity)</td></tr>
+                <tr><td class="val">1.2s</td><td>.plan_item</td><td>заливка фона при hover</td></tr>
+                <tr><td class="val">240s</td><td>.marquee</td><td>бегущая строка на первый экран</td></tr>
+                <tr><td class="val">60s</td><td>.where .marquee</td><td>ускоренная строка в оранжевой секции</td></tr>
+                <tr><td class="val">2s</td><td>.animated-arrow</td><td>стрелка slide: сдвиг на 10px и обратно</td></tr>
+                <tr><td class="val">.3s</td><td>.history_video_preview</td><td>рамка кольца растёт до 133px + свечение</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Живой marquee</h3><span class="tag">240s</span></div>
+          <div class="sd">
+            <div class="marquee" aria-label="INTERNATIONAL EVENT FORUM">
+              <span class="marquee-text">INTERNATIONAL <span>EVENT</span> FORUM <span>INTERNATIONAL</span> EVENT FORUM INTERNATIONAL <span>EVENT</span> FORUM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Живое кольцо</h3><span class="tag">hover</span></div>
+          <div class="sd">
+            <div class="history_video_preview">
+              <a href="#motion" aria-label="Смотреть видео о форуме SOLD OUT"></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <p class="note note--warn"><span class="note__mark">a11y</span><span><b>prefers-reduced-motion не поддерживается.</b> В этом гайде при <code>reduce</code> отключаются бегущие строки, переходы и smooth-scroll. Для сайта: обернуть marquee и hover-анимации в медиазапрос, оставив статичные состояния.</span></p>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section class="section" id="tokens">
+        <div class="sec-head">
+          <span class="sec-head__num">13</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">токены и доступность</p>
+            <h2>Что оставить, что переименовать</h2>
+          </div>
+          <span class="sec-head__note">WCAG 2.2 AA</span>
+        </div>
+        <p class="lead">Пять переменных работают, но их имена ничего не говорят новому разработчику. Ниже — текущий код, карта переименования, готовый CSS и честная проверка контрастов.</p>
+
+        <div class="block">
+          <div class="block__head"><h3>Источники стилей</h3><span class="tag">cmp -s · идентичны</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption>Проверено 12/11/2026</caption>
+              <thead><tr><th>Файл</th><th>Строк</th><th>Статус</th></tr></thead>
+              <tbody>
+                <tr><td><code>site-static/assets/theme/css/style.css</code></td><td class="val">1823</td><td>эталон для этого гайда</td></tr>
+                <tr><td><code>site/wp-content/themes/soldout-2025/css/style.css</code></td><td class="val">1823</td><td><code>cmp -s</code> → идентичен</td></tr>
+                <tr><td><code>site-static/assets/theme/css/program.css</code></td><td class="val">198</td><td>легаси-модуль программы</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+          <p class="note note--warn"><span class="note__mark">важно</span><span><b>Единого источника правды нет.</b> Две копии <code>style.css</code> сегодня совпадают байт-в-байт, но лежат в разных местах и могут разойтись при следующем обновлении. <code>program.css</code> — легаси-модуль программы: его цвета <code>#FFC55A</code>, <code>#FF5900</code>, <code>#325683</code>, <code>#6996CD</code>, <code>#D4CABF</code> не входят в ядро.</span></p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Текущие токены</h3><span class="tag">из style.css</span></div>
+          <div class="codeblock">
+            <div class="codeblock__head">
+              <span class="codeblock__title">style.css · :root</span>
+              <button class="codeblock__copy" type="button" data-copy="tokensCode">Скопировать</button>
+            </div>
+            <pre id="tokensCode"><code>:root {
+  --o: #F74200; /* accent */
+  --y: #E8E3DD; /* beige */
+  --w: #FFFFFF; /* white */
+  --b: #090316; /* stage */
+  --g: #E8E3DD; /* duplicate of --y */
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Карта переименования</h3><span class="tag">сейчас → предлагаемое</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <thead><tr><th>Сейчас</th><th>Предлагаемое имя</th><th>Роль</th></tr></thead>
+              <tbody>
+                <tr><td><code>--o</code></td><td><code>--color-accent</code></td><td>действия, даты, цифры</td></tr>
+                <tr><td><code>--y</code> / <code>--g</code></td><td><code>--color-beige</code></td><td>поверхности карточек и секций</td></tr>
+                <tr><td><code>--w</code></td><td><code>--color-on-dark</code></td><td>текст на тёмном, заливка вторичных кнопок</td></tr>
+                <tr><td><code>--b</code></td><td><code>--color-bg</code></td><td>фон страницы</td></tr>
+                <tr><td>—</td><td><code>--color-text-muted</code></td><td>вторичный текст</td></tr>
+                <tr><td>—</td><td><code>--color-line</code></td><td>линии и рамки</td></tr>
+                <tr><td>—</td><td><code>--space-1…6</code></td><td>10 / 20 / 34 / 52 / 74 / 148</td></tr>
+                <tr><td>—</td><td><code>--radius: 0</code></td><td>острые углы</td></tr>
+                <tr><td>—</td><td><code>--font-display</code></td><td>Alumni Sans 600</td></tr>
+                <tr><td>—</td><td><code>--font-body</code></td><td>Montserrat 400–700</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Готовый CSS</h3><span class="tag">шрифты + токены</span></div>
+          <div class="codeblock">
+            <div class="codeblock__head">
+              <span class="codeblock__title">soldout-tokens.css</span>
+              <button class="codeblock__copy" type="button" data-copy="cssCode">Скопировать</button>
+            </div>
+            <pre id="cssCode"><code>@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alumni Sans";
+  src: url("assets/fonts/AlumniSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --color-accent: #F74200;
+  --color-beige: #E8E3DD;
+  --color-on-dark: #FFFFFF;
+  --color-bg: #090316;
+  --color-text-muted: #A9A3B8;
+  --color-line: rgba(255, 255, 255, 0.2);
+
+  --space-1: 10px;
+  --space-2: 20px;
+  --space-3: 34px;
+  --space-4: 52px;
+  --space-5: 74px;
+  --space-6: 148px;
+
+  --radius: 0;
+  --font-display: "Alumni Sans", "Arial Narrow", sans-serif;
+  --font-body: "Montserrat", Arial, sans-serif;
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Контрасты</h3><span class="tag">точные значения</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption>Проверено по WCAG 2.2 · значения не округлять</caption>
+              <thead><tr><th>Пара</th><th>Контраст</th><th>Вердикт</th><th>Где</th></tr></thead>
+              <tbody>
+                <tr><td>#FFFFFF на #F74200</td><td class="val">3.66</td><td><span class="pass pass--fail">только крупный</span></td><td>кнопка v1, текст 18px/600</td></tr>
+                <tr><td>#F74200 на #090316</td><td class="val">5.53</td><td><span class="pass pass--aa">AA</span></td><td>даты, цифры, ссылки</td></tr>
+                <tr><td>#090316 на #E8E3DD</td><td class="val">15.89</td><td><span class="pass pass--aaa">AAA</span></td><td>текст на беже</td></tr>
+                <tr class="is-key"><td>#F74200 на #E8E3DD</td><td class="val">2.87</td><td><span class="pass pass--fail">FAIL</span></td><td>заголовки на беже — запрещено</td></tr>
+                <tr><td>#090316 на #FFFFFF</td><td class="val">20.27</td><td><span class="pass pass--aaa">AAA</span></td><td>тёмный текст на белом</td></tr>
+                <tr><td>#FFFFFF на #090316</td><td class="val">20.27</td><td><span class="pass pass--aaa">AAA</span></td><td>основной текст</td></tr>
+                <tr><td>#FFC55A на #090316</td><td class="val">12.92</td><td><span class="pass pass--aaa">AAA</span></td><td>легаси-строка программы</td></tr>
+                <tr><td>#6996CD на #090316</td><td class="val">6.61</td><td><span class="pass pass--aa">AA</span></td><td>легаси-ячейки программы</td></tr>
+                <tr><td>#ABABAB на #FFFFFF</td><td class="val">2.30</td><td><span class="pass pass--fail">только линии</span></td><td>границы таблицы партнёров</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Находки доступности</h3><span class="tag">9 пунктов</span></div>
+          <ol class="findings">
+            <li class="finding"><span class="finding__num">01</span><span class="finding__text"><b>Глобальный <code>outline: none</code>.</b> Кольцо фокуса убрано у всех элементов, включая ссылки, кнопки и поля. Клавиатурная навигация невидима.</span><span class="sev sev--high">high</span></li>
+            <li class="finding"><span class="finding__num">02</span><span class="finding__text"><b>Все <code>alt=""</code>.</b> Фото спикеров, отзывы и логотипы без текстовой альтернативы: скринридер не понимает, кто на фото.</span><span class="sev sev--high">high</span></li>
+            <li class="finding"><span class="finding__num">03</span><span class="finding__text"><b>Поля без label.</b> Только placeholder: подпись исчезает при вводе, автозаполнение и скринридер теряют контекст.</span><span class="sev sev--high">high</span></li>
+            <li class="finding"><span class="finding__num">04</span><span class="finding__text"><b><code>user-scalable=0</code> на мобиле.</b> Запрет масштабирования нарушает WCAG 1.4.4; при проблемах зрения страницу не увеличить.</span><span class="sev sev--high">high</span></li>
+            <li class="finding"><span class="finding__num">05</span><span class="finding__text"><b>Белый на оранжевом 3.66:1 при 18px/600.</b> Формально крупный текст — от 18.66px/700; кнопка на границе, лучше поднять вес или кегль.</span><span class="sev sev--mid">mid</span></li>
+            <li class="finding"><span class="finding__num">06</span><span class="finding__text"><b>Оранжевые заголовки на беже 2.87:1.</b> Встречается в тарифах и целевой панели; заменить на #090316 или увеличить кегль до крупного.</span><span class="sev sev--high">high</span></li>
+            <li class="finding"><span class="finding__num">07</span><span class="finding__text"><b>p = 1.14vw.</b> На ширине 1100px это 12.5px — ниже комфортного чтения. Нужен <code>max(16px, 1.14vw)</code>.</span><span class="sev sev--mid">mid</span></li>
+            <li class="finding"><span class="finding__num">08</span><span class="finding__text"><b>Нет <code>prefers-reduced-motion</code>.</b> Бегущая строка и кольцо анимируются всегда; для чувствительных пользователей это риск.</span><span class="sev sev--mid">mid</span></li>
+            <li class="finding"><span class="finding__num">09</span><span class="finding__text"><b><code>.buy_mob</code> 28px и крестик 20px.</b> Цели меньше 44×44px: увеличить зону нажатия, не меняя визуальный размер.</span><span class="sev sev--low">low</span></li>
+          </ol>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>Чек-лист перед запуском</h3><span class="tag">6 пунктов</span></div>
+          <ul class="checklist">
+            <li>Проверить все текстовые пары на AA; оранжевый на беже — только крупным кеглем.</li>
+            <li>Добавить label или aria-label каждому полю и связать ошибки через aria-describedby.</li>
+            <li>Вернуть видимый <code>:focus-visible</code> и проверить Tab по всей странице.</li>
+            <li>Убрать <code>user-scalable=0</code>, проверить масштаб 200% и ширину 320px.</li>
+            <li>Заполнить alt для фото спикеров, отзывов и логотипов; декоративные иконки — aria-hidden.</li>
+            <li>Поддержать reduced motion и увеличить цели нажатия до 44×44px.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="sd-modal" id="partnerModal" role="dialog" aria-modal="true" aria-labelledby="partnerModalTitle" hidden>
+    <div class="sd-modal__backdrop" data-modal-close></div>
+    <div class="sd-modal__dialog">
+      <button class="sd-modal__close" type="button" data-modal-close aria-label="Закрыть форму"></button>
+      <h2 id="partnerModalTitle">Заявка на партнёрство</h2>
+      <form class="sd-modal__form" action="#" method="post" data-demo-form>
+        <div class="input">
+          <label class="visually-hidden" for="modal-name">Ваше имя</label>
+          <input id="modal-name" name="name" type="text" placeholder="Ваше имя *" autocomplete="name" required>
+        </div>
+        <div class="input">
+          <label class="visually-hidden" for="modal-phone">Ваш телефон</label>
+          <input id="modal-phone" name="phone" type="tel" placeholder="Ваш телефон *" autocomplete="tel" required>
+        </div>
+        <div class="input">
+          <label class="visually-hidden" for="modal-org">Название организации</label>
+          <input id="modal-org" name="org" type="text" placeholder="Название организации *" autocomplete="organization" required>
+        </div>
+        <label class="checkbox">
+          <input type="checkbox" name="access" required>
+          <i aria-hidden="true"></i>
+          <span>Согласен с <a href="https://soldoutconf.ru/privacy" target="_blank" rel="noopener">политикой обработки данных</a></span>
+        </label>
+        <button class="btn" type="submit">Отправить</button>
+        <p class="sd-modal__hint">Демонстрационная форма: данные никуда не отправляются.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="guide.js"></script>
+</body>
+</html>
