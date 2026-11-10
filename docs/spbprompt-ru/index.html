@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дизайн-система — spbprompt.ru («Питерский промпт»)</title>
+<meta name="description" content="Дизайн-система spbprompt.ru: тёмная сцена, неон #1AFE4C, EdMoscow и EdJura, кнопки-пилюли, шапка, герой, консоль программы, билеты, FAQ и токены.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/spbprompt-ru/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Каталог дизайн-систем">
+<meta property="og:title" content="Дизайн-система spbprompt.ru — визуальный гайд">
+<meta property="og:description" content="Тёмная сцена, неон, пиксельные курсоры, консоль программы, билеты и FAQ spbprompt.ru.">
+<meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/spbprompt-ru/">
+<meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/spbprompt-ru/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Дизайн-система spbprompt.ru">
+<meta name="twitter:description" content="Тёмная сцена, неон, типографика и компоненты spbprompt.ru.">
+<meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/spbprompt-ru/og.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="../assets/favicon-192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="../assets/favicon-96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../assets/favicon-48.png" sizes="48x48">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="../assets/dsbar.css">
+<style>
+/* ===== каркас витрины (.pv-*) — это не сайт, а «подложка» для компонентов ===== */
+* { box-sizing: border-box; }
+html, body { margin: 0; overflow-x: clip; }
+body.edition {
+    background-color: #07070b;
+    background-image:
+        linear-gradient(rgba(184, 255, 92, .02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184, 255, 92, .02) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-attachment: fixed;
+}
+body {
+    color: #f5f7fa;
+    font-family: "EdJura", system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+
+.pv-shell { max-width: 1240px; margin: 0 auto; padding: 0 24px 96px; }
+
+/* H1 героя в витрине — оформлен как h1 сайта, но на странице уже есть h1 гайда */
+.pv-demo-h1 {
+    margin: 0;
+    font-family: "EdMoscow", sans-serif;
+    font-size: clamp(64px, 7.15vw, 96px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -.04em;
+    text-wrap: balance;
+}
+.pv-demo-h1 span { color: var(--ed-green); }
+
+.pv-sec { padding-top: 64px; scroll-margin-top: 24px; }
+.pv-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 22px; }
+.pv-num {
+    padding: 3px 9px;
+    border: 1px solid #1afe4c55;
+    border-radius: 999px;
+    color: #1afe4c;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+}
+.pv-head h2 {
+    margin: 0;
+    font-family: "EdMoscow", sans-serif;
+    font-size: clamp(22px, 2.4vw, 30px);
+    font-weight: 400;
+    line-height: 1.2;
+}
+.pv-head p { margin: 0; color: #8f8f8f; font-size: 13px; }
+
+.pv-stage {
+    padding: 28px;
+    background: #0d0d0d;
+    border: 1px solid #202020;
+    border-radius: 22px;
+}
+.pv-stage--pad { padding: 36px; }
+.ed-format .pv-tab { position: relative; }
+.pv-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.pv-grid { display: grid; gap: 16px; }
+.pv-note {
+    margin: 14px 0 0;
+    color: #7e7e7e;
+    font-size: 12px;
+    line-height: 1.7;
+}
+.pv-note b { color: #b9b9b9; font-weight: 600; }
+.pv-note code { font-family: "JetBrains Mono", monospace; font-size: 11px; color: #a9d5b6; }
+
+/* палитра */
+.pv-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 12px; }
+.pv-swatch {
+    padding: 12px;
+    background: #101010;
+    border: 1px solid #242424;
+    border-radius: 14px;
+}
+.pv-chip { height: 62px; border-radius: 9px; border: 1px solid #ffffff14; }
+.pv-swatch b { display: block; margin-top: 10px; font-size: 13px; }
+.pv-swatch span { display: block; color: #8d8d8d; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+.pv-swatch em { display: block; margin-top: 4px; color: #6f6f6f; font-size: 11px; font-style: normal; }
+
+/* типографика */
+.pv-type > * + * { margin-top: 18px; }
+.pv-type .pv-tag { color: #7e7e7e; font-family: "JetBrains Mono", monospace; font-size: 11px; }
+.pv-h1 { font-family: "EdMoscow", sans-serif; font-size: clamp(46px, 7.4vw, 96px); line-height: 1.04; letter-spacing: -.04em; }
+.pv-h1 span { color: #1afe4c; }
+.pv-h2 { font-family: "EdMoscow", sans-serif; font-size: 46.8px; line-height: 1.2; }
+.pv-lead { max-width: 620px; color: #ccc; font-size: 21px; line-height: 1.55; }
+.pv-body { max-width: 640px; color: #f7f7f7; font-size: 16px; line-height: 1.65; }
+.pv-muted { max-width: 640px; color: #aaa; font-size: 14px; line-height: 1.7; }
+.pv-num-big { font-family: "EdMoscow", sans-serif; font-size: 56px; line-height: 1; color: #1afe4c; }
+
+/* карточки спикеров: фото-заглушка */
+.pv-speakers { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
+.pv-portrait {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 24px;
+    overflow: hidden;
+    background:
+        radial-gradient(120% 80% at 50% 8%, #1b2a1e 0%, #121612 55%, #0e100e 100%),
+        #151915;
+    display: grid;
+    place-items: end center;
+}
+.pv-portrait::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(#ffffff08 1px, transparent 1px),
+        linear-gradient(90deg, #ffffff08 1px, transparent 1px);
+    background-size: 24px 24px;
+    opacity: .5;
+}
+.pv-portrait__initials {
+    position: relative;
+    margin-bottom: 18px;
+    font-family: "EdMoscow", sans-serif;
+    font-size: 54px;
+    line-height: 1;
+    color: #1afe4c;
+    opacity: .85;
+}
+.pv-portrait__tag {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    padding: 4px 9px;
+    border: 1px solid #ffffff1f;
+    border-radius: 999px;
+    background: #0a0a0acc;
+    color: #9d9d9d;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+}
+
+/* «рамка браузера» для шапки */
+.pv-frame {
+    position: relative;
+    height: 170px;
+    border: 1px solid #232323;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(#0a0a0a, #0d0d0d);
+}
+.pv-frame .ed-header {
+    position: absolute;
+    top: 22px;
+    width: calc(100% - 32px);
+    max-width: none;
+}
+
+/* курсор */
+.pv-cursor-box {
+    display: grid;
+    place-items: center;
+    height: 120px;
+    border: 1px dashed #2e2e2e;
+    border-radius: 14px;
+    background: #101010;
+    cursor: var(--pixel-cursor);
+    color: #7e7e7e;
+    font-size: 12px;
+}
+.pv-cursor-box--hand { cursor: var(--pixel-hand); }
+
+/* переключатель-«разрез» */
+.pv-cut {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    cursor: var(--pixel-hand);
+}
+.pv-cut i { display: block; height: 7px; background: #f7f7f7; transform: skewX(-14deg); }
+.pv-cut i:nth-child(2) { background: #1afe4c; width: 74%; }
+.pv-cut i:nth-child(3) { width: 56%; }
+
+/* мелочи */
+.pv-kbd {
+    padding: 2px 6px;
+    border: 1px solid #303030;
+    border-radius: 5px;
+    background: #161616;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #cfcfcf;
+}
+.pv-facts { display: flex; flex-wrap: wrap; gap: 32px; }
+.pv-consoles { display: grid; gap: 20px; }
+@media (max-width: 800px) {
+    .pv-shell { padding: 0 16px 72px; }
+    .pv-stage { padding: 18px; }
+    .pv-stage--pad { padding: 20px; }
+    .pv-h2 { font-size: 30px; }
+    .pv-lead { font-size: 18px; }
+    .pv-num-big { font-size: 40px; }
+    .pv-frame { height: 210px; }
+    .pv-frame .ed-header { top: 12px; width: calc(100% - 16px); }
+}
+@media (max-width: 520px) {
+    .pv-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* --- полоса каталога на тёмной сцене --- */
+.dsbar {
+    --dsbar-bg: #0A0A0A;
+    --dsbar-line: #242424;
+    --dsbar-ink: #F7F7F7;
+    --dsbar-muted: #8F8F8F;
+    --dsbar-accent: #1AFE4C;
+}
+
+/* --- шапка гайда каталога --- */
+.pv-intro { padding: 56px 0 12px; }
+.pv-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: #8f8f8f;
+}
+.pv-eyebrow i { display: block; width: 28px; height: 3px; background: var(--ed-green); }
+.pv-intro h1 {
+    margin: 0 0 18px;
+    font-family: "EdMoscow", sans-serif;
+    font-weight: 400;
+    font-size: clamp(38px, 6.2vw, 74px);
+    line-height: 1.04;
+    letter-spacing: -.03em;
+}
+.pv-intro__lead {
+    margin: 0 0 14px;
+    max-width: 790px;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.65;
+}
+.pv-intro__links { margin: 0; font-size: 13px; line-height: 1.7; color: #8f8f8f; }
+.pv-intro__links a { color: #f7f7f7; border-bottom: 1px solid #303030; }
+.pv-intro__links a:hover { color: var(--ed-green); border-bottom-color: var(--ed-green); }
+.pv-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 4px; padding: 0; }
+.pv-toc a {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid #2e2e2e;
+    border-radius: 999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #bcbcbc;
+    transition: border-color .2s, color .2s;
+}
+.pv-toc a:hover, .pv-toc a:focus-visible {
+    border-color: var(--ed-green);
+    color: var(--ed-green);
+    outline: none;
+}
+@media (max-width: 800px) {
+    .pv-intro { padding: 36px 0 10px; }
+    .pv-intro__lead { font-size: 16px; }
+}
+</style>
+</head>
+<body class="edition">
+
+<nav class="dsbar" aria-label="Каталог дизайн-систем">
+    <div class="dsbar__in">
+        <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
+        <span class="dsbar__meta">aaateh.github.io/eventologia-design-systems</span>
+    </div>
+</nav>
+
+<div class="pv-shell">
+
+    <section class="pv-intro">
+        <p class="pv-eyebrow"><i aria-hidden="true"></i>Дизайн-система · конференция spbprompt.ru</p>
+        <h1>Питерский промпт</h1>
+        <p class="pv-intro__lead">Тёмная сцена #0A0A0A, единственный акцент — неон #1AFE4C, пиксельные курсоры. EdMoscow в заголовках, EdJura в тексте. 13 разделов — от кнопок-пилюль и героя до консоли программы, билетов и финальной «кисти».</p>
+        <p class="pv-intro__links">Полный текст гайда — <a href="DESIGN.md">DESIGN.md</a>, переменные и компоненты — <a href="tokens.css">tokens.css</a>.</p>
+        <nav class="pv-toc" aria-label="Разделы гайда">
+            <a href="#s1">01 Палитра</a>
+            <a href="#s2">02 Типографика</a>
+            <a href="#s3">03 Кнопки</a>
+            <a href="#s4">04 Поля</a>
+            <a href="#s5">05 Шапка</a>
+            <a href="#s6">06 Герой</a>
+            <a href="#s7">07 Темы</a>
+            <a href="#s8">08 Спикеры</a>
+            <a href="#s9">09 Консоль</a>
+            <a href="#s10">10 Билеты</a>
+            <a href="#s11">11 FAQ</a>
+            <a href="#s12">12 Финал</a>
+            <a href="#s13">13 Курсор</a>
+        </nav>
+    </section>
+
+    <!-- 1 -->
+    <section class="pv-sec" id="s1">
+        <div class="pv-head"><span class="pv-num">01</span><h2>Палитра</h2><p>фон #0A0A0A · акцент #1AFE4C · панель #161616 · синий #00A1D5</p></div>
+        <div class="pv-stage">
+            <div class="pv-swatches">
+                <div class="pv-swatch"><div class="pv-chip" style="background:#0a0a0a"></div><b>Фон</b><span>#0A0A0A · --ed-bg</span><em>страница, .edition</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#161616"></div><b>Панель</b><span>#161616 · --ed-surface</span><em>карточки, консоль</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#1afe4c"></div><b>Неон</b><span>#1AFE4C · --ed-green</span><em>кнопки, цифры, фокус</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#00a1d5"></div><b>Синий</b><span>#00A1D5 · --ed-blue</span><em>hover, «Мини-игра», ореол</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#f7f7f7"></div><b>Текст</b><span>#F7F7F7 · --ed-text</span><em>заголовки и тело</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#aaa"></div><b>Вторичный</b><span>#AAAAAA · --ed-muted</span><em>описания, подписи</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#303030"></div><b>Линия</b><span>#303030 · --ed-line</span><em>рамки шапки и футера</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#383838"></div><b>Активный сегмент</b><span>#383838</span><em>.ed-format-active</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#19ff5b"></div><b>Неон Tailwind</b><span>#19FF5B · --neon</span><em>формы /for-partners</em></div>
+                <div class="pv-swatch"><div class="pv-chip" style="background:#b8ff5c"></div><b>Кислота</b><span>#B8FF5C · --acid</span><em>hover ссылок формы</em></div>
+            </div>
+            <p class="pv-note"><b>Контраст (WCAG 2.1):</b> #F7F7F7 на #0A0A0A — 18.5:1 · #AAA — 8.5:1 · #1AFE4C — 14.5:1 · #0A0A0A на #1AFE4C — 14.5:1 · #00A1D5 — 6.65:1. Все пары проходят AAA. Проблемные: рамка поля #737373 — 4.18:1 (норма для нетекстовой границы ≥3:1), плейсхолдер white/24 — 2.2:1.</p>
+        </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="pv-sec" id="s2">
+        <div class="pv-head"><span class="pv-num">02</span><h2>Типографика</h2><p>EdMoscow — заголовки и цифры · EdJura 600 — весь текст</p></div>
+        <div class="pv-stage pv-type">
+            <p class="pv-tag">H1 · EdMoscow 96 / 1.04 / −0.04em</p>
+            <div class="pv-h1">Питерский<br><span>промпт.</span></div>
+            <p class="pv-tag">H2 секции · EdMoscow 46.8 / 1.2</p>
+            <div class="pv-h2">Ключевые темы</div>
+            <p class="pv-tag">Лид · EdJura 21 / 1.55 · #CCC</p>
+            <p class="pv-lead">Как применять ИИ в бизнесе, управлении, маркетинге и продажах — без хайпа и волшебных кнопок.</p>
+            <p class="pv-tag">Тело · EdJura 16 / 1.65</p>
+            <p class="pv-body">Практическая конференция по ИИ. Санкт-Петербург и онлайн: кейсы, живые демонстрации и 40+ спикеров.</p>
+            <p class="pv-tag">Подпись · 13 / 1.65 · #AAA</p>
+            <p class="pv-muted">Темы и расписание дополняются. Полная программа появится позже.</p>
+            <p class="pv-tag">Цифра · EdMoscow 56 · зелёная</p>
+            <div class="pv-num-big">01</div>
+        </div>
+        <p class="pv-note"><b>Факт:</b> базовый <code>html</code> набран JetBrains Mono, но внутри <code>.edition</code> всё перекрыто EdJura 600. Russo One объявлен утилитой <code>.font-display</code> и на проверенных страницах не встречается.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="pv-sec" id="s3">
+        <div class="pv-head"><span class="pv-num">03</span><h2>Кнопки</h2><p>высота 47.5 · радиус 999 · hover — синяя заливка кругом снизу</p></div>
+        <div class="pv-stage">
+            <div class="pv-row">
+                <a class="ed-action" href="#s10">Выбрать билет</a>
+                <a class="ed-action ed-action--secondary" href="#s6">Посмотреть программу</a>
+                <a class="ed-header-ticket" href="#s10" style="width:auto">Билеты</a>
+                <a class="ed-nav-crab" href="#s13">Мини-игра</a>
+                <button class="ed-lineup-toggle" type="button">Все спикеры</button>
+            </div>
+            <p class="pv-note"><b>Из сайта:</b> <code>.ed-action</code> — <code>background: var(--ed-green)</code>, <code>color: #0a0a0a</code>, <code>min-height: 54px</code> (в теме — 47.5), паддинг <code>15px 27px</code>. Синяя пилюля «Мини-игра» (<code>.ed-nav-crab</code>) — только в мобильном меню, в шапке это текстовая кнопка. Наведите: <code>::before</code> с <code>clip-path: circle(0% at 50% 100%)</code> раскрывается в <code>circle(150%)</code> и заливает кнопку синим #00A1D5 за 0.55s. Вторичная — фон <code>#151515</code>, рамка <code>1px #737373</code>, на hover рамка становится зелёной.</p>
+        </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="pv-sec" id="s4">
+        <div class="pv-head"><span class="pv-num">04</span><h2>Формы и поля</h2><p>высота 56 · радиус 20 · рамка #737373 · фокус — зелёный</p></div>
+        <div class="pv-stage pv-stage--pad">
+            <div class="pv-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); max-width: 760px">
+                <label class="ed-field"><span>Имя и фамилия <i class="ed-field-required">*</i></span><input class="ed-input" id="pv-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться"></label>
+                <label class="ed-field"><span>E-mail <i class="ed-field-required">*</i></span><input class="ed-input" id="pv-email" name="email" type="email" autocomplete="email" placeholder="you@company.ru"></label>
+                <label class="ed-field"><span>Телефон <i class="ed-field-required">*</i></span><input class="ed-input" id="pv-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></label>
+                <label class="ed-field"><span>Сайт</span><input class="ed-input" id="pv-site" name="site" type="text" placeholder="example.ru"></label>
+                <label class="ed-field"><span>Бюджет <i class="ed-field-required">*</i></span>
+                    <select class="ed-input ed-partner-budget" id="pv-budget" name="budget">
+                        <option>Выберите бюджет</option>
+                        <option>До 200 000 ₽</option>
+                        <option>200 000–350 000 ₽</option>
+                        <option>350 000–700 000 ₽</option>
+                        <option>700 000–1 000 000 ₽</option>
+                        <option>Более 1 000 000 ₽</option>
+                        <option>Бартер / услуги</option>
+                    </select>
+                </label>
+            </div>
+            <label class="ed-consent" style="margin-top:18px; max-width:760px">
+                <input type="checkbox" id="pv-consent" name="consent" checked>
+                <span>Согласен с <a href="#s12" style="color:#1afe4c">политикой обработки данных</a> и <a href="#s12" style="color:#1afe4c">согласием на публикацию</a>. <i class="ed-field-required">*</i></span>
+            </label>
+            <div class="pv-row" style="margin-top:18px">
+                <button class="ed-submit" type="button">ОТПРАВИТЬ ЗАЯВКУ</button>
+                <span class="pv-note" style="margin:0">h-12 · radius full · font-black 12px</span>
+            </div>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> поля на /for-partners собраны Tailwind-классами: <code>h-14 rounded-[1.1rem] border border-white/12 bg-white/[0.035] px-4 placeholder:text-white/24 focus:border-neon/55 focus:ring-2 focus:ring-neon/15</code>. Форма обёрнута в <code>.ed-partner-form</code> с медленно вращающимся неоновым контуром (<code>conic-gradient</code> + <code>mask</code>, 18s).</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="pv-sec" id="s5">
+        <div class="pv-head"><span class="pv-num">05</span><h2>Шапка-пилюля и навигация</h2><p>fixed, top 24 · 1328×70 · радиус 26 · фон #101010</p></div>
+        <div class="pv-frame">
+            <header class="ed-header ed-header--pill">
+                <a class="ed-brand" href="#s6" aria-label="Питерский промпт"><img class="ed-brand-logo" src="assets/brand-logo.png" alt="Питерский промпт"></a>
+                <nav class="ed-top-nav" aria-label="Основная навигация">
+                    <a class="ed-nav-pill" href="#s6">Программа</a>
+                    <a class="ed-nav-pill" href="#s8">Спикеры</a>
+                    <a class="ed-nav-pill" href="#s10">Билеты</a>
+                    <a class="ed-nav-pill" href="#s11">Вопросы</a>
+                    <a class="ed-nav-pill" href="#s12">Место</a>
+                </nav>
+                <div class="ed-header-actions">
+                    <button class="ed-minigame-trigger" type="button" aria-haspopup="dialog">Мини-игра</button>
+                    <a class="ed-header-ticket" href="#s10">Билеты</a>
+                </div>
+            </header>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ed-header--pill</code> — <code>display:grid; grid-template-columns: auto 1fr auto; gap:24px; min-height:70px; padding:8px 10px 8px 18px; border:1px solid #303030; border-radius:26px; background:#101010</code>. Активный пункт — <code>background:#242424</code>. На hover пилюля становится зелёной, а из-под текста раскрывается круг <code>.ed-pill-circle</code> 142×142. ≤800px навигация уходит в выпадающую панель, рядом появляется переключатель «разрез логотипа» <code>.ms-toggle</code>.</p>
+        <div class="pv-row" style="margin-top:16px">
+            <button class="ms-toggle" type="button" aria-label="Меню">
+                <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3">
+                    <path class="ms-cut-upper" d="M4 9h22"></path>
+                    <path class="ms-cut-accent" d="M4 15h16"></path>
+                    <path class="ms-cut-lower" d="M4 21h11"></path>
+                </svg>
+            </button>
+            <span class="pv-note" style="margin:0">переключатель меню: три штриха, средний — зелёный (<code>.ms-cut-accent</code>)</span>
+        </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="pv-sec" id="s6">
+        <div class="pv-head"><span class="pv-num">06</span><h2>Герой</h2><p>min-height 100dvh · H1 58% ширины · дата-пилюля + факты</p></div>
+        <div class="pv-stage" style="padding:0; overflow:hidden">
+            <div class="ed-hero" style="min-height:0; padding:56px 36px 48px; border-bottom:0">
+                <div class="ed-hero-content">
+                    <div class="ed-event-line">
+                        <span class="ed-date-pill">6 декабря 2026</span>
+                        <span>Санкт-Петербург + онлайн</span>
+                    </div>
+                    <p class="pv-demo-h1" style="width:100%">Питерский<br><span>промпт.</span></p>
+                    <div class="ed-hero-lower">
+                        <p>Как применять ИИ в бизнесе, управлении, маркетинге и продажах — без хайпа и волшебных кнопок.</p>
+                    </div>
+                    <div class="ed-hero-actions">
+                        <a class="ed-action" href="#s10">Выбрать билет</a>
+                        <a class="ed-action ed-action--secondary" href="#s9">Посмотреть программу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pv-row" style="margin-top:18px">
+            <dl class="ed-hero-facts" style="margin:0">
+                <div><dt>участников</dt><dd>1500+</dd></div>
+                <div><dt>спикеров</dt><dd>40+</dd></div>
+                <div><dt>потока</dt><dd>4</dd></div>
+            </dl>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ed-hero h1</code> — <code>font-size: clamp(64px, 7.15vw, 96px); line-height: 1.04; letter-spacing: -.04em; width: 58%</code>; после <code>.edition</code> потолок 96px (в базовом правиле 102px). Лид — <code>.ed-hero-lower &gt; p</code> 21px/1.55 #CCC. Факты — <code>dt</code> 12px, <code>dd</code> EdMoscow 36px.</p>
+    </section>
+
+    <!-- 7 -->
+    <section class="pv-sec" id="s7">
+        <div class="pv-head"><span class="pv-num">07</span><h2>Лента тем</h2><p>сетка 12 колонок · пилюли 50px · узел 28px</p></div>
+        <div class="pv-stage">
+            <div class="ed-topic-ribbon">
+                <div class="ed-topic-head">
+                    <h2 class="ed-heading ed-topic-heading" style="font-size:34px">Ключевые темы</h2>
+                    <p class="pv-muted" style="margin:0">Можно прийти с первым промптом или с опытом внедрения — трек найдётся для каждого.</p>
+                </div>
+                <div class="ed-topic-cloud">
+                    <span class="ed-topic-pill"><span class="ed-topic-pill-label">ИИ-агенты</span><span class="ed-topic-node"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="5.5"></circle><path d="M7 3.4v7.2M3.4 7h7.2"></path></svg></span></span>
+                    <span class="ed-topic-pill"><span class="ed-topic-pill-label">Маркетинг и продажи</span><span class="ed-topic-node"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="2" width="10" height="10" rx="1"></rect><path d="M2 7h10M7 2v10"></path></svg></span></span>
+                    <span class="ed-topic-pill"><span class="ed-topic-pill-label">Бизнес и управление</span><span class="ed-topic-node"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 11V5l5-3 5 3v6z"></path><path d="M5.5 11V8h3v3"></path></svg></span></span>
+                    <span class="ed-topic-pill"><span class="ed-topic-pill-label">Контент и креатив</span><span class="ed-topic-node"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 10.5 6 3l3 5 3-4"></path></svg></span></span>
+                    <span class="ed-topic-pill"><span class="ed-topic-pill-label">Данные</span><span class="ed-topic-node"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="7" cy="4" rx="5" ry="2"></ellipse><path d="M2 4v6c0 1.1 2.2 2 5 2s5-.9 5-2V4"></path></svg></span></span>
+                    <span class="ed-topic-pill"><span class="ed-topic-pill-label">Помощники</span><span class="ed-topic-node"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="7" cy="7" r="5.2"></circle><path d="M4.6 7.2 6.2 9l3.3-3.6"></path></svg></span></span>
+                </div>
+            </div>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ed-topic-ribbon</code> — <code>grid-template-columns: repeat(12, minmax(0,1fr))</code>, голова темы на 4 колонки (380px), облако на 8. Пилюля — <code>linear-gradient(115deg,#151515,#121212)</code>, рамка <code>1px #3a3a3a</code>, <code>min-height:50px</code>, паддинг <code>0 11px 0 20px</code>, gap 14. На hover — зелёная рамка и <code>box-shadow: 0 0 0 1px #1afe4c20</code>; на сайте пилюли ещё «дрожат» анимацией <code>ed-topic-fidget</code> 7.2s.</p>
+    </section>
+
+    <!-- 8 -->
+    <section class="pv-sec" id="s8">
+        <div class="pv-head"><span class="pv-num">08</span><h2>Карточка спикера</h2><p>4 колонки · фото 3:4 · радиус 24 · имя 24/700</p></div>
+        <div class="pv-stage">
+            <div class="ed-lineup-grid">
+                <article class="ed-lineup-speaker">
+                    <div class="ed-lineup-photo pv-portrait"><span class="pv-portrait__tag">фото → заглушка</span><span class="pv-portrait__initials">ТУ</span></div>
+                    <div class="ed-lineup-caption"><h3>Тимур Угулава</h3><p>Совладелец «Медиасферы», эксперт Яндекса по обучению</p></div>
+                </article>
+                <article class="ed-lineup-speaker">
+                    <div class="ed-lineup-photo pv-portrait"><span class="pv-portrait__tag">фото → заглушка</span><span class="pv-portrait__initials">АШ</span></div>
+                    <div class="ed-lineup-caption"><h3>Александр Штерн</h3><p>Директор по продукту, практик ИИ-автоматизации</p></div>
+                </article>
+                <article class="ed-lineup-speaker">
+                    <div class="ed-lineup-photo pv-portrait"><span class="pv-portrait__tag">фото → заглушка</span><span class="pv-portrait__initials">НЗ</span></div>
+                    <div class="ed-lineup-caption"><h3>Натэла Зубченко</h3><p>Маркетинг и коммуникации, запуск продуктов на ИИ</p></div>
+                </article>
+                <article class="ed-lineup-speaker" aria-label="Список спикеров дополняется">
+                    <div class="ed-lineup-photo" style="display:grid;place-items:center;background:#101010;border:1px dashed #303030">
+                        <span style="font-family:'EdMoscow',sans-serif;font-size:40px;color:#303030">+</span>
+                    </div>
+                    <div class="ed-lineup-caption"><h3 style="font-size:18px;color:#aaa">Список дополняется</h3><p>40+ спикеров, 4 потока</p></div>
+                </article>
+            </div>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ed-lineup-grid</code> — <code>grid-template-columns: repeat(4,1fr); gap:24px</code> (на сайте 4×314px). <code>.ed-lineup-photo</code> — <code>aspect-ratio 3/4; border-radius:24px; background:#151915; overflow:hidden</code>. Подпись: <code>padding:20px 0 0</code>, имя <code>24px/700</code>, роль <code>14px/600 #aaa</code> с отступом 10px. На фото — только реальные портреты с сайта; здесь стоят заглушки.</p>
+    </section>
+
+    <!-- 9 -->
+    <section class="pv-sec" id="s9">
+        <div class="pv-head"><span class="pv-num">09</span><h2>Консоль программы</h2><p>две колонки 0.85fr / 1.15fr · экран #161616 · радиус 28</p></div>
+        <div class="pv-stage">
+            <div class="ps-console">
+                <div class="ps-console-index" role="tablist" aria-label="Потоки">
+                    <button class="ps-console-choice" type="button" aria-pressed="true">
+                        <span class="ps-choice-number">01</span>
+                        <span class="ps-choice-label"><strong>Маркетинг и продажи</strong><small>Контент и клиенты</small></span>
+                        <span></span>
+                    </button>
+                    <button class="ps-console-choice" type="button" aria-pressed="false">
+                        <span class="ps-choice-number">02</span>
+                        <span class="ps-choice-label"><strong>Бизнес и управление</strong><small>Процессы и команда</small></span>
+                        <span></span>
+                    </button>
+                    <button class="ps-console-choice" type="button" aria-pressed="false">
+                        <span class="ps-choice-number">03</span>
+                        <span class="ps-choice-label"><strong>Контент и креатив</strong><small>Видео, тексты, дизайн</small></span>
+                        <span></span>
+                    </button>
+                    <button class="ps-console-choice" type="button" aria-pressed="false">
+                        <span class="ps-choice-number">04</span>
+                        <span class="ps-choice-label"><strong>Практикумы</strong><small>С собой ноутбук</small></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div class="ps-console-stage">
+                    <div class="ps-console-feature">
+                        <div>
+                            <div class="ps-console-number">01</div>
+                            <div class="ps-console-heading">От идеи до рекламной кампании</div>
+                            <p class="ps-body">Как поручить нейросетям часть работы с контентом и клиентами и не потерять качество.</p>
+                        </div>
+                        <div class="ed-particle-icon" aria-hidden="true" style="width:120px;height:120px">
+                            <svg viewBox="0 0 120 120" width="120" height="120" fill="none" stroke="#1afe4c" stroke-width="2" shape-rendering="crispEdges" aria-hidden="true">
+                                <path d="M20 24h16v8h8v8h8v8h8v8h8v8H52v8h8v8H44v-8H36V64h-8v8h-4v-4H20z"></path>
+                                <path d="M28 40h8v8h-8zM44 56h8v8h-8z" fill="#1afe4c" stroke="none"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="ps-topics">
+                        <span>— Анализ аудитории и рекламных данных</span>
+                        <span>— Тексты, креативы и сценарии</span>
+                        <span>— Автоматизация отчётов</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ps-console-stage</code> — <code>background: var(--ed-surface); border-radius:28px; padding:34px; display:flex; justify-content:space-between; gap:30px</code>. Активный пункт <code>.ps-console-choice[aria-pressed="true"]</code> — зелёная заливка, номер красится в <code>#154720</code>. Число 01 — EdMoscow 56px.</p>
+    </section>
+
+    <!-- 10 -->
+    <section class="pv-sec" id="s10">
+        <div class="pv-head"><span class="pv-num">10</span><h2>Билеты</h2><p>сегмент формата · карточки #161616 · блок покупки радиус 30</p></div>
+        <div class="pv-stage">
+            <div class="pv-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+                <div>
+                    <div class="ed-format" role="tablist" aria-label="Формат">
+                        <button type="button" aria-pressed="true"><span class="ed-format-active"></span><span class="pv-tab">В Санкт-Петербурге</span></button>
+                        <button type="button" aria-pressed="false"><span class="pv-tab">Онлайн</span></button>
+                        <button type="button" aria-pressed="false"><span class="pv-tab">Спецкатегории</span></button>
+                    </div>
+                    <div class="ed-package-list">
+                        <button class="ed-package" type="button" aria-pressed="true"><span class="ed-radio"></span><span>Офлайн</span><b>13 900 ₽</b></button>
+                        <button class="ed-package" type="button" aria-pressed="false"><span class="ed-radio"></span><span>С кофе-брейком</span><b>15 700 ₽</b></button>
+                        <button class="ed-package" type="button" aria-pressed="false"><span class="ed-radio"></span><span>С обедом</span><b>16 400 ₽</b></button>
+                        <button class="ed-package" type="button" aria-pressed="false"><span class="ed-radio"></span><span>С архивом 2025</span><b>23 800 ₽</b></button>
+                    </div>
+                </div>
+                <div class="ed-ticket-purchase">
+                    <div style="font-family:'EdMoscow',sans-serif;font-size:28px;line-height:1.2">Корпус НИУ ВШЭ</div>
+                    <p class="pv-muted" style="margin:10px 0 20px;font-size:13px">В каждый билет входят записи, презентации и доступ к чату участников.</p>
+                    <div class="ed-payment-method" role="tablist" aria-label="Оплата">
+                        <button type="button" aria-pressed="true">Полная оплата</button>
+                        <button type="button" aria-pressed="false">Рассрочка</button>
+                    </div>
+                    <a class="ed-action" href="#s12" style="width:100%">Купить офлайн билет</a>
+                    <p class="pv-note" style="margin-top:14px">Оплата через Nethouse.События.</p>
+                </div>
+            </div>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ed-format</code> — <code>background:#161616; border-radius:20px; padding:6px; gap:4px</code>, активный сегмент <code>#383838</code> с радиусом 15. Карточка билета — <code>background:#161616; border:1px solid transparent; border-radius:20px; padding:22px</code>, выбранная — <code>border-color:#1afe4c</code>, радио 18×18 с заливкой 5px. Панель покупки — <code>#161616; border-radius:30px; padding:34px</code>.</p>
+    </section>
+
+    <!-- 11 -->
+    <section class="pv-sec" id="s11">
+        <div class="pv-head"><span class="pv-num">11</span><h2>FAQ</h2><p>панель #161616 · радиус 20 · строка 76px · ответ 13/1.7</p></div>
+        <div class="pv-stage">
+            <div class="ed-faq-layout" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px 24px">
+                <div>
+                    <details class="ed-faq-item" open>
+                        <summary>
+                            <h3>Подойдёт ли мне конференция без опыта в ИИ?</h3>
+                            <svg width="23" height="23" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" aria-hidden="true"><path d="M128 40v176M40 128h176"></path></svg>
+                        </summary>
+                        <p>Да. Первый поток собирает базовые сценарии: с чего начать, какие инструменты не требуют подготовки и как проверить результат.</p>
+                    </details>
+                    <details class="ed-faq-item">
+                        <summary>
+                            <h3>Будут ли записи и презентации?</h3>
+                            <svg width="23" height="23" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" aria-hidden="true"><path d="M128 40v176M40 128h176"></path></svg>
+                        </summary>
+                        <p>Да, записи всех докладов и презентации спикеров входят в билет.</p>
+                    </details>
+                    <details class="ed-faq-item">
+                        <summary>
+                            <h3>Можно ли оплатить от компании?</h3>
+                            <svg width="23" height="23" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" aria-hidden="true"><path d="M128 40v176M40 128h176"></path></svg>
+                        </summary>
+                        <p>Да, по счёту. Напишите на info@spbprompt.ru — пришлём документы.</p>
+                    </details>
+                </div>
+                <div>
+                    <details class="ed-faq-item">
+                        <summary>
+                            <h3>Есть ли оплата частями?</h3>
+                            <svg width="23" height="23" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" aria-hidden="true"><path d="M128 40v176M40 128h176"></path></svg>
+                        </summary>
+                        <p>Да, рассрочка на 4 платежа без процентов.</p>
+                    </details>
+                    <details class="ed-faq-item">
+                        <summary>
+                            <h3>Как получить доступ к трансляции?</h3>
+                            <svg width="23" height="23" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" aria-hidden="true"><path d="M128 40v176M40 128h176"></path></svg>
+                        </summary>
+                        <p>Ссылка приходит на почту за день до конференции и в день события.</p>
+                    </details>
+                    <p class="pv-note" style="margin-top:18px">Не нашли ответ? <a href="#s12" style="color:#1afe4c">Напишите организаторам</a>.</p>
+                </div>
+            </div>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ed-faq-item { background:#161616; border-radius:20px; padding:0 24px; overflow:hidden }</code>; кнопка вопроса — <code>min-height:76px</code>, шрифт 15/600, ответ — <code>13px/1.7 #aaa</code>, <code>max-width:490px</code>. Плюс поворачивается на 45° при раскрытии.</p>
+    </section>
+
+    <!-- 12 -->
+    <section class="pv-sec" id="s12">
+        <div class="pv-head"><span class="pv-num">12</span><h2>Финал и футер</h2><p>«Увидимся» — зелёная кисть-маска · футер на линии #303030</p></div>
+        <div class="pv-stage" style="padding:0 0 0; overflow:hidden">
+            <div class="ch-invitation" style="padding:28px 28px 0">
+                <time class="ch-date">06.12.2026</time>
+                <h2 class="ch-heading" style="display:none">Увидимся на «Промпте»</h2>
+                <span class="ch-word" style="height:150px"><span class="ch-lettering" role="img" aria-label="Увидимся на «Промпте»"></span></span>
+                <span class="ch-name">Питерский промпт</span>
+                <p class="ch-format">в Петербурге и онлайн</p>
+                <div class="ch-actions">
+                    <a class="ed-action ed-action--secondary" href="#s6">Программа</a>
+                    <a class="ed-action" href="#s10">Билеты</a>
+                </div>
+            </div>
+            <footer class="ed-site-footer" style="margin-top:36px; padding:0 28px 28px">
+                <div class="ed-site-footer-main" style="padding-block:28px 24px">
+                    <div><img src="assets/brand-logo.png" alt="Питерский промпт" style="width:130px;height:auto;display:block"></div>
+                    <nav class="ed-site-footer-nav" aria-label="Разделы сайта">
+                        <a href="#s6">О конференции</a><a href="#s9">Программа</a><a href="#s8">Спикеры</a>
+                        <a href="#s10">Билеты</a><a href="#s11">Вопросы</a><a href="#s12">Место</a>
+                        <a href="#s12">Помощь</a><a href="#s5">Партнёрам</a><a href="#s13">Мини-игра</a>
+                    </nav>
+                    <div class="ed-site-footer-contacts" style="display:grid;gap:2px;justify-items:end;justify-self:end;text-align:right;color:#aaa;font-size:13px">
+                        <a href="#s12" style="color:#f7f7f7">info@spbprompt.ru</a>
+                        <span>+7 901 417-76-05</span>
+                        <span style="margin-top:8px">Telegram · VK · MAX</span>
+                    </div>
+                </div>
+                <div class="ed-site-footer-legal">
+                    <span>© Ивентология. 2026. Все права защищены.</span>
+                    <div class="ed-site-footer-documents">
+                        <a href="#s12">Политика обработки данных</a>
+                        <a href="#s12">Оферта на билеты</a>
+                        <a href="#s12">Оферта на записи</a>
+                        <a href="#s12">Согласие на публикацию</a>
+                        <a href="#s12">Правила возврата</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <p class="pv-note"><b>Из сайта:</b> <code>.ch-lettering</code> — не текст, а зелёный блок <code>background: var(--ed-green)</code> с <code>mask: url(/edition/closing-brush-invitation.png) 50%/100% 100%</code> (PNG 2123×654). Дата — EdMoscow 52px зелёная, подпись — <code>clamp(30px,3.3vw,48px)/700</code>. Футер: <code>border-top:1px solid #303030; margin-top:80px; padding-bottom:48px</code>, навигация 14px в 3×3, документы 13px #AAA.</p>
+    </section>
+
+    <!-- 13 -->
+    <section class="pv-sec" id="s13">
+        <div class="pv-head"><span class="pv-num">13</span><h2>Курсор, переключатель, пиксель</h2><p>курсор — SVG 32×32 · рука — 34×34</p></div>
+        <div class="pv-stage">
+            <div class="pv-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+                <div class="pv-cursor-box">наведите — курсор-стрелка</div>
+                <div class="pv-cursor-box pv-cursor-box--hand">наведите — пиксельная рука</div>
+                <div class="pv-cursor-box" style="cursor:auto">
+                    <span class="pv-cut" aria-hidden="true"><i></i><i></i><i></i></span>
+                </div>
+            </div>
+            <p class="pv-note"><b>Из сайта:</b> курсоры объявлены в <code>:root</code> как <code>--pixel-cursor</code> и <code>--pixel-hand</code> — SVG в <code>data:image/svg+xml</code>, <code>shape-rendering="crispEdges"</code>, три слоя: чёрный контур, белая заливка, два зелёных пикселя. Привязка: <code>4 3</code> у стрелки, <code>12 2</code> у руки. Курсор ставится на <code>html</code>, рука — на <code>a</code>, <code>button</code>, <code>summary</code>.</p>
+        </div>
+    </section>
+
+    <p class="pv-note" style="margin-top:56px;border-top:1px solid #1f1f1f;padding-top:20px">
+        Витрина использует только локальные файлы: <code>tokens.css</code>, шрифты в <code>fonts/</code>, логотип и PNG-маску в <code>assets/</code>.
+        Полный гайд — <code>DESIGN.md</code> рядом. Значения сняты 10/11/2026 с живого Next.js-сайта spbprompt.ru.
+    </p>
+
+</div>
+
+<script>
+/* Живые демо: переключение потоков, форматов и оплаты — как на сайте (aria-pressed). */
+document.querySelectorAll('.ps-console-index').forEach(function (list) {
+    list.addEventListener('click', function (e) {
+        var btn = e.target.closest('.ps-console-choice');
+        if (!btn) return;
+        list.querySelectorAll('.ps-console-choice').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b === btn));
+        });
+        var num = btn.querySelector('.ps-choice-number').textContent;
+        var stage = list.parentElement.querySelector('.ps-console-number');
+        if (stage) stage.textContent = num;
+    });
+});
+
+document.querySelectorAll('.ed-format').forEach(function (seg) {
+    seg.addEventListener('click', function (e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        seg.querySelectorAll(':scope > button').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b === btn));
+            var old = b.querySelector('.ed-format-active');
+            if (old && b !== btn) old.remove();
+        });
+        if (!btn.querySelector('.ed-format-active')) {
+            var span = document.createElement('span');
+            span.className = 'ed-format-active';
+            btn.prepend(span);
+        }
+    });
+});
+
+document.querySelectorAll('.ed-package-list').forEach(function (list) {
+    list.addEventListener('click', function (e) {
+        var btn = e.target.closest('.ed-package');
+        if (!btn) return;
+        list.querySelectorAll('.ed-package').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b === btn));
+        });
+    });
+});
+
+document.querySelectorAll('.ed-payment-method').forEach(function (seg) {
+    seg.addEventListener('click', function (e) {
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        seg.querySelectorAll('button').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b === btn));
+        });
+    });
+});
+</script>
+</body>
+</html>

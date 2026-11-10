@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Дизайн-система — whiteconf.ru («Белая конфа»)</title>
+<meta name="description" content="Дизайн-система whiteconf.ru: палитра, типографика CA Saygon и Montserrat, кнопки с рамкой 4px, формы, навигация, сетка, карточки спикеров, тарифы, корзина и токены.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0026FC">
+<link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/whiteconf-ru/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Каталог дизайн-систем">
+<meta property="og:title" content="Дизайн-система whiteconf.ru — визуальный гайд">
+<meta property="og:description" content="Палитра, типографика, кнопки, формы, сетка, карточки спикеров и тарифы whiteconf.ru.">
+<meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/whiteconf-ru/">
+<meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/whiteconf-ru/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Дизайн-система whiteconf.ru">
+<meta name="twitter:description" content="Палитра, типографика, компоненты и токены whiteconf.ru.">
+<meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/whiteconf-ru/og.png">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="../assets/favicon-192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="../assets/favicon-96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="../assets/favicon-48.png" sizes="48x48">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="../assets/dsbar.css">
+<style>
+    /* --- каркас витрины (не часть системы, только для показа) --- */
+    html { scroll-behavior: smooth; }
+    body { background: #fff; color: var(--wc-ink); }
+
+    .pv-wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    .pv-sec { padding: 52px 0 44px; border-top: 1px solid rgba(29,29,31,.12); scroll-margin-top: 24px; }
+    .pv-sec:first-of-type { border-top: 0; }
+    .pv-label {
+        font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+        color: #8a8a8f; font-weight: 700; margin-bottom: 8px;
+    }
+    .pv-h { font-family: var(--wc-font-display); font-size: 34px; line-height: 1.1; margin: 0 0 10px; }
+    .pv-note { font-size: 13px; line-height: 1.5; color: #6f6f76; margin: 0 0 22px; max-width: 780px; }
+    .pv-note code, .pv-meta code, .pv-table code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--wc-blue); }
+    .pv-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start; }
+    .pv-col { flex: 1 1 300px; min-width: 240px; }
+    .pv-dark { background: var(--wc-ink); color: #fff; padding: 30px; }
+    .pv-dark .pv-label { color: rgba(255,255,255,.55); }
+    .pv-scroll { overflow-x: auto; padding-bottom: 6px; }
+    .pv-hr { height: 1px; background: rgba(29,29,31,.12); margin: 26px 0; border: 0; }
+
+    /* 1. палитра */
+    .pv-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .pv-swatch { border: 1px solid rgba(29,29,31,.12); }
+    .pv-swatch__box { height: 78px; }
+    .pv-swatch__body { padding: 9px 11px 11px; }
+    .pv-swatch__name { font-size: 12px; font-weight: 700; }
+    .pv-swatch__hex { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; color: var(--wc-blue); }
+    .pv-swatch__use { font-size: 11px; line-height: 1.35; color: #74747b; margin-top: 4px; }
+
+    /* 2. типографика */
+    .pv-type { padding: 14px 0; border-bottom: 1px solid rgba(29,29,31,.1); }
+    .pv-type:last-child { border-bottom: 0; }
+    .pv-type__sample { margin-bottom: 6px; overflow-wrap: anywhere; }
+    .pv-type__meta { font-size: 11px; color: #7a7a80; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+    /* 3. кнопки */
+    .pv-btns { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .pv-btns .btn { min-width: 220px; }
+
+    /* 4. формы */
+    .pv-formbox { border: 1px solid rgba(29,29,31,.14); padding: 26px; }
+    .pv-formbox .inp-partner + .inp-partner { margin-top: 12px; }
+    .pv-formbox .pop_part_new { max-width: 420px; margin: 0 auto; }
+
+    /* 6. навигация */
+    .pv-header-demo { background: var(--wc-ink); }
+    .pv-header-demo .header { position: relative; background: var(--wc-ink); padding: 16px 0; }
+    .pv-header-demo .header .container { padding: 0 20px; }
+    .pv-header-demo .nav-link { font-size: 13px; margin: 0 9px; }
+    .pv-header-demo .nav-link-btn { padding: 15px 18px; }
+    .pv-header-demo .header-contacts__tel { font-size: 16px; }
+    .pv-header-demo .header-contacts__email { font-size: 13px; }
+    .pv-footer-demo .footer-top { position: relative; }
+    .pv-footer-demo .arr-top { position: absolute; }
+    .pv-footer-demo .soc_box a svg { width: 30px; height: 30px; }
+
+    /* 7. сетка */
+    .pv-grid-demo { border: 1px dashed rgba(0,38,252,.5); padding: 14px; }
+    .pv-grid-demo__inner { background: rgba(0,38,252,.08); padding: 14px; font-size: 12px; color: var(--wc-blue); }
+    .pv-radii { display: flex; flex-wrap: wrap; gap: 18px; }
+    .pv-radius { width: 96px; text-align: center; }
+    .pv-radius i { display: block; height: 86px; background: var(--wc-blue); margin-bottom: 6px; }
+    .pv-radius b { display: block; font-size: 12px; }
+    .pv-radius span { font-size: 11px; color: #7a7a80; }
+    .pv-shadows { display: flex; flex-wrap: wrap; gap: 22px; }
+    .pv-shadow { width: 150px; height: 86px; background: #fff; border: 1px solid rgba(29,29,31,.12); display: flex; align-items: center; justify-content: center; font-size: 11px; text-align: center; padding: 8px; }
+    .pv-rhythm { display: flex; flex-direction: column; gap: 6px; }
+    .pv-rhythm div { background: var(--wc-blue); color: #fff; font-size: 11px; padding: 4px 10px; }
+
+    /* 8. изображения */
+    .pv-media { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-start; }
+    .pv-media .spiker { width: 260px; padding: 0; color: var(--wc-ink); }
+    .pv-media .spiker__name { color: var(--wc-ink); }
+    .pv-media .spiker__txt { color: #5f5f66; }
+    .pv-no-duo .spiker__img::after { opacity: 0; }
+    .pv-logo-box { background: var(--wc-ink); padding: 26px; display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+
+    /* 9. контраст */
+    .pv-contrast { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+    .pv-contrast div { padding: 12px 14px; font-size: 13px; font-weight: 700; border: 1px solid rgba(29,29,31,.12); }
+    .pv-contrast small { display: block; font-size: 11px; font-weight: 400; opacity: .8; margin-top: 4px; }
+
+    /* 10. код */
+    .pv-code { background: #0f0f12; color: #e7e7ea; padding: 20px 22px; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.6; }
+    .pv-code b { color: #7fa0ff; font-weight: 400; }
+
+    /* 11. компоненты */
+    .pv-demo-box { border: 1px solid rgba(29,29,31,.14); padding: 22px; }
+    .pv-demo-box--dark { background: var(--wc-ink); border-color: var(--wc-ink); }
+    .pv-cart-stage { position: relative; }
+    .pv-cart-stage #cart_widget { position: static; }
+    .pv-cart-stage #cart_drawer { position: static; transform: none; width: 420px; max-width: 100%; height: auto; box-shadow: none; }
+    .pv-cookie-stage #cookie_alert { position: relative; left: auto; right: auto; bottom: auto; width: 100%; max-width: 750px; height: auto; min-height: 70px; margin: 0; }
+
+    /* 12. каталог */
+    .pv-cat { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+    .pv-cat article { border-left: 3px solid var(--wc-blue); padding: 4px 0 4px 14px; }
+    .pv-cat h4 { font-size: 15px; margin: 0 0 6px; }
+    .pv-cat p { font-size: 12px; line-height: 1.5; color: #6f6f76; }
+
+    @media (max-width: 767px) {
+        .pv-sec { padding: 38px 0 32px; scroll-margin-top: 24px; }
+        .pv-h { font-size: 26px; }
+        .pv-btns .btn { min-width: 0; width: 100%; }
+        .pv-formbox { padding: 16px; }
+    }
+
+    /* --- шапка гайда каталога --- */
+    .pv-intro { padding: 54px 0 10px; }
+    .pv-eyebrow {
+        display: flex; align-items: center; gap: 10px;
+        margin: 0 0 16px; font-size: 11px; font-weight: 700;
+        letter-spacing: .16em; text-transform: uppercase; color: #8a8a8f;
+    }
+    .pv-eyebrow i { display: block; width: 28px; height: 3px; background: var(--wc-blue); }
+    .pv-intro h1 {
+        margin: 0 0 18px; font-family: var(--wc-font-display); font-weight: 700;
+        font-size: clamp(36px, 6vw, 68px); line-height: 1; letter-spacing: -.02em;
+    }
+    .pv-intro__lead {
+        margin: 0 0 14px; max-width: 800px;
+        font-size: 18px; line-height: 1.55; color: #5f5f66;
+    }
+    .pv-intro__links { margin: 0; font-size: 13px; line-height: 1.6; color: #6f6f76; }
+    .pv-intro__links a { color: var(--wc-blue); border-bottom: 1px solid var(--wc-blue); }
+    .pv-intro__links a:hover { border-bottom-color: transparent; }
+    .pv-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 4px; padding: 0; }
+    .pv-toc a {
+        display: inline-block; padding: 7px 14px; border: 1px solid rgba(29,29,31,.16);
+        border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: .08em;
+        text-transform: uppercase; text-decoration: none; color: var(--wc-ink);
+        transition: background .2s, color .2s, border-color .2s;
+    }
+    .pv-toc a:hover, .pv-toc a:focus-visible {
+        background: var(--wc-blue); border-color: var(--wc-blue); color: #fff; outline: none;
+    }
+    @media (max-width: 767px) {
+        .pv-intro { padding: 34px 0 8px; }
+        .pv-intro__lead { font-size: 16px; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="dsbar" aria-label="Каталог дизайн-систем">
+    <div class="dsbar__in">
+        <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
+        <span class="dsbar__meta">aaateh.github.io/eventologia-design-systems</span>
+    </div>
+</nav>
+
+<section class="pv-intro">
+    <div class="pv-wrap">
+        <p class="pv-eyebrow"><i aria-hidden="true"></i>Дизайн-система · конференция whiteconf.ru</p>
+        <h1>Whiteconf.ru</h1>
+        <p class="pv-intro__lead">«Белая конфа»: синий акцент #0026FC, CA Saygon в заголовках и Montserrat в тексте, заголовки без капса, кнопки прямоугольные с рамкой 4px. 12 разделов — от палитры и токенов до карточек спикеров, тарифов и корзины.</p>
+        <p class="pv-intro__links">Полный текст гайда — <a href="DESIGN.md">DESIGN.md</a>, переменные и компоненты — <a href="tokens.css">tokens.css</a>.</p>
+        <nav class="pv-toc" aria-label="Разделы гайда">
+            <a href="#s1">01 Палитра</a>
+            <a href="#s2">02 Типографика</a>
+            <a href="#s3">03 Кнопки</a>
+            <a href="#s4">04 Формы</a>
+            <a href="#s5">05 Вход</a>
+            <a href="#s6">06 Навигация</a>
+            <a href="#s7">07 Сетка</a>
+            <a href="#s8">08 Иконки</a>
+            <a href="#s9">09 Адаптив</a>
+            <a href="#s10">10 Токены</a>
+            <a href="#s11">11 Компоненты</a>
+            <a href="#s12">12 Блоки</a>
+        </nav>
+    </div>
+</section>
+
+<main>
+
+<!-- 1 -->
+<section class="pv-sec" id="s1">
+    <div class="pv-wrap">
+        <h2 class="pv-h">1. Палитра</h2>
+        <p class="pv-note">Синий <code>#0026FC</code> — акцент всего сайта; в <code>program.css</code> и новых компонентах используется <code>#0021FF</code>. Тёмный фон — <code>#1D1D1F</code>, фон тёмных попапов — <code>#090316</code>.</p>
+
+        <div class="pv-swatches">
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#0026FC"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Основной синий</div>
+                    <div class="pv-swatch__hex">#0026FC</div>
+                    <div class="pv-swatch__use">кнопки, ссылки, рамки тарифов, заголовки</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#0023E8"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Hover синего</div>
+                    <div class="pv-swatch__hex">#0023E8</div>
+                    <div class="pv-swatch__use">hover кнопок и кругов</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#0021FF"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Синий программы</div>
+                    <div class="pv-swatch__hex">#0021FF</div>
+                    <div class="pv-swatch__use">шапки дней, корзина, тёмный попап</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#1D1D1F"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Тёмный</div>
+                    <div class="pv-swatch__hex">#1D1D1F</div>
+                    <div class="pv-swatch__use">шапка, hero, блок спикеров</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#090316"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Тёмный попап</div>
+                    <div class="pv-swatch__hex">#090316</div>
+                    <div class="pv-swatch__use">покупка доклада, корзина</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#F2F2F2"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Светло-серый</div>
+                    <div class="pv-swatch__hex">#F2F2F2</div>
+                    <div class="pv-swatch__use">общая строка программы, вкладки</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#DDDDDD"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Рамка ячеек</div>
+                    <div class="pv-swatch__hex">#DDDDDD</div>
+                    <div class="pv-swatch__use">таблица программы</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#C4C4C4"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Рамка поля</div>
+                    <div class="pv-swatch__hex">#C4C4C4</div>
+                    <div class="pv-swatch__use">светлые формы</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#FC0000"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Ошибка</div>
+                    <div class="pv-swatch__hex">#FC0000</div>
+                    <div class="pv-swatch__use">рамка и подпись ошибки</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#FF2D2D"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Ошибка в попапе</div>
+                    <div class="pv-swatch__hex">#FF2D2D</div>
+                    <div class="pv-swatch__use">текст ошибки, счётчик корзины</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#E02424"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Бейдж «выгода»</div>
+                    <div class="pv-swatch__hex">#E02424</div>
+                    <div class="pv-swatch__use">кнопка «Все доклады» в корзине</div>
+                </div>
+            </div>
+            <div class="pv-swatch">
+                <div class="pv-swatch__box" style="background:#F01A24"></div>
+                <div class="pv-swatch__body">
+                    <div class="pv-swatch__name">Легаси-красный</div>
+                    <div class="pv-swatch__hex">#F01A24</div>
+                    <div class="pv-swatch__use">cookie-плашка (не тиражировать)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2 -->
+<section class="pv-sec" id="s2">
+    <div class="pv-wrap">
+        <h2 class="pv-h">2. Типографика</h2>
+        <p class="pv-note">Две гарнитуры: <b>CA Saygon</b> — заголовки, кнопки, имена; <b>Montserrat</b> — текст и интерфейс. База 16px, высота строки задаётся в каждом блоке (1.25–1.5).</p>
+
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-family:var(--wc-font-display);font-weight:700;font-size:84px;line-height:.9">белая конфа</div>
+            <div class="pv-type__meta">hero · CA Saygon 700 · 84px / 0.9 · .main-screen__title</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-family:var(--wc-font-display);font-weight:700;font-size:84px;line-height:.9;color:transparent;-webkit-text-stroke:1px #1D1D1F">Санкт-Петербург</div>
+            <div class="pv-type__meta">вторая строка hero · 87.3px · прозрачная заливка + обводка 1px</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-family:var(--wc-font-display);font-weight:700;font-size:75px;line-height:1;color:var(--wc-blue)">Купить записи форума</div>
+            <div class="pv-type__meta">заголовок секции · CA Saygon 700 · 75px / 1 · .tickets-block .title</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-family:var(--wc-font-display);font-weight:700;font-size:48px;line-height:1.149">Организаторы</div>
+            <div class="pv-type__meta">CA Saygon 700 · 48px / 1.149 · .creators-block .title</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-family:var(--wc-font-display);font-weight:700;font-size:42px;line-height:1">Программа конференции</div>
+            <div class="pv-type__meta">CA Saygon 700 · 42px / 1 · .program-page__title</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-weight:400;font-size:24px;line-height:1.345">Конференция про онлайн-образование без обмана и манипуляций</div>
+            <div class="pv-type__meta">подзаголовок hero · Montserrat 400 · 24px / 1.345</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-weight:300;font-size:18px;line-height:1.5;max-width:720px">«Белая конфа» — конференция про онлайн-образование: два дня, шесть параллельных потоков и спикеры, которые делятся реальными кейсами, а не продающими презентациями.</div>
+            <div class="pv-type__meta">основной текст · Montserrat 300 · 18px / 1.5</div>
+        </div>
+        <div class="pv-type">
+            <div class="pv-type__sample" style="font-weight:400;font-size:16px;line-height:1.5">Базовый текст интерфейса — 16px, Montserrat 400. Внутри блоков высота строки всегда задаётся вручную.</div>
+            <div class="pv-type__meta">body · Montserrat 400 · 16px · line-height: 1</div>
+        </div>
+    </div>
+</section>
+
+<!-- 3 -->
+<section class="pv-sec" id="s3">
+    <div class="pv-wrap">
+        <h2 class="pv-h">3. Кнопки</h2>
+        <p class="pv-note">Прямоугольные, рамка 4px, текст 18px CA Saygon. Главный приём: заливка → hover темнее и <code>scale(1.03)</code>.</p>
+
+        <div class="pv-btns">
+            <button class="btn btn_blue">Купить все записи</button>
+            <button class="btn btn_blue2-transparent">Купить за 1900 ₽</button>
+            <button class="btn btn_blue-transparent">Смотреть доклады</button>
+            <button class="btn btn_tr_gray">Недоступно</button>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-dark">
+            <div class="pv-label" style="margin-bottom:16px">На тёмном фоне</div>
+            <div class="pv-btns">
+                <button class="btn btn_blue">Купить все записи</button>
+                <button class="btn btn_white">Программа</button>
+                <button class="btn btn_white-transparent">Стать спикером</button>
+                <button class="btn btn_blue-transparent-white">Купить доклад</button>
+            </div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-row">
+            <div class="pv-col">
+                <div class="pv-label">Кнопка в hero — 60px</div>
+                <div style="display:flex;gap:20px;flex-wrap:wrap">
+                    <button class="btn btn_blue" style="height:60px;padding:14px 10px;min-width:240px">Купить все записи</button>
+                    <button class="btn btn_white" style="height:60px;padding:14px 10px;min-width:240px;border-color:#1D1D1F">Программа</button>
+                </div>
+            </div>
+            <div class="pv-col">
+                <div class="pv-label">Кнопка тарифа — 14px Montserrat 800</div>
+                <button class="btn btn_blue" style="width:100%;min-width:0;padding:18px 0;font-family:var(--wc-font);font-size:14px;font-weight:800">Купить записи</button>
+            </div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="program" style="border:1px solid rgba(29,29,31,.14);padding:20px">
+            <div class="pv-label" style="margin-bottom:14px">Кнопки страницы программы (program.css)</div>
+            <div style="display:flex;gap:16px;flex-wrap:wrap">
+                <a href="#s3" class="btn v1">Скачать</a>
+                <a href="#s3" class="btn v2">Купить билет</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4 -->
+<section class="pv-sec" id="s4">
+    <div class="pv-wrap">
+        <h2 class="pv-h">4. Формы и инпуты</h2>
+        <p class="pv-note">Два варианта: светлый <code>.inp-partner</code> (60px, рамка 1px <code>#C4C4C4</code>) и тёмный <code>.pop_part_new</code> (46px, рамка 1px белая, фон <code>#090316</code>).</p>
+
+        <div class="pv-row">
+            <div class="pv-col">
+                <div class="pv-formbox">
+                    <div class="pv-label">Светлый вариант</div>
+                    <div class="inp-partner"><input type="text" name="pv-name" aria-label="Имя и фамилия" placeholder="Имя и фамилия*"></div>
+                    <div class="inp-partner"><input type="email" name="pv-email" aria-label="Электронная почта" placeholder="Электронная почта*"></div>
+                    <div class="inp-partner"><input type="text" name="pv-tel" class="tel-mask" aria-label="Номер телефона" placeholder="Номер телефона*"></div>
+                    <div class="inp-partner">
+                        <select name="pv-stream" aria-label="Поток">
+                            <option>Выберите поток</option>
+                            <option>Корпоративное обучение</option>
+                            <option>Маркетинг и продажи</option>
+                        </select>
+                    </div>
+                    <div class="inp-partner"><input type="text" id="pv-email-error" name="pv-email-error" aria-label="E-mail с ошибкой" class="error" value="неверный e-mail"><label class="error" for="pv-email-error">Укажите корректный e-mail</label></div>
+                    <div class="inp-partner"><textarea name="pv-comment" aria-label="Комментарий" placeholder="Комментарий"></textarea></div>
+                </div>
+            </div>
+
+            <div class="pv-col">
+                <div class="pv-formbox" style="background:#090316;border-color:#090316">
+                    <div class="pop_part_new">
+                        <div class="pop_partner_title">Купить доклад</div>
+                        <form onsubmit="return false">
+                            <div class="inp-partner"><input type="text" name="pv-dark-email" aria-label="Электронная почта" placeholder="Электронная почта*"></div>
+                            <div class="inp-partner"><input type="text" name="pv-dark-name" aria-label="Имя и фамилия" placeholder="Имя и фамилия*"></div>
+                            <div class="inp-partner"><input type="text" name="pv-dark-tel" aria-label="Номер телефона" placeholder="Номер телефона*"></div>
+                            <div class="pop_partner_form-btn">
+                                <button class="btn btn_blue" type="submit">Купить</button>
+                            </div>
+                            <div class="form_agreement">
+                                <div class="form_agreement_icon"></div>
+                                <span>Нажимая кнопку, я принимаю <a href="#s5">оферту</a> и согласие на обработку данных</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5 -->
+<section class="pv-sec" id="s5">
+    <div class="pv-wrap">
+        <h2 class="pv-h">5. Вход и регистрация</h2>
+        <p class="pv-note"><b>На сайте нет авторизации, регистрации и личного кабинета.</b> В шапке и подвале нет ссылок «Войти»; <code>personal.php</code> — это страница согласия на обработку данных, а не кабинет. Ближайший «форменный» паттерн — попапы.</p>
+
+        <div class="pv-row">
+            <div class="pv-col">
+                <div class="pv-formbox">
+                    <div class="pv-label">Светлый попап .pop_part</div>
+                    <div style="border:1px solid rgba(29,29,31,.14);padding:28px;text-align:center;max-width:420px">
+                        <div class="popup_title" style="font-size:30px;font-weight:600;line-height:1.1;margin-bottom:10px">Стать партнёром</div>
+                        <p style="font-size:15px;line-height:1.5;color:#6f6f76;margin-bottom:18px">Оставьте контакты — расскажем об условиях участия.</p>
+                        <div class="inp-partner"><input type="text" name="pv-popup-name" aria-label="Имя" placeholder="Имя*"></div>
+                        <div class="inp-partner"><input type="text" name="pv-popup-tel" aria-label="Телефон" placeholder="Телефон*"></div>
+                        <button class="btn btn_blue" style="width:100%;margin-top:14px">Отправить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="pv-col">
+                <div class="pv-label">Правила</div>
+                <ul style="font-size:14px;line-height:1.7;color:#4d4d54;padding-left:18px;list-style:disc">
+                    <li>Оверлей <code>.overlay</code> — <code>rgba(0,38,252,.75)</code>, z-index 300; попап — 301.</li>
+                    <li>Крестик <code>.btn_close</code> — 35×35, круг, фон синий.</li>
+                    <li>Подписей у полей нет — только <code>placeholder</code> с <code>*</code>.</li>
+                    <li>Галочка согласия — 20×20, по умолчанию пустая.</li>
+                    <li>Попапы: покупка доклада, бесплатный доклад, cookie-плашка.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6 -->
+<section class="pv-sec" id="s6">
+    <div class="pv-wrap">
+        <h2 class="pv-h">6. Навигация</h2>
+        <p class="pv-note">Шапка прозрачная с градиентом, после скролла — фиксированная <code>#1D1D1F</code>. На главной шапка отключена (include закомментирован). Ниже — образец шапки с внутренних страниц.</p>
+
+        <div class="pv-header-demo">
+            <header class="header">
+                <div class="container" style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+                    <a href="#s6" class="logo"><img src="assets/logo.svg" alt="Белая конфа" width="172" height="23"></a>
+                    <nav class="nav-header">
+                        <a href="#s12" class="nav-link">ПРОГРАММА</a>
+                        <a href="#s11" class="nav-link">СПИКЕРЫ</a>
+                        <a href="#s6" class="nav-link">ПОТОКИ</a>
+                        <a href="#s11" class="nav-link">КУПИТЬ ВИДЕОЗАПИСИ</a>
+                    </nav>
+                    <div class="header-contacts">
+                        <div><a href="tel:+79014177503" class="header-contacts__tel">8 901 417 75 03</a></div>
+                        <div><a href="mailto:info@whiteconf.ru" class="header-contacts__email">info@whiteconf.ru</a></div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-row">
+            <div class="pv-col">
+                <div class="pv-label">Мобильный бургер ≤1300px</div>
+                <div style="background:var(--wc-ink);padding:22px;display:flex;align-items:center;justify-content:space-between">
+                    <span style="font-family:var(--wc-font-display);color:#fff;font-size:16px">белая конфа</span>
+                    <span style="width:30px;position:relative;display:block;height:20px">
+                        <i style="position:absolute;left:0;top:0;width:30px;height:3px;background:#fff;display:block"></i>
+                        <i style="position:absolute;left:0;top:9px;width:30px;height:3px;background:#fff;display:block"></i>
+                        <i style="position:absolute;left:0;top:18px;width:30px;height:3px;background:#fff;display:block"></i>
+                    </span>
+                </div>
+                <p class="pv-note" style="margin-top:10px">30×3px, три полосы; при открытии крайние поворачиваются в крест. Панель выезжает справа.</p>
+            </div>
+            <div class="pv-col">
+                <div class="pv-label">Футер — фото-фон + белая полоса</div>
+                <div class="pv-footer-demo" style="position:relative">
+                    <div class="footer-top">
+                        <div class="container" style="max-width:1200px;padding:0 20px">
+                            <div class="footer-top__flex-2" style="margin-top:0">
+                                <div class="soc_box">
+                                    <a href="#s8" aria-label="Telegram"><svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M21.9 4.3 19 20c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6L18.5 7c.4-.3-.1-.5-.6-.2L7.6 13.2l-4.4-1.4c-1-.3-1-1 .2-1.4L20.6 3c.8-.3 1.5.2 1.3 1.3Z" fill="#fff"/></svg></a>
+                                    <a href="#s8" aria-label="VK"><svg width="40" height="40" viewBox="0 0 24 15" fill="none"><path d="M12.2 14.2h1.5c0 0 .5-.1.7-.3.2-.2.2-.7.2-.7s0-2 1-2.3c.9-.3 2.1 2 3.3 2.8.9.6 1.6.5 1.6.5l3.3-.1s1.7-.1.9-1.5c-.1-.1-.5-1-2.5-2.9-2.1-1.9-1.8-1.6.7-4.9 1.5-2 2.1-3.3 1.9-3.8-.2-.5-1.3-.4-1.3-.4h-3.8s-.3 0-.5.1c-.2.1-.3.4-.3.4s-.6 1.6-1.4 2.9c-1.7 2.8-2.3 3-2.6 2.8-.6-.4-.5-1.7-.5-2.5 0-2.7.4-3.9-.9-4.2-.4-.1-.7-.2-1.8-.2-1.3 0-2.5 0-3.1.3-.4.2-.8.7-.6.7.3 0 .9.2 1.2.6.4.5.4 1.7.4 1.7s.2 3.2-.6 3.6c-.5.3-1.2-.3-2.7-2.9-.7-1.3-1.3-2.8-1.3-2.8s-.1-.3-.3-.4c-.2-.2-.5-.2-.5-.2H1.2s-.5 0-.7.2c-.2.2 0 .6 0 .6S3.3 8 6.4 11.3c1.9 2 4.1 1.9 5.8 1.9Z" fill="#fff"/></svg></a>
+                                </div>
+                                <div class="footer-contacts">
+                                    <a href="tel:+79014177503" class="footer-contacts__tel">8 901 417 75 03</a><br>
+                                    <a href="mailto:info@whiteconf.ru" class="footer-contacts__email">info@whiteconf.ru</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bot" style="padding:18px 0">
+                        <div class="container" style="max-width:1200px;padding:0 20px">
+                            <div class="footer-bot__flex">
+                                <div class="footer-bot__left">© 2026. «Ивентология» · Сделано в <a href="#s6">Webking</a> · Дизайн: <a href="#s6">Grandizz</a></div>
+                                <div class="footer-bot__right"><a href="#s6">Оферта</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7 -->
+<section class="pv-sec" id="s7">
+    <div class="pv-wrap">
+        <h2 class="pv-h">7. Сетка, отступы, радиусы, тени</h2>
+        <p class="pv-note">Контейнер 1250px с паддингом 40px; ≤1300 — 1024/15, ≤1023 — 768, ≤767 — 375. Сетки без <code>gap</code>: отрицательные поля −15px + паддинг 15px у карточки.</p>
+
+        <div class="pv-grid-demo">
+            <div class="pv-grid-demo__inner">.container — max-width 1250px, padding 0 40px</div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-label">Радиусы</div>
+        <div class="pv-radii">
+            <div class="pv-radius"><i style="border-radius:0"></i><b>0</b><span>кнопки, поля, тарифы</span></div>
+            <div class="pv-radius"><i style="border-radius:5px"></i><b>5px</b><span>фото, кнопки программы</span></div>
+            <div class="pv-radius"><i style="border-radius:10px"></i><b>10px</b><span>ячейки программы</span></div>
+            <div class="pv-radius"><i style="border-radius:6px"></i><b>6px</b><span>корзина</span></div>
+            <div class="pv-radius"><i style="border-radius:50%"></i><b>50%</b><span>круги</span></div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-row">
+            <div class="pv-col">
+                <div class="pv-label">Тени</div>
+                <div class="pv-shadows">
+                    <div class="pv-shadow" style="box-shadow:0 0 10px rgba(0,0,0,.3)">фото спикера<br>0 0 10px rgba(0,0,0,.3)</div>
+                    <div class="pv-shadow" style="box-shadow:-8px 0 30px rgba(0,0,0,.5)">корзина<br>−8px 0 30px</div>
+                </div>
+            </div>
+            <div class="pv-col">
+                <div class="pv-label">Ритм секций</div>
+                <div class="pv-rhythm">
+                    <div style="height:18px">спикеры — 58 / 100</div>
+                    <div style="height:22px">тарифы — 74 / 100</div>
+                    <div style="height:26px">организаторы — 90 / 69</div>
+                    <div style="height:30px">подвал — 68 / 53</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 8 -->
+<section class="pv-sec" id="s8">
+    <div class="pv-wrap">
+        <h2 class="pv-h">8. Иконография и изображения</h2>
+        <p class="pv-note">Фото спикера — квадрат, радиус 5px, синий дуотон через <code>mix-blend-mode: color</code> (opacity .7) и стеклянная плашка логотипа 160×50.</p>
+
+        <div class="pv-media">
+            <div class="spiker">
+                <div class="spiker__img">
+                    <img src="assets/speaker.jpg" alt="Дмитрий Румянцев">
+                    <div class="expert_logo"><img src="assets/speaker-logo.svg" alt="Логотип компании"></div>
+                </div>
+                <div class="spiker__name">Дмитрий Румянцев</div>
+                <p class="spiker__txt">Маркетинг онлайн-образования в 2026–2027 году — какой он будет и к чему готовиться?</p>
+            </div>
+
+            <div class="pv-col">
+                <div class="pv-logo-box">
+                    <img src="assets/logo.svg" alt="Логотип «Белая конфа»" width="172" height="23">
+                    <span style="color:rgba(255,255,255,.6);font-size:12px">logo.svg · 172×23 · белый + #0026FC</span>
+                </div>
+                <div style="display:flex;gap:18px;align-items:center;margin-top:16px;background:var(--wc-ink);padding:18px">
+                    <a href="#s8" aria-label="Telegram" style="display:block;width:40px;height:40px;position:relative">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)"><path d="M21.9 4.3 19 20c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6L18.5 7c.4-.3-.1-.5-.6-.2L7.6 13.2l-4.4-1.4c-1-.3-1-1 .2-1.4L20.6 3c.8-.3 1.5.2 1.3 1.3Z" fill="#fff"/></svg>
+                    </a>
+                    <a href="#s8" aria-label="VK" style="display:block;width:40px;height:40px;position:relative">
+                        <svg width="30" height="18" viewBox="0 0 25 15" fill="none" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)"><path d="M12.2 14.2h1.5s.5-.1.7-.3c.2-.2.2-.7.2-.7s0-2 1-2.3c.9-.3 2.1 2 3.3 2.8.9.6 1.6.5 1.6.5l3.3-.1s1.7-.1.9-1.5c-.1-.1-.5-1-2.5-2.9-2.1-1.9-1.8-1.6.7-4.9 1.5-2 2.1-3.3 1.9-3.8-.2-.5-1.3-.4-1.3-.4h-3.8s-.3 0-.5.1c-.2.1-.3.4-.3.4s-.6 1.6-1.4 2.9c-1.7 2.8-2.3 3-2.6 2.8-.6-.4-.5-1.7-.5-2.5 0-2.7.4-3.9-.9-4.2-.4-.1-.7-.2-1.8-.2-1.3 0-2.5 0-3.1.3-.4.2-.8.7-.6.7.3 0 .9.2 1.2.6.4.5.4 1.7.4 1.7s.2 3.2-.6 3.6c-.5.3-1.2-.3-2.7-2.9-.7-1.3-1.3-2.8-1.3-2.8s-.1-.3-.3-.4c-.2-.2-.5-.2-.5-.2H1.2s-.5 0-.7.2c-.2.2 0 .6 0 .6S3.3 8 6.4 11.3c1.9 2 4.1 1.9 5.8 1.9Z" fill="#fff"/></svg>
+                    </a>
+                    <span style="color:rgba(255,255,255,.5);font-size:11px">Соцсети — inline-SVG 40×40, hover: fill #0026FC</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 9 -->
+<section class="pv-sec" id="s9">
+    <div class="pv-wrap">
+        <h2 class="pv-h">9. Адаптив и доступность</h2>
+        <p class="pv-note">Основные брейкпоинты: 1300, 1023, 767. При <code>screen.width &lt; 641</code> мета-тег принудительно ставит <code>width=375</code> — мобильную версию проверять в эмуляции устройства.</p>
+
+        <div class="pv-row">
+            <div class="pv-col">
+                <table style="width:100%;border-collapse:collapse;font-size:13px">
+                    <tr><th style="text-align:left;padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.12);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8a8a8f">Ширина</th><th style="text-align:left;padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.12);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#8a8a8f">Что меняется</th></tr>
+                    <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.08)">&gt; 1300</td><td style="padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.08)">контейнер 1250/40, полное меню</td></tr>
+                    <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.08)">≤ 1300</td><td style="padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.08)">1024/15, бургер, затемнение hero</td></tr>
+                    <tr><td style="padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.08)">≤ 1023</td><td style="padding:8px 10px;border-bottom:1px solid rgba(29,29,31,.08)">768, непрозрачная шапка, меню в колонку, 2 колонки карточек</td></tr>
+                    <tr><td style="padding:8px 10px">≤ 767</td><td style="padding:8px 10px">375, hero 46px, кнопки на всю ширину, 1 колонка</td></tr>
+                </table>
+            </div>
+
+            <div class="pv-col">
+                <div class="pv-label">Контраст (WCAG 2.1)</div>
+                <div class="pv-contrast">
+                    <div style="background:#1D1D1F;color:#fff">#FFF на #1D1D1F<small>16.83:1 · AAA</small></div>
+                    <div style="background:#0026FC;color:#fff">#FFF на #0026FC<small>7.83:1 · AAA</small></div>
+                    <div style="background:#fff;color:#0026FC;border-color:#0026FC">#0026FC на #FFF<small>7.83:1 · AAA</small></div>
+                    <div style="background:#090316;color:#fff">#FFF на #090316<small>20.27:1 · AAA</small></div>
+                    <div style="background:#fff;color:#FC0000">#FC0000 на #FFF<small>4.09:1 · только крупный</small></div>
+                    <div style="background:#1D1D1F;color:#0026FC">#0026FC на #1D1D1F<small>2.15:1 · не проходит</small></div>
+                </div>
+                <p class="pv-note" style="margin-top:12px">Фокус на сайте отключён глобально (<code>outline:0</code> в <code>them.css</code>). Для новых элементов добавляйте свой <code>:focus-visible</code>.</p>
+                <button class="btn btn_blue" style="outline:2px solid #0026FC;outline-offset:3px">Пример focus-visible</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 10 -->
+<section class="pv-sec" id="s10">
+    <div class="pv-wrap">
+        <h2 class="pv-h">10. Токены</h2>
+        <p class="pv-note">Полный набор — в <code>tokens.css</code> рядом с этой витриной. Значения сняты с сайта; имена переменных наши, потому что своих <code>:root</code>-токенов у whiteconf.ru почти нет.</p>
+<pre class="pv-code"><b>:root</b> {
+  --wc-blue: #0026FC;
+  --wc-blue-hover: #0023E8;
+  --wc-blue-program: #0021FF;
+  --wc-ink: #1D1D1F;
+  --wc-ink-popup: #090316;
+  --wc-gray-bg: #F2F2F2;
+  --wc-gray-line: #DDDDDD;
+  --wc-error: #FC0000;
+
+  --wc-font-display: "CA Saygon", "Montserrat", Arial, sans-serif;
+  --wc-font: "Montserrat", Arial, sans-serif;
+  --wc-fs-h1: 84px;  --wc-fs-h2: 75px;  --wc-fs-h3: 48px;
+  --wc-fs-h4: 42px;  --wc-fs-h5: 36px;  --wc-fs-text: 18px;
+
+  --wc-container: 1250px;  --wc-container-pad: 40px;
+  --wc-radius-photo: 5px;  --wc-radius-cell: 10px;
+  --wc-border-btn: 4px;    --wc-border-card: 2px;
+  --wc-t: .2s;
+}</pre>
+    </div>
+</section>
+
+<!-- 11 -->
+<section class="pv-sec" id="s11">
+    <div class="pv-wrap">
+        <h2 class="pv-h">11. Компоненты</h2>
+        <p class="pv-note">Карточка спикера, тариф, таблица программы, корзина, cookie-плашка — с реальными размерами и цветами.</p>
+
+        <div class="pv-label">11.1 Карточка спикера</div>
+        <div class="pv-demo-box pv-demo-box--dark">
+            <div class="spikers-flex">
+                <div class="spiker">
+                    <div class="spiker__img">
+                        <img src="assets/speaker.jpg" alt="">
+                        <div class="expert_logo"><img src="assets/speaker-logo.svg" alt="Логотип"></div>
+                    </div>
+                    <div class="spiker__name">Дмитрий Румянцев</div>
+                    <p class="spiker__txt">Маркетинг онлайн‑образования в 2026–2027 году — какой он будет и к чему готовиться?</p>
+                    <div class="spiker__actions">
+                        <button class="spiker__cart" aria-label="Добавить в корзину">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="btn btn_blue2-transparent spiker__buy">Купить за 1900 ₽</button>
+                    </div>
+                </div>
+                <div class="spiker pv-no-duo">
+                    <div class="spiker__img">
+                        <img src="assets/speaker.jpg" alt="" style="filter:grayscale(1)">
+                        <div class="expert_logo"><img src="assets/speaker-logo.svg" alt="Логотип"></div>
+                    </div>
+                    <div class="spiker__name">Второй спикер</div>
+                    <p class="spiker__txt">Так карточка выглядит без дуотона: фото чёрно-белое, подпись и тема — белые.</p>
+                    <div class="spiker__actions">
+                        <button class="spiker__cart" aria-label="Добавить в корзину">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        </button>
+                        <button class="btn btn_blue2-transparent spiker__buy">Купить за 1900 ₽</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-label">11.2 Тариф</div>
+        <div class="pv-demo-box">
+            <div class="tickets-flex" style="margin:0">
+                <div class="ticket" style="width:100%;max-width:520px;margin:0">
+                    <div class="ticket__title-wrap">
+                        <div class="ticket__title">Видеозаписи конференции<br><span class="ticket__title-small">2026. Сезон 8</span></div>
+                    </div>
+                    <div class="ticket__content">
+                        <p>Доступ к записям всех потоков на 12 месяцев</p>
+                        <p>Презентации спикеров и дополнительные материалы</p>
+                    </div>
+                    <div class="ticket__price">30 000 ₽</div>
+                    <div class="ticket__bot">
+                        <button class="btn btn_blue">Купить записи</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-label">11.3 Таблица программы</div>
+        <div class="pv-scroll">
+            <div style="min-width:900px">
+                <div class="module_program_table_header">
+                    <div class="mp_th_item">7 июля <span>Вторник</span></div>
+                    <div class="mp_th_item">поток 1 <p>Корпоративное обучение</p></div>
+                    <div class="mp_th_item">поток 2 <p>Маркетинг и продажи</p></div>
+                    <div class="mp_th_item">поток 3 <p>Методология и продукт</p></div>
+                </div>
+                <div class="module_program_table_row">
+                    <div class="mp_tr_item"><p>10:00–11:00</p></div>
+                    <div class="mp_tr_item"><h6>Павел Безяев</h6><p>Исследование рынка корпоративного обучения</p></div>
+                    <div class="mp_tr_item"><h6>Сергей Сабитов</h6><p>Реклама в MAX: пошаговая инструкция по закупу</p></div>
+                    <div class="mp_tr_item"><h6>Александра Хлызова</h6><p>Методология, продукт, сервис: тренды 2026</p></div>
+                </div>
+                <div class="module_program_table_row">
+                    <div class="mp_tr_item"><p>11:00–11:30</p></div>
+                    <div class="mp_tr_item fluid_item"><p>Кофе-брейк</p></div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-label">11.4 Корзина</div>
+        <div class="pv-demo-box pv-cart-stage" style="display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start">
+            <div id="cart_widget">
+                <button type="button" class="cart-widget__circle" aria-label="Корзина">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-widget__count">2</span>
+                </button>
+                <button type="button" class="cart-widget__btn">Купить</button>
+                <button type="button" class="cart-widget__btn">Показать</button>
+            </div>
+
+            <div id="cart_drawer">
+                <div class="cart-drawer__head">
+                    <div class="cart-drawer__title">Корзина</div>
+                    <button type="button" class="cart-drawer__close" aria-label="Закрыть">×</button>
+                </div>
+                <div class="cart-drawer__list">
+                    <div class="cart-drawer__row">
+                        <div class="cd-num">1</div>
+                        <div><div class="cd-name">Дмитрий Румянцев</div><div class="cd-title">Маркетинг онлайн-образования</div></div>
+                        <div class="cd-price">1 900 ₽</div>
+                        <button class="cd-del">×</button>
+                    </div>
+                </div>
+                <div class="cart-drawer__foot">
+                    <div class="cart-drawer__bundle">
+                        <button class="cd-bundle__btn"><span class="cd-bundle__badge">выгода</span><span>Все доклады — за 30 000 ₽</span></button>
+                    </div>
+                    <div class="cart-drawer__sum"><span>Сумма заказа:</span><strong>1 900 ₽</strong></div>
+                    <button class="cart-drawer__checkout">Оформить заказ</button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="pv-hr">
+
+        <div class="pv-label">11.5 Cookie-плашка</div>
+        <div class="pv-cookie-stage">
+            <div id="cookie_alert">
+                <div id="cookie_alert__text">Мы используем файлы cookie, чтобы сайт работал лучше. Оставаясь на сайте, вы принимаете <a href="#s9">политику конфиденциальности</a>.</div>
+                <button id="cookie_alert__ok">Ок</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 12 -->
+<section class="pv-sec" id="s12">
+    <div class="pv-wrap">
+        <h2 class="pv-h">12. Каталог блоков страниц</h2>
+        <p class="pv-note">Что из каких блоков собрано на живых страницах сайта.</p>
+
+        <div class="pv-cat">
+            <article>
+                <h4>Главная /</h4>
+                <p>Hero на фото → тёмный блок спикеров с переключателем потоков → тарифы → рассрочка → организаторы → подвал. Шапки нет.</p>
+            </article>
+            <article>
+                <h4>Программа /program</h4>
+                <p>Фиксированная шапка → заголовок 42px → вкладки «Таблица / Список» → таблица с sticky-временем → кнопки «Скачать» и «Купить» → подвал.</p>
+            </article>
+            <article>
+                <h4>Потоки /potoki</h4>
+                <p>Тёмная шапка 185px → заголовок 70px с контуром → слайдер белых карточек → CTA на фоне → подвал.</p>
+            </article>
+            <article>
+                <h4>FAQ /faq</h4>
+                <p>Шапка nav_black → заголовок 40px синий → список вопросов с прочерком → подвал.</p>
+            </article>
+            <article>
+                <h4>Попапы</h4>
+                <p>Покупка доклада (тёмный, 672px), бесплатный доклад, корзина-шторка 420px, cookie-плашка.</p>
+            </article>
+            <article>
+                <h4>404</h4>
+                <p>Шапка, сообщение, ссылка на главную, подвал. Отдельная страница 404.php.</p>
+            </article>
+        </div>
+
+        <hr class="pv-hr">
+
+        <p class="pv-note" style="margin:0">Полное описание с селекторами и значениями — в <a href="DESIGN.md" style="color:var(--wc-blue);border-bottom:1px solid #0026FC">DESIGN.md</a>. Токены и компоненты — в <a href="tokens.css" style="color:var(--wc-blue);border-bottom:1px solid #0026FC">tokens.css</a>.</p>
+    </div>
+</section>
+
+</main>
+
+</body>
+</html>

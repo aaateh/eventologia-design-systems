@@ -1,0 +1,1137 @@
+/* ==========================================================================
+   spbprompt.ru — «Питерский промпт». Дизайн-система: токены и базовые компоненты
+   Снято 10/11/2026 с живого сайта https://spbprompt.ru (Next.js + Tailwind).
+   Уровень: MCP — computed-стили в браузере + исходные CSS-чанки сайта.
+
+   Проверенные страницы: / (главная), /program, /speakers/<slug>, /for-partners,
+   /help, /legal/consent.
+
+   Все значения ниже — фактические. Источник указан в комментарии к блоку:
+   файл чанка и селектор. Чанки:
+     · 1g0_o2zsju1r3.css — основной «edition»-слой (ed-*, ci-*, ct-*, ec-*)
+     · 1dmv509364cct.css — Tailwind-база, @font-face, :root, legal
+     · 3reikmtdp-f4_.css  — переопределения hero/шапки (последний в каскаде)
+     · 3vu-kupbigv5b.css  — финальный блок (ec-closing, ch-*)
+     · 3a76l1lxs3-5j.css  — страница /for-partners (форма, сцена)
+     · 2tvpgidaf8rd9.css  — билеты (tear-ticket, ps-*)
+     · 2ffv0dxl-x85c.css  — мобильный переключатель ms-toggle
+
+   Классы — как на сайте (ed-*, ci-*, ct-*, ps-*, ep-*, ch-*, ec-*, ms-*).
+   Всё завёрнуто в .edition — этот класс стоит на <div class="edition"> сайта
+   и включает «издательскую» тему. Шрифты — копии файлов сайта, лежат в fonts/.
+   ========================================================================== */
+
+/* ==========================================================================
+   1. ШРИФТЫ
+   ========================================================================== */
+
+/* Заголовки. Файл сайта /edition/MOSCOW2024-8fc7e2e088.woff2 — subset
+   (8 КБ: только глифы, которые реально есть в заголовках сайта). */
+@font-face {
+    font-family: "EdMoscow";
+    src: url("fonts/EdMoscow.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Основной текст. /edition/Jura-188b415d44.woff2 — вариативный Jura 300–700.
+   На сайте набран вес 600 (font-weight:600 у .edition). */
+@font-face {
+    font-family: "EdJura";
+    src: url("fonts/EdJura.woff2") format("woff2");
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* JetBrains Mono — базовый шрифт <html> из Tailwind-слоя (1dmv509364cct.css).
+   Видимый текст на проверенных страницах им не набран: всё внутри .edition
+   перекрыто EdJura. Оставлен для служебных подписей и кода. */
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("fonts/JetBrainsMono-cyrillic.woff2") format("woff2");
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("fonts/JetBrainsMono-latin.woff2") format("woff2");
+    font-weight: 100 800;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Russo One — только утилита .font-display (Tailwind-слой). На проверенных
+   страницах не встречается; файлы сайта оставлены для полноты. */
+@font-face {
+    font-family: "Russo One";
+    src: url("fonts/RussoOne-cyrillic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+    font-family: "Russo One";
+    src: url("fonts/RussoOne-latin.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+        U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   2. ТОКЕНЫ
+   ========================================================================== */
+
+/* :root — из 1dmv509364cct.css. Это «сцена»: тёмный фон, неоновый зелёный,
+   кислотный оттенок и пиксельные курсоры (SVG в data-URI, 32×32 и 34×34). */
+:root {
+    --bg: #07070b;              /* фон html (за пределами .edition) */
+    --bg-soft: #0d0d14;
+    --surface: #ffffff0b;       /* стеклянная поверхность поверх тёмного */
+    --surface-strong: #ffffff13;
+    --line: #ffffff1f;
+    --text: #f5f7fa;
+    --muted: #f5f7faad;
+    --neon: #19ff5b;            /* неон: кнопки, ссылки, фокус */
+    --matrix: #39ff88;          /* второй неон (свечение) */
+    --acid: #b8ff5c;            /* кислотный: hover ссылок, акценты */
+
+    /* Пиксельный курсор-стрелка 32×32 (чёрный контур, белая заливка, зелёные
+       пиксели). Точка привязки — 4 3. */
+    --pixel-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%23000000' d='M4 2h4v4h4v4h4v4h4v4h4v4h-8v4h4v4h-6v-4h-4v-7h-3v4H8v3H5v2H2V2z'/%3E%3Cpath fill='%23ffffff' d='M6 5v21h1v-3h3v-5h6v8h2v-2h-4v-7h8v-1h-4v-4h-4V8h-4V5z'/%3E%3Cpath fill='%2319ff5b' d='M8 7h2v2H8zm4 4h2v2h-2z'/%3E%3C/svg%3E") 4 3, auto;
+    /* Пиксельная рука 34×34 — курсор на ссылках и кнопках. Точка 12 2. */
+    --pixel-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34' shape-rendering='crispEdges'%3E%3Cpath fill='%23000000' d='M14 2h6v12h2V8h6v8h2v2h2v10h-2v4H10v-4H8v-2H6v-4H4v-6h6v2h2V4h2z'/%3E%3Cpath fill='%23ffffff' d='M16 4h2v14h4v-8h2v8h4v-2h2v10h-2v4H12v-4h-2v-2H8v-4H6v-2h4v2h4V6h2z'/%3E%3Cpath fill='%2319ff5b' d='M16 4h2v4h-2zm8 8h2v4h-2z'/%3E%3C/svg%3E") 12 2, pointer;
+
+    color-scheme: dark;
+}
+
+/* Токены темы .edition — из 1g0_o2zsju1r3.css (блок «.edition», строки 4979+)
+   и 1dmv509364cct.css. Имена --ed-* — родные имена сайта. */
+.edition {
+    /* цвет */
+    --ed-green: #1afe4c;        /* ГЛАВНЫЙ акцент: кнопки, цифры, фокус, скроллбар */
+    --ed-blue: #00a1d5;         /* синий: hover кнопок, «Мини-игра», ореолы секций */
+    --ed-bg: #0a0a0a;           /* фон страницы */
+    --ed-surface: #161616;      /* карточки, панели, консоль */
+    --ed-text: #f7f7f7;         /* основной текст */
+    --ed-muted: #aaa;           /* вторичный текст */
+    --ed-line: #303030;         /* рамки-разделители */
+    --ed-selected-surface: #383838; /* активный сегмент .ed-format */
+
+    /* типографика (1g0…css, блок .edition) */
+    --ed-type-page: clamp(40px, 5.2vw, 72px);    /* h1 внутренних страниц */
+    --ed-type-section: clamp(38px, 3.25vw, 47px); /* h2 секций */
+    --ed-type-body: 16px;
+    --ed-type-caption: 14px;
+    --ed-heading-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+    --ed-heading-column-gap: clamp(28px, 3.4vw, 48px);
+
+    /* ритм (1g0…css, .ed-page-main) */
+    --ed-section-gap: 80px;
+    --ed-heading-gap: 36px;
+    --ed-controls-gap: 24px;
+
+    /* управляющие элементы */
+    --ed-control-height: 47.5px; /* высота кнопок, полей, пилюль */
+    --ed-logo-width: 152px;      /* ширина логотипа в шапке; картинка 1888×455 */
+
+    /* анимация кнопки: заливка кругом снизу (clip-path) */
+    --ed-action-fill-duration: .55s;
+    --ed-action-fill-easing: cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (max-width: 1100px) {
+    .edition { --ed-logo-width: 124px; }
+}
+@media (max-width: 800px) {
+    .ed-page-main { --ed-section-gap: 64px; --ed-heading-gap: 32px; }
+}
+@media (max-width: 520px) {
+    .edition { --ed-logo-width: 86px; }
+    .ed-page-main { --ed-section-gap: 48px; --ed-heading-gap: 24px; --ed-controls-gap: 20px; }
+}
+
+/* ==========================================================================
+   3. БАЗА
+   ========================================================================== */
+
+.edition {
+    background: var(--ed-bg);
+    color: var(--ed-text);
+    font-family: "EdJura", system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.65;                /* computed 26.4px */
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+}
+
+/* Пиксельный курсор вместо системного — 1dmv509364cct.css, html */
+.edition { cursor: var(--pixel-cursor); }
+.edition a, .edition button, .edition [role="button"], .edition summary { cursor: var(--pixel-hand); }
+
+/* выделение текста — зелёное, инвертированное (.edition ::selection) */
+.edition ::selection { background: var(--ed-green); color: var(--ed-bg); }
+
+/* скроллбар — зелёный ползунок 8px на чёрном (html:has(.edition)) */
+.edition ::-webkit-scrollbar { width: 8px; height: 8px; }
+.edition ::-webkit-scrollbar-track { background: var(--ed-bg); }
+.edition ::-webkit-scrollbar-thumb {
+    background: var(--ed-green);
+    border: 2px solid var(--ed-bg);
+    border-radius: 99px;
+}
+.edition { scrollbar-color: var(--ed-green) var(--ed-bg); scrollbar-width: thin; }
+
+.edition :focus-visible {
+    outline: 2px solid var(--ed-green);
+    outline-offset: 4px;
+}
+
+.edition a { color: inherit; text-decoration: none; }
+.edition img { max-width: 100%; }
+.edition h1, .edition h2, .edition h3, .edition p, .edition figure { margin: 0; }
+
+/* ==========================================================================
+   4. СЕТКА И РИТМ
+   ========================================================================== */
+
+/* .ed-wrap — ширина calc(100% − 112px), но не больше 1328px (1g0…css).
+   ≤1100 — 100% − 64px, ≤520 — 100% − 36px. */
+.ed-wrap {
+    width: calc(100% - 112px);
+    max-width: 1328px;
+    margin-inline: auto;
+}
+@media (max-width: 1100px) { .ed-wrap { width: calc(100% - 64px); } }
+@media (max-width: 520px) { .ed-wrap { width: calc(100% - 36px); } }
+
+/* .ed-page-main —flex-колонка с шагом 80px (64 / 48 на мобиле) */
+.ed-page-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ed-section-gap);
+    padding-bottom: var(--ed-section-gap);
+}
+
+/* секции внутри .edition не имеют собственных паддингов — ритм задаёт gap */
+.ed-page-main > .ed-section,
+.ed-page-main > .ed-organizers { padding-block: 0; }
+.ed-page-main > section { margin-block: 0; }
+
+/* .ed-section-head — двухколоночная «шапка секции»: заголовок + описание */
+.ed-section-head {
+    display: grid;
+    grid-template-columns: var(--ed-heading-columns);
+    column-gap: var(--ed-heading-column-gap);
+    row-gap: 16px;
+    align-items: start;
+    margin-bottom: var(--ed-heading-gap);
+}
+.ed-section-head > p {
+    max-width: 760px;
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ed-muted);
+    text-wrap: balance;
+}
+/* если в шапке только заголовок — он на всю ширину */
+.ed-page-main .ed-section-head > .ed-heading:only-child { grid-column: 1 / -1; }
+
+/* H2 секции. base: clamp(34px,3.6vw,52px); edition: var(--ed-type-section) */
+.ed-heading {
+    font-family: "EdMoscow", sans-serif;
+    font-size: var(--ed-type-section);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-wrap: balance;
+    max-width: 630px;
+}
+
+/* ==========================================================================
+   5. ШАПКА-ПИЛЮЛЯ
+   ========================================================================== */
+
+/* .ed-header — фикс-контейнер; .ed-header--pill — сама «таблетка»
+   (3reikmtdp-f4_.css: bg #101010, border #303030, radius 26, 70px) */
+.ed-header {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    width: calc(100% - 112px);
+    max-width: 1328px;
+}
+.ed-header--pill {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    min-height: 70px;
+    padding: 8px 10px 8px 18px;
+    background: #101010;
+    border: 1px solid var(--ed-line);
+    border-radius: 26px;
+}
+@media (max-width: 1100px) {
+    .ed-header { width: calc(100% - 64px); }
+    .ed-header--pill { grid-template-columns: 1fr auto; gap: 16px; padding: 8px 12px 8px 18px; }
+}
+@media (max-width: 800px) {
+    .ed-header { top: 16px; width: calc(100% - 36px); }
+    .ed-header--pill { min-height: 64px; border-radius: 21px; gap: 8px; padding: 6px 8px 6px 12px; }
+}
+
+/* логотип: картинка 1888×455, ширина = --ed-logo-width × 1847/1888 */
+.ed-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.05;
+}
+.ed-header--pill > .ed-brand {
+    display: block;
+    width: calc(var(--ed-logo-width) * 1847 / 1888);
+    height: var(--ed-control-height);
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+.ed-header--pill .ed-brand-logo {
+    position: absolute;
+    inset: 50% auto auto 0;
+    width: 102.22%;
+    height: auto;
+    max-width: none;
+    object-fit: contain;
+    transform: translateY(-50%);
+}
+
+/* навигация: пять «пилюль», активная — #242424, hover — зелёная заливка */
+.ed-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #bcbcbc;
+}
+.ed-nav-pill {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    padding: 0 12px;
+    border-radius: 999px;
+    color: #bcbcbc;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color .2s, background .2s;
+}
+.ed-nav-pill[aria-current="location"] { color: var(--ed-text); background: #242424; }
+.ed-nav-pill:hover, .ed-nav-pill:focus-visible {
+    background: var(--ed-green);
+    color: var(--ed-bg);
+}
+/* «пилюля-круг»: зелёный круг, который раскрывается из-под текста на hover */
+.ed-pill-circle {
+    position: absolute;
+    left: 50%;
+    z-index: -1;
+    width: 142px;
+    height: 142px;
+    background: var(--ed-green);
+    border-radius: 50%;
+}
+.ed-pill-hover {
+    position: absolute;
+    display: block;
+    color: var(--ed-bg);
+    transform: translateY(60px);
+}
+
+/* правый блок: «Мини-игра» (синяя) + «Билеты» (зелёная) */
+.ed-header-actions { display: flex; align-items: center; gap: 10px; }
+.ed-nav-crab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 16px;
+    background: var(--ed-blue);
+    border: 0;
+    border-radius: 999px;
+    color: var(--ed-bg);
+    font-size: 14px;
+    font-weight: 600;
+}
+.ed-header-ticket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    height: 48px;
+    padding: 0 25px;
+    background: var(--ed-green);
+    border: 0;
+    border-radius: 999px;
+    color: var(--ed-bg);
+    font-size: 14px;
+    font-weight: 700;
+    transition: background .3s, transform .3s;
+}
+.ed-header-ticket:hover { background: var(--ed-blue); transform: translateY(-1px); }
+
+/* «Мини-игра» в шапке — текстовая кнопка без фона (синяя пилюля .ed-nav-crab
+   живёт только в мобильном меню) */
+.ed-minigame-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 14px;
+    background: none;
+    border: 0;
+    color: var(--ed-text);
+    font: 600 14px/1.25 "EdJura", sans-serif;
+    transition: color .2s;
+}
+.ed-minigame-trigger:hover { color: var(--ed-green); }
+
+/* ≤1100px навигация уезжает в выпадающую панель (на сайте — .ed-top-nav.is-open),
+   в шапке остаются логотип, переключатель и «Билеты»; «Мини-игра» — только в меню */
+@media (max-width: 1100px) {
+    .ed-top-nav { display: none; }
+    .ed-nav-crab { display: none; }
+    .ed-minigame-trigger { display: none; }
+    .ed-header--pill .ed-header-ticket { padding: 0 16px; font-size: 12px; }
+}
+@media (max-width: 520px) {
+    .ed-header--pill .ed-header-ticket { height: 44px; padding: 0 12px; font-size: 11px; }
+}
+
+/* ==========================================================================
+   6. КНОПКИ
+   ========================================================================== */
+
+/* .ed-action — основная кнопка: зелёная пилюля, высота 54 (в .edition — 47.5),
+   hover — синий круг заливки снизу (clip-path в :before) */
+.ed-action {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 47.5px;
+    padding: 0 27px;
+    background: var(--ed-green);
+    border: 0;
+    border-radius: 999px;
+    color: var(--ed-bg) !important;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    overflow: hidden;
+    isolation: isolate;
+    transition: box-shadow .25s, background .25s;
+}
+.ed-action::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ed-blue);
+    clip-path: circle(0% at 50% 100%);
+    transition: clip-path var(--ed-action-fill-duration) var(--ed-action-fill-easing);
+}
+.ed-action:hover::before,
+.ed-action:focus-visible::before { clip-path: circle(150% at 50% 100%); }
+
+/* вторичная: тёмная с серой рамкой, hover — зелёная рамка */
+.ed-action--secondary {
+    background: #151515;
+    border: 1px solid #737373;
+    color: var(--ed-text) !important;
+    transition: border-color .25s, background .25s;
+}
+.ed-action--secondary::before { background: var(--ed-line); }
+.ed-action--secondary:hover { border-color: var(--ed-green); }
+
+/* маленькая кнопка-пилюля из ленты спикеров (14px, padding 12×22, radius 99) */
+.ed-lineup-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: #141414;
+    border: 1px solid #3a3a3a;
+    border-radius: 99px;
+    color: var(--ed-text);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   7. ПОЛЯ ФОРМ
+   ========================================================================== */
+
+/* Форма /for-partners — Tailwind-классы + .ed-partner-form:
+   height 56 (h-14), radius 1.1rem = 17.6px (computed 20px в .edition),
+   рамка white/12, фон white/3.5%, фокус — зелёная рамка + ring 2px. */
+.ed-field {
+    display: grid;
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+.ed-field > span { color: #ffffffc2; }        /* text-white/76 */
+.ed-field-required { color: var(--ed-green); }
+
+.ed-input {
+    width: 100%;
+    height: 56px;
+    padding: 0 16px;
+    background: #161616;                     /* computed от bg-white/[0.035] */
+    border: 1px solid #737373;               /* border-white/12 поверх #161616 */
+    border-radius: 20px;
+    color: var(--ed-text);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color .2s, background .2s, box-shadow .2s;
+}
+.ed-input::placeholder { color: #4e4e4e; }   /* placeholder:text-white/24 */
+.ed-input:hover { border-color: #8a8a8a; }
+.ed-input:focus {
+    border-color: #1a9643;                   /* focus:border-neon/55 */
+    background: #161d16;
+    box-shadow: 0 0 0 2px rgba(25, 255, 91, .15); /* focus:ring-2 ring-neon/15 */
+}
+
+/* селект бюджета — та же коробка, свой шеврон справа */
+.ed-partner-budget {
+    appearance: none;
+    padding-right: 42px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23aaa' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+}
+
+/* чекбокс согласия: рамка white/10, фон white/2.5%, radius 1.2rem */
+.ed-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 19.2px;
+    color: #9d9d9d;
+    font-size: 12px;
+    line-height: 2;                          /* 24px */
+}
+.ed-consent input { width: 16px; height: 16px; margin-top: 4px; accent-color: #19ff5b; }
+
+/* кнопка отправки — h-12, radius full, bg-neon, text-xs, font-black */
+.ed-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 24px;
+    background: var(--neon);
+    border: 0;
+    border-radius: 999px;
+    color: var(--bg);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    transition: background .2s, transform .2s;
+}
+.ed-submit:hover { background: var(--acid); }
+.ed-submit:active { transform: translateY(1px); }
+
+/* «неоновый контур» формы: conic-gradient-маска, которая медленно вращается */
+@property --ed-form-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 45deg;
+}
+.ed-form-glow {
+    position: relative;
+    isolation: isolate;
+    animation: ed-form-orbit 18s linear infinite;
+}
+.ed-form-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(from var(--ed-form-angle) at center,
+        #1afe4c 2.5%, transparent 10%, transparent 90%, #1afe4c 97.5%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+@keyframes ed-form-orbit { to { --ed-form-angle: 405deg; } }
+
+/* ==========================================================================
+   8. ГЕРОЙ
+   ========================================================================== */
+
+/* .ed-hero: min-height max(760px,100dvh), паддинги 150/148, нижняя линия #242424.
+   Голубой налёт: linear-gradient(#00a1d512 → прозрачный) в :before .ed-page-main */
+.ed-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: max(760px, 100dvh);
+    padding-block: 150px 148px;
+    border-bottom: 1px solid #242424;
+}
+.ed-hero-content { position: relative; z-index: 2; }
+
+/* дата-пилюля и строка события */
+.ed-event-line {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 38px;
+    color: #bcbcbc;
+    font-size: 13px;
+}
+.ed-date-pill {
+    padding: 8px 17px;
+    border: 1px solid #464646;
+    border-radius: 999px;
+    color: var(--ed-text);
+    font-weight: 600;
+}
+/* @media (max-width:1100px) — 13px; ≤520 — 6px 11px */
+
+/* H1: EdMoscow, clamp(64px,7.15vw,96px), 1.04, трекинг −0.04em, ширина 58% */
+.ed-hero h1 {
+    width: 58%;
+    font-family: "EdMoscow", sans-serif;
+    font-size: clamp(64px, 7.15vw, 96px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -.04em;
+    text-wrap: balance;
+}
+.ed-hero h1 > span { color: var(--ed-green); }
+@media (max-width: 1100px) { .ed-hero h1 { width: 60%; font-size: 8vw; } }
+@media (max-width: 800px) { .ed-hero h1 { width: 100%; font-size: clamp(60px, 10vw, 80px); } }
+@media (max-width: 520px) { .ed-hero h1 { font-size: clamp(43px, 11.2vw, 58px); letter-spacing: -.035em; line-height: 1.06; } }
+
+/* лид: 21px/1.55 #ccc, ширина 545 */
+.ed-hero-lower { max-width: 545px; margin-top: 26px; }
+.ed-hero-lower > p { color: #ccc; font-size: 21px; line-height: 1.55; }
+.ed-hero-actions { display: flex; gap: 16px; margin-top: 28px; }
+
+/* факты: подпись 12px #b5b5b5, число — EdMoscow 36px */
+.ed-hero-facts { display: flex; gap: 32px; }
+.ed-hero-facts dt { color: #b5b5b5; font-size: 12px; line-height: 1.4; }
+.ed-hero-facts dd {
+    margin: 2px 0 0;
+    font-family: "EdMoscow", sans-serif;
+    font-size: 36px;
+    line-height: 1;
+    color: var(--ed-text);
+}
+
+/* ==========================================================================
+   9. ЛЕНТА ТЕМ (.ed-topic-ribbon)
+   ========================================================================== */
+
+/* сетка 12 колонок: слева «голова» на 380px, справа облако пилюль */
+.ed-topic-ribbon {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 0;
+    row-gap: var(--ed-heading-gap);
+    align-items: start;
+    padding-block: 14px 8px;
+}
+.ed-topic-head { grid-column: span 4; display: grid; gap: 18px; max-width: 380px; }
+.ed-topic-heading { max-width: 330px; }
+.ed-topic-cloud {
+    grid-column: span 8;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 12px 10px;
+    position: relative;
+    padding-top: 4px;
+}
+
+/* пилюля темы: тёмный градиент, рамка #3a3a3a, радиус 999, высота 50 */
+.ed-topic-pill {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 50px;
+    padding: 0 11px 0 20px;
+    background: linear-gradient(115deg, #151515, #121212);
+    border: 1px solid #3a3a3a;
+    border-radius: 999px;
+    color: #ddd;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: border-color .24s, background-color .24s, color .24s, box-shadow .24s;
+}
+.ed-topic-pill:hover {
+    border-color: var(--ed-green);
+    background: #191c19;
+    color: var(--ed-text);
+    box-shadow: 0 0 0 1px #1afe4c20;
+}
+/* узел справа: круг 28×28 с пиксельной иконкой, рамка #414141, иконка зелёная */
+.ed-topic-node {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid #414141;
+    border-radius: 50%;
+    color: var(--ed-green);
+}
+
+/* ==========================================================================
+   10. КАРТОЧКИ
+   ========================================================================== */
+
+/* спикер: 4 колонки по 314px, gap 24; фото 4:5, radius 24 */
+.ed-lineup-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+@media (max-width: 1100px) { .ed-lineup-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 800px) { .ed-lineup-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.ed-lineup-speaker { border-radius: 24px; cursor: var(--pixel-hand); }
+.ed-lineup-photo {
+    position: relative;
+    aspect-ratio: 3 / 4;                 /* computed 314×418.66 */
+    background: #151915;
+    border-radius: 24px;
+    overflow: hidden;
+    transition: box-shadow .25s;
+}
+.ed-lineup-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ed-lineup-photo:hover { box-shadow: 0 0 0 1px #1afe4c66; }
+
+.ed-lineup-caption { padding: 20px 0 0; }
+.ed-lineup-caption h3 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--ed-text);
+}
+.ed-lineup-caption p {
+    margin-top: 10px;
+    color: var(--ed-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* отзыв: панель #161616, radius 26, паддинг 24; цитата 16/500 */
+.ed-review-card {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    background: var(--ed-surface);
+    border-radius: 26px;
+}
+.ed-review-author { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 24px; }
+.ed-review-author img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.ed-review-author h3 { font-size: 15px; font-weight: 600; line-height: 1.4; }
+.ed-review-author p { margin-top: 4px; color: var(--ed-muted); font-size: 13px; line-height: 1.5; }
+.ed-review-card blockquote {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.65;
+    color: var(--ed-text);
+}
+
+/* FAQ: панель #161616, radius 20, паддинг 0 24; кнопка 76px, ответ 13/1.7 #aaa */
+.ed-faq-item {
+    background: var(--ed-surface);
+    border-radius: 20px;
+    padding: 0 24px;
+    overflow: hidden;
+}
+.ed-faq-item + .ed-faq-item { margin-top: 10px; }
+.ed-faq-item h3 { font-size: 15px; font-weight: 600; line-height: 1.65; }
+.ed-faq-item :is(button, summary) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    min-height: 76px;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    list-style: none;
+}
+.ed-faq-item summary::-webkit-details-marker { display: none; }
+.ed-faq-item svg { flex: none; color: var(--ed-muted); transition: transform .3s; }
+.ed-faq-item[open] svg { transform: rotate(45deg); }
+.ed-faq-item p {
+    max-width: 490px;
+    padding-bottom: 24px;
+    color: var(--ed-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   11. КОНСОЛЬ ПРОГРАММЫ (.ps-console)
+   ========================================================================== */
+
+/* две колонки: список потоков 580 / экран 708, gap 40 */
+.ps-console {
+    display: grid;
+    grid-template-columns: minmax(240px, .85fr) minmax(0, 1.15fr);
+    gap: 40px;
+    min-height: 560px;
+}
+.ps-console-choice {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr) 12px;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    padding: 22px 24px;
+    background: none;
+    border: 0;
+    border-radius: 16px;
+    color: var(--ed-text);
+    font: inherit;
+    text-align: left;
+    transition: background .25s, color .25s;
+}
+.ps-console-choice:hover:not([aria-pressed="true"]) { background: var(--ed-surface); }
+.ps-console-choice[aria-pressed="true"] { background: var(--ed-green); color: var(--ed-bg); }
+.ps-console-choice[aria-pressed="true"] .ps-choice-number,
+.ps-console-choice[aria-pressed="true"] small { color: #154720; }
+
+.ps-choice-number {
+    margin-top: 6px;
+    font-family: "EdMoscow", sans-serif;
+    font-size: 25px;
+    line-height: 1;
+}
+.ps-choice-label strong { display: block; font-size: 16px; line-height: 1.4; }
+.ps-choice-label small { display: block; margin-top: 4px; font-size: 13px; font-weight: 600; opacity: .75; }
+
+/* «экран»: панель #161616, radius 28, паддинг 34 */
+.ps-console-stage {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    min-width: 0;
+    padding: 34px;
+    background: var(--ed-surface);
+    border-radius: 28px;
+}
+.ps-console-feature {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    gap: 24px 16px;
+    align-items: start;
+}
+.ps-console-number {
+    font-family: "EdMoscow", sans-serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ed-green);
+}
+.ps-console-heading { font-size: 22px; line-height: 1.3; font-weight: 600; }
+.ps-body { max-width: 643px; color: #d0d0d0; font-size: 16px; line-height: 1.6; }
+.ps-topics {
+    display: grid;
+    gap: 12px;
+    margin-top: 22px;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+@media (max-width: 1100px) {
+    .ps-console { grid-template-columns: 1fr; }
+    .ps-console-stage { border-radius: 22px; gap: 24px; padding: 24px; }
+}
+
+/* ==========================================================================
+   12. БИЛЕТЫ
+   ========================================================================== */
+
+/* сегмент-переключатель формата: панель #161616, радиус 20, паддинг 6 */
+.ed-format {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    margin-bottom: 18px;
+    padding: 6px;
+    background: var(--ed-surface);
+    border-radius: 20px;
+}
+.ed-format button {
+    position: relative;
+    padding: 14px 16px;
+    background: none;
+    border: 0;
+    border-radius: 15px;
+    color: var(--ed-muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+}
+.ed-format button[aria-pressed="true"] { color: #fff; }
+.ed-format-active {
+    position: absolute;
+    inset: 0;
+    background: var(--ed-selected-surface);
+    border-radius: 15px;
+}
+
+/* список докладов-билетов: карточка #161616, radius 20, паддинг 22 */
+.ed-package-list { display: grid; gap: 10px; }
+.ed-package {
+    display: grid;
+    grid-template-columns: 18px 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 22px;
+    background: var(--ed-surface);
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: var(--ed-text);
+    font: inherit;
+    text-align: left;
+    cursor: var(--pixel-hand);
+}
+.ed-package[aria-pressed="true"] { border-color: var(--ed-green); }
+.ed-package b { font-size: 17px; font-weight: 600; }
+.ed-radio {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #777;
+    border-radius: 50%;
+}
+.ed-package[aria-pressed="true"] .ed-radio { border: 5px solid var(--ed-green); }
+
+/* блок покупки: панель #161616, radius 30, паддинг 34 */
+.ed-ticket-purchase {
+    min-width: 0;
+    padding: 34px;
+    background: var(--ed-surface);
+    border-radius: 30px;
+}
+.ed-payment-method {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 22px;
+    padding: 5px;
+    border: 1px solid var(--ed-line);
+    border-radius: 999px;
+}
+.ed-payment-method button {
+    padding: 10px;
+    background: none;
+    border: 0;
+    border-radius: 999px;
+    color: var(--ed-muted);
+    font: inherit;
+    font-size: 13px;
+}
+.ed-payment-method button[aria-pressed="true"] {
+    background: var(--ed-selected-surface);
+    color: var(--ed-text);
+}
+
+/* ==========================================================================
+   13. ФИНАЛ И ФУТЕР (.ec-closing, .ch-*, .ed-site-footer)
+   ========================================================================== */
+
+.ed-site-footer {
+    margin-top: 80px;
+    padding-bottom: 48px;
+    border-top: 1px solid var(--ed-line);
+}
+.ed-site-footer-main {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 36px;
+    padding-block: 40px 42px;
+}
+.ed-site-footer-nav {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(3, 44px);
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 32px;
+    justify-self: center;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.ed-site-footer-legal {
+    display: grid;
+    grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
+    gap: 36px;
+    padding-top: 22px;
+    border-top: 1px solid var(--ed-line);
+    color: var(--ed-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+.ed-site-footer-documents {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px 16px;
+    font-size: 13px;
+    color: var(--ed-muted);
+}
+
+/* финальный блок: дата 52px зелёная, «Увидимся» — зелёная кисть-маска 316px */
+.ch-invitation {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: ". date" "word word" "name actions" "format actions";
+    column-gap: 32px;
+    color: var(--ed-text);
+}
+.ch-date {
+    grid-area: date;
+    margin-bottom: 24px;
+    font-family: "EdMoscow", sans-serif;
+    font-size: 52px;
+    line-height: 1.15;
+    color: var(--ed-green);
+}
+.ch-word { grid-area: word; display: block; height: 316px; max-width: 100%; }
+/* текст «Увидимся» — не буквы, а PNG-маска сайта (closing-brush-invitation.png) */
+.ch-lettering {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--ed-green);
+    -webkit-mask: url("assets/closing-brush-invitation.png") 50% / 100% 100% no-repeat;
+    mask: url("assets/closing-brush-invitation.png") 50% / 100% 100% no-repeat;
+}
+.ch-name { grid-area: name; font-size: clamp(30px, 3.3vw, 48px); font-weight: 700; line-height: 1.2; }
+.ch-format { grid-area: format; margin-top: 4px; font-size: 16px; line-height: 1.6; }
+.ch-actions {
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    align-self: end;
+    max-width: 100%;
+}
+@media (max-width: 800px) {
+    .ch-invitation { grid-template-columns: minmax(0, 1fr); grid-template-areas: "date" "word" "name" "format" "actions"; }
+    .ch-word { height: 180px; }
+}
+
+/* ==========================================================================
+   14. ПЕРЕКЛЮЧАТЕЛЬ .ms-toggle И ПИКСЕЛЬНЫЕ ДЕТАЛИ
+   ========================================================================== */
+
+/* мобильный «разрез логотипа»: три слоя, центральный — зелёный.
+   Виден только ≤800px, занимает 48×48 рядом с логотипом. */
+.ms-toggle {
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    min-width: 48px;
+    min-height: 47.5px;
+    padding: 0;
+    background: none;
+    border: 0;
+    color: var(--ed-text);
+    font-size: 11px;
+    line-height: 1.25;
+}
+.ms-cut-upper, .ms-cut-lower, .ms-cut-accent { display: inline; }
+.ms-cut-accent { stroke: var(--ed-green); }
+.ms-cut-upper, .ms-cut-lower { transition: transform .3s cubic-bezier(.16, 1, .3, 1); }
+@media (max-width: 800px) { .ms-toggle { display: flex; } }
+
+/* пиксельная иконка-частица: canvas 424×424, в потоке — 200×200 */
+.ed-particle-icon { width: 200px; height: 200px; }
+.ed-particle-icon canvas { width: 100%; height: 100%; display: block; }
+
+/* ореолы секций: огромный размытый синий радиальный градиент */
+.ed-glow { position: relative; }
+.ed-glow::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: clamp(1800px, 170vw, 2800px);
+    height: clamp(1800px, 170vw, 2800px);
+    left: calc(12% - clamp(1800px, 170vw, 2800px) / 2);
+    top: calc(50% - clamp(1800px, 170vw, 2800px) / 2);
+    background: radial-gradient(circle closest-side, #00a1d50a 0% 15%, #00a1d509 30%,
+        #00a1d507 45%, #00a1d504 60%, #00a1d502 75%, #00a1d500 90% 100%);
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+/* служебный моноширинный текст (JetBrains Mono) */
+.ed-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: .02em;
+}
+
+/* Фоновая пиксельная сетка. На сайте — body:has(.edition)::before:
+   две линейные заливки 1px кислотным #B8FF5C, шаг 32px, opacity .035,
+   маска-затухание к 68% высоты, position:fixed. Здесь — безопасный вариант
+   фоновым слоем, без псевдоэлемента с отрицательным z-index. */
+.ed-grid-bg {
+    background-color: var(--ed-bg);
+    background-image:
+        linear-gradient(rgba(184, 255, 92, .022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184, 255, 92, .022) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-attachment: fixed;
+}
