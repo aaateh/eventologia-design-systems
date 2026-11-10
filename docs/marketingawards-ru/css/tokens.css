@@ -77,8 +77,7 @@
   /* --- типографика: шкала ---
      Семь ступеней — единственные допустимые размеры: 12 / 14 / 16 / 20 / 24 +
      h2 и h1. Новый размер сначала появляется в docs/ДИЗАЙН-СИСТЕМА.md (раздел 1.2),
-     потом здесь. Исключения, которые надо свести: h1 34px на ≤360px,
-     h1 жюри clamp(30px, 8.4vw, 60.48px), .prose clamp(20px, 2vw, 24px). */
+     потом здесь. Единственное исключение — .prose clamp(20px, 2vw, 24px). */
   --fs-micro: 12px;                 /* подписи, номера, метки */
   --fs-small: 14px;                 /* мелкий текст, примечания */
   --fs-body: 16px;                  /* основной текст */
@@ -86,7 +85,7 @@
   --fs-prose: 24px;                 /* крупный вводный текст */
   --fs-h3: 20px;
   --fs-h2: clamp(28px, 3.6vw, 40px);
-  --fs-h1: clamp(40px, 6vw, 60.48px);
+  --fs-h1: clamp(30px, 8.4vw, 60.48px);
 
   /* --- сетка --- */
   --edge: clamp(24px, 4vw, 72px);
@@ -96,17 +95,13 @@
 
   /* --- радиусы --- */
   --radius: 4px;
-  --radius-sm: 6px;
   --radius-pill: 40px;
 
   /* --- типографика --- */
   --slogan-font: "Dela Award", sans-serif;
-  --slogan-size: clamp(56px, 6vw, 72px);
-  --slogan-optical: .84;
   --slogan-weight: 400;
   --slogan-leading: 1.06;
   --slogan-tracking: -.012em;
-  --display-size: calc(var(--slogan-size) * var(--slogan-optical));
 
   --invitation-font: "Involve", serif;
   --font-base: "Golos Award", Arial, sans-serif;

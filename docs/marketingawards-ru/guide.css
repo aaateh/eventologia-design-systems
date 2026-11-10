@@ -150,7 +150,7 @@ body { background: var(--ground); color: var(--scene-ink); }
    ========================================================================== */
 
 .pv-intro {
-    padding: clamp(44px, 5vw, 64px) 0 8px;
+    padding-block: clamp(44px, 5vw, 64px) 8px;
 }
 
 .pv-intro__lead {
@@ -230,6 +230,9 @@ body { background: var(--ground); color: var(--scene-ink); }
 }
 
 .section--soft .pv-section-head p { color: var(--muted); }
+
+.pv-section-head .eyebrow,
+.section--soft .pv-section-head .eyebrow { color: var(--accent-text); }
 
 .pv-note {
     max-width: 880px;
@@ -358,7 +361,7 @@ body { background: var(--ground); color: var(--scene-ink); }
 .pv-h1-demo {
     margin: 0;
     font-family: var(--slogan-font);
-    font-size: clamp(34px, 5.4vw, 60.48px);
+    font-size: var(--fs-h1);
     font-weight: 400;
     line-height: 1.06;
     letter-spacing: -.012em;
@@ -478,6 +481,8 @@ body { background: var(--ground); color: var(--scene-ink); }
 }
 
 .pv-btn-cell {
+    position: relative;
+    isolation: isolate;
     display: grid;
     justify-items: center;
     gap: 12px;

@@ -72,7 +72,7 @@
         <p class="pv-hero__meta">
             <span>9 эффектов</span>
             <span>7 ступеней типа</span>
-            <span>33 токена</span>
+            <span>55 переменных</span>
             <span>WCAG 2.1</span>
         </p>
     </div>
@@ -87,7 +87,7 @@
 <section class="pv-intro wrap" aria-labelledby="intro-title">
     <h2 class="sr-only" id="intro-title">О гайде</h2>
     <p class="pv-intro__lead">Это не заглушка и не концепт: страница описывает работающий сайт «Суровой премии» — пятнадцать секций главной, страницу жюри, партнёрскую форму и девять эффектов. Всё, что ниже, взято из <code>site/css</code>, <code>site/js</code> и живых вычисленных стилей.</p>
-    <p class="pv-intro__links">Полный текст — <a href="DESIGN.md">DESIGN.md</a> · переменные — <a href="tokens.css">tokens.css</a> · рабочий CSS — <a href="css/index-bundle.css">index-bundle.css</a> · логотип — <a href="logo.svg">logo.svg</a>, живой стайлгайд — <a href="styleguide.html">styleguide.html</a>.</p>
+    <p class="pv-intro__links">Полный текст — <a href="DESIGN.md">DESIGN.md</a> · переменные — <a href="tokens.css">tokens.css</a> · рабочий CSS — <a href="css/index-bundle.css">index-bundle.css</a> · логотип — <a href="logo.svg">logo.svg</a>.</p>
     <nav class="pv-toc" aria-label="Разделы гайда">
         <a href="#palette">01 Палитра</a>
         <a href="#typography">02 Типографика</a>
@@ -157,7 +157,7 @@
 
         <div class="pv-type-row">
             <p class="pv-h1-demo">Суровая премия</p>
-            <div class="pv-type-meta">H1 · Dela Award · 400<br>clamp(40px, 6vw, 60.48px) · 1.06<br>uppercase · −0.012em</div>
+            <div class="pv-type-meta">H1 · Dela Award · 400<br>clamp(30px, 8.4vw, 60.48px) · 1.06<br>uppercase · −0.012em</div>
         </div>
         <div class="pv-type-row">
             <p class="pv-h2-demo">Сильная работа заслуживает признания</p>
@@ -195,7 +195,7 @@
                     <tr><td>20</td><td><code>--fs-lead</code></td><td>20px</td><td>h3, имена, даты, FAQ, лид</td></tr>
                     <tr><td>24</td><td><code>--fs-prose</code></td><td>24px</td><td>крупный вводный текст, номера шагов</td></tr>
                     <tr><td>h2</td><td><code>--fs-h2</code></td><td>clamp(28px, 3.6vw, 40px)</td><td>заголовки секций, цена</td></tr>
-                    <tr><td>h1</td><td><code>--fs-h1</code></td><td>clamp(40px, 6vw, 60.48px)</td><td>заголовок страницы</td></tr>
+                    <tr><td>h1</td><td><code>--fs-h1</code></td><td>clamp(30px, 8.4vw, 60.48px)</td><td>заголовок страницы</td></tr>
                 </tbody>
             </table>
         </div>
@@ -211,7 +211,7 @@
                 </tbody>
             </table>
         </div>
-        <p class="pv-note"><b>Исключения вне шкалы:</b> h1 34px на ≤360px; h1 жюри clamp(30px, 8.4vw, 60.48px); .prose clamp(20px, 2vw, 24px); слоган .hero__sub clamp(18px, 5.9vw, 50.8px). Это ручные подгонки, а не новые ступени — при следующей правке их надо свести.</p>
+        <p class="pv-note"><b>Исключения вне шкалы:</b> .prose clamp(20px, 2vw, 24px), слоган .hero__sub clamp(18px, 5.9vw, 50.8px), имя жюри 17px. Это ручные подгонки, а не новые ступени — при следующей правке их надо свести.</p>
     </div>
     <div class="burn burn--viewport" data-burn data-color="#080607" aria-hidden="true"></div>
 </section>
@@ -276,7 +276,7 @@
                 </tbody>
             </table>
         </div>
-        <p class="pv-note"><b>Про радиус.</b> Базовый <code>.shiny-btn</code> — 32px, но на сайте его перекрывает <code>.shiny-btn--site { border-radius: var(--radius) }</code> из <code>fire-buttons.css</code>, то есть 4px. В гайде и на сайте — 4px. <b>Про огонь.</b> Пламя рисует <code>fire-button.js</code> на canvas 280×280 вокруг кнопки; оно появляется при приближении курсора, только на устройствах с мышью и не включается на слабом железе и при <code>prefers-reduced-motion</code>.</p>
+        <p class="pv-note"><b>Про радиус.</b> Базовый <code>.shiny-btn</code> — 32px, но на сайте его перекрывает <code>.shiny-btn--site { border-radius: var(--radius) }</code> из <code>fire-buttons.css</code>, то есть 4px. В гайде и на сайте — 4px. <b>Про огонь.</b> Пламя рисует <code>fire-button.js</code> на canvas, который на 280px больше кнопки (по 140px с каждой стороны); оно появляется при приближении курсора, только на устройствах с мышью и не включается на слабом железе и при <code>prefers-reduced-motion</code>.</p>
     </div>
     <div class="burn burn--viewport" data-burn data-color="#ECE9E3" aria-hidden="true"></div>
 </section>
@@ -539,7 +539,7 @@
                     <tr><td>≤980</td><td>меню в оверлей, бургер 44×44; навигация 14px</td></tr>
                     <tr><td>≤900</td><td>сетки в одну колонку; прожиг остаётся; фон «О премии» становится ровным</td></tr>
                     <tr><td>≤600</td><td>секция 56px; номера шагов 20px; FAQ и таймлайн 16/20px; подвал 12px</td></tr>
-                    <tr><td>≤360</td><td>h1 34px; кнопки без min-width; логотип 24px</td></tr>
+                    <tr><td>≤360</td><td>кнопки без min-width; логотип 24px; header 20px</td></tr>
                     <tr><td>по высоте</td><td>max-height 780/760/600 сжимает вертикальный ритм героя</td></tr>
                 </tbody>
             </table>
@@ -625,7 +625,7 @@
 --action-w: 244px;
 --action-h: 54px;
 --radius: 4px;
---fs-micro: 12px; ... --fs-h1: clamp(40px, 6vw, 60.48px);
+--fs-micro: 12px; ... --fs-h1: clamp(30px, 8.4vw, 60.48px);
 
 <span class="c">/* движение */</span>
 --ease: cubic-bezier(.22, 1, .36, 1);</code></div>
@@ -639,9 +639,9 @@
                     <tr><td>Основные стили</td><td><code>site/css/style.css</code></td><td>63 КБ</td></tr>
                     <tr><td>Собранный CSS</td><td><code>site/css/index-bundle.css</code> (13 файлов)</td><td>130 КБ</td></tr>
                     <tr><td>Эффекты</td><td><code>site/js/fire.js</code>, <code>star-border.js</code>, <code>scroll-burn.js</code>, <code>fire-button.js</code>, <code>intro.js</code></td><td>30–46 КБ каждый</td></tr>
-                    <tr><td>Шрифты</td><td><code>site/fonts/</code> (10 файлов, OFL)</td><td>264 КБ</td></tr>
+                    <tr><td>Шрифты</td><td><code>site/fonts/</code> (10 файлов, OFL)</td><td>276 КБ</td></tr>
                     <tr><td>Огонь</td><td><code>site/media/fire/</code> — 1440 и 540 MP4 + постеры</td><td>3.8 МБ</td></tr>
-                    <tr><td>Документ</td><td><code>docs/ДИЗАЙН-СИСТЕМА.md</code></td><td>17 КБ</td></tr>
+                    <tr><td>Документ</td><td><code>docs/ДИЗАЙН-СИСТЕМА.md</code></td><td>18 КБ</td></tr>
                 </tbody>
             </table>
         </div>
@@ -656,7 +656,7 @@
             <li>Проверить 1440, 900, 599 и 360; клавиатуру и контраст.</li>
         </ol>
 
-        <p class="pv-note" style="margin-top:22px">Связанные документы: <a href="DESIGN.md" style="color:var(--ink);border-bottom:1px solid currentColor">DESIGN.md</a> — полный гайд · <a href="tokens.css" style="color:var(--ink);border-bottom:1px solid currentColor">tokens.css</a> — переменные · <a href="css/index-bundle.css" style="color:var(--ink);border-bottom:1px solid currentColor">index-bundle.css</a> — рабочий CSS.</p>
+        <p class="pv-note" style="margin-top:22px">Связанные документы: <a href="DESIGN.md" style="color:var(--ink);border-bottom:1px solid currentColor">DESIGN.md</a> — полный гайд · <a href="tokens.css" style="color:var(--ink);border-bottom:1px solid currentColor">tokens.css</a> — переменные · <a href="styleguide.html" style="color:var(--ink);border-bottom:1px solid currentColor">styleguide.html</a> — живой стайлгайд · <a href="css/index-bundle.css" style="color:var(--ink);border-bottom:1px solid currentColor">index-bundle.css</a> — рабочий CSS.</p>
     </div>
     <div class="burn burn--viewport" data-burn data-color="#080607" aria-hidden="true"></div>
 </section>
@@ -723,6 +723,7 @@
                 <ul>
                     <li><a href="DESIGN.md">DESIGN.md</a></li>
                     <li><a href="tokens.css">tokens.css</a></li>
+                    <li><a href="styleguide.html">styleguide.html</a></li>
                     <li><a href="css/index-bundle.css">index-bundle.css</a></li>
                     <li><a href="logo.svg">logo.svg</a></li>
                     <li><a href="../">Все дизайн-системы</a></li>

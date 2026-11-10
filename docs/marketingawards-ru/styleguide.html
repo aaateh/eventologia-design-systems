@@ -468,7 +468,7 @@
         <a class="btn btn--ghost" href="#components">Рассчитать стоимость</a>
         <a class="shiny-btn shiny-btn--site" href="#components"><span>Подать заявку</span></a>
       </div>
-      <p class="small muted" style="max-width:840px;margin-top:16px">.btn — 54px (--action-h), min-width 244px (--action-w), padding 15/26, рамка 1px, радиус 4px (--radius). .btn--sm — 44px и 14px. .btn--ghost — рамка 45% currentColor и полупрозрачный фон сцены. .shiny-btn--site — те же 54/244, коническая рамка, зерно и свечение; радиус 32px, собственного border-radius у класса нет — значение наследуется от .shiny-btn; огонь по периметру включается только на устройствах с мышью.</p>
+      <p class="small muted" style="max-width:840px;margin-top:16px">.btn — 54px (--action-h), min-width 244px (--action-w), padding 15/26, рамка 1px, радиус 4px (--radius). .btn--sm — 44px и 14px. .btn--ghost — рамка 45% currentColor и полупрозрачный фон сцены. .shiny-btn--site — те же 54/244, коническая рамка, зерно и свечение; базовый .shiny-btn имеет радиус 32px, но на сайте .shiny-btn--site перекрывает его до 4px (fire-buttons.css + fire-button.css); огонь по периметру включается только на устройствах с мышью.</p>
 
       <h3 style="margin-top:40px">Карточки</h3>
       <div class="grid grid--2" style="margin-top:20px">
@@ -499,7 +499,7 @@
       <p style="margin-top:8px">.wrap — max-width <span style="font-weight:600">calc(1040px + edge × 2)</span>, padding-inline <span style="font-weight:600">clamp(24px, 4vw, 72px)</span> (--edge). Секция — padding <span style="font-weight:600">clamp(64px, 7.5vw, 108px)</span>, узкая — <span style="font-weight:600">clamp(48px, 5vw, 72px)</span>. На экранах ≤600px секция сжимается до 56px.</p>
 
       <h3 style="margin-top:24px">Рамки, радиусы, тени</h3>
-      <p style="margin-top:8px">Рамки — 1px. Радиус у .btn — 4px (--radius); у .shiny-btn — 32px, собственного border-radius у .shiny-btn--site нет, значение наследуется (<code style="font:inherit">shiny-button.css:55</code>). --radius-sm удалён как неиспользуемый, --radius-pill 40px используется в .footer__dev (<code style="font:inherit">style.css:2074</code>). Карточка собирает рамку 2px из двух слоёв. В статике теней и градиентов нет. Исключения: свечение box-shadow при наведении .btn (<code style="font:inherit">style.css:138–140</code>), градиент .hero__sub (<code style="font:inherit">style.css:330–335</code>) и .awards-grid::after (<code style="font:inherit">style.css:2434–2444</code>).</p>
+      <p style="margin-top:8px">Рамки — 1px. Радиус у .btn — 4px (--radius); у базового .shiny-btn — 32px, но .shiny-btn--site перекрывает его до 4px (<code style="font:inherit">fire-button.css:255</code>). --radius-sm удалён как неиспользуемый, --radius-pill 40px используется в .footer__dev (<code style="font:inherit">style.css:2074</code>). Карточка собирает рамку 2px из двух слоёв. В статике теней и градиентов нет. Исключения: свечение box-shadow при наведении .btn (<code style="font:inherit">style.css:138–140</code>), градиент .hero__sub (<code style="font:inherit">style.css:330–335</code>) и .awards-grid::after (<code style="font:inherit">style.css:2434–2444</code>).</p>
 
       <h3 style="margin-top:24px">Мобильные переопределения</h3>
       <p style="margin-top:8px">≤1100 — навигация 12px · ≤980 — навигация 14px в меню · ≤900 — дата 16px · ≤600 — номера шагов 20px, дата и текст таймлайна 16px, имя основателя 20px, FAQ 16/20px, контакты 20px, подвал 12px.</p>
@@ -549,7 +549,7 @@
             </tr>
             <tr>
               <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/fire-buttons.css" style="border-bottom:1px solid currentColor">fire-buttons.css</a></td>
-              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">вариант огненной кнопки для сайта: те же 54/244, что у .btn, скругление 32px (наследует от .shiny-btn)</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">вариант огненной кнопки для сайта: те же 54/244, что у .btn, скругление 4px (перекрывает базовые 32px)</td>
               <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">.shiny-btn--site на страницах сайта</td>
             </tr>
             <tr>
