@@ -7,7 +7,7 @@
 | **Eventologia.ru** | Основной сайт: палитра, типографика, шапка и меню, кнопки, формы, карточки, футер, тёмная тема, токены. | [Открыть](https://aaateh.github.io/eventologia-design-systems/eventologia-ru/) |
 | **Event-профи** | Страница курса event-manager1.eventologia.ru: Montserrat, тёмный hero, CTA, тарифы, формы, классы `.em-*` и токены `--em-*`. | [Открыть](https://aaateh.github.io/eventologia-design-systems/event-manager1/) |
 | **Smmconfa.ru** | «Суровый Питерский Форум»: красный акцент, Liberation Sans, капс-заголовки, кнопки 88px на рамке 2px, 12 разделов и токены `.btn`, `.accordion`. | [Открыть](https://aaateh.github.io/eventologia-design-systems/smmconfa-ru/) |
-| **«Суровая премия»** | marketingawards.ru: почти чёрная сцена, тёплый белый, Dela Award и Involve, прозрачные кнопки с бегущей рамкой, WCAG-проверка контраста. | [Открыть](https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/) |
+| **«Суровая премия»** | marketingawards.ru: почти чёрная сцена, тёплый белый, Dela Award и Involve, прозрачные кнопки с бегущей рамкой, WCAG-проверка контраста. Плюс живой стайлгайд: токены, компоненты, эффекты. | [Открыть](https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/) |
 | **«Белая конфа»** | whiteconf.ru: синий #0026FC, CA Saygon и Montserrat, заголовки без капса, кнопки с рамкой 4px, 12 разделов — сетка, спикеры, тарифы, корзина, токены `--wc-*`. | [Открыть](https://aaateh.github.io/eventologia-design-systems/whiteconf-ru/) |
 | **«Питерский промпт»** | spbprompt.ru: тёмная сцена #0A0A0A, неон #1AFE4C, пиксельные курсоры, EdMoscow и EdJura, 13 разделов — шапка-пилюля, герой, консоль программы, билеты, токены `--ed-*`. | [Открыть](https://aaateh.github.io/eventologia-design-systems/spbprompt-ru/) |
 
@@ -34,6 +34,7 @@ docs/
 ## Что внутри каждой папки
 
 - `index.html` — визуальный гайд (открывается без сборки).
+- `styleguide.html` — живой стайлгайд в оформлении сайта (у «Суровой премии»).
 - `tokens.css` — готовые переменные и базовые компоненты.
 - `*.md` — текстовая версия дизайн-системы (полный гайд с селекторами).
 - `preview.png` — превью для карточки каталога, `og.png` — обложка для соцсетей.
@@ -50,7 +51,7 @@ docs/
 - eventologia.ru — локальный бэкап WordPress-темы `smm`.
 - event-manager1.eventologia.ru — архивная копия страницы курса «Event-профи».
 - smmconfa.ru — CSS темы `smmconfa24`, снято с прода 30/10/2026 (`DESIGN.md` в проекте админки конф).
-- marketingawards.ru — вычисленные стили живого DOM, снято 31/10/2026.
+- marketingawards.ru — вычисленные стили живого DOM, снято 31/10/2026. Стайлгайд собран из проекта сайта 11/11/2026.
 - whiteconf.ru — локальные CSS сайта (байт-в-байт с продом) + проверка computed-стилей, снято 10/11/2026.
 - spbprompt.ru — Next.js-билд: computed-стили в браузере + исходные CSS-чанки, снято 10/11/2026.
-- Собрано: 10/11/2026.
+- Собрано: 11/11/2026.

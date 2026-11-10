@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Дизайн-система — marketingawards.ru («Суровая премия»)</title>
-<meta name="description" content="Дизайн-система marketingawards.ru: тёмная сцена, Dela Award, Involve и Golos Award, кнопки с бегущей рамкой, сетка, токены и контраст по WCAG.">
+<title>Дизайн-система — marketingawards.ru («Суровая премия»), текущая версия</title>
+<meta name="description" content="Текущая дизайн-система marketingawards.ru: тёмная сцена и огонь, Dela Award, Involve и Golos Award, кнопки с бегущей рамкой и пламенем, прожиг секций, компоненты, токены и WCAG.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#080607">
 <link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Каталог дизайн-систем">
-<meta property="og:title" content="Дизайн-система marketingawards.ru — визуальный гайд">
-<meta property="og:description" content="Тёмная сцена, Dela Award, Involve, кнопки с бегущей рамкой, сетка и токены marketingawards.ru.">
+<meta property="og:title" content="Дизайн-система marketingawards.ru — текущая версия">
+<meta property="og:description" content="Тёмная сцена и живой огонь, Dela Award / Involve / Golos Award, кнопки с пламенем и бегущей рамкой, прожиг секций, компоненты и токены.">
 <meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/">
 <meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/og.png">
 <meta property="og:image:type" content="image/png">
@@ -19,8 +19,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Дизайн-система marketingawards.ru">
-<meta name="twitter:description" content="Палитра, типографика, кнопки, сетка и токены marketingawards.ru.">
+<meta name="twitter:title" content="Дизайн-система marketingawards.ru — текущая версия">
+<meta name="twitter:description" content="Тёмная сцена, огонь, Dela Award, Involve и Golos Award, кнопки с пламенем, прожиг секций и токены.">
 <meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/og.png">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48">
@@ -28,80 +28,12 @@
 <link rel="icon" type="image/png" href="../assets/favicon-96.png" sizes="96x96">
 <link rel="icon" type="image/png" href="../assets/favicon-48.png" sizes="48x48">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="stylesheet" href="tokens.css?v=2">
 <link rel="stylesheet" href="../assets/dsbar.css">
-<style>
-    html, body { background: var(--ground); }
-    body { color: var(--scene-ink); }
-
-    .pv-wrap { max-width: 1040px; margin: 0 auto; padding: 0 var(--edge); }
-    .pv-sec { padding: 40px 0; border-top: 1px solid #ffffff14; }
-    .pv-label {
-        font-family: var(--font-ui);
-        font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
-        color: #a49e98; margin-bottom: 18px;
-    }
-    .pv-note { font-family: var(--font-base); font-size: 13px; line-height: 1.5; color: #a49e98; margin-top: 10px; }
-
-    /* витрина первого экрана */
-    .pv-hero {
-        display: grid;
-        justify-items: center;
-        gap: 22px;
-        padding: 46px var(--edge) 34px;
-        text-align: center;
-        background: var(--ground);
-        border-bottom: 1px solid #ffffff14;
-    }
-    .pv-hero .award-slogan { font-size: clamp(30px, 5vw, 52px); }
-    .pv-hero .brand-stage { width: min(100%, 420px); }
-
-    .pv-pal { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
-    .pv-swatch { height: 64px; border-radius: 4px; border: 1px solid #ffffff1f; }
-    .pv-pal-name { font-family: var(--font-ui); font-size: 12px; margin-top: 7px; }
-    .pv-pal-use { font-size: 12px; color: #a49e98; }
-
-    .pv-type-row { display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; padding: 14px 0; border-bottom: 1px solid #ffffff12; }
-    .pv-type-sample { flex: 1 1 380px; min-width: 220px; }
-    .pv-type-meta { font-size: 12px; color: #a49e98; }
-
-    .pv-btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
-    .pv-state { font-size: 11px; color: #a49e98; text-align: center; margin-top: 8px; font-family: var(--font-ui); letter-spacing: .08em; text-transform: uppercase; }
-    .pv-cell { display: grid; justify-items: center; }
-
-    table.pv-table { width: 100%; border-collapse: collapse; font-family: var(--font-base); font-size: 13px; }
-    table.pv-table th, table.pv-table td { text-align: left; padding: 9px 10px; border-bottom: 1px solid #ffffff12; vertical-align: top; }
-    table.pv-table th { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #a49e98; }
-    table.pv-table code { font-family: ui-monospace, monospace; font-size: 12px; color: #F5F0EB; }
-
-    /* --- полоса каталога на тёмной сцене --- */
-    .dsbar {
-        --dsbar-bg: #0E0C0B;
-        --dsbar-line: #2A2422;
-        --dsbar-ink: #F5F0EB;
-        --dsbar-muted: #A49E98;
-        --dsbar-accent: #FF8A5B;
-    }
-
-    /* --- шапка гайда каталога --- */
-    .pv-intro { padding: 54px 0 6px; }
-    .pv-eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; font-family: var(--font-ui); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #A49E98; }
-    .pv-eyebrow i { display: block; width: 26px; height: 2px; background: var(--scene-ink); }
-    .pv-intro__title { margin: 0 0 20px; font-family: var(--slogan-font); font-weight: 400; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -.012em; text-transform: uppercase; }
-    .pv-intro__lead { margin: 0 0 14px; max-width: 720px; font-family: var(--font-base); font-size: 16px; line-height: 1.55; color: #A49E98; }
-    .pv-intro__links { margin: 0; font-family: var(--font-base); font-size: 13px; color: #A49E98; }
-    .pv-intro__links a { color: var(--scene-ink); }
-    .pv-intro__links a:hover { color: #FF8A5B; }
-    .pv-toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 4px; }
-    .pv-toc a { padding: 8px 15px; border: 1px solid #ffffff2b; border-radius: var(--radius-pill); font-family: var(--font-ui); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; color: var(--scene-ink); }
-    .pv-toc a:hover, .pv-toc a:focus-visible { background: #ffffff14; border-color: #ffffff5c; outline: none; }
-    @media (max-width: 600px) {
-        .pv-intro { padding: 38px 0 2px; }
-        .pv-intro__lead { font-size: 15px; }
-    }
-</style>
+<link rel="stylesheet" href="css/index-bundle.css">
+<link rel="stylesheet" href="guide.css">
 </head>
 <body>
+
 <nav class="dsbar" aria-label="Каталог дизайн-систем">
     <div class="dsbar__in">
         <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
@@ -109,140 +41,706 @@
     </div>
 </nav>
 
-<section class="pv-intro pv-wrap">
-    <p class="pv-eyebrow"><i aria-hidden="true"></i>Дизайн-система · одностраничный лендинг премии</p>
-    <h1 class="pv-intro__title">«Суровая премия»</h1>
-    <p class="pv-intro__lead">Marketingawards.ru: почти чёрная сцена, тёплый белый, Dela Award и Involve, прозрачные кнопки с бегущей рамкой. Пять разделов — палитра, типографика, кнопки, сетка и токены, ограничения. Снято с живого DOM 31/10/2026.</p>
-    <p class="pv-intro__links">Полный текст гайда — <a href="DESIGN.md">DESIGN.md</a>, переменные — <a href="tokens.css">tokens.css</a>, логотип — <a href="logo.svg">logo.svg</a>.</p>
-    <nav class="pv-toc" aria-label="Разделы гайда">
-        <a href="#s1">01 Палитра</a>
-        <a href="#s2">02 Типографика</a>
-        <a href="#s3">03 Кнопки</a>
-        <a href="#s4">04 Сетка и токены</a>
-        <a href="#s5">05 Чего нет</a>
-    </nav>
-</section>
+<!-- ============================================================
+     ПЕРВЫЙ ЭКРАН — живой огонь, логотип, слоган, кнопки
+     ============================================================ -->
+<header class="pv-hero" id="top">
+    <video class="pv-hero__fire" autoplay muted loop playsinline preload="metadata"
+           poster="media/fire/fire-desktop-poster-1440.jpg" aria-hidden="true">
+        <source media="(max-width: 600px)" src="media/fire/fire-mobile-540-loop.mp4">
+        <source src="media/fire/fire-desktop-1440-loop.mp4">
+    </video>
+    <div class="pv-hero__shade" aria-hidden="true"></div>
 
-<!-- первый экран -->
-<section class="pv-hero">
-    <div class="brand-stage">
-        <img src="logo.svg" alt="Суровая премия" style="width:100%;height:auto">
+    <div class="pv-hero__in wrap">
+        <p class="pv-kicker">Дизайн-система · текущая версия · 11/11/2026</p>
+
+        <h1 class="pv-hero__title">
+            <img src="logo.svg" alt="" width="230" height="45">
+            <span class="sr-only">Дизайн-система «Суровой премии» — marketingawards.ru</span>
+        </h1>
+
+        <p class="hero__sub pv-hero__slogan" data-slogan><span data-slogan-line>Получи свой Оскар</span><br>в маркетинге</p>
+
+        <p class="pv-hero__lead">Тёмная сцена и живой огонь, Dela Award / Involve / Golos Award, кнопки с бегущей рамкой и пламенем, прожиг на стыке секций. Гайд собран по текущим файлам сайта и проверен в браузере.</p>
+
+        <div class="pv-hero__actions">
+            <a class="btn" href="https://marketingawards.ru/new/" target="_blank" rel="noopener">Открыть сайт</a>
+            <a class="shiny-btn shiny-btn--site shiny-btn--outline" href="#palette"><span>Смотреть систему</span></a>
+        </div>
+
+        <p class="pv-hero__meta">
+            <span>9 эффектов</span>
+            <span>7 ступеней типа</span>
+            <span>33 токена</span>
+            <span>WCAG 2.1</span>
+        </p>
     </div>
-    <p class="award-slogan"><span>Получи свой Оскар</span><span>в маркетинге</span></p>
-    <p class="invitation" style="max-width:356px">Оставьте заявку на участие
-и получите приглашение
-в числе первых</p>
-    <a class="star-border apply-button" href="#" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:transparent;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
+</header>
+
+<div class="site">
+<main>
+
+<!-- ============================================================
+     ВСТУПЛЕНИЕ
+     ============================================================ -->
+<section class="pv-intro wrap" aria-labelledby="intro-title">
+    <h2 class="sr-only" id="intro-title">О гайде</h2>
+    <p class="pv-intro__lead">Это не заглушка и не концепт: страница описывает работающий сайт «Суровой премии» — пятнадцать секций главной, страницу жюри, партнёрскую форму и девять эффектов. Всё, что ниже, взято из <code>site/css</code>, <code>site/js</code> и живых вычисленных стилей.</p>
+    <p class="pv-intro__links">Полный текст — <a href="DESIGN.md">DESIGN.md</a> · переменные — <a href="tokens.css">tokens.css</a> · рабочий CSS — <a href="css/index-bundle.css">index-bundle.css</a> · логотип — <a href="logo.svg">logo.svg</a>, живой стайлгайд — <a href="styleguide.html">styleguide.html</a>.</p>
+    <nav class="pv-toc" aria-label="Разделы гайда">
+        <a href="#palette">01 Палитра</a>
+        <a href="#typography">02 Типографика</a>
+        <a href="#buttons">03 Кнопки</a>
+        <a href="#components">04 Компоненты</a>
+        <a href="#motion">05 Анимации</a>
+        <a href="#grid">06 Сетка</a>
+        <a href="#a11y">07 Доступность</a>
+        <a href="#tokens">08 Токены</a>
+        <a href="#version">09 Версия</a>
+    </nav>
+    <p class="pv-intro__links" style="margin-top:10px">Живой стайлгайд — <a href="styleguide.html">цвет, типографика, компоненты, сетка, эффекты</a>.</p>
 </section>
 
-<main class="pv-wrap">
-
-    <section class="pv-sec" id="s1">
-        <div class="pv-label">1. Палитра</div>
-        <div class="pv-pal">
-            <div><div class="pv-swatch" style="background:#080607"></div><div class="pv-pal-name">#080607</div><div class="pv-pal-use">фон · --ground</div></div>
-            <div><div class="pv-swatch" style="background:#F5F0EB"></div><div class="pv-pal-name">#F5F0EB</div><div class="pv-pal-use">текст · --scene-ink</div></div>
-            <div><div class="pv-swatch" style="background:#C8C2BC"></div><div class="pv-pal-name">#C8C2BC</div><div class="pv-pal-use">рамка · --action-border</div></div>
-            <div><div class="pv-swatch" style="background:#ECE9E3"></div><div class="pv-pal-name">#ECE9E3</div><div class="pv-pal-use">бумага · --paper</div></div>
-            <div><div class="pv-swatch" style="background:#25292E"></div><div class="pv-pal-name">#25292E</div><div class="pv-pal-use">текст на бумаге</div></div>
-            <div><div class="pv-swatch" style="background:#A62C18"></div><div class="pv-pal-name">#A62C18</div><div class="pv-pal-use">ошибка</div></div>
+<!-- ============================================================
+     01. ПАЛИТРА
+     ============================================================ -->
+<section class="section burn-host" id="palette" aria-labelledby="palette-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">01 · Палитра</p>
+            <h2 id="palette-title">Сцена, бумага и один огонь</h2>
+            <p>Две палитры и один акцент. Тёмная сцена — основа: фон #080607, тёплый белый текст, тонкие линии. Бумага #ECE9E3 включается классом <code>.section--soft</code> и инвертирует токены для потомков. Оранжевый #F56624 — не «пятый цвет», а огонь: подписи, номера, пламя и свечение.</p>
         </div>
-        <div class="pv-note">Тёмная сцена — основная. Светлые токены нужны только для панелей и служебных экранов.</div>
-    </section>
 
-    <section class="pv-sec" id="s2">
-        <div class="pv-label">2. Типографика</div>
+        <h3>Тёмная сцена</h3>
+        <div class="pv-swatches" style="margin-top:16px">
+            <div class="pv-swatch"><span class="pv-chip" style="background:#080607"></span><b>#080607</b><code>--ground</code><em>фон страницы и сцены</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#F5F0EB"></span><b>#F5F0EB</b><code>--scene-ink</code><em>основной текст</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#FFFFFF"></span><b>#FFFFFF</b><code>--scene-muted</code><em>вторичный текст</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#151112"></span><b>#15111280</b><code>--control-surface</code><em>hover-подложка</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#C8C2BC"></span><b>#C8C2BC</b><code>--action-border</code><em>рамка кнопок, фокус</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#F56624"></span><b>#F56624</b><code>--brand-accent</code><em>акцент, огонь, ссылки</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#FF7B39"></span><b>#FF7B39</b><code>--fire-glow</code><em>свечение пламени</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#C8C2BC52"></span><b>#C8C2BC52</b><code>--rule-strong</code><em>рамки карточек</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#FFB38A"></span><b>#FFB38A</b><code>--selection</code><em>выделение текста</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#0A090B"></span><b>#0A090BB3</b><code>--backdrop</code><em>затемнение под модалкой</em></div>
+        </div>
+
+        <h3 style="margin-top:40px">Бумага</h3>
+        <div class="pv-swatches" style="margin-top:16px">
+            <div class="pv-swatch"><span class="pv-chip" style="background:#ECE9E3"></span><b>#ECE9E3</b><code>--paper</code><em>фон светлых секций</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#F5F2EC"></span><b>#F5F2EC</b><code>--paper-raised</code><em>карточки и поля</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#25292E"></span><b>#25292E</b><code>--ink</code><em>основной текст</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#3F423F"></span><b>#3F423F</b><code>--ink-soft</code><em>лид на бумаге</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#4A4D48"></span><b>#4A4D48</b><code>--muted</code><em>вторичный текст</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#94958E"></span><b>#94958E</b><code>--field-line</code><em>рамка поля</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#A62C18"></span><b>#A62C18</b><code>--error</code><em>ошибка формы</em></div>
+            <div class="pv-swatch"><span class="pv-chip" style="background:#B4B0A9"></span><b>#B4B0A9</b><code>--paper-rule-strong</code><em>рамка карточки</em></div>
+        </div>
+
+        <p class="pv-note"><b>Правило.</b> В статике нет теней и цветных плашек: глубина — фон, рамки и canvas-свечение. Оранжевый на бумаге (#F56624 на #ECE9E3 — 2.55:1) годится только для декоративных 12-пиксельных подписей; смысловой текст на бумаге набирается <code>--ink</code> или <code>--error</code>. Исключения — свечение кнопки при наведении и градиент слогана.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#ECE9E3" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     02. ТИПОГРАФИКА
+     ============================================================ -->
+<section class="section section--soft burn-next burn-host" id="typography" aria-labelledby="typography-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">02 · Типографика</p>
+            <h2 id="typography-title">Dela, Involve, Golos</h2>
+            <p>Заголовки — Dela Award (Dela Gothic One), только 400 и всегда капс. Involve — подписи, кнопки, имена и лиды. Golos Award — основной текст и мелкие метки. Семь ступеней размера; всё остальное — исключения, которые нужно свести.</p>
+        </div>
 
         <div class="pv-type-row">
-            <div class="pv-type-sample">
-                <div class="award-slogan" style="font-size:44px;line-height:1.06"><span>Суровая премия</span></div>
-            </div>
-            <div class="pv-type-meta">Dela Award · 400 · uppercase · −0.012em · 1.06</div>
+            <p class="pv-h1-demo">Суровая премия</p>
+            <div class="pv-type-meta">H1 · Dela Award · 400<br>clamp(40px, 6vw, 60.48px) · 1.06<br>uppercase · −0.012em</div>
         </div>
-
         <div class="pv-type-row">
-            <div class="pv-type-sample">
-                <p class="invitation" style="font-size:18px">Оставьте заявку на участие и получите приглашение в числе первых</p>
-            </div>
-            <div class="pv-type-meta">Involve · 400 · 18px · 1.4</div>
+            <p class="pv-h2-demo">Сильная работа заслуживает признания</p>
+            <div class="pv-type-meta">H2 · Dela Award · 400<br>clamp(28px, 3.6vw, 40px) · 1.14<br>uppercase · −0.01em</div>
+        </div>
+        <div class="pv-type-row">
+            <p class="pv-h3-demo">Кто может участвовать</p>
+            <div class="pv-type-meta">H3 · Involve · 400<br>20px · 1.3</div>
+        </div>
+        <div class="pv-type-row">
+            <p class="lead" style="margin:0">Работаете самостоятельно, развиваете агентство или отвечаете за маркетинг внутри компании?</p>
+            <div class="pv-type-meta">.lead · Involve · 400<br>20px · 1.5 · --scene-dim</div>
+        </div>
+        <div class="pv-type-row">
+            <p style="margin:0">Основной текст — Golos Award 16px с межстрочным 1.45–1.65. Он же в карточках, списках, FAQ и подписях. Кнопки набраны Involve, а не Golos.</p>
+            <div class="pv-type-meta">body · Golos Award · 400<br>16px · 1.6</div>
+        </div>
+        <div class="pv-type-row">
+            <p class="eyebrow" style="margin:0">Этапы премии</p>
+            <div class="pv-type-meta">.eyebrow · Golos 600<br>12px · .14em · uppercase</div>
+        </div>
+        <div class="pv-type-row">
+            <p class="small" style="margin:0">.small — Golos 400, 14px, 1.55: примечания и юридический текст.</p>
+            <div class="pv-type-meta">.small · Golos Award · 400<br>14px · 1.55</div>
         </div>
 
-        <div class="pv-type-row" style="border-bottom:0">
-            <div class="pv-type-sample">
-                <p style="font-family:var(--font-base);font-size:16px;margin:0">Базовый текст — Golos Award 16px. Им набраны служебные экраны и подписи вне сцены.</p>
-            </div>
-            <div class="pv-type-meta">Golos Award · 400 · 16px</div>
+        <h3 style="margin-top:40px">Семь ступеней</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Ступень</th><th>Токен</th><th>Значение</th><th>Где</th></tr></thead>
+                <tbody>
+                    <tr><td>12</td><td><code>--fs-micro</code></td><td>12px</td><td>подписи, номера, роли, eyebrow</td></tr>
+                    <tr><td>14</td><td><code>--fs-small</code></td><td>14px</td><td>мелкий текст, навигация, примечания</td></tr>
+                    <tr><td>16</td><td><code>--fs-body</code></td><td>16px</td><td>основной текст, кнопки, h4</td></tr>
+                    <tr><td>20</td><td><code>--fs-lead</code></td><td>20px</td><td>h3, имена, даты, FAQ, лид</td></tr>
+                    <tr><td>24</td><td><code>--fs-prose</code></td><td>24px</td><td>крупный вводный текст, номера шагов</td></tr>
+                    <tr><td>h2</td><td><code>--fs-h2</code></td><td>clamp(28px, 3.6vw, 40px)</td><td>заголовки секций, цена</td></tr>
+                    <tr><td>h1</td><td><code>--fs-h1</code></td><td>clamp(40px, 6vw, 60.48px)</td><td>заголовок страницы</td></tr>
+                </tbody>
+            </table>
         </div>
-    </section>
 
-    <section class="pv-sec" id="s3">
-        <div class="pv-label">3. Кнопки — 244×54 · радиус 4px · рамка 1px</div>
+        <h3 style="margin-top:40px">Дополнительные семейства</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Семейство</th><th>Роль</th><th>Начертания</th></tr></thead>
+                <tbody>
+                    <tr><td>Bounded Award</td><td>имена жюри (.jury-card__name)</td><td>900</td></tr>
+                    <tr><td>Oswald</td><td>тарифные постеры (tariffs.css)</td><td>700</td></tr>
+                    <tr><td>JetBrains Mono</td><td>служебные подписи постеров, код</td><td>300–800</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="pv-note"><b>Исключения вне шкалы:</b> h1 34px на ≤360px; h1 жюри clamp(30px, 8.4vw, 60.48px); .prose clamp(20px, 2vw, 24px); слоган .hero__sub clamp(18px, 5.9vw, 50.8px). Это ручные подгонки, а не новые ступени — при следующей правке их надо свести.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#080607" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     03. КНОПКИ
+     ============================================================ -->
+<section class="section burn-next burn-host" id="buttons" aria-labelledby="buttons-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">03 · Кнопки</p>
+            <h2 id="buttons-title">Четыре роли, один каркас</h2>
+            <p>Общий каркас — высота 54, рамка 1px, радиус 4px, прозрачный фон. Дальше роль меняет только обводку и эффект: бегущий блик, сияющая коническая рамка или пламя по периметру. Наведите курсор — все эффекты живые.</p>
+        </div>
+
         <div class="pv-btns">
-            <div class="pv-cell">
-                <a class="star-border apply-button" href="#" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:transparent;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
-                <div class="pv-state">обычная</div>
+            <div class="pv-btn-cell">
+                <a class="btn" href="#buttons">Подать заявку</a>
+                <span class="pv-state">.btn · главная · 244×54</span>
             </div>
-            <div class="pv-cell">
-                <a class="organizers-button" href="#">Связь с организаторами</a>
-                <div class="pv-state">вторичная</div>
+            <div class="pv-btn-cell">
+                <a class="btn btn--sm" href="#buttons">Подать заявку</a>
+                <span class="pv-state">.btn--sm · шапка · 44px</span>
             </div>
-            <div class="pv-cell">
-                <a class="star-border apply-button" href="#" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:#15111280;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
-                <div class="pv-state">hover</div>
+            <div class="pv-btn-cell">
+                <a class="btn btn--ghost" href="#buttons">Рассчитать стоимость</a>
+                <span class="pv-state">.btn--ghost · вторичная</span>
             </div>
-            <div class="pv-cell">
-                <a class="star-border apply-button" href="#" aria-disabled="true" style="--star-border-radius:4px;--star-border-thickness:1px;--star-border-surface:transparent;--star-border-text:#f5f0eb;--star-border-track:#c8c2bc">Заполнить</a>
-                <div class="pv-state">disabled</div>
+            <div class="pv-btn-cell">
+                <a class="shiny-btn shiny-btn--site shiny-btn--outline" href="#buttons"><span>Смотреть номинации</span></a>
+                <span class="pv-state">.shiny-btn--site · сияющая</span>
+            </div>
+            <div class="pv-btn-cell">
+                <span class="fb-anchor" data-fire-button>
+                    <canvas class="fb-canvas" aria-hidden="true"></canvas>
+                    <a class="shiny-btn shiny-btn--site" href="#buttons"><span>Подать заявку</span></a>
+                </span>
+                <span class="pv-state">.shiny-btn--site + огонь</span>
             </div>
         </div>
-        <div class="pv-note">Блик по рамке рисуется canvas-слоем 340×150 (вынесен на 48px за кнопку). В CSS остаётся только трек 1px — он и показан здесь. Фокус — outline 2px с отступом 3px.</div>
-    </section>
 
-    <section class="pv-sec" id="s4">
-        <div class="pv-label">4. Сетка и токены</div>
-        <table class="pv-table">
-            <tr><th>Параметр</th><th>Значение</th></tr>
-            <tr><td>Экран</td><td><code>grid-template-rows: 96px 1fr auto</code>, <code>min-height: 100svh</code>, <code>overflow: clip</code></td></tr>
-            <tr><td>Отступ от края</td><td><code>--edge: clamp(24px, 4vw, 72px)</code> (≤599 — 24px, ≤360 — 20px)</td></tr>
-            <tr><td>Колонка контента</td><td>1040px по центру, логотип 44% ширины</td></tr>
-            <tr><td>Кнопки</td><td><code>--action-w: 244px</code>, <code>--action-h: 54px</code> (≤599 — 238×52)</td></tr>
-            <tr><td>Радиусы</td><td>4px кнопки · 6px мелкие контролы · 40px пилюли</td></tr>
-            <tr><td>Тени</td><td>нет, только canvas-свечение</td></tr>
-            <tr><td>Брейкпоинты</td><td>900 · 700 · 599 · 360 + запросы по высоте</td></tr>
-        </table>
-    </section>
-
-    <section class="pv-sec" id="s5">
-        <div class="pv-label">5. Чего на сайте нет</div>
-        <div class="pv-note" style="margin-top:0">
-            Форм, полей и чекбоксов — заявка открывается внешним Salebot-лендингом (Nunito, синяя кнопка Telegram). Этот UI к системе не относится.<br>
-            Секций, карточек и скролла — экран один. Шапки нет, в подвале одна ссылка.<br>
-            Иконок нет: единственный графический элемент — логотип. Фон — canvas-частицы огня, а не картинка и не градиент.
+        <h3 style="margin-top:40px">Инверсия на бумаге</h3>
+        <div class="pv-surface pv-surface--paper section--soft" style="margin-top:16px">
+            <div class="pv-row">
+                <a class="btn" href="#buttons">Подать заявку</a>
+                <a class="btn btn--ghost" href="#buttons">Рассчитать стоимость</a>
+                <a class="shiny-btn shiny-btn--site" href="#buttons"><span>Подать заявку</span></a>
+            </div>
+            <p class="pv-note" style="margin-top:16px">Внутри <code>.section--soft</code> токены меняются на бумажные: рамка становится <code>--ink</code>, блик — тёмным, фон hover — <code>#25292E14</code>. Классы кнопок не дублируются.</p>
         </div>
-    </section>
+
+        <h3 style="margin-top:40px">Спецификация</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Класс</th><th>Размер</th><th>Рамка</th><th>Радиус</th><th>Шрифт</th><th>Эффект</th></tr></thead>
+                <tbody>
+                    <tr><td><code>.btn</code></td><td>244×54, padding 15/26</td><td>1px <code>--action-border</code></td><td>4px</td><td>Involve 16</td><td>canvas-блик по рамке, 4 с/оборот</td></tr>
+                    <tr><td><code>.btn--sm</code></td><td>44px, padding 0/20</td><td>та же</td><td>4px</td><td>Involve 14</td><td>тот же блик</td></tr>
+                    <tr><td><code>.btn--ghost</code></td><td>как .btn</td><td>45% currentColor</td><td>4px</td><td>Involve 16</td><td>без блика; фон 50% сцены</td></tr>
+                    <tr><td><code>.shiny-btn--site</code></td><td>244×54, padding 15/26</td><td>коническая, 3 с</td><td>4px</td><td>Involve 16</td><td>зерно, блик, свечение снизу</td></tr>
+                    <tr><td><code>.shiny-btn--outline</code></td><td>как .shiny-btn--site</td><td>+ outline 1px, offset 3</td><td>4px</td><td>Involve 16</td><td>контур для первого экрана</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="pv-note"><b>Про радиус.</b> Базовый <code>.shiny-btn</code> — 32px, но на сайте его перекрывает <code>.shiny-btn--site { border-radius: var(--radius) }</code> из <code>fire-buttons.css</code>, то есть 4px. В гайде и на сайте — 4px. <b>Про огонь.</b> Пламя рисует <code>fire-button.js</code> на canvas 280×280 вокруг кнопки; оно появляется при приближении курсора, только на устройствах с мышью и не включается на слабом железе и при <code>prefers-reduced-motion</code>.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#ECE9E3" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     04. КОМПОНЕНТЫ
+     ============================================================ -->
+<section class="section section--soft burn-next burn-host" id="components" aria-labelledby="components-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">04 · Компоненты</p>
+            <h2 id="components-title">От шапки до формы</h2>
+            <p>Компоненты собраны на одном каркасе: рамка 1px, радиус 4px, отступы от <code>--edge</code>. Внутри бумажной секции они автоматически инвертируются, поэтому один и тот же класс работает на обоих фонах.</p>
+        </div>
+
+        <h3>Шапка и навигация</h3>
+        <div class="pv-frame pv-frame--header" style="margin-top:16px">
+            <div class="header">
+                <div class="wrap header__inner">
+                    <a class="logo" href="#components" aria-label="Суровая премия — на главную">
+                        <img class="logo__img" src="logo.svg" alt="Суровая премия" width="230" height="45">
+                    </a>
+                    <nav class="nav" aria-label="Навигация сайта (демо)">
+                        <ul class="nav__list">
+                            <li><a href="#components">О премии</a></li>
+                            <li><a href="#components">Номинации</a></li>
+                            <li><a href="#components">Жюри</a></li>
+                            <li><a href="#components">Стоимость</a></li>
+                            <li><a href="#components">Контакты</a></li>
+                        </ul>
+                    </nav>
+                    <a class="btn btn--sm header__cta" href="#buttons">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+        <p class="pv-note">Sticky, высота 96px, фон <code>rgba(8,6,7,.94)</code>, нижняя линия <code>--rule</code>. Меню — Golos 500, 14px, трекинг .08em, капс; hover — оранжевый и линия <code>::after</code>. На ≤980px меню уходит в оверлей с бургером 44×44.</p>
+
+        <h3 style="margin-top:40px">Карточки</h3>
+        <div class="grid grid--2" style="margin-top:16px">
+            <article class="card">
+                <span class="card__num">01</span>
+                <h3>Специалисты и фрилансеры</h3>
+                <p class="muted">Работаете на себя или в найме и самостоятельно ведёте направление? В блоке «Люди в маркетинге» можно представить собственную работу.</p>
+                <img class="pv-card-figure" src="img/3-compass.webp" alt="" width="600" height="600" loading="lazy" decoding="async">
+            </article>
+            <article class="card">
+                <span class="card__num">02</span>
+                <h3>Заявить о своей работе</h3>
+                <p class="muted">Представьте на конкурс проект, которым гордитесь. Покажите, что стоит за итоговыми цифрами: идею, решения и вклад в результат.</p>
+                <img class="pv-card-figure" src="img/3-luchina-bundle.webp" alt="" width="600" height="600" loading="lazy" decoding="async">
+            </article>
+        </div>
+        <p class="pv-note">Рамка 2px собирается из двух слоёв <code>::before</code>/<code>::after</code>; правый верхний угол срезан на 72×60, радиус 4px, padding 28. На бумаге поверхность карточки — <code>--paper-raised</code>, на сцене — <code>--ground</code>.</p>
+
+        <h3 style="margin-top:40px">Номинации</h3>
+        <details class="nom-group" open style="margin-top:16px">
+            <summary class="nom-group__summary">
+                <span class="nom-group__toggle" aria-hidden="true"></span>
+                <span class="nom-group__title">
+                    <span class="nom-group__heading" role="heading" aria-level="3">Люди в маркетинге</span>
+                    <span class="nom-group__desc">Для фрилансеров и специалистов в найме, которые самостоятельно ведут направление. Здесь важны ваша работа, профессиональные решения и личный вклад в результат.</span>
+                </span>
+                <span class="nom-group__count">13 номинаций</span>
+            </summary>
+            <div class="nom-group__body">
+                <ul class="nom-list">
+                    <li>Лучший маркетолог <span class="nom-note">комплексный маркетинг</span></li>
+                    <li>Лучший трафик-менеджер <span class="nom-note">работа с трафиком на разных площадках</span></li>
+                    <li>Лучший специалист по Avito</li>
+                    <li>Лучший креатор <span class="nom-note">идея и реализация</span></li>
+                </ul>
+                <a class="btn btn--sm" href="#buttons">Все номинации</a>
+            </div>
+        </details>
+        <p class="pv-note">Нативный <code>&lt;details&gt;</code> с кастомным summary: рамка 1px, радиус 4px, padding 24/28, оранжевая линия-протяжка по нижнему краю при раскрытии. Круглый переключатель 26px, плюс из двух полос. На мобильном группы свёрнуты по умолчанию.</p>
+
+        <h3 style="margin-top:40px">Поля формы</h3>
+        <div class="pv-frame pv-frame--pad pv-frame--paper pv-form-demo" style="margin-top:16px">
+            <div class="pf-grid">
+                <div class="pf-field">
+                    <label for="pv-name">Имя <span class="pf-req">*</span></label>
+                    <input id="pv-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться">
+                </div>
+                <div class="pf-field">
+                    <label for="pv-email">E-mail <span class="pf-req">*</span></label>
+                    <input id="pv-email" name="email" type="email" autocomplete="email" placeholder="you@company.ru">
+                </div>
+                <div class="pf-field">
+                    <label for="pv-phone">Телефон</label>
+                    <input id="pv-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00">
+                </div>
+                <div class="pf-field">
+                    <label for="pv-company">Компания</label>
+                    <input id="pv-company" name="company" type="text" autocomplete="organization" placeholder="Название">
+                </div>
+            </div>
+            <label class="pf-check" style="margin-top:18px">
+                <input type="checkbox" name="consent-demo">
+                <span class="pf-check__box" aria-hidden="true"></span>
+                <span class="pf-check__text">Даю согласие на обработку персональных данных и принимаю условия политики.</span>
+            </label>
+            <p class="pv-note" style="margin-top:14px">Поле 52px, радиус 4px, фон <code>--paper-raised</code>, рамка <code>--field-line</code>; focus — <code>--ink</code>, ошибка — <code>--error</code>. Чекбокс 20px с кастомной галочкой. Эти же поля использует партнёрская форма в модальном окне.</p>
+        </div>
+
+        <h3 style="margin-top:40px">FAQ</h3>
+        <div class="faq" style="margin-top:16px">
+            <details open>
+                <summary>Можно ли участвовать, если проект реализован в 2024 году?</summary>
+                <p>К участию рассматриваются проекты, реализованные в 2025–2026 годах. Если проект старше, но результаты и коммуникация продолжались в 2025–2026, напишите команде — разберёмся вместе.</p>
+            </details>
+            <details>
+                <summary>Что нужно приложить к заявке?</summary>
+                <p>Описание задачи, вашу работу и подтверждённые результаты. Материалы зависят от номинации: скриншоты, метрики, ссылки на публикации.</p>
+            </details>
+        </div>
+        <p class="pv-note">Summary — Involve 20, padding 22/48/22, плюс 24px оранжевый. Раскрытие анимируется в <code>app.js</code> без библиотек; при <code>prefers-reduced-motion</code> открывается сразу.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#080607" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     05. АНИМАЦИИ
+     ============================================================ -->
+<section class="section burn-next burn-host" id="motion" aria-labelledby="motion-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">05 · Анимации</p>
+            <h2 id="motion-title">Девять эффектов, один характер</h2>
+            <p>Огонь — не украшение, а материал системы: он живёт в фоне, в кнопках, в номинациях, в заставке и в прожиге между секциями. Ниже — живые демо, а не картинки. Прокрутите страницу: границы секций прожигаются настоящим <code>scroll-burn</code>.</p>
+        </div>
+
+        <div class="pv-anim-grid">
+            <div class="pv-frame">
+                <div class="pv-frame__cap"><b>01</b> Typewriter <code>typewriter.css</code></div>
+                <div class="pv-anim pv-anim--typewriter">
+                    <div class="typewriter" aria-hidden="true">
+                        <div class="slide"><i></i></div>
+                        <div class="paper"></div>
+                        <div class="keyboard"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="pv-frame">
+                <div class="pv-frame__cap"><b>02</b> Bike loader <code>bike-loader.css</code></div>
+                <div class="pv-anim">
+                    <div class="bike" aria-hidden="true">
+                        <svg class="loader" viewBox="0 0 48 30" width="48" height="30" focusable="false">
+                            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+                                <g transform="translate(9.5,19)">
+                                    <circle class="loader_tire" r="9" stroke-dasharray="56.549 56.549"></circle>
+                                    <g class="loader_spokes-spin" stroke-dasharray="31.416 31.416" stroke-dashoffset="-23.562">
+                                        <circle class="loader_spokes" r="5"></circle>
+                                        <circle class="loader_spokes" r="5" transform="rotate(180,0,0)"></circle>
+                                    </g>
+                                </g>
+                                <g transform="translate(24,19)">
+                                    <g class="loader_pedals-spin" stroke-dasharray="25.133 25.133" stroke-dashoffset="-21.991" transform="rotate(67.5,0,0)">
+                                        <circle class="loader_pedals" r="4"></circle>
+                                        <circle class="loader_pedals" r="4" transform="rotate(180,0,0)"></circle>
+                                    </g>
+                                </g>
+                                <g transform="translate(38.5,19)">
+                                    <circle class="loader_tire" r="9" stroke-dasharray="56.549 56.549"></circle>
+                                    <g class="loader_spokes-spin" stroke-dasharray="31.416 31.416" stroke-dashoffset="-23.562">
+                                        <circle class="loader_spokes" r="5"></circle>
+                                        <circle class="loader_spokes" r="5" transform="rotate(180,0,0)"></circle>
+                                    </g>
+                                </g>
+                                <polyline class="loader_seat" points="14 3,18 3" stroke-dasharray="5 5"></polyline>
+                                <polyline class="loader_body" points="16 3,24 19,9.5 19,18 8,34 7,24 19" stroke-dasharray="79 79"></polyline>
+                                <path class="loader_handlebars" d="m30,2h6s1,0,1,1-1,1-1,1" stroke-dasharray="10 10"></path>
+                                <polyline class="loader_front" points="32.5 2,38.5 19" stroke-dasharray="19 19"></polyline>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="pv-frame">
+                <div class="pv-frame__cap"><b>03</b> Огонь номинаций <code>nominations-fire.css</code></div>
+                <div class="pv-anim">
+                    <div class="pv-fire-demo" aria-hidden="true">
+                        <div class="fire">
+                            <div class="fire-left"><div class="main-fire"></div><div class="particle-fire"></div></div>
+                            <div class="fire-center"><div class="main-fire"></div><div class="particle-fire"></div></div>
+                            <div class="fire-right"><div class="main-fire"></div><div class="particle-fire"></div></div>
+                            <div class="fire-bottom"><div class="main-fire"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pv-frame">
+                <div class="pv-frame__cap"><b>04</b> Scroll burn <code>scroll-burn.js</code></div>
+                <div class="pv-burn-mark">
+                    <p class="pv-burn-mark__text">Кромка прожига живёт на стыке тёмной сцены и бумаги — прямо на границах этого гайда</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top:40px">Карта эффектов</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Файл</th><th>Что делает</th><th>Где</th></tr></thead>
+                <tbody>
+                    <tr><td><code>fire.css</code> + <code>fire.js</code></td><td>фиксированный фон-сцена: видео огня 1440/540, искры canvas, пауза вне экрана</td><td>герой и все тёмные секции</td></tr>
+                    <tr><td><code>intro.css</code> + <code>intro.js</code></td><td>заставка: огонь внутри логотипа и слогана, затем передаёт ролик фону</td><td>первый вход на главную</td></tr>
+                    <tr><td><code>scroll-burn.css</code> + <code>scroll-burn.js</code></td><td>прожиг на стыке секций: Chrome — SVG-фильтр, Safari — SVG-путь с CSS-заливкой</td><td>все стыки тёмного и бумаги</td></tr>
+                    <tr><td><code>star-border.js</code> + <code>style.css</code></td><td>бегущий блик по рамке .btn, хвост, искры, вспышка по клику</td><td>все .btn</td></tr>
+                    <tr><td><code>shiny-button.css</code></td><td>вращающаяся коническая рамка, зерно и свечение</td><td>.shiny-btn--site</td></tr>
+                    <tr><td><code>fire-button.css</code> + <code>fire-button.js</code></td><td>мягкое пламя по периметру при приближении курсора</td><td>CTA в номинациях и финале</td></tr>
+                    <tr><td><code>typewriter.css</code></td><td>печатная машинка в огненной палитре</td><td>«Как принять участие»</td></tr>
+                    <tr><td><code>bike-loader.css</code> + <code>anim-pause.js</code></td><td>велосипед-лоадер, пауза вне экрана и в скрытой вкладке</td><td>«Организаторы»</td></tr>
+                    <tr><td><code>nominations-fire.css</code></td><td>огненная анимация Uiverse у заголовка номинаций</td><td>секция «Номинации»</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="border-left:2px solid var(--brand-accent);padding-left:18px;margin-top:30px">
+            <h3>scroll-burn — ключевой эффект</h3>
+            <p class="pv-note" style="margin-top:8px">Высоту, амплитуду кромки, цвет заливки, направление и различия Chrome/Safari меняем только по согласованию. Мобильная кромка не отключается и не скрывается. На стыке кромки и секций не должно быть видимых рамок, чёрных или белых линий и швов. При резком прыжке по якорю переход скрывается на 180 мс — это <code>.is-burn-jumping</code>.</p>
+        </div>
+
+        <p class="pv-note"><b>Пауза и слабое железо.</b> <code>anim-pause.js</code> останавливает CSS-анимации вне экрана и в неактивной вкладке. <code>fire-button.js</code> не запускается на слабом устройстве (решает замер скорости, а не число ядер) и при <code>prefers-reduced-motion</code>. <code>scroll-burn.js</code> умеет деградировать до статичной кромки.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#ECE9E3" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     06. СЕТКА
+     ============================================================ -->
+<section class="section section--soft burn-next burn-host" id="grid" aria-labelledby="grid-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">06 · Сетка</p>
+            <h2 id="grid-title">Четыре числа и всё остальное</h2>
+            <p>Колонка 1040px, один отступ от края <code>clamp(24px, 4vw, 72px)</code>, рамки 1px и радиус 4px. Секции дают вертикальный ритм, шапка — 96px, подвал — 48–72px сверху.</p>
+        </div>
+
+        <div style="overflow-x:auto">
+            <table class="pv-table">
+                <thead><tr><th>Параметр</th><th>Значение</th><th>Токен / класс</th></tr></thead>
+                <tbody>
+                    <tr><td>Колонка</td><td>1040px + 2 × edge, по центру</td><td><code>--page-col</code>, <code>.wrap</code></td></tr>
+                    <tr><td>Отступ от края</td><td>clamp(24px, 4vw, 72px); ≤599 — 24px, ≤360 — 20px</td><td><code>--edge</code></td></tr>
+                    <tr><td>Секция</td><td>padding clamp(64px, 7.5vw, 108px) 0; узкая — 48–72px</td><td><code>.section</code>, <code>.section--tight</code></td></tr>
+                    <tr><td>Шапка</td><td>sticky, min-height 96px, фон rgba(8,6,7,.94)</td><td><code>.header</code></td></tr>
+                    <tr><td>Кнопки</td><td>244×54; компактная 44px; радиус 4px</td><td><code>--action-w</code>, <code>--action-h</code>, <code>--radius</code></td></tr>
+                    <tr><td>Радиусы</td><td>4px — кнопки, карточки, поля; 2px — чекбокс; 50% — круглый переключатель; 40px — пилюля в подвале</td><td><code>--radius</code>, <code>--radius-pill</code></td></tr>
+                    <tr><td>Тени</td><td>в статике нет; hover .btn — белое свечение, артефакты — оранжевое</td><td><code>style.css</code></td></tr>
+                    <tr><td>Брейкпоинты</td><td>1399 · 1100 · 980 · 900 · 720 · 600 · 360 · 359 · 300</td><td><code>@media</code></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top:40px">Что меняется на мобильном</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Условие</th><th>Изменения</th></tr></thead>
+                <tbody>
+                    <tr><td>≤1100</td><td>навигация 12px; часть декоративных артефактов уходит к краю</td></tr>
+                    <tr><td>≤980</td><td>меню в оверлей, бургер 44×44; навигация 14px</td></tr>
+                    <tr><td>≤900</td><td>сетки в одну колонку; прожиг остаётся; фон «О премии» становится ровным</td></tr>
+                    <tr><td>≤600</td><td>секция 56px; номера шагов 20px; FAQ и таймлайн 16/20px; подвал 12px</td></tr>
+                    <tr><td>≤360</td><td>h1 34px; кнопки без min-width; логотип 24px</td></tr>
+                    <tr><td>по высоте</td><td>max-height 780/760/600 сжимает вертикальный ритм героя</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="pv-note"><b>Правило.</b> Новый отступ или радиус сначала появляется в токенах и в <code>DESIGN.md</code>, потом в компоненте. Сырые значения в вёрстке — только для одноразовых правок, и их нужно перечислять в разделе исключений.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#080607" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     07. ДОСТУПНОСТЬ
+     ============================================================ -->
+<section class="section burn-next burn-host" id="a11y" aria-labelledby="a11y-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">07 · Доступность</p>
+            <h2 id="a11y-title">Фокус, контраст, движение</h2>
+            <p>Система не ломает клавиатуру: <code>:focus-visible</code> — 2px <code>--action-border</code> с отступом 3px. Все canvas-эффекты декоративные и помечены <code>aria-hidden</code>; у кнопок-ссылок есть понятный текст; заголовки идут по порядку.</p>
+        </div>
+
+        <h3>Контраст (WCAG 2.1)</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Пара</th><th>Коэффициент</th><th>Вывод</th></tr></thead>
+                <tbody>
+                    <tr><td>#F5F0EB на #080607</td><td>17.84:1</td><td>AAA</td></tr>
+                    <tr><td>#FFFFFF на #080607</td><td>20.20:1</td><td>AAA</td></tr>
+                    <tr><td>#C8C2BC на #080607</td><td>11.45:1</td><td>AAA</td></tr>
+                    <tr><td>#F56624 на #080607</td><td>6.55:1</td><td>AA / AAA для крупного</td></tr>
+                    <tr><td>#FF7B39 на #080607</td><td>7.84:1</td><td>AAA</td></tr>
+                    <tr><td>#25292E на #ECE9E3</td><td>12.08:1</td><td>AAA</td></tr>
+                    <tr><td>#4A4D48 на #ECE9E3</td><td>7.08:1</td><td>AAA</td></tr>
+                    <tr><td>#A62C18 на #ECE9E3</td><td>5.79:1</td><td>AA</td></tr>
+                    <tr><td>#696B64 на #ECE9E3</td><td>4.46:1</td><td>AA только для 18px+; плейсхолдер — на грани</td></tr>
+                    <tr><td>#F56624 на #ECE9E3</td><td>2.55:1</td><td>только декор; смысловой текст — <code>--ink</code></td></tr>
+                    <tr><td>#FF3838 на #ECE9E3</td><td>2.95:1</td><td>только декоративная звёздочка</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pv-cols" style="margin-top:32px">
+            <div class="pv-frame pv-frame--pad">
+                <h3>Что уже сделано</h3>
+                <p class="small" style="margin-top:10px;line-height:1.65">Видимый фокус у кнопок, ссылок и полей; <code>aria-hidden</code> на canvas и декоративных SVG; осмысленный <code>alt</code> у логотипа и фото; нативные <code>details</code> для номинаций и FAQ; <code>prefers-reduced-motion</code> отключает блик, пламя, печатную машинку и прожиг; формы связаны с <code>label</code>, ошибки — с <code>aria-invalid</code>.<br><br>Кнопки с огнём не запускаются на слабом железе, а анимации ставятся на паузу вне экрана — это и про батарею, и про vestibular safety.</p>
+            </div>
+            <div class="pv-frame pv-frame--pad">
+                <h3>Что проверить при правке</h3>
+                <p class="small" style="margin-top:10px;line-height:1.65">Не делать оранжевый смысловым текстом на бумаге; не убирать <code>focus-visible</code>; не отключать мобильную кромку прожига; не добавлять <code>autoplay</code> со звуком; не прятать кнопку «Пропустить» в заставке; проверять 360px, 900px, 1440px и клавиатуру. Для новых полей — <code>--field-line</code> ≥ 3:1 к фону, для текста — 4.5:1.</p>
+            </div>
+        </div>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#ECE9E3" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     08. ТОКЕНЫ
+     ============================================================ -->
+<section class="section section--soft burn-next burn-host" id="tokens" aria-labelledby="tokens-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">08 · Токены</p>
+            <h2 id="tokens-title">Что копировать в новый проект</h2>
+            <p><code>tokens.css</code> рядом — самодостаточный файл: шрифты, палитра, шкала, сетка, базовые кнопки и карточки. Полный рабочий CSS — <code>css/index-bundle.css</code>; он собран из 13 файлов текущего сайта.</p>
+        </div>
+
+        <div class="pv-code"><code><span class="c">/* сцена */</span>
+--ground: #080607;
+--scene-ink: #F5F0EB;
+--action-border: #C8C2BC;
+--brand-accent: #F56624;
+--fire-glow: #FF7B39;
+
+<span class="c">/* бумага */</span>
+--paper: #ECE9E3;
+--paper-raised: #F5F2EC;
+--ink: #25292E;
+--muted: #4A4D48;
+--error: #A62C18;
+
+<span class="c">/* сетка и шкала */</span>
+--edge: clamp(24px, 4vw, 72px);
+--page-col: 1040px;
+--action-w: 244px;
+--action-h: 54px;
+--radius: 4px;
+--fs-micro: 12px; ... --fs-h1: clamp(40px, 6vw, 60.48px);
+
+<span class="c">/* движение */</span>
+--ease: cubic-bezier(.22, 1, .36, 1);</code></div>
+
+        <h3 style="margin-top:40px">Карта файлов</h3>
+        <div style="overflow-x:auto;margin-top:14px">
+            <table class="pv-table">
+                <thead><tr><th>Что</th><th>Где</th><th>Размер</th></tr></thead>
+                <tbody>
+                    <tr><td>Токены</td><td><code>site/css/tokens.css</code></td><td>6 КБ</td></tr>
+                    <tr><td>Основные стили</td><td><code>site/css/style.css</code></td><td>63 КБ</td></tr>
+                    <tr><td>Собранный CSS</td><td><code>site/css/index-bundle.css</code> (13 файлов)</td><td>130 КБ</td></tr>
+                    <tr><td>Эффекты</td><td><code>site/js/fire.js</code>, <code>star-border.js</code>, <code>scroll-burn.js</code>, <code>fire-button.js</code>, <code>intro.js</code></td><td>30–46 КБ каждый</td></tr>
+                    <tr><td>Шрифты</td><td><code>site/fonts/</code> (10 файлов, OFL)</td><td>264 КБ</td></tr>
+                    <tr><td>Огонь</td><td><code>site/media/fire/</code> — 1440 и 540 MP4 + постеры</td><td>3.8 МБ</td></tr>
+                    <tr><td>Документ</td><td><code>docs/ДИЗАЙН-СИСТЕМА.md</code></td><td>17 КБ</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top:40px">Чек-лист новой страницы</h3>
+        <ol style="padding-left:20px;margin-top:10px;line-height:1.7">
+            <li>Обёртка <code>.site</code> и секции <code>.section</code> / <code>.section--soft</code>.</li>
+            <li>Отступы только через <code>var(--edge)</code>, контент — <code>.wrap</code> до 1040px.</li>
+            <li>Заголовок — Dela, капс, размер от <code>--fs-h1</code> / <code>--fs-h2</code>.</li>
+            <li>Кнопка — <code>.btn</code> 244×54, радиус 4px; главная — с бликом; альтернатива — <code>.shiny-btn--site</code>.</li>
+            <li>Фон — тёмная сцена; декор — canvas с <code>aria-hidden</code>; при reduced motion — статичный кадр.</li>
+            <li>Проверить 1440, 900, 599 и 360; клавиатуру и контраст.</li>
+        </ol>
+
+        <p class="pv-note" style="margin-top:22px">Связанные документы: <a href="DESIGN.md" style="color:var(--ink);border-bottom:1px solid currentColor">DESIGN.md</a> — полный гайд · <a href="tokens.css" style="color:var(--ink);border-bottom:1px solid currentColor">tokens.css</a> — переменные · <a href="css/index-bundle.css" style="color:var(--ink);border-bottom:1px solid currentColor">index-bundle.css</a> — рабочий CSS.</p>
+    </div>
+    <div class="burn burn--viewport" data-burn data-color="#080607" aria-hidden="true"></div>
+</section>
+
+<!-- ============================================================
+     09. ВЕРСИЯ
+     ============================================================ -->
+<section class="section burn-next" id="version" aria-labelledby="version-title">
+    <div class="wrap">
+        <div class="pv-section-head">
+            <p class="eyebrow">09 · Версия</p>
+            <h2 id="version-title">Что изменилось с 31/10/2026</h2>
+            <p>Прошлый гайд описывал одностраничную заглушку marketingawards.ru: один экран, прозрачные кнопки и бегущая рамка. С тех пор сайт стал полноценным лендингом. Ниже — честный список изменений.</p>
+        </div>
+
+        <div style="overflow-x:auto">
+            <table class="pv-table">
+                <thead><tr><th>Было (31/10)</th><th>Стало (11/11)</th></tr></thead>
+                <tbody>
+                    <tr><td>Один экран без скролла</td><td>15 секций главной + страница жюри + партнёрская форма</td></tr>
+                    <tr><td>Акцентных цветов нет</td><td>Оранжевый #F56624 — огонь, подписи, номера, ссылки</td></tr>
+                    <tr><td>Одна кнопка с бегущей рамкой</td><td>Четыре роли: .btn, .btn--sm, .btn--ghost, .shiny-btn--site + пламя</td></tr>
+                    <tr><td>Шапки нет, в подвале одна ссылка</td><td>Sticky-шапка с меню, соцсети, трёхколоночный подвал</td></tr>
+                    <tr><td>Форм нет — только внешний Salebot</td><td>Партнёрская форма: поля, согласия, валидация, маска, капча</td></tr>
+                    <tr><td>Один эффект — блик</td><td>Девять эффектов: огонь, заставка, прожиг, сияние, пламя, машинка, велосипед</td></tr>
+                    <tr><td>Гайд из 5 разделов</td><td>Гайд из 9 разделов с живыми демо и проверкой контраста</td></tr>
+                    <tr><td>Только тёмная сцена</td><td>Две палитры: сцена и бумага, полная инверсия токенов</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p class="pv-note" style="margin-top:26px">Источник: <a href="https://marketingawards.ru/new/" target="_blank" rel="noopener" style="color:var(--scene-ink);border-bottom:1px solid currentColor">marketingawards.ru/new/</a> и файлы проекта <code>site/</code>. Снято и проверено 11/11/2026. Прошлая версия гайда сохранена в истории git — при необходимости можно сравнить. Живой стайлгайд — <a href="styleguide.html">styleguide.html</a>.</p>
+    </div>
+</section>
 
 </main>
+</div><!-- /.site -->
 
-<div class="pv-wrap" style="padding-bottom:36px">
-    <div class="pv-note" style="font-size:12px">
-        Снято с https://marketingawards.ru 31/10/2026. Полный гайд — <code>DESIGN.md</code>, переменные — <code>tokens.css</code>, логотип — <code>logo.svg</code>.
+<!-- ============================================================
+     ПОДВАЛ
+     ============================================================ -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer__top">
+            <div>
+                <a class="logo" href="#top" aria-label="Суровая премия — наверх">
+                    <img class="logo__img" src="logo.svg" alt="Суровая премия" width="230" height="45">
+                </a>
+                <p class="footer__tagline">Дизайн-система текущей версии marketingawards.ru: сцена, огонь и типографика «Суровой премии».</p>
+                <a class="btn btn--sm" href="https://marketingawards.ru/new/" target="_blank" rel="noopener">Открыть сайт</a>
+            </div>
+            <div class="footer__col">
+                <h3>Гайд</h3>
+                <ul>
+                    <li><a href="#palette">Палитра</a></li>
+                    <li><a href="#typography">Типографика</a></li>
+                    <li><a href="#buttons">Кнопки</a></li>
+                    <li><a href="#motion">Анимации</a></li>
+                    <li><a href="#tokens">Токены</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h3>Файлы</h3>
+                <ul>
+                    <li><a href="DESIGN.md">DESIGN.md</a></li>
+                    <li><a href="tokens.css">tokens.css</a></li>
+                    <li><a href="css/index-bundle.css">index-bundle.css</a></li>
+                    <li><a href="logo.svg">logo.svg</a></li>
+                    <li><a href="../">Все дизайн-системы</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>Снято 11/11/2026 · «Суровая премия»</span>
+            <span>Dela Award · Involve · Golos Award</span>
+        </div>
     </div>
-</div>
+</footer>
 
-<script src="star-border.js"></script>
-<script>
-    document.querySelectorAll('.star-border').forEach(function (el) {
-        var cs = getComputedStyle(el);
-        StarBorder.init(el, {
-            radius: parseFloat(cs.getPropertyValue('--star-border-radius')) || 4,
-            thickness: parseFloat(cs.getPropertyValue('--star-border-thickness')) || 1,
-            duration: 4,
-            glow: .6,
-            hover: 'lap',
-            theme: 'dark'
-        });
-    });
-</script>
-
+<script src="js/star-border.js" defer></script>
+<script src="js/fire-button.js" defer></script>
+<script src="js/scroll-burn.js" defer></script>
+<script src="js/anim-pause.js" defer></script>
+<script src="js/slogan.js" defer></script>
+<script src="js/guide.js" defer></script>
 </body>
 </html>

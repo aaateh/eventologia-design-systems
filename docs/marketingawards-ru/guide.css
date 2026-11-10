@@ -1,0 +1,678 @@
+/* ==========================================================================
+   Витрина дизайн-системы marketingawards.ru.
+   Каркас (.pv-*) — только для этого гайда. Компоненты (.btn, .card, .header,
+   .section, .shiny-btn, .typewriter, .bike…) взяты из css/index-bundle.css
+   текущей версии сайта и не переопределяются, кроме рамок-демо.
+   ========================================================================== */
+
+:root {
+    --pv-note: #A49E98;
+    --pv-line: #FFFFFF14;
+    --pv-line-strong: #FFFFFF24;
+    --pv-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--ground); color: var(--scene-ink); }
+
+/* --- полоса каталога на тёмной сцене --- */
+.dsbar {
+    --dsbar-bg: #0E0C0B;
+    --dsbar-line: #2A2422;
+    --dsbar-ink: #F5F0EB;
+    --dsbar-muted: #A49E98;
+    --dsbar-accent: #FF8A5B;
+}
+
+/* ==========================================================================
+   Первый экран
+   ========================================================================== */
+
+.pv-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    min-height: min(760px, 92svh);
+    display: grid;
+    align-items: center;
+    padding: clamp(56px, 8vw, 96px) 0 clamp(48px, 6vw, 72px);
+    background: var(--ground);
+    border-bottom: 1px solid var(--rule);
+}
+
+.pv-hero__fire {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    opacity: .62;
+    filter: saturate(1.06);
+    pointer-events: none;
+}
+
+.pv-hero__shade {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        radial-gradient(120% 80% at 20% 20%, #08060700 0%, #08060752 54%, #080607E6 100%),
+        linear-gradient(180deg, #08060733 0%, #08060700 34%, #080607E0 100%);
+    pointer-events: none;
+}
+
+.pv-hero__in {
+    position: relative;
+    z-index: 2;
+}
+
+.pv-kicker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 26px;
+    color: var(--accent-text);
+    font-family: var(--font-base);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.pv-kicker::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    flex: none;
+    background: currentColor;
+}
+
+.pv-hero__title {
+    width: min(100%, 690px);
+    margin: 0 0 24px;
+    line-height: 0;
+}
+
+.pv-hero__title img { width: 100%; height: auto; }
+
+.pv-hero__slogan {
+    max-width: 780px;
+    margin: 0 0 clamp(26px, 3.4vw, 44px) auto;
+    text-align: right;
+}
+
+.pv-hero__lead {
+    max-width: 660px;
+    margin: 0;
+    color: var(--scene-ink);
+    font-family: var(--invitation-font);
+    font-size: clamp(17px, 1.45vw, 21px);
+    line-height: 1.5;
+}
+
+.pv-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-top: clamp(26px, 3.4vw, 40px);
+}
+
+.pv-hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 34px;
+}
+
+.pv-hero__meta span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    padding: 5px 13px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    color: var(--scene-muted);
+    font-family: var(--font-base);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Вступление и содержание
+   ========================================================================== */
+
+.pv-intro {
+    padding: clamp(44px, 5vw, 64px) 0 8px;
+}
+
+.pv-intro__lead {
+    max-width: 860px;
+    margin: 0;
+    color: var(--scene-muted);
+    font-family: var(--font-base);
+    font-size: clamp(16px, 1.5vw, 19px);
+    line-height: 1.6;
+}
+
+.pv-intro__links {
+    margin: 18px 0 0;
+    color: var(--pv-note);
+    font-family: var(--font-base);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.pv-intro__links a {
+    color: var(--scene-ink);
+    border-bottom: 1px solid var(--rule-strong);
+}
+
+.pv-intro__links a:hover {
+    color: var(--accent-text);
+    border-bottom-color: var(--accent-text);
+}
+
+.pv-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 26px 0 0;
+}
+
+.pv-toc a {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-pill);
+    color: var(--scene-ink);
+    font-family: var(--font-ui);
+    font-size: 11px;
+    letter-spacing: .1em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
+}
+
+.pv-toc a:hover,
+.pv-toc a:focus-visible {
+    border-color: var(--accent-text);
+    background: var(--control-surface);
+    color: var(--accent-text);
+    outline: none;
+}
+
+/* ==========================================================================
+   Общие блоки витрины
+   ========================================================================== */
+
+.pv-section-head {
+    max-width: 860px;
+    margin-bottom: clamp(28px, 3.6vw, 44px);
+}
+
+.pv-section-head h2 { margin-bottom: 14px; }
+
+.pv-section-head p {
+    margin: 0;
+    max-width: 800px;
+    color: var(--scene-muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.section--soft .pv-section-head p { color: var(--muted); }
+
+.pv-note {
+    max-width: 880px;
+    margin: 14px 0 0;
+    color: var(--pv-note);
+    font-family: var(--font-base);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.section--soft .pv-note { color: var(--muted); }
+
+.pv-note b { color: var(--scene-ink); font-weight: 600; }
+.section--soft .pv-note b { color: var(--ink); }
+
+.pv-note code,
+.pv-table code,
+.pv-code code {
+    font-family: var(--pv-mono);
+    font-size: .92em;
+    color: var(--scene-ink);
+}
+
+.section--soft .pv-note code,
+.section--soft .pv-table code { color: var(--ink); }
+
+.pv-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.pv-stack { display: grid; gap: 14px; }
+
+.pv-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.pv-cols--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* --- палитра --- */
+
+.pv-swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));
+    gap: 12px;
+}
+
+.pv-swatch {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: transparent;
+}
+
+.pv-chip {
+    display: block;
+    height: 58px;
+    border: 1px solid var(--rule-strong);
+    border-radius: 2px;
+}
+
+.pv-swatch b {
+    display: block;
+    margin-top: 10px;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.pv-swatch code {
+    display: block;
+    margin-top: 2px;
+    color: var(--pv-note);
+    font-family: var(--pv-mono);
+    font-size: 11px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.pv-swatch em {
+    display: block;
+    margin-top: 4px;
+    color: var(--pv-note);
+    font-size: 11px;
+    font-style: normal;
+    line-height: 1.35;
+}
+
+.section--soft .pv-swatch code,
+.section--soft .pv-swatch em { color: var(--muted); }
+
+/* --- типографика --- */
+
+.pv-type-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.pv-type-row:first-child { border-top: 1px solid var(--rule); }
+
+.pv-type-meta {
+    color: var(--pv-note);
+    font-family: var(--pv-mono);
+    font-size: 11px;
+    line-height: 1.6;
+    text-align: right;
+}
+
+.section--soft .pv-type-meta { color: var(--muted); }
+
+.pv-h1-demo {
+    margin: 0;
+    font-family: var(--slogan-font);
+    font-size: clamp(34px, 5.4vw, 60.48px);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -.012em;
+    text-transform: uppercase;
+}
+
+.pv-h2-demo {
+    margin: 0;
+    font-family: var(--slogan-font);
+    font-size: var(--fs-h2);
+    font-weight: 400;
+    line-height: 1.14;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+}
+
+.pv-h3-demo {
+    margin: 0;
+    font-family: var(--font-ui);
+    font-size: var(--fs-lead);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+/* --- таблицы --- */
+
+.pv-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-base);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.pv-table th,
+.pv-table td {
+    padding: 10px 12px 10px 0;
+    border-bottom: 1px solid var(--rule);
+    text-align: left;
+    vertical-align: top;
+}
+
+.pv-table th {
+    color: var(--pv-note);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.section--soft .pv-table th { color: var(--muted); }
+
+.pv-table tr:last-child td { border-bottom: 0; }
+
+.pv-table--compact td { padding-top: 8px; padding-bottom: 8px; }
+
+/* --- рамки-демо --- */
+
+.pv-frame {
+    min-width: 0;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: transparent;
+    overflow: hidden;
+}
+
+.pv-frame--pad .pv-frame__body { padding: clamp(18px, 2.4vw, 28px); }
+
+.pv-frame__cap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--pv-note);
+    font-family: var(--font-base);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.pv-frame__cap b {
+    color: var(--accent-text);
+    font-weight: 600;
+}
+
+.pv-frame__cap code {
+    margin-left: auto;
+    color: var(--pv-note);
+    font-family: var(--pv-mono);
+    font-size: 10px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.pv-frame--paper {
+    border-color: var(--paper-rule-strong);
+}
+
+.pv-frame--paper .pv-frame__cap {
+    border-bottom-color: var(--paper-rule);
+    color: var(--muted);
+}
+
+.pv-frame--paper .pv-frame__cap b { color: var(--accent-text); }
+
+/* --- кнопки --- */
+
+.pv-btns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 20px;
+    align-items: start;
+}
+
+.pv-btn-cell {
+    display: grid;
+    justify-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 26px 16px 20px;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+}
+
+.pv-btn-cell .btn,
+.pv-btn-cell .shiny-btn { max-width: 100%; }
+
+.pv-state {
+    color: var(--pv-note);
+    font-family: var(--font-base);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.section--soft .pv-state { color: var(--muted); }
+
+/* --- поверхности для демонстрации инверсии --- */
+
+.pv-surface {
+    padding: clamp(20px, 2.6vw, 30px);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+}
+
+.pv-surface--paper {
+    border-color: var(--paper-rule-strong);
+    background: var(--paper);
+    color: var(--ink);
+}
+
+/* --- формы --- */
+
+.pv-form-demo .pf-grid { margin-top: 0; }
+
+.pv-form-demo .pf-field label { color: var(--muted); }
+
+.pv-card-figure {
+    width: min(56%, 210px);
+    height: auto;
+    align-self: center;
+    margin-top: auto;
+}
+
+/* --- шапка --- */
+
+.pv-frame--header {
+    --scene-ink: #F5F0EB;
+    --scene-muted: #FFFFFF;
+    --scene-dim: #F5F0EB;
+    --rule: #C8C2BC2E;
+    --rule-strong: #C8C2BC52;
+    --action-border: #C8C2BC;
+    --control-surface: #15111280;
+    background: var(--ground);
+    color: var(--scene-ink);
+}
+
+.pv-frame .header {
+    position: static;
+    border-bottom: 0;
+    background: transparent;
+}
+
+.pv-frame .header__inner {
+    min-height: 84px;
+    gap: clamp(16px, 2.4vw, 32px);
+}
+
+.pv-frame .nav__list { gap: clamp(12px, 1.7vw, 24px); }
+
+.pv-frame .nav__list a { font-size: 12px; }
+
+@media (max-width: 980px) {
+    .pv-frame .nav__list { display: none; }
+    .pv-frame .header__cta { margin-left: auto; }
+}
+
+/* --- эффекты --- */
+
+.pv-anim-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.pv-anim {
+    display: grid;
+    place-items: center;
+    min-height: 230px;
+    padding: 28px;
+    overflow: hidden;
+}
+
+.pv-anim--typewriter { align-items: end; padding-bottom: 46px; }
+
+.pv-anim .typewriter { transform: translateY(6px); }
+
+.pv-fire-demo {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.pv-fire-demo .fire {
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+}
+
+.pv-burn-mark {
+    display: grid;
+    place-items: center;
+    min-height: 230px;
+    padding: 28px;
+    background:
+        linear-gradient(0deg, var(--ground) 0 49%, var(--paper) 49% 51%, var(--paper) 51%);
+}
+
+.pv-burn-mark__text {
+    max-width: 320px;
+    color: var(--ink);
+    font-family: var(--slogan-font);
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* --- код и файлы --- */
+
+.pv-code {
+    margin: 16px 0 0;
+    padding: 18px;
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius);
+    background: #0D0B0C;
+    color: var(--scene-ink);
+    font-family: var(--pv-mono);
+    font-size: 12px;
+    line-height: 1.7;
+    tab-size: 2;
+}
+
+.section--soft .pv-code {
+    border-color: var(--paper-rule);
+    background: var(--paper-raised);
+    color: var(--ink);
+}
+
+.pv-code .c { color: #8C8880; }
+.pv-code .v { color: #FFB38A; }
+
+/* --- подвал гайда --- */
+
+.pv-foot-note {
+    padding: 26px 0 40px;
+    color: var(--pv-note);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Адаптив витрины
+   ========================================================================== */
+
+@media (max-width: 900px) {
+    .pv-hero { min-height: 0; }
+    .pv-btns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pv-hero__slogan { text-align: left; margin-left: 0; }
+    .pv-cols, .pv-cols--3, .pv-anim-grid { grid-template-columns: 1fr; }
+    .pv-type-row { grid-template-columns: 1fr; gap: 8px; }
+    .pv-type-meta { text-align: left; }
+}
+
+@media (max-width: 600px) {
+    .pv-hero { padding-top: 44px; }
+    .pv-hero__actions .btn,
+    .pv-hero__actions .shiny-btn { width: 100%; }
+    .pv-hero__meta { margin-top: 26px; }
+    .pv-btns { grid-template-columns: 1fr; }
+    .pv-swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pv-chip { height: 48px; }
+    .pv-anim { min-height: 200px; padding: 18px; }
+    .pv-toc a { padding: 7px 11px; font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pv-hero__fire { display: none; }
+    .pv-hero { background: var(--ground) url("media/fire/fire-desktop-poster-1440.jpg") center bottom / cover no-repeat; }
+}

@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Стайлгайд — «Суровая премия» (marketingawards.ru)</title>
+  <meta name="description" content="Живой стайлгайд «Суровой премии»: 33 цветовых токена, типографика, кнопки, карточки, сетка и девять эффектов." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#080607" />
+  <link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/styleguide.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Каталог дизайн-систем" />
+  <meta property="og:title" content="Стайлгайд — «Суровая премия» (marketingawards.ru)" />
+  <meta property="og:description" content="33 цветовых токена, типографика, кнопки, карточки, сетка и девять эффектов «Суровой премии»." />
+  <meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/styleguide.html" />
+  <meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Стайлгайд — «Суровая премия» (marketingawards.ru)" />
+  <meta name="twitter:description" content="33 цветовых токена, типографика, кнопки, карточки, сетка и девять эффектов «Суровой премии»." />
+  <meta name="twitter:image" content="https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/og.png" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../assets/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/png" href="../assets/favicon-192.png" sizes="192x192" />
+  <link rel="icon" type="image/png" href="../assets/favicon-96.png" sizes="96x96" />
+  <link rel="icon" type="image/png" href="../assets/favicon-48.png" sizes="48x48" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="css/index-bundle.css" />
+  <link rel="stylesheet" href="../assets/dsbar.css" />
+  <style>
+    .dsbar { --dsbar-bg:#0E0C0B; --dsbar-line:#2A2422; --dsbar-ink:#F5F0EB; --dsbar-muted:#A49E98; --dsbar-accent:#FF8A5B; }
+
+    .pv-toc { display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 4px; }
+    .pv-toc a { padding:8px 15px; border:1px solid #ffffff2b; border-radius:var(--radius-pill); font-family:var(--font-ui); font-size:11px; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; color:var(--scene-ink); }
+    .pv-toc a:hover, .pv-toc a:focus-visible { background:#ffffff14; border-color:#ffffff5c; outline:none; }
+
+    .pv-intro__links { font-family:var(--font-base); font-size:13px; line-height:1.7; color:#A49E98; }
+    .pv-intro__links a { color:var(--scene-ink); text-decoration:none; border-bottom:1px solid #ffffff2b; }
+    .pv-intro__links a:hover, .pv-intro__links a:focus-visible { color:#FF8A5B; border-bottom-color:#FF8A5B; outline:none; }
+  </style>
+</head>
+<body>
+
+<nav class="dsbar" aria-label="Каталог дизайн-систем">
+  <div class="dsbar__in">
+    <a class="dsbar__back" href="../"><span aria-hidden="true">←</span> Все дизайн-системы</a>
+    <span class="dsbar__meta">aaateh.github.io/eventologia-design-systems</span>
+  </div>
+</nav>
+
+<header class="section section--tight" style="border-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Стайлгайд · marketingawards.ru</p>
+    <h1>Дизайн-система</h1>
+    <p class="lead" style="max-width:840px;margin-top:18px">Живой справочник по цвету, типографике, компонентам и эффектам «Суровой премии». Собран из <code style="font:inherit">css/tokens.css</code> и <code style="font:inherit">docs/ДИЗАЙН-СИСТЕМА.md</code>; внешний вид рабочих страниц не меняет.</p>
+    <p class="small muted" style="max-width:840px;margin-top:10px">Источник правды — <code style="font:inherit">docs/ДИЗАЙН-СИСТЕМА.md</code>. Правило: новый размер сначала попадает в реестр (раздел 1.2), потом в <span style="font-weight:600">tokens.css</span> и только потом в вёрстку. На этой странице цвета и типографика не задаются заново — они читаются из токенов.</p>
+    <p class="pv-intro__links" style="margin-top:14px">Гайд сайта — <a href="index.html">index.html</a>, полный текст — <a href="DESIGN.md">DESIGN.md</a>, переменные — <a href="tokens.css">tokens.css</a>.</p>
+    <nav class="pv-toc" aria-label="Разделы стайлгайда">
+      <a href="#color">01 Цвет</a>
+      <a href="#typography">02 Типографика</a>
+      <a href="#components">03 Компоненты</a>
+      <a href="#grid">04 Сетка</a>
+      <a href="#effects">05 Эффекты</a>
+      <a href="#checklist">06 Чек-лист</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- 01. ЦВЕТ -->
+  <section class="section" id="color" aria-labelledby="color-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">01 · Цвет</p>
+        <h2 id="color-title">Цвет</h2>
+        <p class="lead">Две палитры: тёмная сцена и светлая бумага. Внутри светлых секций <code style="font:inherit">.section--soft</code> переопределяет сценовые токены на бумажные — поэтому один и тот же класс кнопки или карточки работает на обоих фонах.</p>
+      </div>
+
+      <h3>Сцена</h3>
+      <p class="small muted" style="max-width:840px;margin-top:8px">Четыре текстовых токена — <span style="font-weight:600">--scene-ink</span> #F5F0EB, <span style="font-weight:600">--scene-muted</span> #FFFFFF, <span style="font-weight:600">--scene-dim</span> #F5F0EB и <span style="font-weight:600">--scene-faint</span> #F5F0EB. Ступеней вторичности на тёмном нет: весь текст фактически белый, различаются только роли.</p>
+
+      <div class="grid grid--3" style="margin-top:20px">
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--ground)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--ground</p>
+            <p class="small muted" style="margin-top:4px">#080607 · фон html и body, тёмная сцена</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--scene-ink)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--scene-ink</p>
+            <p class="small muted" style="margin-top:4px">#F5F0EB · основной текст на сцене</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--scene-muted)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--scene-muted</p>
+            <p class="small muted" style="margin-top:4px">#FFFFFF · «вторичный» текст; фактически белый</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--scene-dim)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--scene-dim</p>
+            <p class="small muted" style="margin-top:4px">#F5F0EB · цвет .lead, то же значение</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--scene-faint)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--scene-faint</p>
+            <p class="small muted" style="margin-top:4px">#F5F0EB · третьестепенный текст, то же значение</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--control-surface)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--control-surface</p>
+            <p class="small muted" style="margin-top:4px">#15111280 · фон кнопки при наведении, альфа 50%</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--action-border)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--action-border</p>
+            <p class="small muted" style="margin-top:4px">#C8C2BC · рамка кнопок и focus-visible</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--brand-accent)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--brand-accent</p>
+            <p class="small muted" style="margin-top:4px">#F56624 · брендовый акцент, огонь</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--accent-text)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--accent-text</p>
+            <p class="small muted" style="margin-top:4px">#F56624 · оранжевые подписи, номера, .eyebrow</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--fire-glow)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--fire-glow</p>
+            <p class="small muted" style="margin-top:4px">#FF7B39 · свечение огня</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--rule)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--rule</p>
+            <p class="small muted" style="margin-top:4px">#C8C2BC2E · волосяные линии секций</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--rule-strong)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--rule-strong</p>
+            <p class="small muted" style="margin-top:4px">#C8C2BC52 · подложка рамки карточек</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--selection)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--selection</p>
+            <p class="small muted" style="margin-top:4px">#FFB38A · фон выделения текста</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--backdrop)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--backdrop</p>
+            <p class="small muted" style="margin-top:4px">#0A090BB3 · затемнение под модалками и меню</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--scroll-thumb)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--scroll-thumb</p>
+            <p class="small muted" style="margin-top:4px">#4A4442 · ползунок прокрутки</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--scroll-track)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--scroll-track</p>
+            <p class="small muted" style="margin-top:4px">#080607 · дорожка прокрутки</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:40px">Бумага</h3>
+      <p class="small muted" style="max-width:840px;margin-top:8px">Светлые секции — это не только фон: внутри <span style="font-weight:600">.section--soft</span> токены сцены переопределяются на бумажные, поэтому компоненты автоматически инвертируются.</p>
+
+      <div class="grid grid--3" style="margin-top:20px">
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--paper)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--paper</p>
+            <p class="small muted" style="margin-top:4px">#ECE9E3 · фон светлых секций</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--paper-raised)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--paper-raised</p>
+            <p class="small muted" style="margin-top:4px">#F5F2EC · приподнятые карточки и поля</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--panel)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--panel</p>
+            <p class="small muted" style="margin-top:4px">#ECE9E3 · алиас --paper, в вёрстке не используется</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--form-surface)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--form-surface</p>
+            <p class="small muted" style="margin-top:4px">#ECE9E3 · поверхность форм, не используется</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--ink)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--ink</p>
+            <p class="small muted" style="margin-top:4px">#25292E · основной текст на бумаге</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--ink-soft)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--ink-soft</p>
+            <p class="small muted" style="margin-top:4px">#3F423F · цвет .lead на бумаге</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--muted)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--muted</p>
+            <p class="small muted" style="margin-top:4px">#4A4D48 · вторичный текст на бумаге</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--line)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--line</p>
+            <p class="small muted" style="margin-top:4px">#555957 · объявлен, в вёрстке не используется</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--field-line)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--field-line</p>
+            <p class="small muted" style="margin-top:4px">#94958E · линии полей формы</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--placeholder)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--placeholder</p>
+            <p class="small muted" style="margin-top:4px">#696B64 · текст плейсхолдера</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--disabled-ink)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--disabled-ink</p>
+            <p class="small muted" style="margin-top:4px">#7E8077 · отключённый текст, не используется</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--disabled-line)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--disabled-line</p>
+            <p class="small muted" style="margin-top:4px">#AAA99F · отключённая рамка</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--error)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--error</p>
+            <p class="small muted" style="margin-top:4px">#A62C18 · ошибки формы</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--accent-paper)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--accent-paper</p>
+            <p class="small muted" style="margin-top:4px">#FF3838 · акцент на бумаге</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--close-hover)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--close-hover</p>
+            <p class="small muted" style="margin-top:4px">#DEDBD3 · фон кнопки закрытия при наведении</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--paper-rule)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--paper-rule</p>
+            <p class="small muted" style="margin-top:4px">#D2CEC7 · волосяные линии на бумаге</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--rule);border-radius:var(--radius);overflow:hidden">
+          <div aria-hidden="true" style="height:64px;background:var(--paper-rule-strong)"></div>
+          <div style="padding:12px 16px 14px">
+            <p class="small" style="font-weight:600">--paper-rule-strong</p>
+            <p class="small muted" style="margin-top:4px">#B4B0A9 · рамки карточек на бумаге</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02. ТИПОГРАФИКА -->
+  <section class="section section--soft" id="typography" aria-labelledby="typography-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">02 · Типографика</p>
+        <h2 id="typography-title">Типографика</h2>
+        <p class="lead">Семь ступеней размера, три основных семейства, три веса Golos. Дополнительно подключены Bounded (имена жюри), JetBrains Mono и Oswald (тарифные постеры, <code style="font:inherit">tariffs.css</code>) — в основную типографику они не входят. Реестр ведётся в разделе 1 дизайн-дока: другого размера в системе нет.</p>
+      </div>
+
+      <p class="small muted" style="max-width:840px;margin-bottom:24px">H1 — это заголовок этой страницы в шапке: Dela Award 400, <span style="font-weight:600">var(--fs-h1)</span>, капс, трекинг −0.012em. Ниже — остальные ступени в живом виде.</p>
+
+      <div style="border:1px solid var(--rule);border-radius:var(--radius);padding:28px">
+        <p class="eyebrow">H2 · Dela Award 400 · var(--fs-h2)</p>
+        <h2>Заголовок секции</h2>
+      </div>
+
+      <div style="border:1px solid var(--rule);border-radius:var(--radius);padding:28px;margin-top:20px">
+        <p class="eyebrow">H3 / H4 · Involve 400 · 20px / 16px</p>
+        <h3>Заголовок третьего уровня</h3>
+        <h4 style="margin-top:12px">Заголовок четвёртого уровня</h4>
+      </div>
+
+      <div style="border:1px solid var(--rule);border-radius:var(--radius);padding:28px;margin-top:20px">
+        <p class="eyebrow">.lead · Involve 400 · var(--fs-lead) · и p · Golos 400 · 16px</p>
+        <p class="lead">Лид на бумаге набирается Involve 20px и берёт цвет --ink-soft.</p>
+        <p style="margin-top:14px">Основной текст — Golos Award 16px с межстрочным 1.45–1.65. Он же используется в карточках, списках и мелких подписях; подписи кнопок — Involve (<code style="font:inherit">--font-ui</code>), не Golos.</p>
+      </div>
+
+      <div style="border:1px solid var(--rule);border-radius:var(--radius);padding:28px;margin-top:20px">
+        <p class="eyebrow">.eyebrow · Golos 600 · 12px · трекинг .14em</p>
+        <p class="small">.small — Golos 400, 14px, межстрочное 1.55: примечания, подписи, юридический текст.</p>
+      </div>
+
+      <div role="region" aria-label="Таблица размеров" tabindex="0" style="overflow-x:auto;margin-top:40px">
+        <table style="width:100%;min-width:640px;border-collapse:collapse">
+          <caption class="small" style="text-align:left;padding-bottom:12px">Раздел 1.2 дизайн-дока: семь ступеней, других размеров нет</caption>
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Ступень</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Токен</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Значение</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 0;border-bottom:1px solid var(--rule-strong)">Где применяется</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">12</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-micro</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">12px</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">подписи, номера, метки, роли</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">14</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-small</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">14px</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">мелкий текст, примечания, навигация</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">16</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-body</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">16px</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">основной текст, кнопки, h4</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">20</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-lead</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">20px</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">подзаголовки h3, имена, даты, FAQ</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">24</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-prose</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">24px</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">крупный вводный текст, номера шагов</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">h2</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-h2</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">clamp(28px, 3.6vw, 40px)</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">заголовки секций, цена</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">h1</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">--fs-h1</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">clamp(30px, 8.4vw, 60.48px)</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">заголовок страницы</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:40px">Исключения вне шкалы</h3>
+      <p class="small muted" style="max-width:840px;margin-top:8px">Свести при следующей правке: это ручные подгонки, а не новые ступени.</p>
+
+      <div role="region" aria-label="Исключения вне шкалы" tabindex="0" style="overflow-x:auto;margin-top:20px">
+        <table style="width:100%;min-width:640px;border-collapse:collapse">
+          <caption class="small" style="text-align:left;padding-bottom:12px">Раздел 1.4 дизайн-дока</caption>
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Значение</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Где</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 0;border-bottom:1px solid var(--rule-strong)">Почему осталось</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">clamp(20px, 2vw, 24px)</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">.prose p</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">по сути 24-я ступень с текучим входом</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">clamp(18px, 5.9vw, 50.8px), до 50,8px; .hero__sub--big — ×1.07</td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">.hero__sub</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">70% от размера слогана на заглушке marketingawards.ru (72,576px); --big — мобильный слоган +7%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:40px">Шрифты и веса</h3>
+      <p style="margin-top:8px"><span style="font-weight:600">Dela Award</span> — 400. h1, h2, слоган, крупные номера. Кириллица и латиница отдельными файлами.</p>
+      <p style="margin-top:8px"><span style="font-weight:600">Involve</span> — 400. h3, h4, кнопки, имена, даты, контакты, .lead.</p>
+      <p style="margin-top:8px"><span style="font-weight:600">Golos Award</span> — 400 / 500 / 600 (вариативная ось 400–900). Основной текст, мелкие подписи, цена.</p>
+      <p class="small muted" style="margin-top:12px">Файлы лежат в <code style="font:inherit">site/fonts/</code>. Полный список «можно / нельзя», лицензии и зарезервированные имена — <code style="font:inherit">docs/ШРИФТЫ.md</code>.</p>
+    </div>
+  </section>
+
+  <!-- 03. КОМПОНЕНТЫ -->
+  <section class="section" id="components" aria-labelledby="components-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">03 · Компоненты</p>
+        <h2 id="components-title">Компоненты</h2>
+        <p class="lead">Разметка взята с главной страницы. Кнопки и карточки работают на тёмной сцене и на бумаге без дублирования стилей.</p>
+      </div>
+
+      <h3>Кнопки</h3>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:20px">
+        <a class="btn" href="#components">Подать заявку</a>
+        <a class="btn btn--sm" href="#components">Подать заявку</a>
+        <a class="btn btn--ghost" href="#components">Рассчитать стоимость</a>
+        <a class="shiny-btn shiny-btn--site" href="#components"><span>Подать заявку</span></a>
+      </div>
+      <p class="small muted" style="max-width:840px;margin-top:16px">.btn — 54px (--action-h), min-width 244px (--action-w), padding 15/26, рамка 1px, радиус 4px (--radius). .btn--sm — 44px и 14px. .btn--ghost — рамка 45% currentColor и полупрозрачный фон сцены. .shiny-btn--site — те же 54/244, коническая рамка, зерно и свечение; радиус 32px, собственного border-radius у класса нет — значение наследуется от .shiny-btn; огонь по периметру включается только на устройствах с мышью.</p>
+
+      <h3 style="margin-top:40px">Карточки</h3>
+      <div class="grid grid--2" style="margin-top:20px">
+        <article class="card">
+          <span class="card__num">01</span>
+          <h3>Специалисты и фрилансеры</h3>
+          <p class="muted">Работаете на себя или в найме и самостоятельно ведёте направление? В блоке «Люди в маркетинге» можно представить собственную работу и профессиональные достижения.</p>
+        </article>
+        <article class="card">
+          <h3>Заявить о своей работе</h3>
+          <p class="muted">Представьте на конкурс проект, которым гордитесь. Покажите, что стоит за итоговыми цифрами: вашу идею, принятые решения и вклад в результат.</p>
+        </article>
+      </div>
+      <p class="small muted" style="max-width:840px;margin-top:16px">.card — рамка 2px собирается из ::before и ::after (подложка плюс фон), срез правого верхнего угла 72×60, радиус 4px, padding 28px. Внутри .section--soft цвета карточки меняются на бумажные автоматически. .card__num — Golos 600, 12px, трекинг .14em, цвет --accent-text.</p>
+    </div>
+  </section>
+
+  <!-- 04. СЕТКА -->
+  <section class="section section--soft" id="grid" aria-labelledby="grid-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">04 · Сетка</p>
+        <h2 id="grid-title">Сетка и правила</h2>
+        <p class="lead">Колонка 1040px, один отступ от края, рамки 1px и радиус 4px. Всё остальное — производные от этих четырёх чисел.</p>
+      </div>
+
+      <h3>Колонка и отступы</h3>
+      <p style="margin-top:8px">.wrap — max-width <span style="font-weight:600">calc(1040px + edge × 2)</span>, padding-inline <span style="font-weight:600">clamp(24px, 4vw, 72px)</span> (--edge). Секция — padding <span style="font-weight:600">clamp(64px, 7.5vw, 108px)</span>, узкая — <span style="font-weight:600">clamp(48px, 5vw, 72px)</span>. На экранах ≤600px секция сжимается до 56px.</p>
+
+      <h3 style="margin-top:24px">Рамки, радиусы, тени</h3>
+      <p style="margin-top:8px">Рамки — 1px. Радиус у .btn — 4px (--radius); у .shiny-btn — 32px, собственного border-radius у .shiny-btn--site нет, значение наследуется (<code style="font:inherit">shiny-button.css:55</code>). --radius-sm удалён как неиспользуемый, --radius-pill 40px используется в .footer__dev (<code style="font:inherit">style.css:2074</code>). Карточка собирает рамку 2px из двух слоёв. В статике теней и градиентов нет. Исключения: свечение box-shadow при наведении .btn (<code style="font:inherit">style.css:138–140</code>), градиент .hero__sub (<code style="font:inherit">style.css:330–335</code>) и .awards-grid::after (<code style="font:inherit">style.css:2434–2444</code>).</p>
+
+      <h3 style="margin-top:24px">Мобильные переопределения</h3>
+      <p style="margin-top:8px">≤1100 — навигация 12px · ≤980 — навигация 14px в меню · ≤900 — дата 16px · ≤600 — номера шагов 20px, дата и текст таймлайна 16px, имя основателя 20px, FAQ 16/20px, контакты 20px, подвал 12px.</p>
+      <p class="small muted" style="margin-top:12px">Три переопределения дублируют базовое значение и ничего не меняют: .nom-group__heading (это span с role="heading", не h3), .timeline__text, .founder__name (все на ≤600).</p>
+    </div>
+  </section>
+
+  <!-- 05. ЭФФЕКТЫ -->
+  <section class="section" id="effects" aria-labelledby="effects-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">05 · Эффекты</p>
+        <h2 id="effects-title">Эффекты</h2>
+        <p class="lead">Девять файлов эффектов, каждый отвечает за один приём; все девять подключены в index-bundle.css. Отдельно лежит <code style="font:inherit">fire-demo.css</code> — стили демо-страницы <code style="font:inherit">fire-demo.html</code>, в бандл он не входит и в эти девять не считается.</p>
+      </div>
+
+      <div role="region" aria-label="Файлы эффектов" tabindex="0" style="overflow-x:auto">
+        <table style="width:100%;min-width:720px;border-collapse:collapse">
+          <caption class="small" style="text-align:left;padding-bottom:12px">Файл → что делает → где используется</caption>
+          <thead>
+            <tr>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Файл</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 16px 10px 0;border-bottom:1px solid var(--rule-strong)">Что делает</th>
+              <th scope="col" style="text-align:left;font-weight:600;padding:10px 0;border-bottom:1px solid var(--rule-strong)">Где используется / демо</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/fire.css" style="border-bottom:1px solid currentColor">fire.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">фиксированный фон-сцена с огнём и искрами</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">фон главной, все тёмные секции</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/nominations-fire.css" style="border-bottom:1px solid currentColor">nominations-fire.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">анимация огня в блоке «Номинации» (Uiverse), позиционирование через .fire-slot</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">секция «Номинации»</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/scroll-burn.css" style="border-bottom:1px solid currentColor">scroll-burn.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">прожиг на стыке секций: Chrome — живой SVG-фильтр, Safari — SVG-путь с CSS-заливкой</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">стыки тёмных и бумажных секций</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/fire-button.css" style="border-bottom:1px solid currentColor">fire-button.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">«кнопка с огнём» v2: мягкое пламя по всему периметру при приближении курсора (наведение), только устройства с мышью</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">кнопки на главной; демо fire-demo.html</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/fire-buttons.css" style="border-bottom:1px solid currentColor">fire-buttons.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">вариант огненной кнопки для сайта: те же 54/244, что у .btn, скругление 32px (наследует от .shiny-btn)</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">.shiny-btn--site на страницах сайта</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/shiny-button.css" style="border-bottom:1px solid currentColor">shiny-button.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">вращающаяся коническая рамка, зерно и свечение (Hyperiux, чистый CSS)</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">кнопки «Подать заявку», «Смотреть номинации»</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/typewriter.css" style="border-bottom:1px solid currentColor">typewriter.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">печатная машинка в блоке «Как принять участие», огненная палитра</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">секция «Как принять участие»</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/bike-loader.css" style="border-bottom:1px solid currentColor">bike-loader.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">велосипед-лоадер в «Организаторах», пауза вне экрана через js/anim-pause.js</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">секция «Организаторы»</td>
+            </tr>
+            <tr>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top"><a href="css/intro.css" style="border-bottom:1px solid currentColor">intro.css</a></td>
+              <td style="padding:12px 16px 12px 0;border-bottom:1px solid var(--rule);vertical-align:top">заставка, огонь только внутри логотипа и слогана; пара js/intro.js</td>
+              <td style="padding:12px 0;border-bottom:1px solid var(--rule);vertical-align:top">первый вход на главную</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="border-left:2px solid var(--brand-accent);padding-left:16px;margin-top:28px">
+        <h3>scroll-burn — ключевой эффект</h3>
+        <p class="small muted" style="max-width:840px;margin-top:8px">Высоту, амплитуду кромки, цвет заливки, направление и различия Chrome/Safari меняем только по согласованию. Мобильная кромка прожига не отключается и не скрывается. На стыке кромки и секций не должно быть видимых рамок, чёрных или белых линий и швов.</p>
+      </div>
+
+      <p class="small muted" style="margin-top:28px">Демо эффектов — <code style="font:inherit">fire-demo.html</code> в проекте сайта; в каталоге демо-страницы нет.</p>
+    </div>
+  </section>
+
+  <!-- 06. ЧЕК-ЛИСТ -->
+  <section class="section section--soft" id="checklist" aria-labelledby="checklist-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">06 · Поддержка</p>
+        <h2 id="checklist-title">Чек-лист поддержки</h2>
+        <p class="lead">Три сценария: новый размер, проверка отсутствия лишних размеров, новый компонент.</p>
+      </div>
+
+      <h3>Как добавить размер</h3>
+      <ol style="padding-left:20px;margin-top:8px">
+        <li style="margin-top:8px">Сверить значение с таблицей 1.2 в docs/ДИЗАЙН-СИСТЕМА.md: возможно, подходящая ступень уже есть.</li>
+        <li style="margin-top:8px">Добавить строку в реестр 1.2 и место применения в 1.3.</li>
+        <li style="margin-top:8px">Добавить токен --fs-* в site/css/tokens.css.</li>
+        <li style="margin-top:8px">Применить var(--fs-*) в компоненте, а не сырой px.</li>
+        <li style="margin-top:8px">Пересобрать site/css/index-bundle.css скриптом scripts/build-css.py и обновить ?v= в HTML.</li>
+      </ol>
+
+      <h3 style="margin-top:32px">Как проверить, что новых размеров нет</h3>
+      <div role="region" aria-label="Команда проверки размеров" tabindex="0" style="overflow-x:auto;border:1px solid var(--rule);border-radius:var(--radius);background:var(--paper-raised);padding:16px;margin-top:12px">
+        <p class="small" style="white-space:nowrap">grep -hoE 'font-size: *[^;}]+' css/*.css | sed 's/.*: *//' | sort -u</p>
+      </div>
+      <p class="small muted" style="margin-top:10px">В выводе должны быть только значения из 1.2 и 1.4. Появилось другое — размер добавлен мимо реестра.</p>
+
+      <h3 style="margin-top:32px">Как добавить компонент</h3>
+      <p style="margin-top:8px">Собрать на существующих токенах и классах: цвета — только var(--*), рамка 1px, радиус 4px, без теней и градиентов в статике. Проверить на тёмной сцене и внутри .section--soft, на 360px и с клавиатуры.</p>
+      <p style="margin-top:8px">Добавить живой пример в раздел 3 дизайн-дока и на эту страницу, чтобы компонент не жил только в одном месте.</p>
+
+      <h3 style="margin-top:32px">Связанные документы</h3>
+      <p class="small" style="margin-top:8px"><code style="font:inherit">docs/ДИЗАЙН-СИСТЕМА.md</code> — источник правды · <code style="font:inherit">docs/ШРИФТЫ.md</code> — шрифты и лицензии · <code style="font:inherit">README.md</code> — краткая сводка проекта. Пути указаны от корня репозитория; на хостинг заливается только <code style="font:inherit">site/</code>, поэтому это не ссылки.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="section section--tight">
+  <div class="wrap">
+    <p class="small muted">Собрано 11/11/2026 из проекта сайта «Суровой премии». Полный гайд — <a href="index.html">marketingawards-ru/index.html</a>, текстовая версия — <a href="DESIGN.md">DESIGN.md</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
