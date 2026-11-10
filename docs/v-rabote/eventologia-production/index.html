@@ -245,7 +245,7 @@
           <form class="form-grid" id="request-form" action="#" method="post" aria-label="Заявка на организацию мероприятия">
             <div class="field">
               <label for="name">Имя <span class="req" aria-hidden="true">*</span></label>
-              <input id="name" name="name" type="text" autocomplete="name" placeholder="Анна" required>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Анна Иванова" required>
               <span class="field__hint">Как к вам обращаться</span>
             </div>
             <div class="field">
@@ -253,20 +253,27 @@
               <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
               <span class="field__hint">Формат: +7 (812) 000-00-00</span>
             </div>
+            <div class="field field--full">
+              <label for="service">Какую услугу хотите заказать</label>
+              <textarea id="service" name="service" rows="3" placeholder="Например: конференция на 300 человек"></textarea>
+            </div>
+            <div class="field field--full captcha-field">
+              <div id="captcha-container"
+                   class="smart-captcha"
+                   data-sitekey="ysc1_vNboZcrfdnfjeKm4hYU4AnFKGGWx5bDCby4jVJ6vbba2baee"></div>
+            </div>
             <div class="field">
               <label for="email">E-mail <span class="req" aria-hidden="true">*</span></label>
               <input id="email" name="email" type="email" autocomplete="email" placeholder="anna@example.ru" required>
-              <span class="field__hint">Для подтверждения заявки</span>
-            </div>
-            <div class="field">
-              <label for="service">Какую услугу хотите заказать</label>
-              <textarea id="service" name="service" rows="3" placeholder="Например: конференция на 300 человек"></textarea>
-              <span class="field__hint">Коротко о задаче</span>
             </div>
             <div class="form-actions">
               <button class="button" type="submit">Оставить заявку</button>
               <span class="hint">Обсудить идею, получить расчёт</span>
             </div>
+            <label class="consent" for="consent">
+              <input class="consent__input" id="consent" name="consent" type="checkbox" required>
+              <span class="consent__text">Даю свое согласие на обработку персональных данных и принимаю условия <a href="https://eventologia.ru/personal/" target="_blank" rel="noopener">политики в отношении обработки персональных данных</a></span>
+            </label>
             <p class="form-message" id="form-message" role="status" hidden>Спасибо! Заявка отправлена.</p>
           </form>
         </div>
@@ -317,6 +324,148 @@
       });
     })();
   </script>
+
+  <script>
+    // Маска телефона без библиотек: в поле живут только цифры (7 + до 10 цифр
+    // номера), отображение — +7 (999) 123-45-67.
+    (function () {
+      var input = document.getElementById('phone');
+      if (!input) { return; }
+
+      var SEPARATORS = ' ()-';
+
+      // Разбирает произвольную строку: отбрасывает код страны (7/8),
+      // оставляет не больше 10 цифр номера.
+      function parse(value) {
+        var all = value.replace(/\D/g, '');
+        var skip = 0;
+        if (all.charAt(0) === '7' || all.charAt(0) === '8') { skip = 1; }
+        // Код страны мог прийти дважды: префикс поля + вставленное «8 ...».
+        if (all.length - skip > 10 && (all.charAt(skip) === '7' || all.charAt(skip) === '8')) {
+          skip = 2;
+        }
+        return { subscriber: all.slice(skip, skip + 10), skip: skip };
+      }
+
+      // Цифры номера -> строка по шаблону.
+      function format(subscriber) {
+        if (!subscriber) { return '+7'; }
+        var out = '+7 (' + subscriber.slice(0, 3);
+        if (subscriber.length < 4) { return out; }
+        out += ') ' + subscriber.slice(3, 6);
+        if (subscriber.length < 7) { return out; }
+        out += '-' + subscriber.slice(6, 8);
+        if (subscriber.length < 9) { return out; }
+        return out + '-' + subscriber.slice(8, 10);
+      }
+
+      // Позиция после count-й цифры номера (0 — сразу после «+7»).
+      function caretPosition(formatted, count) {
+        if (count <= 0) { return 2; }
+        var seen = 0;
+        for (var i = 0; i < formatted.length; i++) {
+          if (formatted.charAt(i) >= '0' && formatted.charAt(i) <= '9') {
+            seen++;
+            if (seen === count + 1) { return i + 1; }
+          }
+        }
+        return formatted.length;
+      }
+
+      function syncValidity(subscriber) {
+        if (!subscriber.length) {
+          input.setCustomValidity('Введите номер телефона');
+        } else if (subscriber.length < 10) {
+          input.setCustomValidity('Введите номер телефона полностью');
+        } else {
+          input.setCustomValidity('');
+        }
+      }
+
+      // Перерисовка с сохранением курсора после того же числа цифр.
+      function render(value, caret) {
+        var parsed = parse(value);
+        var subscriber = parsed.subscriber;
+
+        // Полное стирание: пустая строка, а не «+7».
+        if (!subscriber) {
+          input.value = '';
+          syncValidity(subscriber);
+          return;
+        }
+
+        var head = caret === null ? value : value.slice(0, caret);
+        var before = head.replace(/\D/g, '');
+        before = before.slice(Math.min(parsed.skip, before.length));
+        var keep = Math.min(before.length, subscriber.length);
+
+        var formatted = format(subscriber);
+        input.value = formatted;
+        if (caret !== null) {
+          var pos = caretPosition(formatted, keep);
+          input.setSelectionRange(pos, pos);
+        }
+        syncValidity(subscriber);
+      }
+
+      input.addEventListener('focus', function () {
+        if (!parse(input.value).subscriber) {
+          input.value = '+7 ';
+          input.setSelectionRange(3, 3);
+        }
+      });
+
+      input.addEventListener('blur', function () {
+        var subscriber = parse(input.value).subscriber;
+        input.value = subscriber ? format(subscriber) : '';
+        syncValidity(subscriber);
+      });
+
+      input.addEventListener('input', function () {
+        render(input.value, input.selectionStart);
+      });
+
+      input.addEventListener('keydown', function (event) {
+        if (event.key !== 'Backspace' && event.key !== 'Delete') { return; }
+        if (event.ctrlKey || event.metaKey || event.altKey) { return; }
+
+        var start = input.selectionStart;
+        var end = input.selectionEnd;
+        if (start !== end) { return; } // выделение удалит сам браузер
+
+        var value = input.value;
+        var index = -1;
+
+        if (event.key === 'Backspace') {
+          if (start === 0 || SEPARATORS.indexOf(value.charAt(start - 1)) === -1) { return; }
+          for (var i = start - 1; i >= 0; i--) {
+            if (value.charAt(i) >= '0' && value.charAt(i) <= '9') { index = i; break; }
+          }
+        } else {
+          if (start >= value.length || SEPARATORS.indexOf(value.charAt(start)) === -1) { return; }
+          for (var j = start; j < value.length; j++) {
+            if (value.charAt(j) >= '0' && value.charAt(j) <= '9') { index = j; break; }
+          }
+        }
+
+        if (index === -1) { return; }
+        event.preventDefault();
+        render(value.slice(0, index) + value.slice(index + 1), index);
+      });
+
+      input.addEventListener('paste', function (event) {
+        event.preventDefault();
+        var clipboard = event.clipboardData || window.clipboardData;
+        var text = clipboard ? clipboard.getData('text') : '';
+        var start = input.selectionStart;
+        var end = input.selectionEnd;
+        var value = input.value.slice(0, start) + text + input.value.slice(end);
+        render(value, start + text.length);
+      });
+    })();
+  </script>
+
+  <script src="https://smartcaptcha.yandexcloud.net/captcha.js" defer></script>
 
 </body>
 </html>
