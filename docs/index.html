@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дизайн-системы Ивентологии</title>
+  <meta name="description" content="Две дизайн-системы Ивентологии: справочник основного сайта eventologia.ru и страницы курса Event-профи. Палитра, типографика, компоненты и токены.">
+  <link rel="icon" href="eventologia-ru/assets/logos/logo.svg" type="image/svg+xml">
+  <style>
+    @font-face {
+      font-family: "FuturaDemiC";
+      src: url("eventologia-ru/assets/fonts/FuturaDemiC.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "FuturaBookC";
+      src: url("eventologia-ru/assets/fonts/FuturaBookC.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "FuturaLightC";
+      src: url("eventologia-ru/assets/fonts/FuturaLightC.woff") format("woff");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "OpenSansRegular";
+      src: url("eventologia-ru/assets/fonts/OpenSansRegular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #F2F2F2;
+      --surface: #fff;
+      --ink: #1A1A1A;
+      --muted: #5F5F5F;
+      --faint: #6B6B6B;
+      --accent: #F74200;
+      --line: #E4E4E4;
+      --line-nav: #D9D9D9;
+      --font-display: "FuturaDemiC";
+      --font-book: "FuturaBookC";
+      --font-light: "FuturaLightC";
+      --font-body: "OpenSansRegular";
+      --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.6 var(--font-body);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+    .skip {
+      position: absolute;
+      left: 16px;
+      top: -80px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: #000;
+      color: #fff;
+      border-radius: 4px;
+    }
+    .skip:focus { top: 16px; }
+
+    .topbar { background: #fff; border-bottom: 1px solid var(--line-nav); }
+    .topbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 72px;
+    }
+    .brand { display: flex; align-items: center; gap: 18px; text-decoration: none; }
+    .brand img { height: 40px; width: auto; display: block; }
+    .brand span {
+      padding-left: 18px;
+      border-left: 1px solid var(--line-nav);
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .topbar__meta {
+      margin: 0;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .04em;
+      color: var(--faint);
+      white-space: nowrap;
+    }
+
+    .hero { padding: 72px 0 48px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #B33000;
+    }
+    .eyebrow .bar { width: 28px; height: 3px; background: var(--accent); }
+    h1 {
+      margin: 0 0 24px;
+      font-family: var(--font-display);
+      font-size: 64px;
+      line-height: 1.02;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+    .lead {
+      margin: 0;
+      max-width: 720px;
+      font-family: var(--font-light);
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      padding-bottom: 8px;
+    }
+    .card {
+      display: block;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.06);
+    }
+    .card:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .card__cover {
+      aspect-ratio: 16 / 10;
+      background: #ECECEC;
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .card__cover img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .card__body { padding: 26px 26px 24px; }
+    .card__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .card__tags span {
+      font-family: var(--font-display);
+      font-size: 10.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #B33000;
+    }
+    .card__tags span + span::before { content: "·"; margin-right: 8px; color: var(--faint); }
+    .card h2 {
+      margin: 0 0 10px;
+      font-family: var(--font-display);
+      font-size: 30px;
+      line-height: 1.1;
+      font-weight: 700;
+    }
+    .card p { margin: 0 0 16px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+    .card code {
+      font-family: var(--mono);
+      font-size: .92em;
+      background: #EEEFF0;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+    .card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--faint);
+    }
+    .card__meta span + span::before { content: "·"; margin-right: 8px; color: #BFBFBF; }
+    .card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .card:hover .card__link { text-decoration: underline; text-underline-offset: 3px; }
+
+    .note { padding: 28px 20px 0; border-top: 1px solid var(--line-nav); margin-top: 40px; }
+    .note p { margin: 0; max-width: 760px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+    .footer { margin-top: 64px; background: #ECECEC; border-top: 1px solid var(--line-nav); color: #3D3D3D; }
+    .footer__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .footer p { margin: 0; font-size: 13px; line-height: 1.4; }
+
+    @media (max-width: 900px) {
+      h1 { font-size: 48px; }
+      .grid { grid-template-columns: 1fr; }
+      .card__cover { aspect-ratio: 16 / 9; }
+    }
+    @media (max-width: 600px) {
+      .topbar__inner { min-height: 64px; }
+      .brand img { height: 32px; }
+      .brand span { display: none; }
+      .topbar__meta { font-size: 10px; }
+      .hero { padding: 48px 0 32px; }
+      h1 { font-size: 36px; }
+      .lead { font-size: 17px; }
+      .card__body { padding: 20px; }
+      .card h2 { font-size: 26px; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card { transition: none; }
+    }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Перейти к содержанию</a>
+  <header class="topbar">
+    <div class="wrap topbar__inner">
+      <a class="brand" href="./">
+        <img src="eventologia-ru/assets/logos/logo.svg" alt="Ивентология" width="192" height="40">
+        <span>Дизайн-системы</span>
+      </a>
+      <p class="topbar__meta">2 системы · 10/11/2026</p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap">
+      <p class="eyebrow"><span class="bar" aria-hidden="true"></span> визуальные руководства</p>
+      <h1>Дизайн-системы<br>Ивентологии</h1>
+      <p class="lead">Два рабочих справочника: основной сайт и страница курса Event-профи. Палитра, типографика, навигация, компоненты и токены — в живом виде.</p>
+    </section>
+
+    <section class="wrap grid" aria-label="Дизайн-системы">
+      <a class="card" href="eventologia-ru/">
+        <div class="card__cover"><img src="eventologia-ru/preview.png" alt="Превью дизайн-системы Eventologia.ru" width="1440" height="900" loading="eager"></div>
+        <div class="card__body">
+          <div class="card__tags"><span>Сайт</span><span>eventologia.ru</span></div>
+          <h2>Eventologia.ru</h2>
+          <p>Сдержанный деловой стиль: белые поверхности, тонкие линии, оранжевый акцент, Futura и Open Sans. 10 разделов, шапка и меню, кнопки, формы, карточки и футер.</p>
+          <div class="card__meta"><span>31 цвет</span><span>7 начертаний</span><span>10 разделов</span></div>
+          <span class="card__link">Открыть гайд <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+
+      <a class="card" href="event-manager1/">
+        <div class="card__cover"><img src="event-manager1/preview.png" alt="Превью дизайн-системы Event-профи" width="1280" height="900" loading="lazy"></div>
+        <div class="card__body">
+          <div class="card__tags"><span>Курс</span><span>event-manager1.eventologia.ru</span></div>
+          <h2>Event-профи</h2>
+          <p>Страница курса Наталии Франкель: Montserrat, тёмный первый экран, оранжевый CTA, карточки программы, тарифы и формы. Готовые классы <code>.em-*</code> и токены.</p>
+          <div class="card__meta"><span>Montserrat</span><span>токены --em-*</span><span>компоненты</span></div>
+          <span class="card__link">Открыть гайд <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </section>
+
+    <section class="wrap note">
+      <p>Каждая система — самостоятельная страница: её можно открыть по прямой ссылке и показать заказчику или команде.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p>Собрано из локальных бэкапов · eventologia.ru и event-manager1.eventologia.ru</p>
+      <p>10/11/2026</p>
+    </div>
+  </footer>
+</body>
+</html>

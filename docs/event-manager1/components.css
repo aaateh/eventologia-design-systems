@@ -1,0 +1,160 @@
+/* ============================================================
+   Event-профи — готовые компоненты поверх tokens.css
+   Подключать после tokens/tokens.css:
+     <link rel="stylesheet" href="tokens/tokens.css">
+     <link rel="stylesheet" href="components.css">
+   Классы с префиксом .em- не конфликтуют с исходной вёрсткой сайта.
+   ============================================================ */
+
+/* ---------- База ---------- */
+.em-body {
+  font-family: var(--em-font);
+  font-size: var(--em-fs-body);
+  line-height: var(--em-lh-body);
+  color: var(--em-black);
+  background: var(--em-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+.em-container { width: var(--em-container); max-width: calc(100% - 40px); margin-inline: auto; }
+.em-container--wide { width: var(--em-container-wide); }
+.em-container--narrow { width: var(--em-container-narrow); }
+.em-section { padding: var(--em-section-y) 0; }
+.em-section--dark { background: var(--em-ink); color: var(--em-white); }
+.em-section--light { background: var(--em-bg-light); }
+
+.em-h1 { font-size: var(--em-fs-h1); font-weight: var(--em-weight-black); line-height: var(--em-lh-heading); margin: 0 0 12px; }
+.em-h2 { font-size: var(--em-fs-h2); font-weight: var(--em-weight-black); line-height: var(--em-lh-heading); margin: 0 0 20px; }
+.em-h2--lg { font-size: var(--em-fs-h2-lg); }
+.em-h3 { font-size: var(--em-fs-card-title); font-weight: var(--em-weight-black); line-height: 1.3; margin: 0 0 4px; }
+.em-lead { font-size: var(--em-fs-lead-lg); font-weight: var(--em-weight-light); line-height: 1.4; }
+.em-text { font-size: var(--em-fs-lead); line-height: var(--em-lh-body); color: var(--em-body); }
+
+/* ---------- Кнопки ---------- */
+.em-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 60px; padding: 0 24px; border: 0;
+  font-family: var(--em-font); font-size: 14px; font-weight: var(--em-weight-bold);
+  line-height: 1; text-decoration: none; cursor: pointer;
+  border-radius: var(--em-radius-none);
+  transition: color var(--em-transition), background var(--em-transition), border-color var(--em-transition), filter var(--em-transition);
+}
+.em-btn--primary { color: var(--em-white); background: var(--em-gradient); }
+.em-btn--primary:hover { filter: brightness(0.94); }
+.em-btn--ghost { color: var(--em-white); background: transparent; border: 3px solid var(--em-white); }
+.em-btn--ghost:hover { color: var(--em-black); background: var(--em-white); }
+.em-btn--ghost-dark { color: var(--em-black); background: transparent; border: 3px solid var(--em-black); }
+.em-btn--ghost-dark:hover { color: var(--em-white); background: var(--em-black); }
+.em-btn--block { width: 100%; }
+.em-btn--sm { height: 48px; padding: 0 18px; font-size: 13px; }
+.em-btn:focus-visible { outline: 2px solid var(--em-focus); outline-offset: 2px; }
+.em-btn[disabled] { opacity: 0.4; cursor: not-allowed; filter: none; }
+
+/* ---------- Ссылка со стрелкой ---------- */
+.em-arrow-link { font-size: 17px; font-weight: var(--em-weight-bold); color: var(--em-orange); text-decoration: none; }
+.em-arrow-link::after {
+  content: ""; display: inline-block; width: 27px; height: 11px; margin-left: 8px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='11'%3E%3Cpath d='M0 5.5h24M19 1l5 4.5-5 4.5' fill='none' stroke='%23ff5f01' stroke-width='2'/%3E%3C/svg%3E") no-repeat;
+}
+.em-arrow-link:hover { color: var(--em-orange-hover); }
+
+/* ---------- Бейдж даты ---------- */
+.em-badge {
+  display: inline-block; padding: 14px 20px 12px;
+  color: var(--em-white); background: var(--em-gradient);
+  font-size: 18px; font-weight: var(--em-weight-semibold); line-height: 1;
+  text-transform: uppercase;
+}
+
+/* ---------- Карточки ---------- */
+.em-card { background: var(--em-white); border-radius: var(--em-radius-none); }
+.em-card--dark { background: var(--em-ink); color: var(--em-white); }
+.em-card--pad { padding: 32px; }
+
+/* синяя карточка-факт со срезанным углом */
+.em-stat {
+  position: relative; overflow: hidden; width: 440px; max-width: 100%;
+  padding: 75px 40px 54px 110px;
+  background: var(--em-blue); color: var(--em-white);
+}
+.em-stat__sum { font-size: var(--em-fs-stat); font-weight: var(--em-weight-black); line-height: 1; margin-bottom: 4px; }
+.em-stat__text { font-size: 18px; line-height: 1.5; }
+.em-stat::after {
+  content: ""; position: absolute; right: 0; bottom: 0;
+  border-width: 0 0 48px 48px; border-style: solid; border-color: transparent var(--em-blue-notch);
+}
+
+/* тариф */
+.em-price-card { display: flex; flex-direction: column; border: var(--em-border-card); background: var(--em-ink); color: var(--em-white); }
+.em-price-card__head { padding: 20px; margin-bottom: 24px; border-bottom: var(--em-border-head); }
+.em-price-card__title { font-size: 26px; font-weight: var(--em-weight-black); line-height: 1.1; text-transform: uppercase; margin: 0; }
+.em-price-card__sub { font-size: 15px; line-height: 1.4; padding-top: 10px; }
+.em-price-card__list { list-style: none; padding: 0 20px; margin: 0 0 10px; }
+.em-price-card__list li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.4; margin-bottom: 6px; }
+.em-price-card__list li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.em-price-card__price { font-size: var(--em-fs-price); font-weight: var(--em-weight-bold); margin: auto 0 16px; padding: 20px; }
+.em-price-card__btn { margin: 0 20px 24px; }
+
+/* человек */
+.em-person__photo { width: 150px; height: 150px; border-radius: var(--em-radius-circle); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat; margin-bottom: 18px; }
+.em-person__name { font-size: 24px; font-weight: var(--em-weight-black); line-height: 1.1; margin: 0 0 8px; }
+.em-person__role { font-size: 17px; line-height: 1.5; color: var(--em-body); margin: 0 0 14px; }
+
+/* ---------- Поля ---------- */
+.em-field {
+  width: 100%; border: 0; border-bottom: 1px solid var(--em-white);
+  background: transparent; color: var(--em-white);
+  font-family: var(--em-font); font-size: 20px; line-height: 1;
+  padding: 0 0 18px; margin: 0 0 32px; outline: none;
+  border-radius: 0;
+}
+.em-field::placeholder { color: var(--em-white); opacity: 1; }
+.em-field:hover { border-bottom-color: var(--em-orange); }
+.em-field:focus { border-bottom-color: var(--em-orange); }
+.em-field--error { border-bottom-color: var(--em-error); }
+.em-field--light { color: var(--em-black); border-bottom-color: var(--em-gray-3); }
+.em-field--light::placeholder { color: var(--em-gray-3); }
+
+.em-check { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; font-weight: var(--em-weight-light); line-height: 1.3; margin-bottom: 12px; cursor: pointer; }
+.em-check__box { flex: 0 0 auto; width: 24px; height: 24px; border: 1px solid currentColor; position: relative; }
+.em-check input:checked + .em-check__box { background: var(--em-orange); border-color: var(--em-orange); }
+.em-check input:checked + .em-check__box::after {
+  content: ""; position: absolute; inset: 4px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='%23fff' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* ---------- Аккордеон ---------- */
+.em-faq__item { border-bottom: 1px solid var(--em-line); }
+.em-faq__q {
+  position: relative; margin: 0; padding: 26px 120px 27px 70px; cursor: pointer;
+  font-size: 20px; font-weight: var(--em-weight-bold); line-height: 1.45;
+  transition: color var(--em-transition), background var(--em-transition);
+}
+.em-faq__q::after {
+  content: "+"; position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
+  font-size: 30px; font-weight: 300; color: var(--em-line-2);
+}
+.em-faq__item[open] .em-faq__q { color: var(--em-white); font-weight: var(--em-weight-black); background: var(--em-gradient-faq); }
+.em-faq__item[open] .em-faq__q::after { content: "×"; color: var(--em-white); }
+.em-faq__a { padding: 26px 70px 7px; font-size: 20px; line-height: 1.45; }
+
+/* ---------- Доступность и движение ---------- */
+.em-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .em-btn, .em-field, .em-faq__q, .em-arrow-link { transition: none; }
+}
+
+/* ---------- Мобильная база ---------- */
+@media (max-width: 750px) {
+  .em-section { padding: 55px 0; }
+  .em-h1 { font-size: 34px; }
+  .em-h2, .em-h2--lg { font-size: 28px; }
+  .em-lead { font-size: 15px; }
+  .em-stat { padding: 40px 24px 34px; }
+  .em-stat__sum { font-size: 40px; }
+  .em-faq__q { padding: 20px 56px 20px 20px; font-size: 17px; }
+  .em-faq__a { padding: 18px 20px 6px; font-size: 16px; }
+}

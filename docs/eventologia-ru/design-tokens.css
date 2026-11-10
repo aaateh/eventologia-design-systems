@@ -1,0 +1,115 @@
+/* Дизайн-токены eventologia.ru
+   Источник: локальный бэкап WordPress-темы smm
+   Дата: 10/11/2026 */
+
+:root {
+  /* Цвета */
+  --color-primary: #F74200;
+  --color-primary-alt: #FF6600;
+  --color-primary-border: #FF4400;
+  --color-primary-soft: #FF7330;
+  --color-popup-accent: #EC462E;
+  --color-cookie-accent: #F01A24;
+  --color-info: #4285F4;
+  --color-link-blue: #2356FF;
+
+  --color-bg: #F2F2F2;
+  --color-surface: #FFFFFF;
+  --color-surface-muted: #EFEFEF;
+  --color-footer: #ECECEC;
+  --color-subscribe: #6B7275;
+  --color-button-secondary: #E5E5E5;
+  --color-filter-active: #E2E2E2;
+  --color-tag-bg: #EEEFF0;
+
+  --color-text: #000000;
+  --color-text-body: #212121;
+  --color-text-muted: #7B7B7B;
+  --color-text-footer: #3D3D3D;
+  --color-text-date: #99A0A4;
+  --color-text-hint: #606060;
+  --color-text-disclaimer: #727272;
+  --color-text-popup-muted: #AEAEAE;
+  --color-icon-muted: #9D9E9E;
+
+  --color-border: #BFBFBF;
+  --color-border-banner: #B9B9B9;
+  --color-border-nav: #D9D9D9;
+  --color-border-light: #EAEAEA;
+  --color-border-popup: #D0D0D0;
+  --color-border-course: #D5D5D5;
+  --color-border-dark: #151515;
+
+  /* Шрифты */
+  --font-display: "FuturaDemiC", "Futura", Arial, sans-serif;
+  --font-medium: "FuturaMediumC", "Futura", Arial, sans-serif;
+  --font-book: "FuturaBookC", "Futura", Arial, sans-serif;
+  --font-light: "FuturaLightC", "Futura", Arial, sans-serif;
+  --font-body: "OpenSansRegular", "Open Sans", Arial, sans-serif;
+  --font-body-bold: "OpenSansBold", "Open Sans", Arial, sans-serif;
+  --font-serif: "PTSerif", Georgia, serif;
+
+  /* Размеры текста */
+  --text-h1: 55px;
+  --text-title: 50px;
+  --text-h1-content: 36px;
+  --text-h2: 30px;
+  --text-h3: 26px;
+  --text-h4: 30px;
+  --text-h5: 28px;
+  --text-h6: 22px;
+  --text-card: 24px;
+  --text-card-sm: 18px;
+  --text-lead: 20px;
+  --text-body: 16px;
+  --text-base: 14px;
+  --text-small: 13px;
+  --text-button: 18px;
+
+  --leading-tight: 1.1;
+  --leading-snug: 1.2;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.8;
+
+  /* Радиусы */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-chip: 4px;
+  --radius-md: 5px;
+  --radius-btn: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 20px;
+  --radius-pill: 100px;
+  --radius-circle: 50%;
+
+  /* Отступы */
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 15px;
+  --space-lg: 20px;
+  --space-xl: 30px;
+  --space-2xl: 40px;
+  --space-3xl: 60px;
+  --space-section: 80px;
+
+  /* Сетка */
+  --container: 1180px;
+  --container-narrow: 1140px;
+  --container-pad: 20px;
+  --card-ratio: 56%;
+  --course-card-ratio: 64.32%;
+  --footer-height: 140px;
+
+  /* Тени */
+  --shadow-dropdown: 0 2px 16px 0 rgba(0,0,0,.37);
+  --shadow-popup: 0 20px 70px 3px rgba(41,41,41,.1);
+  --shadow-photo-caption: 0 -15px 20px 10px rgba(0,0,0,.7);
+  --shadow-cookie: 0 0 20px 1px rgba(0,0,0,.1);
+  --overlay: rgba(0,0,0,.8);
+  --overlay-popup: rgba(0,0,0,.68);
+
+  /* Анимации */
+  --transition-fast: .2s;
+  --transition-base: .3s;
+  --transition-slow: .6s;
+}

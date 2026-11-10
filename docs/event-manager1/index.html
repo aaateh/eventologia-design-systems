@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Event-профи — дизайн-система</title>
+<link rel="stylesheet" href="tokens/tokens.css">
+<link rel="stylesheet" href="assets/fonts/montserrat.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #fff; color: var(--em-black);
+    font-family: var(--em-font); font-size: 15px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--em-orange); }
+  code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+
+  .layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); max-width: 1320px; margin: 0 auto; }
+  .toc {
+    position: sticky; top: 0; align-self: start; height: 100vh; overflow: auto;
+    padding: 40px 24px 40px 32px; border-right: 1px solid #eee;
+  }
+  .toc__brand { display: block; width: 168px; margin: 0 0 28px; }
+  .toc a { display: block; color: #444; text-decoration: none; padding: 5px 0; font-size: 13px; }
+  .toc a:hover { color: var(--em-orange); }
+  .toc__title { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #999; margin: 24px 0 6px; }
+
+  .main { padding: 0 56px 120px; }
+  .hero { padding: 64px 0 40px; border-bottom: 1px solid #eee; margin-bottom: 56px; }
+  .hero h1 { font-size: 44px; font-weight: 800; line-height: 1.05; margin: 0 0 16px; }
+  .hero p { max-width: 680px; color: var(--em-body); font-size: 16px; margin: 0 0 8px; }
+  .hero .meta { font-size: 13px; color: #808080; }
+
+  section { margin: 0 0 72px; scroll-margin-top: 24px; }
+  h2.sec { font-size: 28px; font-weight: 800; margin: 0 0 8px; }
+  .sec-note { color: #646464; font-size: 14px; margin: 0 0 28px; max-width: 720px; }
+  h3.sub { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #999; margin: 36px 0 14px; font-weight: 600; }
+
+  /* palette */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .sw { border: 1px solid #eee; }
+  .sw__chip { height: 88px; }
+  .sw__body { padding: 10px 12px 12px; }
+  .sw__name { font-weight: 700; font-size: 13px; }
+  .sw__hex { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: #666; }
+  .sw__use { font-size: 12px; color: #808080; margin-top: 4px; line-height: 1.35; }
+
+  /* type */
+  .type-row { display: grid; grid-template-columns: 190px minmax(0,1fr); gap: 24px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid #f0f0f0; }
+  .type-row .label { font-size: 12px; color: #808080; font-family: ui-monospace, Menlo, monospace; }
+  .t-hero { font-size: 45px; font-weight: 800; line-height: 1.1; }
+  .t-h2 { font-size: 40px; font-weight: 800; line-height: 1.1; }
+  .t-h2-sm { font-size: 30px; font-weight: 800; line-height: 1.2; }
+  .t-h3 { font-size: 20px; font-weight: 800; line-height: 1.3; }
+  .t-lead { font-size: 20px; font-weight: 300; line-height: 1.4; }
+  .t-body { font-size: 18px; color: var(--em-body); line-height: 1.5; }
+  .t-small { font-size: 14px; font-weight: 600; }
+  .t-stat { font-size: 48px; font-weight: 800; line-height: 1; }
+  .t-price { font-size: 34px; font-weight: 700; line-height: 1; }
+
+  /* buttons */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; height: 60px; padding: 0 24px; border: 0; cursor: pointer; font-family: var(--em-font); font-size: 14px; font-weight: 700; transition: var(--em-transition); }
+  .btn--primary { color: #fff; background: var(--em-gradient); }
+  .btn--primary:hover { filter: brightness(.94); }
+  .btn--ghost-light { color: #fff; background: transparent; border: 3px solid #fff; }
+  .btn--ghost-light:hover { background: #fff; color: #000; }
+  .btn--ghost-dark { color: #000; background: transparent; border: 3px solid #000; }
+  .btn--ghost-dark:hover { background: #000; color: #fff; }
+  .btn--on-dark { color: #fff; border-color: #fff; background: transparent; }
+  .btn--on-dark:hover { background: #fff; color: #000; }
+  .btn--nav { height: 60px; width: 164px; font-size: 14px; font-weight: 600; }
+  .btn:focus-visible { outline: 2px solid var(--em-blue); outline-offset: 2px; }
+  .dark-box { background: var(--em-ink); padding: 32px; }
+
+  /* badges */
+  .badge { display: inline-block; padding: 14px 20px 12px; color: #fff; background: var(--em-gradient); font-size: 18px; font-weight: 600; line-height: 1; text-transform: uppercase; }
+
+  /* blue stat */
+  .stat { position: relative; width: 440px; max-width: 100%; padding: 75px 40px 54px 110px; background: var(--em-blue); color: #fff; overflow: hidden; }
+  .stat__logo { position: absolute; right: 20px; top: 20px; width: 60px; height: 60px; border-radius: 50%; background: var(--em-hh); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 22px; }
+  .stat__sum { font-size: 48px; font-weight: 800; line-height: 1; margin-bottom: 4px; }
+  .stat__text { font-size: 18px; line-height: 1.5; }
+  .stat::after { content: ""; position: absolute; right: 0; bottom: 0; border-width: 0 0 48px 48px; border-style: solid; border-color: transparent var(--em-blue-notch); }
+
+  /* cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .feature__icon { height: 70px; margin-bottom: 15px; display: flex; align-items: flex-end; }
+  .feature__icon img { max-height: 70px; }
+  .feature__title { font-size: 20px; font-weight: 800; line-height: 1.3; margin: 0 0 4px; }
+  .feature__text { font-size: 16px; line-height: 1.4; margin: 0; }
+
+  .person { max-width: 320px; }
+  .person__photo { width: 150px; height: 150px; border-radius: 50%; background: #eaedf3 url("source/assets/fran.jpg") center/cover; margin-bottom: 18px; }
+  .person__name { font-size: 24px; font-weight: 800; line-height: 1.1; margin: 0 0 8px; }
+  .person__role { font-size: 17px; line-height: 1.5; color: var(--em-body); margin: 0 0 14px; }
+  .arrow-link { font-size: 17px; font-weight: 700; color: var(--em-orange); text-decoration: none; }
+  .arrow-link::after { content: ""; display: inline-block; width: 27px; height: 11px; margin-left: 8px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='27' height='11'%3E%3Cpath d='M0 5.5h24M19 1l5 4.5-5 4.5' fill='none' stroke='%23ff5f01' stroke-width='2'/%3E%3C/svg%3E") no-repeat; }
+
+  /* price */
+  .price-card { width: 100%; background: var(--em-ink); color: #fff; border: var(--em-border-card); padding: 0; display: flex; flex-direction: column; }
+  .price-card__head { padding: 20px; border-bottom: var(--em-border-head); margin-bottom: 24px; }
+  .price-card__title { font-size: 26px; font-weight: 800; line-height: 1.1; text-transform: uppercase; margin: 0; }
+  .price-card__sub { font-size: 15px; line-height: 1.4; padding-top: 10px; }
+  .price-card ul { list-style: none; padding: 0 20px; margin: 0 0 10px; }
+  .price-card li { position: relative; padding: 0 0 0 18px; font-size: 15px; line-height: 1.4; margin-bottom: 6px; }
+  .price-card li::before { content: ""; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+  .price-card__price { font-size: 34px; font-weight: 700; margin: auto 0 16px; padding: 20px; }
+  .price-card__btn { margin: 0 20px 24px; }
+
+  /* forms */
+  .form-dark { background: var(--em-ink); color: #fff; padding: 45px 40px; }
+  .form-dark h4, .form-light h4 { font-size: 28px; font-weight: 800; line-height: 1.2; margin: 0 0 26px; }
+  .field { border: 0; border-bottom: 1px solid #fff; background: transparent; color: #fff; font-family: var(--em-font); font-size: 20px; padding: 0 0 18px; margin: 0 0 32px; width: 100%; outline: none; }
+  .field::placeholder { color: #fff; opacity: 1; }
+  .field:focus { border-bottom-color: var(--em-orange); }
+  .check { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; font-weight: 300; line-height: 1.3; margin-bottom: 12px; color: inherit; }
+  .check span.box { flex: 0 0 auto; width: 24px; height: 24px; border: 1px solid currentColor; }
+  .form-light { background: var(--em-bg-light); padding: 45px 40px; }
+  .form-light .field { color: #000; border-bottom-color: var(--em-gray-3); }
+  .form-light .field::placeholder { color: var(--em-gray-3); }
+
+  /* faq */
+  .faq { border-top: 1px solid var(--em-line); }
+  .faq__q { position: relative; font-size: 20px; font-weight: 700; line-height: 1.45; padding: 26px 120px 27px 70px; border-bottom: 1px solid var(--em-line); }
+  .faq__q::after { content: "+"; position: absolute; right: 30px; top: 50%; transform: translateY(-50%); font-size: 30px; font-weight: 300; color: var(--em-line-2); }
+  .faq__q.active { color: #fff; font-weight: 800; background: var(--em-gradient-faq); border-bottom-color: transparent; }
+  .faq__q.active::after { content: "×"; color: #fff; }
+  .faq__a { padding: 26px 70px 7px; border-bottom: 1px solid var(--em-line); font-size: 20px; line-height: 1.45; }
+
+  /* table */
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  th { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #999; font-weight: 600; }
+  .ok { color: #1a7f37; font-weight: 600; }
+  .bad { color: #c62828; font-weight: 600; }
+
+  /* layout diagram */
+  .diagram { display: flex; flex-direction: column; gap: 6px; max-width: 720px; }
+  .diagram div { background: #f4f6fa; border-left: 3px solid var(--em-orange); padding: 10px 14px; font-size: 13px; }
+  .diagram small { color: #808080; }
+
+  /* icons */
+  .icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+  .icon-cell { border: 1px solid #eee; padding: 18px 14px 12px; text-align: center; }
+  .icon-cell img { height: 56px; width: auto; display: block; margin: 0 auto 12px; }
+  .icon-cell span { font-size: 12px; color: #646464; line-height: 1.3; display: block; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { position: static; height: auto; border-right: 0; border-bottom: 1px solid #eee; padding: 24px; }
+    .main { padding: 0 24px 80px; }
+    .type-row { grid-template-columns: 1fr; gap: 6px; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="toc">
+    <img class="toc__brand" src="source/assets/logo-black.svg" alt="Ивентология">
+    <div class="toc__title">Навигация</div>
+    <a href="#principles">Принципы</a>
+    <a href="#palette">Палитра</a>
+    <a href="#logo">Логотип</a>
+    <a href="#icons">Иконки</a>
+    <a href="#gradients">Градиенты</a>
+    <a href="#type">Типографика</a>
+    <a href="#layout">Сетка и ритм</a>
+    <a href="#buttons">Кнопки</a>
+    <a href="#badges">Бейджи</a>
+    <a href="#cards">Карточки</a>
+    <a href="#forms">Формы</a>
+    <a href="#faq">Аккордеон</a>
+    <a href="#a11y">Доступность</a>
+  </nav>
+
+  <main class="main">
+    <header class="hero">
+      <h1>Event-профи</h1>
+      <p>Дизайн-система страницы курса Ивентологии. Собрана по архивной копии <strong>event-manager1.eventologia.ru</strong> и исходному CSS.</p>
+      <p class="meta">Снимок 10/07/2026 · Montserrat · 34 цвета в CSS сведены к 25 ролям · прямые углы · оранжевый только для действия</p>
+    </header>
+
+    <section id="principles">
+      <h2 class="sec">Принципы</h2>
+      <p class="sec-note">Пять правил, которые удерживают стиль страницы.</p>
+      <div class="grid">
+        <div class="feature"><div class="feature__title">1. Ч/Б основа</div><p class="feature__text">Белый, чёрный и тёмно-серый — 90 % площади. Оранжевый — только действие и акцент.</p></div>
+        <div class="feature"><div class="feature__title">2. Прямые углы</div><p class="feature__text">Кнопки, карточки, бейджи и поля без радиуса. Круглые — только аватары и кнопка закрытия.</p></div>
+        <div class="feature"><div class="feature__title">3. Толстые заголовки</div><p class="feature__text">Montserrat 800, 36–50 px, ручные переносы, 2–4 строки. На мобильных — 28 px.</p></div>
+        <div class="feature"><div class="feature__title">4. Полосы-секции</div><p class="feature__text">Ритм задаёт фон: белый → серо-зелёный → чёрный → светло-голубой. Без рамок между блоками.</p></div>
+        <div class="feature"><div class="feature__title">5. Фото и люди</div><p class="feature__text">Крупные живые фотографии и круглые портреты вместо иллюстраций и абстракций.</p></div>
+        <div class="feature"><div class="feature__title">6. Минимум эффектов</div><p class="feature__text">Только смена цвета за 0.2 s. Одна тень на всю страницу — у фото сертификата.</p></div>
+      </div>
+    </section>
+
+    <section id="palette">
+      <h2 class="sec">Палитра</h2>
+      <p class="sec-note">25 ролей вместо 34 случайных оттенков в исходном CSS.</p>
+      <div class="swatches">
+        <div class="sw"><div class="sw__chip" style="background:#ff5900"></div><div class="sw__body"><div class="sw__name">Основной акцент</div><div class="sw__hex">#ff5900</div><div class="sw__use">Ссылки, суммы, маркеры</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#ff5f01"></div><div class="sw__body"><div class="sw__name">Ховер</div><div class="sw__hex">#ff5f01</div><div class="sw__use">Меню, ссылки, соцсети</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:linear-gradient(90deg,#ff7900,#ff0e00)"></div><div class="sw__body"><div class="sw__name">Градиент CTA</div><div class="sw__hex">#ff7900 → #ff0e00</div><div class="sw__use">Кнопки, бейдж</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#0d0d0d"></div><div class="sw__body"><div class="sw__name">Тёмный фон</div><div class="sw__hex">#0d0d0d</div><div class="sw__use">Секции, формы, футер</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#3d3d54"></div><div class="sw__body"><div class="sw__name">Основной текст</div><div class="sw__hex">#3d3d54</div><div class="sw__use">Абзацы на белом</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#646464"></div><div class="sw__body"><div class="sw__name">Серый</div><div class="sw__hex">#646464</div><div class="sw__use">Копирайт, подписи</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#f2f5fd;border-bottom:1px solid #eee"></div><div class="sw__body"><div class="sw__name">Светлый фон</div><div class="sw__hex">#f2f5fd</div><div class="sw__use">Секции результата</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#6b7275"></div><div class="sw__body"><div class="sw__name">Полоса фактов</div><div class="sw__hex">#6b7275</div><div class="sw__use">Блок под hero</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#0099ff"></div><div class="sw__body"><div class="sw__name">Синяя карточка</div><div class="sw__hex">#0099ff</div><div class="sw__use">Единственный цветной блок</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#e60000"></div><div class="sw__body"><div class="sw__name">hh.ru</div><div class="sw__hex">#e60000</div><div class="sw__use">Логотип в карточке</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#808080"></div><div class="sw__body"><div class="sw__name">Серый-2</div><div class="sw__hex">#808080</div><div class="sw__use">Описания-подписи</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#969696"></div><div class="sw__body"><div class="sw__name">Серый-3</div><div class="sw__hex">#969696</div><div class="sw__use">Плейсхолдеры, линии</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#d0d0d0"></div><div class="sw__body"><div class="sw__name">Линии</div><div class="sw__hex">#d0d0d0</div><div class="sw__use">Аккордеон, границы</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#c9d7ff"></div><div class="sw__body"><div class="sw__name">Срез угла</div><div class="sw__hex">#c9d7ff</div><div class="sw__use">Синяя карточка</div></div></div>
+        <div class="sw"><div class="sw__chip" style="background:#ff0000"></div><div class="sw__body"><div class="sw__name">Ошибка</div><div class="sw__hex">#ff0000</div><div class="sw__use">Граница поля с ошибкой</div></div></div>
+      </div>
+    </section>
+
+    <section id="logo">
+      <h2 class="sec">Логотип</h2>
+      <p class="sec-note">Два варианта: белый для тёмных фонов, чёрный — для светлых. Пропорции 2835 × 591 (≈ 4.8:1), рабочая ширина 265–268 px.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div style="background:#0d0d0d;padding:32px;display:flex;align-items:center;justify-content:center"><img src="source/assets/logo.svg" alt="Ивентология — белый логотип" style="width:268px;max-width:100%"></div>
+        <div style="border:1px solid #eee;padding:32px;display:flex;align-items:center;justify-content:center"><img src="source/assets/logo-black.svg" alt="Ивентология — чёрный логотип" style="width:268px;max-width:100%"></div>
+      </div>
+      <div class="diagram" style="margin-top:16px">
+        <div>Белый — на фото и <code>#0d0d0d</code>, 268 px в хедере и 265 px в футере</div>
+        <div>Чёрный — на белом и <code>#f2f5fd</code></div>
+        <div>Не растягивать, не перекрашивать птицу и не ставить на оранжевый градиент</div>
+      </div>
+    </section>
+
+    <section id="icons">
+      <h2 class="sec">Иконки</h2>
+      <p class="sec-note">12 линейных SVG в едином стиле: 70 px в сетке «Чему вы научитесь», 80 px в «Преимуществах». Толщина линии и оранжевые акценты одинаковые — не смешивать с другими наборами.</p>
+      <div class="icons">
+        <div class="icon-cell"><img src="source/assets/Icon_01.svg" alt=""><span>01 · Инструменты</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_02.svg" alt=""><span>02 · Управление</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_03.svg" alt=""><span>03 · Спонсоры и финансы</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_04.svg" alt=""><span>04 · Личный бренд</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_05.svg" alt=""><span>05 · Риск-менеджмент</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_06.svg" alt=""><span>06 · Планирование проекта</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_07.svg" alt=""><span>07 · Подбор подрядчиков</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_08.svg" alt=""><span>08 · Анализ показателей</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_09.svg" alt=""><span>09 · Практик</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_10.svg" alt=""><span>10 · 20+ проектов</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_11.svg" alt=""><span>11 · Сертификат</span></div>
+        <div class="icon-cell"><img src="source/assets/Icon_12.svg" alt=""><span>12 · Канал волонтёров</span></div>
+      </div>
+    </section>
+
+    <section id="gradients">
+      <h2 class="sec">Градиенты</h2>
+      <p class="sec-note">Только горизонтальные, только на действиях.</p>
+      <div class="grid">
+        <div>
+          <div style="height:80px;background:var(--em-gradient)"></div>
+          <div class="mono" style="margin-top:8px">linear-gradient(90deg, #ff7900 0%, #ff0e00 100%)</div>
+          <div style="font-size:13px;color:#808080">Кнопки, бейдж даты</div>
+        </div>
+        <div>
+          <div style="height:80px;background:var(--em-gradient-faq)"></div>
+          <div class="mono" style="margin-top:8px">linear-gradient(90deg, #ff8400, #ff6400 50%, #ff0e00)</div>
+          <div style="font-size:13px;color:#808080">Активный вопрос FAQ</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="type">
+      <h2 class="sec">Типографика</h2>
+      <p class="sec-note">Montserrat 300 / 400 / 600 / 700 / 800. Заголовки — только 800, без letter-spacing.</p>
+      <div class="type-row"><div class="label">H1 · 45 / 800 / 1.1</div><div class="t-hero">Event-профи</div></div>
+      <div class="type-row"><div class="label">H2 · 40 / 800 / 1.1</div><div class="t-h2">Кому нужен этот курс</div></div>
+      <div class="type-row"><div class="label">H2 узкий · 30 / 800 / 1.2</div><div class="t-h2-sm">Почему мы сделали этот курс</div></div>
+      <div class="type-row"><div class="label">H3 карточки · 20 / 800</div><div class="t-h3">Планирование проекта</div></div>
+      <div class="type-row"><div class="label">Лид · 20 / 300 / 1.4</div><div class="t-lead">Комплексный подход к организации и проведению событий</div></div>
+      <div class="type-row"><div class="label">Текст · 18 / 400 / 1.5</div><div class="t-body" style="max-width:640px">Event-профи — менеджер-практик, который знает, как организовать процесс подготовки и проведения события от «А» до «Я».</div></div>
+      <div class="type-row"><div class="label">Мелкий · 14 / 600</div><div class="t-small">О КУРСЕ · ПРОГРАММА · ЭКСПЕРТЫ</div></div>
+      <div class="type-row"><div class="label">Цифра · 48 / 800</div><div class="t-stat">65 000 ₽</div></div>
+      <div class="type-row"><div class="label">Цена · 34 / 700</div><div class="t-price">41 900 ₽</div></div>
+      <div class="type-row"><div class="label">Дисклеймер · 13 / 300</div><div style="font-size:13px;font-weight:300;line-height:1.3;max-width:520px">Согласен на получение рекламной информации по телефону, электронной почте и в мессенджерах</div></div>
+    </section>
+
+    <section id="layout">
+      <h2 class="sec">Сетка и ритм</h2>
+      <p class="sec-note">Ширины контейнеров и вертикальные отступы. Секции — 90–100 px, мобильные — 50–60 px.</p>
+      <div class="diagram">
+        <div>Хедер — 1200 px <small>· fixed, 116 px, прозрачный → #000 при скролле</small></div>
+        <div>Широкий — 1140 px <small>· hero, полоса фактов, футер</small></div>
+        <div>Базовый — 1080 px <small>· большинство секций</small></div>
+        <div>Узкий — 970 px <small>· финальная форма, FAQ</small></div>
+        <div>Тарифы — 1070 px <small>· 4 колонки, рамка 4 px</small></div>
+        <div>Автор — 1300 px <small>· фото 370 px + текст</small></div>
+      </div>
+      <h3 class="sub">Брейкпоинты</h3>
+      <div class="mono">1400 → 1270 → 1100 → 1000 → 750 px · мобильный viewport 360 px</div>
+    </section>
+
+    <section id="buttons">
+      <h2 class="sec">Кнопки</h2>
+      <p class="sec-note">Высота 60 px, прямые углы, 14–15 px / 600–700, переход 0.2 s. В исходнике у градиентной кнопки нет ховера — здесь добавлено лёгкое затемнение.</p>
+      <div class="btn-row">
+        <button class="btn btn--primary">ПРИНЯТЬ УЧАСТИЕ</button>
+        <button class="btn btn--primary btn--nav">ОСТАВИТЬ ЗАЯВКУ</button>
+        <button class="btn btn--ghost-dark">ПРОГРАММА</button>
+      </div>
+      <h3 class="sub">На тёмном фоне</h3>
+      <div class="dark-box btn-row">
+        <button class="btn btn--primary">ОТПРАВИТЬ</button>
+        <button class="btn btn--on-dark">ПРОГРАММА</button>
+        <a href="#" class="arrow-link">Подробнее</a>
+      </div>
+      <h3 class="sub">Фокус</h3>
+      <div class="btn-row"><button class="btn btn--primary" style="outline:2px solid var(--em-blue);outline-offset:2px">ФОКУС ВИДЕН</button><span style="font-size:13px;color:#808080">Рекомендация: не убирать outline глобально, как в исходнике.</span></div>
+    </section>
+
+    <section id="badges">
+      <h2 class="sec">Бейджи</h2>
+      <p class="sec-note">Один бейдж на странице — над H1. Uppercase, 18 px / 600, градиент.</p>
+      <span class="badge">Онлайн-курс. 6 поток / старт после оплаты</span>
+    </section>
+
+    <section id="cards">
+      <h2 class="sec">Карточки</h2>
+      <p class="sec-note">Четыре разных типа карточек — и у каждой своя роль. Никаких «универсальных» карточек с тенью.</p>
+
+      <h3 class="sub">Синяя карточка-факт · срезанный угол 48 px</h3>
+      <div class="stat">
+        <div class="stat__logo">hh</div>
+        <div class="stat__sum">65 000 ₽</div>
+        <div class="stat__text">средняя зарплата специалиста в event-индустрии, по данным hh.ru</div>
+      </div>
+
+      <h3 class="sub">Тарифная карточка</h3>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+        <div class="price-card">
+          <div class="price-card__head"><h4 class="price-card__title">База</h4><div class="price-card__sub">Без домашних заданий</div></div>
+          <ul><li>Все модули курса</li><li>Презентации и материалы курса</li><li>Доступ к учебному чату</li></ul>
+          <div class="price-card__price">41 900 ₽</div>
+          <button class="btn btn--primary price-card__btn">ОСТАВИТЬ ЗАЯВКУ</button>
+        </div>
+        <div class="price-card">
+          <div class="price-card__head"><h4 class="price-card__title">Максимум</h4><div class="price-card__sub">Домашние задания проверяют кураторы</div></div>
+          <ul><li>Все модули курса</li><li>Сертификат при условии сдачи</li><li>Обратная связь по всем блокам</li></ul>
+          <div class="price-card__price">101 900 ₽</div>
+          <button class="btn btn--primary price-card__btn">ОСТАВИТЬ ЗАЯВКУ</button>
+        </div>
+      </div>
+
+      <h3 class="sub">Карточка человека</h3>
+      <div class="person">
+        <div class="person__photo"></div>
+        <h4 class="person__name">Наталия Франкель</h4>
+        <p class="person__role">Основатель «Ивентологии», автор форума SOLD OUT</p>
+        <a href="#" class="arrow-link">Подробнее</a>
+      </div>
+
+      <h3 class="sub">Пункт с иконкой</h3>
+      <div class="grid">
+        <div class="feature"><div class="feature__icon"><img src="source/assets/Icon_01.svg" alt=""></div><h4 class="feature__title">Инструменты</h4><p class="feature__text">Вы освоите все рабочие инструменты event-профи, получите hard и soft skills</p></div>
+        <div class="feature"><div class="feature__icon"><img src="source/assets/Icon_02.svg" alt=""></div><h4 class="feature__title">Управление</h4><p class="feature__text">Узнаете, как работать с площадками, выступающими, подрядчиками, волонтёрами</p></div>
+        <div class="feature"><div class="feature__icon"><img src="source/assets/Icon_03.svg" alt=""></div><h4 class="feature__title">Спонсоры и финансы</h4><p class="feature__text">Научитесь работать со спонсорами, а также с финансами проекта</p></div>
+      </div>
+    </section>
+
+    <section id="forms">
+      <h2 class="sec">Формы</h2>
+      <p class="sec-note">Два варианта: тёмный (основной) и светлый (финальный). Поля — только нижняя линия, без рамок и фонов.</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div class="form-dark">
+          <h4>Получите презентацию программы</h4>
+          <input class="field" placeholder="Ваше имя">
+          <input class="field" placeholder="Телефон">
+          <button class="btn btn--primary" style="width:200px">ОТПРАВИТЬ</button>
+          <label class="check" style="margin-top:20px"><span class="box"></span><span>Согласен с <a href="#" style="color:#ff5900">Политикой конфиденциальности</a></span></label>
+        </div>
+        <div class="form-light">
+          <h4>Если у вас есть вопросы</h4>
+          <input class="field" placeholder="Ваше имя">
+          <input class="field" placeholder="Телефон">
+          <button class="btn btn--primary" style="width:276px">ОТПРАВИТЬ</button>
+          <label class="check" style="margin-top:20px"><span class="box"></span><span>Даю своё согласие на обработку персональных данных</span></label>
+        </div>
+      </div>
+      <h3 class="sub">Состояния полей</h3>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div class="form-dark">
+          <input class="field" value="+7 999 999-99-99" style="border-bottom-color:#ff0000;color:#fff">
+          <div style="font-size:13px;color:#ff8080;margin:-22px 0 24px">Введите корректный телефон</div>
+          <label class="check"><span class="box" style="background:#ff5900;border-color:#ff5900"></span><span>Согласие отмечено (галочка белая)</span></label>
+        </div>
+        <div class="form-light">
+          <input class="field" value="Иван" style="border-bottom-color:var(--em-orange)">
+          <div style="font-size:13px;color:#646464;margin:-22px 0 24px">Поле в фокусе — линия становится оранжевой</div>
+          <label class="check"><span class="box"></span><span>Состояние «не отмечено»</span></label>
+        </div>
+      </div>
+      <p class="sec-note" style="margin-top:16px">Состояние <code>disabled</code> в исходнике не задано — для новых форм рекомендуется opacity 0.4 и <code>cursor: not-allowed</code>.</p>
+    </section>
+
+    <section id="faq">
+      <h2 class="sec">Аккордеон FAQ</h2>
+      <p class="sec-note">Компонент есть в CSS, но в текущей версии страницы блок закомментирован. Активный пункт заливается градиентом, «+» превращается в «×».</p>
+      <div class="faq">
+        <div class="faq__q active">Что входит в программу курса</div>
+        <div class="faq__a">Программу курса вы можете посмотреть по ссылке: <a href="#">/program</a></div>
+        <div class="faq__q">Можно ли оплатить курс частями</div>
+        <div class="faq__q">Выдаётся ли сертификат</div>
+      </div>
+    </section>
+
+    <section id="a11y">
+      <h2 class="sec">Доступность</h2>
+      <p class="sec-note">Проверка контраста по WCAG 2.2 и решения для новых работ.</p>
+      <table>
+        <tr><th>Пара</th><th>Контраст</th><th>Вывод</th><th>Решение</th></tr>
+        <tr><td>Белый на градиенте CTA</td><td>2.63–3.95:1</td><td class="bad">Ниже AA</td><td>16 px / 700, затемнить градиент</td></tr>
+        <tr><td>#ff5900 на белом</td><td>3.14:1</td><td class="bad">Ниже AA для текста</td><td>Только крупный/полужирный</td></tr>
+        <tr><td>#3d3d54 на белом</td><td>10.53:1</td><td class="ok">AAA</td><td>Основной текст</td></tr>
+        <tr><td>#646464 на белом</td><td>5.92:1</td><td class="ok">AA</td><td>Подписи и копирайт</td></tr>
+        <tr><td>#969696 на белом</td><td>2.96:1</td><td class="bad">Ниже AA</td><td>Плейсхолдеры → #646464</td></tr>
+        <tr><td>Белый на #0d0d0d</td><td>19.44:1</td><td class="ok">AAA</td><td>Тёмные секции</td></tr>
+      </table>
+      <h3 class="sub">Обязательно для новых страниц</h3>
+      <div class="diagram">
+        <div>Видимый фокус: <code>:focus-visible</code> 2 px #0099ff, offset 2 px <small>— в исходнике outline отключён глобально</small></div>
+        <div>Резиновая мобильная версия <small>— сейчас жёсткий viewport 360 px</small></div>
+        <div>Осмысленный alt у портретов и логотипов <small>— у части фото alt пустой</small></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

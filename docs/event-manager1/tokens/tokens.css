@@ -1,0 +1,121 @@
+/* ============================================================
+   Event-профи (event-manager1.eventologia.ru) — design tokens
+   Собрано по архивной копии страницы (Wayback, 10/07/2026)
+   ============================================================ */
+
+:root {
+  /* ---------- Brand ---------- */
+  --em-orange: #ff5900;            /* основной акцент: ссылки, суммы, точки списков */
+  --em-orange-hover: #ff5f01;      /* ховер ссылок, соцсети, выделение текста */
+  --em-orange-deep: #ff0e00;       /* правый стоп градиента */
+  --em-orange-light: #ff7900;      /* левый стоп градиента */
+  --em-orange-mid: #ff8400;        /* FAQ active, левый стоп */
+  --em-orange-mid2: #ff6400;       /* FAQ active, средний стоп */
+  --em-orange-link: #ff6800;       /* ссылки в текстовых страницах */
+  --em-gradient: linear-gradient(90deg, #ff7900 0%, #ff0e00 100%);
+  --em-gradient-faq: linear-gradient(90deg, #ff8400 0%, #ff6400 50%, #ff0e00 100%);
+  --em-gradient-text: linear-gradient(180deg, #ff7900 0%, #ff0e00 100%);
+
+  /* ---------- Neutrals ---------- */
+  --em-black: #000000;             /* чистый чёрный: текст, тёмные кнопки, overlay */
+  --em-ink: #0d0d0d;               /* тёмные секции, футер, header при скролле */
+  --em-white: #ffffff;
+  --em-body: #3d3d54;              /* основной текст на белом (не чёрный) */
+  --em-gray: #646464;              /* копирайт */
+  --em-gray-2: #808080;            /* описания-подписи */
+  --em-gray-3: #969696;            /* плейсхолдеры, разделители полей на светлом */
+  --em-line: #d0d0d0;              /* линии FAQ */
+  --em-line-2: #bdbdbd;            /* иконки +/− */
+  --em-line-3: #afafaf;            /* подчёркивание ссылок */
+  --em-bg-light: #f2f5fd;          /* светло-голубые секции */
+  --em-bg-strip: #6b7275;          /* серо-зелёная полоса преимуществ */
+  --em-blue: #0099ff;              /* карточка «65 000 ₽» */
+  --em-blue-notch: #c9d7ff;        /* срезанный угол карточки */
+  --em-hh: #e60000;                /* логотип hh.ru */
+  --em-error: #ff0000;             /* границы полей с ошибкой */
+  --em-overlay: rgba(0, 0, 0, 0.75);
+  --em-focus: #0099ff;             /* рекомендуемый цвет focus-visible */
+
+  /* ---------- Typography ---------- */
+  --em-font: 'Montserrat', 'Tahoma', 'Arial', sans-serif;
+  --em-weight-light: 300;
+  --em-weight-regular: 400;
+  --em-weight-semibold: 600;
+  --em-weight-bold: 700;
+  --em-weight-black: 800;
+
+  --em-fs-body: 15px;
+  --em-fs-small: 13px;
+  --em-fs-caption: 14px;
+  --em-fs-ui: 16px;
+  --em-fs-lead: 18px;
+  --em-fs-lead-lg: 20px;
+  --em-fs-card-title: 20px;
+  --em-fs-h4: 24px;
+  --em-fs-h3: 26px;
+  --em-fs-h2: 40px;
+  --em-fs-h2-lg: 50px;
+  --em-fs-h1: 45px;
+  --em-fs-stat: 48px;
+  --em-fs-price: 34px;
+
+  --em-lh-tight: 1;
+  --em-lh-heading: 1.1;
+  --em-lh-snug: 1.3;
+  --em-lh-body: 1.5;
+  --em-lh-relaxed: 1.65;
+
+  /* ---------- Layout ---------- */
+  --em-container-header: 1200px;
+  --em-container-wide: 1140px;
+  --em-container: 1080px;
+  --em-container-narrow: 970px;
+  --em-container-price: 1070px;
+  --em-container-author: 1300px;
+  --em-header-height: 116px;
+  --em-section-y: 90px;            /* базовый вертикальный ритм секций 90–100px */
+  --em-section-y-lg: 100px;
+
+  /* ---------- Spacing ---------- */
+  --em-space-1: 2px;
+  --em-space-2: 5px;
+  --em-space-3: 10px;
+  --em-space-4: 15px;
+  --em-space-5: 20px;
+  --em-space-6: 25px;
+  --em-space-7: 30px;
+  --em-space-8: 35px;
+  --em-space-9: 40px;
+  --em-space-10: 50px;
+  --em-space-11: 60px;
+  --em-space-12: 70px;
+  --em-space-13: 90px;
+  --em-space-14: 100px;
+
+  /* ---------- Shape ---------- */
+  --em-radius-none: 0px;           /* кнопки, карточки, бейджи — прямые углы */
+  --em-radius-pill: 60px;          /* редкий вариант кнопки */
+  --em-radius-circle: 50%;         /* аватары, фото экспертов */
+
+  /* ---------- Borders ---------- */
+  --em-border-thin: 1px solid var(--em-line);
+  --em-border-light: 1px solid var(--em-white);
+  --em-border-dark: 3px solid var(--em-black);
+  --em-border-card: 4px solid var(--em-white);
+  --em-border-head: 5px solid var(--em-white);
+
+  /* ---------- Elevation ---------- */
+  --em-shadow-photo: 5px 4px 18px 1px rgba(0, 0, 0, 0.25); /* только сертификат */
+  --em-shadow-popup: 0 0 60px 1px rgba(0, 0, 0, 0.3);
+
+  /* ---------- Motion ---------- */
+  --em-transition: 0.2s ease;
+
+  /* ---------- Breakpoints (справочно, для media queries) ----------
+     1400px — планшеты-ландшафт / узкие десктопы
+     1270px — ноутбуки
+     1100px — планшеты
+     1000px — маленькие планшеты
+     750px  — мобильные (контент 360px)
+  ------------------------------------------------------------ */
+}

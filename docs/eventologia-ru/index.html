@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дизайн-система eventologia.ru — визуальный гайд</title>
+  <meta name="description" content="Визуальный гайд дизайн-системы eventologia.ru: цвет, типографика, навигация, кнопки, формы, карточки, футер, тёмная тема и доступность.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F74200'/%3E%3Ctext x='16' y='23' font-family='Arial' font-size='20' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="design-tokens.css">
+  <link rel="stylesheet" href="guide.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="topbar">
+    <a class="topbar__brand" href="#main" aria-label="Eventologia — дизайн-система, к содержанию">
+      <img class="topbar__logo" src="assets/logos/logo.svg" alt="Eventologia" width="144" height="30">
+      <span class="topbar__divider" aria-hidden="true"></span>
+      <span class="topbar__label">Дизайн-система</span>
+    </a>
+    <div class="topbar__right">
+      <a class="topbar__domain" href="https://eventologia.ru">eventologia.ru</a>
+      <span class="badge-version">v1.0 · 10/11/2026</span>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" aria-label="Разделы гайда — быстрый переход">
+    <a href="#osnova" data-nav-link>01 Основа</a>
+    <a href="#color" data-nav-link>02 Цвет</a>
+    <a href="#typography" data-nav-link>03 Типографика</a>
+    <a href="#navigation" data-nav-link>04 Навигация</a>
+    <a href="#buttons" data-nav-link>05 Кнопки</a>
+    <a href="#forms" data-nav-link>06 Формы</a>
+    <a href="#cards" data-nav-link>07 Карточки</a>
+    <a href="#footer" data-nav-link>08 Футер</a>
+    <a href="#dark" data-nav-link>09 Тёмная тема</a>
+    <a href="#tokens" data-nav-link>10 Токены</a>
+  </nav>
+
+  <div class="layout">
+    <nav class="sidebar" aria-label="Разделы гайда">
+      <p class="sidebar__title">Разделы</p>
+      <ul class="sidebar__list">
+        <li><a class="sidebar__link" href="#osnova" data-nav-link><span class="num">01</span> Основа</a></li>
+        <li><a class="sidebar__link" href="#color" data-nav-link><span class="num">02</span> Цвет</a></li>
+        <li><a class="sidebar__link" href="#typography" data-nav-link><span class="num">03</span> Типографика</a></li>
+        <li><a class="sidebar__link" href="#navigation" data-nav-link><span class="num">04</span> Навигация</a></li>
+        <li><a class="sidebar__link" href="#buttons" data-nav-link><span class="num">05</span> Кнопки</a></li>
+        <li><a class="sidebar__link" href="#forms" data-nav-link><span class="num">06</span> Формы</a></li>
+        <li><a class="sidebar__link" href="#cards" data-nav-link><span class="num">07</span> Карточки</a></li>
+        <li><a class="sidebar__link" href="#footer" data-nav-link><span class="num">08</span> Футер</a></li>
+        <li><a class="sidebar__link" href="#dark" data-nav-link><span class="num">09</span> Тёмная тема</a></li>
+        <li><a class="sidebar__link" href="#tokens" data-nav-link><span class="num">10</span> Токены и доступность</a></li>
+      </ul>
+      <p class="sidebar__foot">Источник: бэкап темы smm<br>eventologia.ru · 10/11/2026</p>
+    </nav>
+
+    <main class="content" id="main">
+      <div class="page-intro">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> гайд по стилю · v1.0</p>
+        <h1>Дизайн-система eventologia.ru</h1>
+        <p class="lead">Рабочий справочник по стилю сайта: палитра, шрифты, навигация, кнопки, формы, карточки и правила доступности. Всё показано живыми компонентами, а не описаниями.</p>
+        <ul class="meta-strip">
+          <li>10 разделов</li>
+          <li>6 ролей цвета</li>
+          <li>7 начертаний</li>
+          <li>обновлено 10/11/2026</li>
+        </ul>
+      </div>
+
+      <div class="brand-preview" aria-label="Пример шапки, меню и первого экрана сайта">
+        <div class="brand-preview__head">
+          <span>Как это выглядит на сайте</span>
+          <span>шапка · меню · первый экран</span>
+        </div>
+        <div class="brand-preview__frame">
+          <div class="site-header">
+            <img class="site-header__logo" src="assets/logos/logo.svg" alt="Eventologia" width="259" height="54">
+            <p class="site-header__slogan">Создаём события, которые вдохновляют <small>текст из ACF</small></p>
+            <div class="site-header__contacts">
+              <a class="site-header__phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+              <a class="site-header__mail" href="mailto:hello@eventologia.ru">hello@eventologia.ru</a>
+            </div>
+          </div>
+          <div class="site-menu">
+            <ul class="site-menu__list">
+              <li><a href="#navigation">Афиша</a></li>
+              <li><a href="#navigation">События</a></li>
+              <li><a href="#navigation">Курсы</a></li>
+              <li><a href="#navigation">Видео</a></li>
+              <li><a href="#navigation">Знания</a></li>
+              <li><a href="#navigation">Блог</a></li>
+              <li><a href="#navigation">Услуги</a></li>
+              <li><a href="#navigation">О нас</a></li>
+            </ul>
+            <div class="site-menu__tools">
+              <button class="site-menu__search" type="button" aria-label="Поиск по сайту">
+                <img src="assets/icons/Search_Icon.svg" alt="" aria-hidden="true" width="23" height="23">
+              </button>
+              <ul class="socials">
+                <li><a href="#navigation" aria-label="ВКонтакте — пример ссылки"><img src="assets/icons/Vk_Icon.svg" alt="" aria-hidden="true" width="20" height="12"></a></li>
+                <li><a href="#navigation" aria-label="YouTube — пример ссылки"><img src="assets/icons/fb_yt.svg" alt="" aria-hidden="true" width="20" height="20"></a></li>
+                <li><a href="#navigation" aria-label="Telegram — пример ссылки"><img src="assets/icons/Tlg_Icon.svg" alt="" aria-hidden="true" width="18" height="16"></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="brand-hero">
+            <div class="brand-hero__content">
+              <p class="brand-hero__kicker">12 лет · собственные форумы</p>
+              <h2>Мероприятия под ключ</h2>
+              <p>От концепции и площадки до технического обеспечения, координации и проведения.</p>
+              <a class="button" href="#navigation">Оставить заявку</a>
+            </div>
+            <img src="assets/img/surovyi-hero.jpg" alt="Суровый Питерский форум: зал перед сценой" width="1600" height="1067">
+          </div>
+        </div>
+        <p class="brand-preview__note">Живой пример на реальных шрифтах и логотипе. Слоган и контакты — заглушки, подставляются из ACF.</p>
+      </div>
+
+      <!-- 01 / ОСНОВА -->
+      <section class="section" id="osnova" aria-labelledby="osnova-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 01 / Основа</p>
+        <h2 id="osnova-title">Общий стиль</h2>
+        <p class="lead">Сдержанный деловой стиль: много белого и воздуха, светло-серая подложка, тонкие серые линии и единственный яркий акцент. Иерархия строится на типографике и сетке, а не на декоре.</p>
+        <hr class="section__rule">
+
+        <div class="grid grid--4">
+          <article class="card">
+            <span class="card__index">01</span>
+            <h3>Один акцент</h3>
+            <p>Оранжевый #F74200 только для действий: кнопки, ссылки, даты, активные состояния. Никаких градиентов и второго акцентного цвета.</p>
+            <div class="card__meta">--color-primary</div>
+          </article>
+          <article class="card">
+            <span class="card__index">02</span>
+            <h3>Геометрия Futura</h3>
+            <p>Заголовки — Futura Demi/Medium, текст — Open Sans. Навигация и служебные кнопки — uppercase.</p>
+            <div class="card__meta">Futura · Open Sans</div>
+          </article>
+          <article class="card">
+            <span class="card__index">03</span>
+            <h3>Воздух и линии</h3>
+            <p>Контейнер 1180px, отступы 20–80px, рамки 1px. Тени почти не используются.</p>
+            <div class="card__meta">--container · --space-*</div>
+          </article>
+          <article class="card">
+            <span class="card__index">04</span>
+            <h3>Документальная фотография</h3>
+            <p>Реальные события, пропорция 16:9, object-fit: cover, без фильтров и иллюстраций.</p>
+            <div class="card__meta">--card-ratio: 56%</div>
+          </article>
+        </div>
+
+        <div class="photo-strip">
+          <figure>
+            <img src="assets/img/surovyi-hero.jpg" alt="Суровый Питерский форум: полный зал слушателей перед сценой" width="640" height="360" loading="lazy">
+            <figcaption>Суровый Питерский форум <span>16:9</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/whiteconf-1.jpg" alt="Белая конфа: гости в светлом зале во время доклада" width="640" height="360" loading="lazy">
+            <figcaption>Белая конфа <span>16:9</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/img/surovyi-2.jpg" alt="Питерский Промпт: участники на сцене конференции" width="640" height="360" loading="lazy">
+            <figcaption>Питерский Промпт <span>16:9</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 02 / ЦВЕТ -->
+      <section class="section" id="color" aria-labelledby="color-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 02 / Цвет</p>
+        <h2 id="color-title">Палитра</h2>
+        <p class="lead">31 цвет в исходнике, но ядро — шесть ролей. Остальное — служебные оттенки состояний и легаси-страниц.</p>
+        <hr class="section__rule">
+
+        <div class="accent-card">
+          <div class="swatch swatch--accent" role="img" aria-label="Свотч основного акцентного цвета F74200"></div>
+          <div class="accent-card__body">
+            <div class="accent-card__title">Primary <span class="tag">акцент</span></div>
+            <button class="hex-btn" type="button" data-hex="#F74200" aria-label="Скопировать код F74200">
+              #F74200
+              <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="2" y="5" width="9" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M5 5V3a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+            </button>
+            <p>Действия, ссылки, даты, активные состояния и hover. Единственный акцент интерфейса — не используется для больших фонов, кроме коротких полос и бейджей.</p>
+            <div class="accent-card__row">
+              <span class="contrast-pill contrast-pill--large">3.66 : 1 · AA Large / UI</span>
+              <a class="button" href="#buttons">Записаться на событие</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Нейтральные</h3>
+            <span class="mono">основа интерфейса · 8 ролей</span>
+          </div>
+          <div class="palette-grid">
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#000000"></div>
+              <div class="swatch-card__name">Black</div>
+              <div class="swatch-card__role">Заголовки, основной текст</div>
+              <button class="hex-btn" type="button" data-hex="#000000">#000000</button>
+              <span class="contrast-pill contrast-pill--pass">21 : 1 · AAA</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#212121"></div>
+              <div class="swatch-card__name">Ink</div>
+              <div class="swatch-card__role">Текст карточек и статей</div>
+              <button class="hex-btn" type="button" data-hex="#212121">#212121</button>
+              <span class="contrast-pill contrast-pill--pass">16.10 : 1 · AAA</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#3D3D3D"></div>
+              <div class="swatch-card__name">Graphite</div>
+              <div class="swatch-card__role">Текст футера, подписи</div>
+              <button class="hex-btn" type="button" data-hex="#3D3D3D">#3D3D3D</button>
+              <span class="contrast-pill contrast-pill--pass">10.86 : 1 · AAA</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#7B7B7B"></div>
+              <div class="swatch-card__name">Grey</div>
+              <div class="swatch-card__role">Лид, второстепенный текст</div>
+              <button class="hex-btn" type="button" data-hex="#7B7B7B">#7B7B7B</button>
+              <span class="contrast-pill contrast-pill--large">4.23 : 1 · AA Large</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#99A0A4"></div>
+              <div class="swatch-card__name">Steel</div>
+              <div class="swatch-card__role">Даты, служебные подписи</div>
+              <button class="hex-btn" type="button" data-hex="#99A0A4">#99A0A4</button>
+              <span class="contrast-pill contrast-pill--fail">2.65 : 1 · fail</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#F2F2F2"></div>
+              <div class="swatch-card__name">Cloud</div>
+              <div class="swatch-card__role">Фон страницы</div>
+              <button class="hex-btn" type="button" data-hex="#F2F2F2">#F2F2F2</button>
+              <span class="contrast-pill">поверхность</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#ECECEC"></div>
+              <div class="swatch-card__name">Mist</div>
+              <div class="swatch-card__role">Фон футера</div>
+              <button class="hex-btn" type="button" data-hex="#ECECEC">#ECECEC</button>
+              <span class="contrast-pill">поверхность</span>
+            </div>
+            <div class="swatch-card">
+              <div class="swatch-card__chip" style="--swatch:#FFFFFF"></div>
+              <div class="swatch-card__name">White</div>
+              <div class="swatch-card__role">Карточки, шапка, поля</div>
+              <button class="hex-btn" type="button" data-hex="#FFFFFF">#FFFFFF</button>
+              <span class="contrast-pill">поверхность</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Служебные</h3>
+            <span class="mono">состояния и легаси · 11 оттенков</span>
+          </div>
+          <div class="chip-grid">
+            <button class="color-chip" type="button" data-hex="#EC462E" aria-label="Скопировать #EC462E">
+              <span class="color-chip__swatch" style="--swatch:#EC462E"></span><span class="color-chip__label">Popup CTA<b>#EC462E</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#FF6600" aria-label="Скопировать #FF6600">
+              <span class="color-chip__swatch" style="--swatch:#FF6600"></span><span class="color-chip__label">Hover alt<b>#FF6600</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#FF4400" aria-label="Скопировать #FF4400">
+              <span class="color-chip__swatch" style="--swatch:#FF4400"></span><span class="color-chip__label">Border / hover<b>#FF4400</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#4285F4" aria-label="Скопировать #4285F4">
+              <span class="color-chip__swatch" style="--swatch:#4285F4"></span><span class="color-chip__label">Course buy<b>#4285F4</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#2356FF" aria-label="Скопировать #2356FF">
+              <span class="color-chip__swatch" style="--swatch:#2356FF"></span><span class="color-chip__label">Link blue<b>#2356FF</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#F01A24" aria-label="Скопировать #F01A24">
+              <span class="color-chip__swatch" style="--swatch:#F01A24"></span><span class="color-chip__label">Cookie / error<b>#F01A24</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#6B7275" aria-label="Скопировать #6B7275">
+              <span class="color-chip__swatch" style="--swatch:#6B7275"></span><span class="color-chip__label">Subscribe<b>#6B7275</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#EEEFF0" aria-label="Скопировать #EEEFF0">
+              <span class="color-chip__swatch" style="--swatch:#EEEFF0"></span><span class="color-chip__label">Tag bg<b>#EEEFF0</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#D9D9D9" aria-label="Скопировать #D9D9D9">
+              <span class="color-chip__swatch" style="--swatch:#D9D9D9"></span><span class="color-chip__label">Border nav<b>#D9D9D9</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#BFBFBF" aria-label="Скопировать #BFBFBF">
+              <span class="color-chip__swatch" style="--swatch:#BFBFBF"></span><span class="color-chip__label">Border<b>#BFBFBF</b></span>
+            </button>
+            <button class="color-chip" type="button" data-hex="#EAEAEA" aria-label="Скопировать #EAEAEA">
+              <span class="color-chip__swatch" style="--swatch:#EAEAEA"></span><span class="color-chip__label">Border light<b>#EAEAEA</b></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Правило 60 / 30 / 10</h3>
+            <span class="mono">площадь, не количество</span>
+          </div>
+          <div class="ratio-bar" role="img" aria-label="Диаграмма: 60 процентов светлые поверхности, 30 процентов тёмный текст, 10 процентов оранжевый акцент">
+            <div class="ratio-bar__seg ratio-bar__seg--white">60 % · поверхности</div>
+            <div class="ratio-bar__seg ratio-bar__seg--gray">30 % · текст</div>
+            <div class="ratio-bar__seg ratio-bar__seg--accent">10 %</div>
+          </div>
+          <ul class="ratio-legend">
+            <li><span class="dot dot--white"></span>Белый и светло-серый — фон, карточки, шапка</li>
+            <li><span class="dot dot--ink"></span>Чёрный и серый — текст, линии, тёмная тема</li>
+            <li><span class="dot dot--accent"></span>Оранжевый — только действие или дата</li>
+          </ul>
+          <p class="block__note">Акцент не должен занимать больше десятой части экрана: одна кнопка, одна ссылка, один бейдж на блок.</p>
+        </div>
+      </section>
+
+      <!-- 03 / ТИПОГРАФИКА -->
+      <section class="section" id="typography" aria-labelledby="typography-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 03 / Типографика</p>
+        <h2 id="typography-title">Шрифты и шкала</h2>
+        <p class="lead">Четыре начертания Futura для заголовков и интерфейса, Open Sans для текста, PT Serif для слогана.</p>
+        <hr class="section__rule">
+
+        <div class="grid grid--3">
+          <article class="type-face">
+            <div class="type-face__sample is-demi" aria-hidden="true">Аа Бб 0123</div>
+            <div class="type-face__name">FuturaDemiC</div>
+            <div class="type-face__role">Display · 700 · заголовки, кнопки, навигация</div>
+            <div class="type-face__file">FuturaDemiC.woff</div>
+          </article>
+          <article class="type-face">
+            <div class="type-face__sample is-medium" aria-hidden="true">Аа Бб 0123</div>
+            <div class="type-face__name">FuturaMediumC</div>
+            <div class="type-face__role">Medium · 500 · заголовки карточек, цены</div>
+            <div class="type-face__file">FuturaMediumC.woff</div>
+          </article>
+          <article class="type-face">
+            <div class="type-face__sample is-book" aria-hidden="true">Аа Бб 0123</div>
+            <div class="type-face__name">FuturaBookC</div>
+            <div class="type-face__role">Book · 400 · кнопки, UI-текст, футер</div>
+            <div class="type-face__file">FuturaBookC.woff</div>
+          </article>
+          <article class="type-face">
+            <div class="type-face__sample is-light" aria-hidden="true">Аа Бб 0123</div>
+            <div class="type-face__name">FuturaLightC</div>
+            <div class="type-face__role">Light · 300 · лиды, описания, поля</div>
+            <div class="type-face__file">FuturaLightC.woff</div>
+          </article>
+          <article class="type-face">
+            <div class="type-face__sample is-opensans" aria-hidden="true">Аа Бб 0123</div>
+            <div class="type-face__name">OpenSansRegular</div>
+            <div class="type-face__role">Regular · 400 · основной текст</div>
+            <div class="type-face__file">OpenSansRegular.woff</div>
+          </article>
+          <article class="type-face">
+            <div class="type-face__sample is-serif" aria-hidden="true">Аа Бб 0123</div>
+            <div class="type-face__name">PTSerif</div>
+            <div class="type-face__role">Regular · 400 · слоган в шапке</div>
+            <div class="type-face__file">PTSerif.woff</div>
+          </article>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Шкала</h3>
+            <span class="mono">размер / интерлиньяж</span>
+          </div>
+          <div class="scale">
+            <div class="scale__row">
+              <div class="scale__name">H1 страницы</div>
+              <div class="scale__spec">55 / 1.1 · Demi</div>
+              <div class="scale__sample fs-h1">События, которые вдохновляют</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">Title</div>
+              <div class="scale__spec">50 / 1.2 · Demi</div>
+              <div class="scale__sample fs-title">Суровый Питерский</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">H1 контента</div>
+              <div class="scale__spec">36 / 1.2 · Demi</div>
+              <div class="scale__sample fs-h1c">Афиша событий</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">H2</div>
+              <div class="scale__spec">30 / 1.4 · Demi</div>
+              <div class="scale__sample fs-h2">Ближайшие мероприятия</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">H3</div>
+              <div class="scale__spec">26 / 1.2 · Demi</div>
+              <div class="scale__sample fs-h3">Форум о будущем</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">H4 секции</div>
+              <div class="scale__spec">30 / 1.1 · Demi</div>
+              <div class="scale__sample fs-h4">О конференции</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">H5</div>
+              <div class="scale__spec">26 / 1.1 · Demi</div>
+              <div class="scale__sample fs-h5">Программа</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">H6</div>
+              <div class="scale__spec">22 / 1.4 · Medium</div>
+              <div class="scale__sample fs-h6">Как добраться</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">Lead</div>
+              <div class="scale__spec">20 / 1.4 · Light</div>
+              <div class="scale__sample fs-lead">Два дня о событиях, людях и смыслах — без воды и общих слов.</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">Body</div>
+              <div class="scale__spec">16 / 1.8 · Open Sans</div>
+              <div class="scale__sample fs-body">Основной текст страниц: описания событий, статьи блога и служебные разделы.</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">Small</div>
+              <div class="scale__spec">13 / 1.4 · Open Sans</div>
+              <div class="scale__sample fs-small">Даты, подписи к фото, юридические примечания</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">Nav</div>
+              <div class="scale__spec">15 / 1 · Demi uppercase</div>
+              <div class="scale__sample fs-nav">Афиша · События · Курсы</div>
+            </div>
+            <div class="scale__row">
+              <div class="scale__name">Button</div>
+              <div class="scale__spec">18 / 1 · Book</div>
+              <div class="scale__sample fs-button">Записаться на событие</div>
+            </div>
+          </div>
+
+          <ul class="rules">
+            <li>Не больше трёх начертаний на одном экране: Demi + Book/Light + текст.</li>
+            <li>Навигация и служебные кнопки — только uppercase, без агрессивного letter-spacing.</li>
+            <li>В формах и мелких подписях letter-spacing 1px; в заголовках — не больше 0.</li>
+            <li>Слоган в шапке — 18 / 1.2 PTSerif #7B7B7B, не жирный и не uppercase.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 04 / НАВИГАЦИЯ -->
+      <section class="section" id="navigation" aria-labelledby="navigation-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 04 / Навигация</p>
+        <h2 id="navigation-title">Шапка и меню</h2>
+        <p class="lead">Шапка и меню — основной носитель стиля. Белая полоса, тонкие рамки, оранжевый ховер, никаких теней.</p>
+        <hr class="section__rule">
+
+        <div class="demo">
+          <div class="demo__head">
+            <h3>Десктопная шапка</h3>
+            <span class="tag">1440 × auto</span>
+          </div>
+          <div class="demo__stage">
+            <div class="site-header">
+              <img class="site-header__logo" src="assets/logos/logo.svg" alt="Eventologia" width="259" height="54">
+              <p class="site-header__slogan">Создаём события, которые вдохновляют <small>текст из ACF</small></p>
+              <div class="site-header__contacts">
+                <a class="site-header__phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+                <a class="site-header__mail" href="mailto:hello@eventologia.ru">hello@eventologia.ru</a>
+              </div>
+            </div>
+          </div>
+          <div class="demo__caption">
+            <span>Логотип слева, слоган по центру, контакты справа. Белый фон без тени.</span>
+            <span class="mono">container 1180</span>
+          </div>
+        </div>
+
+        <dl class="annot annot-bar">
+          <div><dt>Контейнер</dt><dd>1180px</dd></div>
+          <div><dt>Логотип</dt><dd>54px</dd></div>
+          <div><dt>Слоган</dt><dd>18 / 1.2 PTSerif</dd></div>
+          <div><dt>Телефон</dt><dd>19 Demi</dd></div>
+          <div><dt>E-mail</dt><dd>16 Book · #F74200</dd></div>
+          <div><dt>Паддинг</dt><dd>20px 0</dd></div>
+          <div><dt>Меню</dt><dd>15 uppercase</dd></div>
+          <div><dt>Паддинг пункта</dt><dd>15 / 12px</dd></div>
+          <div><dt>Рамки</dt><dd>1px #D9D9D9</dd></div>
+          <div><dt>Ховер</dt><dd>#F74200</dd></div>
+        </dl>
+
+        <div class="demo">
+          <div class="demo__head">
+            <h3>Панель меню</h3>
+            <span class="tag">hover на «Афиша»</span>
+          </div>
+          <div class="demo__stage">
+            <div class="site-menu">
+              <ul class="site-menu__list">
+                <li><a href="#navigation" class="is-hover">Афиша</a></li>
+                <li><a href="#navigation">События</a></li>
+                <li><a href="#navigation">Курсы</a></li>
+                <li><a href="#navigation">Видео</a></li>
+                <li><a href="#navigation">Знания</a></li>
+                <li><a href="#navigation">Блог</a></li>
+                <li><a href="#navigation">Услуги</a></li>
+                <li><a href="#navigation">О нас</a></li>
+              </ul>
+              <div class="site-menu__tools">
+                <button class="site-menu__search" type="button" aria-label="Поиск по сайту">
+                  <img src="assets/icons/Search_Icon.svg" alt="" aria-hidden="true" width="23" height="23">
+                </button>
+                <ul class="socials">
+                  <li><a href="#navigation" aria-label="ВКонтакте — пример ссылки"><img src="assets/icons/Vk_Icon.svg" alt="" aria-hidden="true" width="20" height="12"></a></li>
+                  <li><a href="#navigation" aria-label="YouTube — пример ссылки"><img src="assets/icons/fb_yt.svg" alt="" aria-hidden="true" width="20" height="20"></a></li>
+                  <li><a href="#navigation" aria-label="Telegram — пример ссылки"><img src="assets/icons/Tlg_Icon.svg" alt="" aria-hidden="true" width="18" height="16"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="demo__caption">
+            <span>Пункты 15px Demi uppercase, паддинг 15 / 12, расстояние 28px.</span>
+            <span class="mono">пример пунктов; реальные тексты — в БД</span>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="demo">
+            <div class="demo__head">
+              <h3>Мобильная шапка и панель</h3>
+              <button class="guide-btn" type="button" id="menuToggle" aria-controls="mobilePanel" aria-expanded="true">Меню</button>
+            </div>
+            <div class="demo__stage">
+              <div class="phone-wrap">
+                <div class="phone is-open" id="phoneDemo">
+                  <div class="phone__top">
+                    <img class="phone__logo" src="assets/logos/logo.svg" alt="Eventologia" width="192" height="40">
+                    <button class="burger" type="button" id="burgerToggle" aria-label="Меню" aria-controls="mobilePanel" aria-expanded="true">
+                      <span></span><span></span><span></span>
+                    </button>
+                  </div>
+                  <div class="phone__hero">
+                    <b>Афиша событий</b>
+                    <span>Форумы, конференции и курсы Eventologia в одном месте.</span>
+                  </div>
+                  <div class="phone__overlay"></div>
+                  <div class="phone__panel" id="mobilePanel" aria-label="Мобильное меню">
+                    <ul>
+                      <li><a href="#navigation">Афиша</a></li>
+                      <li><a href="#navigation">События</a></li>
+                      <li><a href="#navigation">Курсы</a></li>
+                      <li><a href="#navigation">Видео</a></li>
+                      <li><a href="#navigation">Знания</a></li>
+                      <li><a href="#navigation">Блог</a></li>
+                      <li><a href="#navigation">Услуги</a></li>
+                      <li><a href="#navigation">О нас</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="demo__caption">
+              <span>Панель 320px выезжает справа, оверлей затемняет страницу. Гамбургер 30 × 18.</span>
+              <span class="mono">390px · показано открытое состояние</span>
+            </div>
+          </div>
+        </div>
+
+        <dl class="annot annot-bar">
+          <div><dt>Ширина макета</dt><dd>390px</dd></div>
+          <div><dt>Логотип</dt><dd>40px</dd></div>
+          <div><dt>Гамбургер</dt><dd>30 × 18px</dd></div>
+          <div><dt>Панель</dt><dd>320px</dd></div>
+          <div><dt>Пункт</dt><dd>15 uppercase</dd></div>
+          <div><dt>Оверлей</dt><dd>rgba(0,0,0,.8)</dd></div>
+        </dl>
+
+        <div class="block">
+          <div class="demo">
+            <div class="demo__head">
+              <h3>Тёмная шапка, меню и футер</h3>
+              <span class="tag">#000 / #FFF / #151515</span>
+            </div>
+            <div class="demo__stage">
+              <div class="dark-head">
+                <div class="site-header">
+                  <img class="site-header__logo" src="assets/logos/logo.svg" alt="Eventologia" width="259" height="54">
+                  <p class="site-header__slogan">Создаём события, которые вдохновляют</p>
+                  <div class="site-header__contacts">
+                    <a class="site-header__phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+                    <a class="site-header__mail" href="mailto:hello@eventologia.ru">hello@eventologia.ru</a>
+                  </div>
+                </div>
+                <div class="site-menu">
+                  <ul class="site-menu__list">
+                    <li><a href="#navigation">Афиша</a></li>
+                    <li><a href="#navigation">События</a></li>
+                    <li><a href="#navigation">Курсы</a></li>
+                    <li><a href="#navigation">Видео</a></li>
+                    <li><a href="#navigation">Знания</a></li>
+                    <li><a href="#navigation">Блог</a></li>
+                  </ul>
+                </div>
+                <div class="dark-footer">
+                  <a class="button" href="#buttons">Купить билет</a>
+                  <span class="dark-footer__copy">© 2026 Eventologia</span>
+                </div>
+              </div>
+            </div>
+            <div class="demo__caption">
+              <span>Белый логотип через filter: brightness(0) invert(1). Рамки #151515.</span>
+              <span class="mono">контекстное состояние</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dodont">
+          <div class="dodont__col dodont__col--do">
+            <h3><span class="dodont__mark" aria-hidden="true">✓</span> Можно</h3>
+            <ul>
+              <li>Держать логотип в исходных пропорциях: высота 54px на десктопе, 40px на мобиле.</li>
+              <li>Оставлять 7–8 пунктов меню и один активный пункт с оранжевым подчёркиванием.</li>
+              <li>Сохранять контрастный фокус 2px #F74200 и заметный hover на каждом пункте.</li>
+            </ul>
+          </div>
+          <div class="dodont__col dodont__col--dont">
+            <h3><span class="dodont__mark" aria-hidden="true">×</span> Нельзя</h3>
+            <ul>
+              <li>Растягивать или сжимать логотип, менять его цвет на светлой шапке.</li>
+              <li>Добавлять больше 8 пунктов, переносить меню в две строки на десктопе.</li>
+              <li>Убирать контрастный фокус, делать ховер только цветом текста без подчёркивания.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="component-card">
+          <div>
+            <p class="component-card__eyebrow">Готовый компонент</p>
+            <h3>Шапка и навигация</h3>
+            <p>Сверстанный компонент с бургером, тёмной темой и focus-visible. Можно забрать в прототип или на новую страницу.</p>
+          </div>
+          <div class="component-card__links">
+            <a href="components/navigation.html">Демо</a>
+            <a href="components/navigation.css">CSS</a>
+            <a href="components/navigation.js">JS</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 / КНОПКИ -->
+      <section class="section" id="buttons" aria-labelledby="buttons-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 05 / Кнопки</p>
+        <h2 id="buttons-title">Кнопки</h2>
+        <p class="lead">Одна основная кнопка на экран, остальные — служебные. Высота 40px, радиус 6px, 18px FuturaBookC; на мобиле минимум 44px.</p>
+        <hr class="section__rule">
+
+        <div class="btn-grid">
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><button class="button" type="button">Записаться</button></div>
+            <div class="btn-cell__meta"><b>.button</b>40px · radius 6<br>18 FuturaBookC · #F74200</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage">
+              <button class="more_info" type="button">Подробнее <img src="assets/icons/Arrow.svg" alt="" aria-hidden="true" width="12" height="7"></button>
+            </div>
+            <div class="btn-cell__meta"><b>.more_info</b>45px · radius 5<br>18 Demi uppercase</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><button class="service_btn" type="button">Записаться на консультацию</button></div>
+            <div class="btn-cell__meta"><b>.service_btn</b>52px · radius 0<br>18/20 Demi uppercase</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><a class="banner_button" href="#buttons">Купить билет</a></div>
+            <div class="btn-cell__meta"><b>.banner_button</b>58px · 300px<br>radius 10 · 18 Medium</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><button class="popup_btn" type="button">Отправить</button></div>
+            <div class="btn-cell__meta"><b>.popup button</b>60px+ · radius 10<br>28 Medium uppercase · #EC462E</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><button class="cookie_btn" type="button">Принять</button></div>
+            <div class="btn-cell__meta"><b>cookie</b>40px · radius 4<br>14 Open Sans · #F01A24</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><button class="course_buy" type="button">Купить курс</button></div>
+            <div class="btn-cell__meta"><b>.course buy</b>50px · 256px · pill<br>16 Book · #4285F4</div>
+          </div>
+          <div class="btn-cell">
+            <div class="btn-cell__stage"><button class="course_program" type="button">Программа</button></div>
+            <div class="btn-cell__meta"><b>.course program</b>50px · 256px · pill<br>16 Book · #E8E8E8 / #FF4400</div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Состояния основной кнопки</h3>
+            <span class="mono">.button</span>
+          </div>
+          <div class="states">
+            <div class="state-cell">
+              <span class="state-cell__label">Default</span>
+              <button class="button" type="button">Записаться</button>
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">Hover</span>
+              <button class="button is-hover" type="button">Записаться</button>
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">Focus</span>
+              <button class="button is-focus" type="button">Записаться</button>
+            </div>
+            <div class="state-cell">
+              <span class="state-cell__label">Disabled</span>
+              <button class="button" type="button" disabled>Записаться</button>
+            </div>
+          </div>
+          <p class="block__note">Hover — затемнение до #FF4400. Focus — 2px чёрная рамка с offset 2px, чтобы кнопка читалась на оранжевом фоне. Disabled — opacity .4 и cursor: not-allowed.</p>
+        </div>
+      </section>
+
+      <!-- 06 / ФОРМЫ -->
+      <section class="section" id="forms" aria-labelledby="forms-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 06 / Формы</p>
+        <h2 id="forms-title">Формы и поля</h2>
+        <p class="lead">Поля с видимыми подписями, подсказками и понятными состояниями. Ошибка — красная рамка и текст, а не только цвет.</p>
+        <hr class="section__rule">
+
+        <div class="form-card">
+          <div class="form-card__head">
+            <h3>Заявка на мероприятие</h3>
+            <span class="mono">required · autocomplete</span>
+          </div>
+          <form class="form-grid" action="#forms" method="get">
+            <div class="field">
+              <label for="request-name">Имя <span class="req" aria-hidden="true">*</span></label>
+              <input id="request-name" name="name" type="text" autocomplete="name" placeholder="Анна" required>
+              <span class="field__hint">Как к вам обращаться</span>
+            </div>
+            <div class="field">
+              <label for="request-email">E-mail <span class="req" aria-hidden="true">*</span></label>
+              <input id="request-email" name="email" type="email" autocomplete="email" placeholder="anna@example.ru" required aria-describedby="request-email-hint">
+              <span class="field__hint" id="request-email-hint">Для подтверждения заявки</span>
+            </div>
+            <div class="field">
+              <label for="request-phone">Телефон</label>
+              <input id="request-phone" name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__">
+              <span class="field__hint">Формат: +7 (812) 000-00-00</span>
+            </div>
+            <div class="field">
+              <label for="request-people">Количество гостей</label>
+              <select id="request-people" name="people" autocomplete="off">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4 и больше</option>
+              </select>
+              <span class="field__hint">Для расчёта мест</span>
+            </div>
+            <div class="field field--full">
+              <label for="request-comment">Комментарий</label>
+              <textarea id="request-comment" name="comment" placeholder="Дата, количество гостей, вопросы"></textarea>
+              <span class="field__hint">Необязательно, но так мы ответим точнее</span>
+            </div>
+            <div class="field--full">
+              <label class="checkbox" for="request-consent">
+                <input id="request-consent" name="consent" type="checkbox" required>
+                <span>Согласен с <a href="#forms">политикой конфиденциальности</a> и обработкой персональных данных</span>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button class="button" type="submit">Отправить заявку</button>
+              <span class="hint">Ответим в течение одного рабочего дня</span>
+            </div>
+          </form>
+          <p class="form-note">В оригинале поля без label — в гайде показан доступный вариант; при переносе добавить label и aria-describedby.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Состояния поля</h3>
+            <span class="mono">default · focus · error · disabled</span>
+          </div>
+          <div class="field-states">
+            <div class="field-state">
+              <span class="field-state__label">Default</span>
+              <div class="field">
+                <label for="state-name">Имя</label>
+                <input id="state-name" type="text" placeholder="Анна">
+              </div>
+            </div>
+            <div class="field-state">
+              <span class="field-state__label">Focus</span>
+              <div class="field is-focus">
+                <label for="state-email">E-mail</label>
+                <input id="state-email" type="email" value="anna@" readonly>
+              </div>
+            </div>
+            <div class="field-state">
+              <span class="field-state__label">Error</span>
+              <div class="field has-error">
+                <label for="state-phone">Телефон</label>
+                <input id="state-phone" type="tel" value="+7 (812) 12" aria-invalid="true" aria-describedby="state-phone-error">
+                <span class="field__error" id="state-phone-error">Введите номер полностью — 11 цифр</span>
+              </div>
+            </div>
+            <div class="field-state">
+              <span class="field-state__label">Disabled</span>
+              <div class="field">
+                <label for="state-comment">Комментарий</label>
+                <input id="state-comment" type="text" placeholder="Недоступно" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Тёмная форма подписки</h3>
+            <span class="mono">фон #6B7275 · рамка 2px #FFF</span>
+          </div>
+          <div class="subscribe-dark">
+            <div class="subscribe-dark__head">
+              <h3>Подписка на анонсы</h3>
+              <p>Раз в две недели — новые события и разборы. Без спама.</p>
+            </div>
+            <form action="#forms" method="get">
+              <div class="field">
+                <label for="subscribe-name">Имя</label>
+                <input id="subscribe-name" name="subscribe-name" type="text" autocomplete="given-name" placeholder="Как вас зовут?">
+              </div>
+              <div class="field">
+                <label for="subscribe-email">E-mail</label>
+                <input id="subscribe-email" name="subscribe-email" type="email" autocomplete="email" placeholder="you@example.ru">
+              </div>
+              <button class="button" type="submit">Подписаться</button>
+            </form>
+            <p class="subscribe-dark__foot">Нажимая кнопку, вы соглашаетесь с политикой обработки данных.</p>
+          </div>
+          <p class="block__note">Чекбокс согласия — 20 × 20, кнопка — 40px; на мобиле оба увеличиваются до 44px.</p>
+        </div>
+      </section>
+
+      <!-- 07 / КАРТОЧКИ -->
+      <section class="section" id="cards" aria-labelledby="cards-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 07 / Карточки</p>
+        <h2 id="cards-title">Карточки</h2>
+        <p class="lead">Четыре рабочих типа: событие, материал блога, курс и промо-баннер. Фото — реальные, заголовок — Futura Medium 24px.</p>
+        <hr class="section__rule">
+
+        <div class="card-demo-grid">
+          <div class="card-demo">
+            <div class="card-demo__label">Событие <span>фото 16:9 · дата 90 × 80</span></div>
+            <article class="ecard">
+              <div class="ecard__media">
+                <img src="assets/img/surovyi-2.jpg" alt="Участники Сурового Питерского форума на сцене" width="640" height="360" loading="lazy">
+                <div class="ecard__date">
+                  <b>12</b><span>окт</span>
+                </div>
+              </div>
+              <div class="ecard__body">
+                <span class="ecard__tag">Форум</span>
+                <h3 class="ecard__title">Суровый Питерский форум 2026</h3>
+                <p class="ecard__text">Два дня о событиях, людях и смыслах. Практика, кейсы и знакомства, которые работают.</p>
+                <a class="ecard__more" href="#cards">Подробнее <img src="assets/icons/Arrow.svg" alt="" aria-hidden="true" width="11" height="6"></a>
+              </div>
+            </article>
+          </div>
+
+          <div class="card-demo">
+            <div class="card-demo__label">Блог <span>горизонтальная 40 / 60</span></div>
+            <article class="blogcard">
+              <div class="blogcard__media">
+                <img src="assets/img/whiteconf-1.jpg" alt="Гости Белой конфы в зале" width="640" height="360" loading="lazy">
+              </div>
+              <div class="blogcard__body">
+                <span class="ecard__tag">Знания</span>
+                <h3 class="ecard__title">Как организовать конференцию на 800 человек</h3>
+                <p class="ecard__text">Тайминг, подрядчики и бюджет — разбор на реальном кейсе.</p>
+                <span class="blogcard__date">13 октября 2026</span>
+              </div>
+            </article>
+          </div>
+
+          <div class="card-demo">
+            <div class="card-demo__label">Курс <span>фото 64% · цена 36px</span></div>
+            <article class="course-card">
+              <div class="course-card__media">
+                <img src="assets/img/whiteconf-2.jpg" alt="Участники конференции в светлом зале" width="640" height="410" loading="lazy">
+                <span class="course-card__badge">Курс</span>
+              </div>
+              <div class="course-card__body">
+                <h3 class="ecard__title">Продюсирование событий</h3>
+                <p class="ecard__text">6 недель практики: от идеи и сметы до площадки и команды.</p>
+                <div class="course-card__price">36 000 ₽ <small>/ 6 недель</small></div>
+                <button class="course_buy" type="button">Купить курс</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="card-demo">
+            <div class="card-demo__label">Баннер <span>рамка 3px · дата 30px</span></div>
+            <article class="banner-card">
+              <div class="banner-card__date">12 октября</div>
+              <p class="banner-card__text">Открыта регистрация на Белую конфу — успейте до 1 ноября.</p>
+              <a class="banner-card__link" href="#cards">Зарегистрироваться <img src="assets/icons/Arrow.svg" alt="" aria-hidden="true" width="11" height="6"></a>
+            </article>
+          </div>
+        </div>
+        <p class="block__note">Hover: заголовок становится #F74200, карточка не сдвигается и не увеличивается. Фото всегда object-fit: cover, без фильтров.</p>
+      </section>
+
+      <!-- 08 / ФУТЕР -->
+      <section class="section" id="footer" aria-labelledby="footer-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 08 / Футер</p>
+        <h2 id="footer-title">Футер</h2>
+        <p class="lead">Три полосы: подписка на сером, короткий вопрос на оранжевом, основной футер на светло-сером. Высота основной полосы — 140px.</p>
+        <hr class="section__rule">
+
+        <div class="footer-demo">
+          <div class="subscribe-strip">
+            <div class="subscribe-strip__row">
+              <div class="subscribe-strip__text">
+                <h3>Будьте в курсе</h3>
+                <p>Анонсы событий и новые материалы — раз в две недели.</p>
+              </div>
+              <form action="#footer" method="get">
+                <label class="visually-hidden" for="footer-name">Имя</label>
+                <input id="footer-name" name="footer-name" type="text" autocomplete="given-name" placeholder="Имя">
+                <label class="visually-hidden" for="footer-email">E-mail</label>
+                <input id="footer-email" name="footer-email" type="email" autocomplete="email" placeholder="E-mail">
+                <button class="button" type="submit">Подписаться</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="ask-strip">
+            <div class="ask-strip__inner">
+              <h3>Остались вопросы?</h3>
+              <label class="visually-hidden" for="ask-name">Имя</label>
+              <input id="ask-name" name="ask-name" type="text" autocomplete="given-name" placeholder="Ваше имя">
+              <label class="visually-hidden" for="ask-phone">Телефон</label>
+              <input id="ask-phone" name="ask-phone" type="tel" autocomplete="tel" placeholder="Телефон">
+              <button class="button" type="button">Жду звонка</button>
+            </div>
+          </div>
+
+          <footer class="main-footer">
+            <img class="main-footer__logo" src="assets/logos/f_logo.svg" alt="Eventologia" width="130" height="52" loading="lazy">
+            <div class="main-footer__contacts">
+              <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+              <a href="mailto:hello@eventologia.ru">hello@eventologia.ru</a>
+            </div>
+            <div class="main-footer__meta">
+              <p>© 2026 Eventologia. Все права защищены.</p>
+              <nav aria-label="Правовые документы">
+                <a href="#footer">Политика</a>
+                <a href="#footer">Согласие</a>
+              </nav>
+              <p>Разработка — SMMщики</p>
+            </div>
+          </footer>
+        </div>
+
+        <div class="footer-annot">
+          <div>
+            <p class="annot__title">Подписка</p>
+            <dl class="annot">
+              <div><dt>Фон</dt><dd>#6B7275</dd></div>
+              <div><dt>Паддинг</dt><dd>25px</dd></div>
+              <div><dt>Заголовок</dt><dd>18 uppercase Demi</dd></div>
+              <div><dt>Текст</dt><dd>16 Book</dd></div>
+              <div><dt>Сетка</dt><dd>3 колонки</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="annot__title">Оранжевая полоса</p>
+            <dl class="annot">
+              <div><dt>Фон</dt><dd>#F74200</dd></div>
+              <div><dt>Поля</dt><dd>белые</dd></div>
+              <div><dt>Кнопка</dt><dd>белая / чёрный</dd></div>
+              <div><dt>Контейнер</dt><dd>1140px</dd></div>
+              <div><dt>Паддинг</dt><dd>22px 25px</dd></div>
+            </dl>
+          </div>
+          <div>
+            <p class="annot__title">Основной футер</p>
+            <dl class="annot">
+              <div><dt>Фон</dt><dd>#ECECEC</dd></div>
+              <div><dt>Высота</dt><dd>140px</dd></div>
+              <div><dt>Логотип</dt><dd>46px</dd></div>
+              <div><dt>Текст</dt><dd>14 Open Sans</dd></div>
+              <div><dt>Ссылки</dt><dd>#3D3D3D</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 / ТЁМНАЯ ТЕМА -->
+      <section class="section" id="dark" aria-labelledby="dark-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 09 / Тёмная тема</p>
+        <h2 id="dark-title">Тёмная тема</h2>
+        <p class="lead">Инверсия поверхностей: чёрный фон, белый текст, рамки #151515 и тот же оранжевый акцент. Переключатель меняет класс theme-dark на демо-блоке.</p>
+        <hr class="section__rule">
+
+        <div class="theme-toolbar">
+          <button class="guide-btn guide-btn--accent" type="button" id="themeToggle" aria-pressed="true" aria-controls="themeDemo">Переключить тему</button>
+          <span class="theme-status" id="themeStatus">Сейчас: тёмная · .theme-dark</span>
+        </div>
+
+        <div class="theme-demo theme-dark" id="themeDemo">
+          <div class="site-header">
+            <img class="site-header__logo" src="assets/logos/logo.svg" alt="Eventologia" width="259" height="54">
+            <p class="site-header__slogan">Создаём события, которые вдохновляют</p>
+            <div class="site-header__contacts">
+              <a class="site-header__phone" href="tel:+78120000000">+7 (812) 000-00-00</a>
+              <a class="site-header__mail" href="mailto:hello@eventologia.ru">hello@eventologia.ru</a>
+            </div>
+          </div>
+          <div class="site-menu">
+            <ul class="site-menu__list">
+              <li><a href="#dark">Афиша</a></li>
+              <li><a href="#dark">События</a></li>
+              <li><a href="#dark">Курсы</a></li>
+              <li><a href="#dark">Видео</a></li>
+              <li><a href="#dark">Знания</a></li>
+              <li><a href="#dark">Блог</a></li>
+              <li><a href="#dark">Услуги</a></li>
+              <li><a href="#dark">О нас</a></li>
+            </ul>
+            <div class="site-menu__tools">
+              <button class="site-menu__search" type="button" aria-label="Поиск по сайту">
+                <img src="assets/icons/Search_Icon.svg" alt="" aria-hidden="true" width="23" height="23">
+              </button>
+              <ul class="socials">
+                <li><a href="#dark" aria-label="ВКонтакте — пример ссылки"><img src="assets/icons/Vk_Icon.svg" alt="" aria-hidden="true" width="20" height="12"></a></li>
+                <li><a href="#dark" aria-label="YouTube — пример ссылки"><img src="assets/icons/fb_yt.svg" alt="" aria-hidden="true" width="20" height="20"></a></li>
+                <li><a href="#dark" aria-label="Telegram — пример ссылки"><img src="assets/icons/Tlg_Icon.svg" alt="" aria-hidden="true" width="18" height="16"></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="dark-footer">
+            <a class="button" href="#buttons">Купить билет</a>
+            <span class="dark-footer__copy">© 2026 Eventologia</span>
+          </div>
+        </div>
+        <p class="block__note">На сайте переключателя нет; тема включается контекстно. В гайде кнопка нужна, чтобы проверить контраст и состояния.</p>
+      </section>
+
+      <!-- 10 / ТОКЕНЫ -->
+      <section class="section" id="tokens" aria-labelledby="tokens-title">
+        <p class="section__eyebrow"><span class="bar" aria-hidden="true"></span> 10 / Токены и доступность</p>
+        <h2 id="tokens-title">Токены и доступность</h2>
+        <p class="lead">Отступы, радиусы, тени и контраст — в числах. Ниже — чек-лист, который проверяется перед сдачей любой страницы.</p>
+        <hr class="section__rule">
+
+        <p class="note-line">Демонстрационные макеты повторяют исходные цвета сайта. Для мелкого текста в самом гайде используются затемнённые варианты <code>#B33000</code> и <code>#5F5F5F</code>, чтобы хром страницы проходил AA.</p>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Отступы</h3>
+            <span class="mono">--space-*</span>
+          </div>
+          <div class="token-block">
+            <div class="space-list">
+              <div class="space-row">
+                <span class="space-row__name">--xs</span>
+                <span class="space-row__track"><span class="space-row__bar w-5"></span></span>
+                <span class="space-row__value">5px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--sm</span>
+                <span class="space-row__track"><span class="space-row__bar w-10"></span></span>
+                <span class="space-row__value">10px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--md</span>
+                <span class="space-row__track"><span class="space-row__bar w-15"></span></span>
+                <span class="space-row__value">15px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--lg</span>
+                <span class="space-row__track"><span class="space-row__bar w-20"></span></span>
+                <span class="space-row__value">20px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--xl</span>
+                <span class="space-row__track"><span class="space-row__bar w-30"></span></span>
+                <span class="space-row__value">30px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--2xl</span>
+                <span class="space-row__track"><span class="space-row__bar w-40"></span></span>
+                <span class="space-row__value">40px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--3xl</span>
+                <span class="space-row__track"><span class="space-row__bar w-60"></span></span>
+                <span class="space-row__value">60px</span>
+              </div>
+              <div class="space-row">
+                <span class="space-row__name">--section</span>
+                <span class="space-row__track"><span class="space-row__bar w-80"></span></span>
+                <span class="space-row__value">80px</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Радиусы</h3>
+            <span class="mono">--radius-*</span>
+          </div>
+          <div class="token-block">
+            <div class="radius-grid">
+              <div class="radius-cell"><div class="radius-cell__box r-0"></div><span class="radius-cell__label">0</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-2"></div><span class="radius-cell__label">2</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-3"></div><span class="radius-cell__label">3</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-4"></div><span class="radius-cell__label">4</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-5"></div><span class="radius-cell__label">5</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-6"></div><span class="radius-cell__label">6</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-10"></div><span class="radius-cell__label">10</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-20"></div><span class="radius-cell__label">20</span></div>
+              <div class="radius-cell"><div class="radius-cell__box r-100"></div><span class="radius-cell__label">100</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Тени</h3>
+            <span class="mono">только для всплывающих слоёв</span>
+          </div>
+          <div class="token-block">
+            <div class="shadow-grid">
+              <div class="shadow-card shadow-dropdown">
+                <b>Dropdown</b>
+                <span>0 2px 16px 0<br>rgba(0,0,0,.37)</span>
+              </div>
+              <div class="shadow-card shadow-popup">
+                <b>Popup</b>
+                <span>0 20px 70px 3px<br>rgba(41,41,41,.1)</span>
+              </div>
+              <div class="shadow-card shadow-cookie">
+                <b>Cookie</b>
+                <span>0 0 20px 1px<br>rgba(0,0,0,.1)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Контраст</h3>
+            <span class="mono">WCAG 2.2 · AA / AAA</span>
+          </div>
+          <div class="table-wrap">
+            <table class="contrast">
+              <caption>Проверенные пары текста и фона</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Пара</th>
+                  <th scope="col">Контраст</th>
+                  <th scope="col">Уровень</th>
+                  <th scope="col">Где применяется</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="pair"><i class="dot dot--accent"></i>#F74200 на #FFFFFF</span></td>
+                  <td>3.66 : 1</td>
+                  <td><span class="contrast-pill contrast-pill--large">AA Large / UI</span></td>
+                  <td>кнопки, крупные ссылки, даты</td>
+                </tr>
+                <tr>
+                  <td><span class="pair"><i class="dot dot--muted"></i>#7B7B7B на #FFFFFF</span></td>
+                  <td>4.23 : 1</td>
+                  <td><span class="contrast-pill contrast-pill--large">AA Large</span></td>
+                  <td>лид, второстепенный текст</td>
+                </tr>
+                <tr>
+                  <td><span class="pair"><i class="dot dot--steel"></i>#99A0A4 на #FFFFFF</span></td>
+                  <td>2.65 : 1</td>
+                  <td><span class="contrast-pill contrast-pill--fail">fail</span></td>
+                  <td>только декор, не текст</td>
+                </tr>
+                <tr>
+                  <td><span class="pair"><i class="dot dot--graphite"></i>#3D3D3D на #ECECEC</span></td>
+                  <td>9.19 : 1</td>
+                  <td><span class="contrast-pill contrast-pill--pass">AAA</span></td>
+                  <td>текст основного футера</td>
+                </tr>
+                <tr>
+                  <td><span class="pair"><i class="dot dot--subscribe"></i>#FFFFFF на #6B7275</span></td>
+                  <td>4.9 : 1</td>
+                  <td><span class="contrast-pill contrast-pill--pass">AA</span></td>
+                  <td>подписка, тёмные плашки</td>
+                </tr>
+                <tr>
+                  <td><span class="pair"><i class="dot dot--bg"></i>#000000 на #F2F2F2</span></td>
+                  <td>18.76 : 1</td>
+                  <td><span class="contrast-pill contrast-pill--pass">AAA</span></td>
+                  <td>основной текст на фоне</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="aa-fix">
+            <div class="aa-fix__item">
+              <span class="aa-fix__label">Как на сайте</span>
+              <button class="button" type="button">Записаться</button>
+              <span class="aa-fix__ratio">3.66 : 1 · AA Large</span>
+            </div>
+            <div class="aa-fix__item">
+              <span class="aa-fix__label">AA-вариант</span>
+              <button class="button button--aa" type="button">Записаться</button>
+              <span class="aa-fix__ratio">4.61 : 1 · AA</span>
+            </div>
+            <p class="aa-fix__note">Затемнение фона до #D93A00 сохраняет характер, но делает белую подпись 18px читаемой по AA. В самом гайде для мелкого оранжевого текста используется #B33000.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head">
+            <h3>Чек-лист доступности</h3>
+            <span class="mono">перед сдачей страницы</span>
+          </div>
+          <div class="token-block">
+            <ul class="checklist">
+              <li><b>Focus-visible.</b> Видимая рамка 2px #F74200 с offset 2px на всех интерактивных элементах.</li>
+              <li><b>Label + aria-describedby.</b> У каждого поля видимая подпись, подсказка и текст ошибки связаны.</li>
+              <li><b>Target 44px.</b> Кнопки и ссылки на мобиле не меньше 44 × 44px, с отступом между целями.</li>
+              <li><b>Порядок заголовков.</b> Один H1, дальше H2 разделов и H3 карточек без перескоков.</li>
+              <li><b>Skip-link.</b> Первый элемент страницы — «Перейти к содержанию».</li>
+              <li><b>prefers-reduced-motion.</b> Анимации и плавный скролл отключаются при системной настройке.</li>
+              <li><b>Контраст.</b> Оранжевый только для крупного текста и UI; мелкий текст — #3D3D3D или темнее.</li>
+              <li><b>Alt и aria-hidden.</b> Смысловые фото с alt, декоративные иконки скрыты от скринридера.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="token-link-card">
+          <div>
+            <a href="design-tokens.css"><code>design-tokens.css</code></a>
+            <p>Полный набор переменных: цвета, шрифты, размеры, радиусы, отступы, сетка, тени и анимации.</p>
+          </div>
+          <span class="tag">CSS-переменные · :root</span>
+        </div>
+
+        <p class="final-note">
+          <span>Источник: локальный бэкап eventologia.ru · тема smm · 10/11/2026</span>
+          <a href="#main">Наверх ↑</a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="guide.js"></script>
+</body>
+</html>
