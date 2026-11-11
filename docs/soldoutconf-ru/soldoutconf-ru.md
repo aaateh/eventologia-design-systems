@@ -271,5 +271,5 @@ Cookie-баннер и чат-виджет подключаются внешни
 - `preview.png` — превью 1440×900.
 - `assets/fonts/` — Montserrat 400/500/600/700/900 + Alumni Sans 600.
 - `assets/logos/` — `logo.svg`, `soldout.svg`, `f_logo.svg`, логотипы кейсов `smmconfa.svg`, `wc.svg`, `event.svg`, `td.svg`.
-- `assets/img/` — фото форума (`history-01/03/05`), спикера (`expert_photo`, `nataf_photo`), отзыва, постер видео.
+- `assets/img/` — фото форума (`history-01/03/05`), спикера (`rum_photo`), отзыва, постер видео.
 - `assets/icons/` — соцсети, стрелки, play, close, FAQ.
