@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Дизайн-система SOLD OUT — визуальный гайд</title>
-  <meta name="description" content="Визуальный гайд дизайн-системы SOLD OUT: тёмная сцена #090316, оранжевый #F74200, Alumni Sans и Montserrat, шапка, кнопки, формы, карточки, паттерны, попапы, токены и доступность.">
+  <meta name="description" content="Визуальный гайд дизайн-системы SOLD OUT: тёмная сцена #090316, оранжевый #F74200, Alumni Sans и Montserrat, 14 разделов — компоненты, паттерны, служебные экраны, токены и доступность.">
   <link rel="canonical" href="https://aaateh.github.io/eventologia-design-systems/soldoutconf-ru/">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#090316">
@@ -18,7 +18,7 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Дизайн-системы Ивентологии">
   <meta property="og:title" content="Дизайн-система SOLD OUT — визуальный гайд">
-  <meta property="og:description" content="Палитра, типографика, сетка, кнопки, формы, карточки, паттерны, попапы, анимации, токены и доступность SOLD OUT.">
+  <meta property="og:description" content="Палитра, типографика, сетка, кнопки, формы, карточки, паттерны, попапы, анимации, токены, доступность и приложение с остальными блоками SOLD OUT.">
   <meta property="og:url" content="https://aaateh.github.io/eventologia-design-systems/soldoutconf-ru/">
   <meta property="og:image" content="https://aaateh.github.io/eventologia-design-systems/assets/og-cover.png">
   <meta property="og:image:type" content="image/png">
@@ -58,7 +58,7 @@
   <nav class="mnav" aria-label="Разделы гайда — мобильное меню">
     <button class="mnav__toggle" type="button" id="mnavToggle" aria-expanded="false" aria-controls="mnavPanel">
       <span class="mnav__toggle-mark">Разделы гайда</span>
-      <span aria-hidden="true">13</span>
+      <span aria-hidden="true">14</span>
     </button>
     <div class="mnav__panel" id="mnavPanel">
       <ul class="mnav__list">
@@ -75,6 +75,7 @@
         <li><a class="mnav__link" href="#overlays" data-nav-link><span class="num">11</span> Попапы и оверлеи</a></li>
         <li><a class="mnav__link" href="#motion" data-nav-link><span class="num">12</span> Анимации и состояния</a></li>
         <li><a class="mnav__link" href="#tokens" data-nav-link><span class="num">13</span> Токены и доступность</a></li>
+        <li><a class="mnav__link" href="#extra" data-nav-link><span class="num">14</span> Приложение</a></li>
       </ul>
     </div>
   </nav>
@@ -96,6 +97,7 @@
         <li><a class="sidebar__link" href="#overlays" data-nav-link><span class="num">11</span> Попапы и оверлеи</a></li>
         <li><a class="sidebar__link" href="#motion" data-nav-link><span class="num">12</span> Анимации и состояния</a></li>
         <li><a class="sidebar__link" href="#tokens" data-nav-link><span class="num">13</span> Токены и доступность</a></li>
+        <li><a class="sidebar__link" href="#extra" data-nav-link><span class="num">14</span> Приложение</a></li>
       </ul>
       <p class="sidebar__foot">Источник: site-static<br>style.css · 1823 строки<br>проверено 12/11/2026</p>
     </nav>
@@ -106,8 +108,8 @@
         <h1>Дизайн-система SOLD OUT</h1>
         <p class="lead">Рабочий справочник по стилю форума: палитра, шрифты, сетка, кнопки, формы, карточки и правила доступности. Всё показано живыми компонентами на реальных шрифтах и логотипе.</p>
         <ul class="meta-strip">
-          <li>13 разделов</li>
-          <li>5 цветов ядра</li>
+          <li>14 разделов</li>
+          <li>5 переменных · 4 цвета</li>
           <li>19 файлов шрифтов</li>
           <li>обновлено 12/11/2026</li>
         </ul>
@@ -1384,6 +1386,7 @@
   --g: #E8E3DD; /* duplicate of --y */
 }</code></pre>
           </div>
+          <p class="filelink">Готовый файл: <a href="tokens.css">tokens.css</a> · переменные и шрифты</p>
         </div>
 
         <div class="block">
@@ -1515,6 +1518,314 @@
             <li>Заполнить alt для фото спикеров, отзывов и логотипов; декоративные иконки — aria-hidden.</li>
             <li>Поддержать reduced motion и увеличить цели нажатия до 44×44px.</li>
           </ul>
+        </div>
+      </section>
+      <!-- 14 -->
+      <section class="section" id="extra">
+        <div class="sec-head">
+          <span class="sec-head__num">14</span>
+          <div class="sec-head__text">
+            <p class="section__eyebrow">чтобы ничего не потерялось</p>
+            <h2>Приложение: остальные блоки</h2>
+          </div>
+          <span class="sec-head__note">9 демо</span>
+        </div>
+        <p class="lead">Блоки главной, партнёрской страницы и служебных экранов, которые не вошли в основные разделы. Всё — живые компоненты с реальными классами.</p>
+
+        <div class="block">
+          <div class="block__head"><h3>Карта покрытия</h3><span class="tag">index.php</span></div>
+          <div class="table-scroll">
+            <table class="spec-table">
+              <caption>Активные блоки главной и их место в гайде</caption>
+              <thead><tr><th>Блок главной</th><th>Раздел гайда</th></tr></thead>
+              <tbody>
+                <tr><td><code>intro_block</code></td><td>00 / 05</td></tr>
+                <tr><td><code>about_block</code></td><td>12 — анимация появления</td></tr>
+                <tr><td><code>about_new_block</code></td><td>01 / 09</td></tr>
+                <tr><td><code>target_block</code></td><td>09</td></tr>
+                <tr><td><code>history_video_block</code></td><td>09</td></tr>
+                <tr><td><code>whom_block</code></td><td>14</td></tr>
+                <tr><td><code>themes_block</code></td><td>09</td></tr>
+                <tr><td><code>highlight_block</code></td><td>09</td></tr>
+                <tr><td><code>profit_block</code></td><td>14</td></tr>
+                <tr><td><code>help_block</code></td><td>09</td></tr>
+                <tr><td><code>photos_block</code></td><td>14</td></tr>
+                <tr><td><code>reviews_block</code></td><td>08</td></tr>
+                <tr><td><code>tickets_block</code></td><td>08</td></tr>
+                <tr><td><code>free_block</code></td><td>14</td></tr>
+                <tr><td><code>installments_block</code></td><td>14</td></tr>
+                <tr><td><code>where_block</code></td><td>09</td></tr>
+                <tr><td><code>organization_block</code> — founders + cases</td><td>14</td></tr>
+                <tr><td><code>partners_block</code></td><td>08</td></tr>
+                <tr><td><code>footer</code></td><td>10</td></tr>
+                <tr><td><code>timer_block</code></td><td>14</td></tr>
+                <tr><td><code>faq_page</code></td><td>07 / 09</td></tr>
+                <tr><td><code>part_*</code> — партнёрская страница</td><td>08 / 14</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="table-hint">→ прокрутите</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>1 · Таймер</h3><span class="stage__class">.timer_block · .timer_item</span></div>
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">обычный блок · не fixed</span><span class="stage__class">100px · 18px · CTA 400px</span></div>
+            <div class="stage__body stage__body--flush">
+              <div class="sd">
+                <div class="timer_block">
+                  <div class="timer">
+                    <p class="t-h6">До старта</p>
+                    <div class="timer_wrap">
+                      <div class="timer_item"><p>128</p><span>дней</span></div>
+                      <div class="timer_item"><p>06</p><span>часов</span></div>
+                    </div>
+                    <a class="btn v3" href="#forms">Купить билет</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">На сайте блок закреплён снизу; в гайде — обычный блок. Цифры Alumni 100px, подписи 18px, кнопка 400px.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>2 · Слайдер фото</h3><span class="stage__class">.main_slider · .photo_slide</span></div>
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">2 кадра · прокрутка</span><span class="stage__class">кадр 52% · стрелки 45×24</span></div>
+            <div class="stage__body stage__body--flush">
+              <div class="sd">
+                <div class="main_slider" data-slider>
+                  <div class="main_slider-track" data-slider-track>
+                    <div class="photo_slide"><img src="assets/img/history-03.jpg" alt="Участники форума SOLD OUT в зале" width="1150" height="862" loading="lazy"></div>
+                    <div class="photo_slide"><img src="assets/img/history-05.jpg" alt="Сцена форума SOLD OUT" width="1200" height="800" loading="lazy"></div>
+                  </div>
+                  <button class="main_slider-arrow prev" type="button" data-slider-prev aria-label="Предыдущее фото"></button>
+                  <button class="main_slider-arrow next" type="button" data-slider-next aria-label="Следующее фото"></button>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">Кадр 52% высоты, фото cover, стрелки 45×24. Без JS слайдер остаётся горизонтально прокручиваемым.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>3 · Рассрочка</h3><span class="stage__class">.installments · .installment_form</span></div>
+          <div class="sd">
+            <div class="installments">
+              <p class="t-h4">Оплатить частями</p>
+              <div class="installments_box">
+                <form class="installment_form" action="#" method="post" data-demo-form>
+                  <p class="t-h5">Выберите программу и период оплаты</p>
+                  <div class="input">
+                    <label for="inst-package">Выберите пакет</label>
+                    <select id="inst-package" name="package">
+                      <option>Офлайн-участие · 20 900 ₽</option>
+                      <option>Офлайн для компаний</option>
+                    </select>
+                  </div>
+                  <div class="input">
+                    <label for="inst-period">Выберите длительность</label>
+                    <select id="inst-period" name="period">
+                      <option>3 месяца</option>
+                      <option>6 месяцев</option>
+                      <option selected>12 месяцев</option>
+                    </select>
+                  </div>
+                  <p class="installment_price"><i>1 741,67</i><span>рублей в месяц</span></p>
+                  <button class="btn v3 fw" type="submit">Оплатить частями</button>
+                  <p class="after_form_text">Нажимая на кнопку, даю согласие на обработку персональных данных.</p>
+                </form>
+                <div class="installments_text">
+                  <div class="installments_text_item">
+                    <p class="t-h6">Никаких переплат</p>
+                    <p>Стоимость билета остаётся фиксированной и просто «разбивается» на равные выплаты.</p>
+                  </div>
+                  <div class="installments_text_item">
+                    <p class="t-h6">Не нужно платить сразу</p>
+                    <p>Первая выплата — только через месяц после подписания договора.</p>
+                  </div>
+                  <div class="installments_attention">
+                    <p>Билет придёт на почту в течение 1–3 суток после подписания договора.</p>
+                    <p class="t-h6">Внимание!</p>
+                    <p>Оплата частями действует только для граждан РФ.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Бежевая панель 60/55, слева оранжевая форма 50%, справа текст. На ≤768 — одна колонка. В оригинале h4 оранжевый на беже; в гайде — #090316 по контрасту, подписи на оранжевом тёмные.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>4 · Организаторы и кейсы</h3><span class="stage__class">.founders · .cases_list</span></div>
+          <div class="sd">
+            <div class="founders">
+              <p class="t-h4">Организаторы</p>
+              <div class="founders_list">
+                <div class="founder_item">
+                  <div class="founder_photo"><img src="assets/img/nataf_photo.png" alt="Наталия Франкель, продюсер форума SOLD OUT" width="373" height="572" loading="lazy"></div>
+                  <div class="founder_info">
+                    <p class="t-h6">Наталия Франкель</p>
+                    <p>Создатель и продюсер трёх онлайн-школ: «Точка доступа», «Ивентология», «Белый EdTech &amp; Elearn». Продюсер и организатор крупнейших в СНГ бизнес-конференций в нишах SMM, онлайн-образования и event.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cases">
+              <p class="t-h5">Наши кейсы</p>
+              <div class="cases_list">
+                <div class="case_item"><img src="assets/logos/smmconfa.svg" alt="Логотип «Суровый Питерский форум»" width="226" height="50" loading="lazy"></div>
+                <div class="case_item"><img src="assets/logos/wc.svg" alt="Логотип «Белая конфа»" width="218" height="29" loading="lazy"></div>
+                <div class="case_item"><img src="assets/logos/event.svg" alt="Логотип Event-маркетинг" width="217" height="49" loading="lazy"></div>
+                <div class="case_item"><img src="assets/logos/td.svg" alt="Логотип «Точка доступа»" width="172" height="81" loading="lazy"></div>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Фото основателя 240px, имя h6 оранжевым. Кейсы — сетка 6 колонок; на мобайле 3 → 2.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>5 · Кому, профит, бесплатный тест-драйв</h3><span class="stage__class">.whom_item · .profit · .free</span></div>
+          <div class="sd">
+            <div class="whom">
+              <p class="t-h5">Кому будет интересно?</p>
+              <div class="whom_list">
+                <div class="whom_item"><p>Организаторам мероприятий любых форматов и масштабов</p></div>
+                <div class="whom_item"><p>Представителям event- и PR-агентств</p></div>
+                <div class="whom_item"><p>Event-менеджерам компаний и площадок</p></div>
+                <div class="whom_item"><p>Поставщикам услуг, сопровождающих мероприятие</p></div>
+              </div>
+            </div>
+            <div class="profit">
+              <p class="t-h5">Кто может найти заказчиков</p>
+              <p class="profit_text">Форум собирает в одном месте организаторов, площадки и подрядчиков. Один удачный разговор может обеспечить контрактами на месяцы вперёд.</p>
+              <div class="profit_list">
+                <p class="t-h6">— Ведущие и модераторы</p>
+                <p class="t-h6">— Дизайнеры и декораторы</p>
+                <p class="t-h6">— Артисты и музыканты</p>
+                <p class="t-h6">— Поставщики оборудования</p>
+              </div>
+            </div>
+            <div class="free">
+              <p class="t-h5">Не уверены в пользе докладов?</p>
+              <div class="free_box">
+                <p>Получите записи выступлений двух спикеров и убедитесь в качестве и информативности докладов.</p>
+                <a class="btn v1 fw" href="#forms">Совершенно бесплатно</a>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Компактно: нумерованный `.whom_item` с padding-left 130 и абсолютной подписью, затем `.profit` и `.free`.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>6 · Страница спикера</h3><span class="stage__class">.single_expert · .expert_links</span></div>
+          <div class="sd">
+            <div class="single_expert_box">
+              <div class="single_expert_photo"><img src="assets/img/expert_photo.jpg" alt="Портрет спикера SOLD OUT" width="373" height="411" loading="lazy"></div>
+              <div class="single_expert_body">
+                <p class="t-h5">Наталия Франкель</p>
+                <p class="single_expert_role">Продюсер конференций, автор книг об event-маркетинге</p>
+                <p class="t-h6">Достижения</p>
+                <div class="achievements">
+                  <p>Более 40 конференций и форумов, 85 000+ участников.</p>
+                  <p>Автор лонгселлера «Event-маркетинг. Всё об организации и продвижении событий».</p>
+                </div>
+                <p class="t-h6">Ссылки</p>
+                <div class="expert_links">
+                  <a href="https://t.me/markevent" target="_blank" rel="noopener">Telegram</a>
+                  <a href="https://vk.com/soldoutconf" target="_blank" rel="noopener">ВКонтакте</a>
+                  <a href="https://soldoutconf.ru/" target="_blank" rel="noopener">Сайт форума</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Фото 373px grayscale, тело шириной до 100% минус фото, h5 и h6 оранжевые, ссылки с иконками.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>7 · Отели</h3><span class="stage__class">.hotels_item</span></div>
+          <div class="sd">
+            <div class="hotels_list">
+              <div class="hotels_item">
+                <div class="hotels_item_text">
+                  <p class="t-h6">Cosmos Pribaltiyskaya</p>
+                  <a class="btn v3" href="#forms">Забронировать</a>
+                </div>
+                <div class="hotels_item_img"><img src="assets/img/history-03.jpg" alt="Площадка форума SOLD OUT" width="1150" height="862" loading="lazy"></div>
+              </div>
+              <div class="hotels_item">
+                <div class="hotels_item_text">
+                  <p class="t-h6">Отель у форума</p>
+                  <a class="btn v3" href="#forms">Забронировать</a>
+                </div>
+                <div class="hotels_item_img"><img src="assets/img/history-05.jpg" alt="Вид на площадку форума" width="1200" height="800" loading="lazy"></div>
+              </div>
+            </div>
+          </div>
+          <p class="block__note">Сетка 1fr 1fr: текст 60px padding, h6 55px; чётные — инверсия с белым текстовым блоком и оранжевым заголовком.</p>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>8 · Легаси-программа и 404</h3><span class="stage__class">.program-legacy · .t-404</span></div>
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">легаси-таблица</span><span class="stage__class">3 колонки · 3 цвета</span></div>
+            <div class="stage__body">
+              <div class="sd">
+                <div class="program-legacy">
+                  <div class="legacy-row"><div class="legacy-cell legacy-cell--first">18:00</div><div class="legacy-cell legacy-cell--cell">Регистрация</div><div class="legacy-cell legacy-cell--cell">Холл</div></div>
+                  <div class="legacy-row"><div class="legacy-cell legacy-cell--first">20:00</div><div class="legacy-cell legacy-cell--dinner">Ужин</div><div class="legacy-cell legacy-cell--dinner">Ресторан</div></div>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">#D4CABF — первый столбец, #6996CD — ячейки, #325683 — ужин. Легаси, в новом дизайне не использовать.</p>
+          </div>
+          <div class="stage">
+            <div class="stage__bar"><span class="stage__tag">404 · уменьшено</span><span class="stage__class">.t-404</span></div>
+            <div class="stage__body">
+              <div class="sd">
+                <div class="page_404">
+                  <p class="t-404 t-404--demo">404</p>
+                  <p>Такой страницы нет — вернитесь на главную.</p>
+                  <div class="btn_group center"><a class="btn v1" href="#main">На главную</a></div>
+                </div>
+              </div>
+            </div>
+            <p class="stage__caption">В демо 220px; реальный размер `.t-404` — 550px.</p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block__head"><h3>9 · Партнёрская страница</h3><span class="stage__class">.part_partners · .part_gallery · .part_why</span></div>
+          <div class="sd">
+            <div class="part_partners">
+              <p class="t-h5">Партнёры SOLD OUT 2027</p>
+              <div class="part_partners_item">
+                <div class="part_partners_item_title">Генеральные технические партнёры</div>
+                <div class="part_partners_item_list">
+                  <div class="part_partners_item_list_item"><img src="assets/logos/smmconfa.svg" alt="Партнёр «Суровый Питерский форум»" width="226" height="50" loading="lazy"></div>
+                  <div class="part_partners_item_list_item"><img src="assets/logos/wc.svg" alt="Партнёр «Белая конфа»" width="218" height="29" loading="lazy"></div>
+                  <div class="part_partners_item_list_item"><img src="assets/logos/event.svg" alt="Партнёр Event-маркетинг" width="217" height="49" loading="lazy"></div>
+                </div>
+              </div>
+            </div>
+            <p class="t-h6 part_subtitle">Схема мозаики 12 × 9</p>
+            <div class="part_gallery_list" aria-label="Схема мозаики 12 колонок на 9 рядов">
+                <div class="part_gallery_item">01</div><div class="part_gallery_item">02</div><div class="part_gallery_item">03</div><div class="part_gallery_item">04</div><div class="part_gallery_item">05</div><div class="part_gallery_item">06</div><div class="part_gallery_item">07</div><div class="part_gallery_item">08</div><div class="part_gallery_item">09</div><div class="part_gallery_item">10</div><div class="part_gallery_item">11</div><div class="part_gallery_item">12</div>
+            </div>
+            <p class="t-h6 part_subtitle">Почему участие</p>
+            <div class="part_why_list">
+                <div class="part_why_item">
+                  <p class="part_why_item_title">Полный охват рынка</p>
+                  <p class="part_why_item_text">Одно участие заменяет год работы отдела продаж: в одном зале собраны организаторы, площадки и подрядчики.</p>
+                </div>
+                <div class="part_why_item">
+                  <p class="part_why_item_title">Ваш продукт найдёт новые рынки</p>
+                  <p class="part_why_item_text">Оборудование для концертов находит применение на городском фестивале, а кейтеринг открывает десятки агентств.</p>
+                </div>
+            </div>
+          </div>
+          <p class="block__note">Таблица уровней 25/75 с границами #ABABAB, схема мозаики 12×9 без фото и два блока `.part_why_item` с рамкой 1px и высотами 400/300. Логотипы кейсов белые, поэтому стоят на тёмных плашках.</p>
         </div>
       </section>
     </main>

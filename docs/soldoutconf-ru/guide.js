@@ -327,7 +327,25 @@
     });
   }
 
-  /* ---------- 7. Демо-формы ---------- */
+  /* ---------- 7. Слайдеры-ленты ---------- */
+  Array.prototype.slice.call(document.querySelectorAll("[data-slider]")).forEach(function (slider) {
+    var track = slider.querySelector("[data-slider-track]");
+    var prev = slider.querySelector("[data-slider-prev]");
+    var next = slider.querySelector("[data-slider-next]");
+    if (!track) return;
+
+    function step(direction) {
+      track.scrollBy({
+        left: track.clientWidth * direction,
+        behavior: reduceMotion ? "auto" : "smooth"
+      });
+    }
+
+    if (prev) prev.addEventListener("click", function () { step(-1); });
+    if (next) next.addEventListener("click", function () { step(1); });
+  });
+
+  /* ---------- 8. Демо-формы ---------- */
   Array.prototype.slice.call(document.querySelectorAll("[data-demo-form]")).forEach(function (form) {
     form.addEventListener("submit", function (event) {
       event.preventDefault();

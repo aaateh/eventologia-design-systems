@@ -1,7 +1,8 @@
 # Дизайн-система SOLD OUT
 
 > Источник: локальный бэкап `site-static/` (тема WordPress) · style.css — 1823 строки, program.css — 198 строк · проверено 12/11/2026
-> Живой гайд: [index.html](index.html) · Сайт: [soldoutconf.ru](https://soldoutconf.ru/)
+> 14 разделов · 5 переменных · 4 цвета · 19 файлов шрифтов · обновлено 12/11/2026
+> Живой гайд: [index.html](index.html) · Токены: [tokens.css](tokens.css) · Сайт: [soldoutconf.ru](https://soldoutconf.ru/)
 
 Тёмная афишная сцена, один оранжевый акцент, крупная конденсата Alumni Sans и текстовый Montserrat. Прямые углы, линии 1px, минимум теней. Все демо в гайде изолированы классом `.sd`, чтобы не конфликтовать с документацией.
 
@@ -199,9 +200,9 @@ Cookie-баннер и чат-виджет подключаются внешни
 }
 ```
 
-Предлагаемые имена: `--color-accent`, `--color-beige`, `--color-on-dark`, `--color-bg`, плюс `--color-text-muted`, `--color-line`, `--space-1…6`, `--radius: 0`, `--font-display`, `--font-body`.
+Предлагаемые имена: `--color-accent`, `--color-beige`, `--color-on-dark`, `--color-bg`, плюс `--color-surface`, `--color-text-muted`, `--color-line`, `--space-1…6`, `--radius: 0`, `--container`, `--container-pad`, `--font-display`, `--font-body`, `--text-h4…micro`.
 
-Готовый CSS со шрифтами и токенами — в разделе 13 гайда, с кнопкой копирования.
+Готовый файл — `tokens.css` в этой папке: `@font-face` для Montserrat 400/500/600/700 и Alumni Sans 600, семантические токены и легаси-алиасы `--o / --y / --w / --b / --g` на случай подключения к текущему сайту без переименований. Для прежних имён `--color-surface-warm` и `--color-accent-contrast` там есть обратные алиасы на `--color-beige` и `--color-on-dark`. Компактная версия того же набора — в разделе 13 гайда, с кнопкой копирования.
 
 ## 13. Доступность
 
@@ -231,7 +232,27 @@ Cookie-баннер и чат-виджет подключаются внешни
 
 Чек-лист: контрасты AA, label/aria-label, видимый focus, масштаб 200%, alt для фото, reduced motion и цели 44×44.
 
-## 14. Источники
+## 14. Приложение: остальные блоки
+
+Блоки главной, партнёрской страницы и служебных экранов, не вошедшие в основные разделы. В гайде: таймер, слайдер фото, рассрочка, организаторы и кейсы, «кому / профит / бесплатно», страница спикера, отели, легаси-программа, 404, партнёрская таблица, схема мозаики и `.part_why_item`.
+
+| Блок | Раздел |
+|---|---|
+| `intro_block` | 00 / 05 |
+| `about_block` | 12 |
+| `about_new_block` | 01 / 09 |
+| `target_block`, `history_video_block`, `themes_block`, `highlight_block`, `help_block`, `where_block` | 09 |
+| `whom_block`, `profit_block`, `free_block`, `photos_block`, `organization_block`, `timer_block` | 14 |
+| `reviews_block`, `tickets_block`, `partners_block` | 08 |
+| `footer` | 10 |
+| `faq_page` | 07 / 09 |
+| `part_*` | 08 / 14 |
+
+Ключевые классы: `.timer_block`, `.main_slider`, `.installments`, `.founders`, `.cases_list`, `.whom_item`, `.profit`, `.free`, `.single_expert`, `.hotels_item`, `.program-legacy`, `.t-404`, `.part_partners_item`, `.part_gallery_list`, `.part_why_item`.
+
+Слайдер: кадр 52%, стрелки 45×24, горизонтальная прокрутка. Таймер: цифры Alumni 100px, подписи 18px, CTA 400px. Легаси-таблица: `#D4CABF` — первый столбец, `#6996CD` — ячейки, `#325683` — ужин; в новом дизайне не использовать.
+
+## 15. Источники
 
 | Файл | Строк | Статус |
 |---|---|---|
@@ -241,13 +262,14 @@ Cookie-баннер и чат-виджет подключаются внешни
 
 Единого источника правды нет: две копии `style.css` сегодня совпадают байт-в-байт, но лежат в разных местах и могут разойтись при следующем обновлении. `program.css` — легаси-модуль программы; его цвета `#FFC55A`, `#FF5900`, `#325683`, `#6996CD`, `#D4CABF` не входят в ядро.
 
-## 15. Файлы
+## 16. Файлы
 
 - `index.html` — живой гайд.
 - `guide.css` — стили гайда и демо в скоупе `.sd`.
-- `guide.js` — меню, модалка, FAQ, копирование.
+- `guide.js` — меню, модалка, FAQ, копирование, слайдер фото.
+- `tokens.css` — готовый набор: `@font-face` (Montserrat 400/500/600/700, Alumni Sans 600), семантические токены, шкала отступов, типографика, адаптив и легаси-алиасы `--o/--y/--w/--b/--g`.
 - `preview.png` — превью 1440×900.
 - `assets/fonts/` — Montserrat 400/500/600/700/900 + Alumni Sans 600.
-- `assets/logos/` — `logo.svg`, `soldout.svg`, `f_logo.svg`.
-- `assets/img/` — фото форума, спикера, отзыва, постер видео.
+- `assets/logos/` — `logo.svg`, `soldout.svg`, `f_logo.svg`, логотипы кейсов `smmconfa.svg`, `wc.svg`, `event.svg`, `td.svg`.
+- `assets/img/` — фото форума (`history-01/03/05`), спикера (`expert_photo`, `nataf_photo`), отзыва, постер видео.
 - `assets/icons/` — соцсети, стрелки, play, close, FAQ.

@@ -1,0 +1,117 @@
+/* ==========================================================================
+   soldoutconf.ru — «SOLD OUT». Токены дизайн-системы
+   Значения сняты с темы soldout-2025: style.css (1823 строки), 12/11/2026.
+   Файл самодостаточный: шрифты + переменные. Компонентов здесь нет —
+   только токены, чтобы подключать к текущему сайту без переименований.
+   Шрифты лежат рядом, в assets/fonts/.
+   ========================================================================== */
+
+/* ---------- Шрифты ---------- */
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/fonts/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Alumni Sans";
+  src: url("assets/fonts/AlumniSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Фон и поверхности ---------- */
+  --color-bg: #090316;             /* сцена страницы; заменяет --b */
+  --color-surface: #120A22;        /* приподнятые блоки на тёмном */
+  --color-beige: #E8E3DD;          /* бежевые карточки и секции; заменяет --y и --g */
+
+  /* ---------- Текст ---------- */
+  --color-text: #FFFFFF;           /* основной текст; заменяет --w */
+  --color-text-muted: #A9A3B8;     /* подписи, даты, вторичные строки */
+
+  /* ---------- Акцент ---------- */
+  --color-accent: #F74200;         /* кнопки, даты, цифры, ссылки; заменяет --o */
+  --color-on-dark: #FFFFFF;        /* текст на тёмном; белым по акценту — 3.66, только крупный (18px/600+) */
+
+  /* ---------- Линии ---------- */
+  --color-line: rgba(255, 255, 255, .2);
+
+  /* ---------- Отступы: шкала сайта 10 / 20 / 34 / 52 / 74 / 148 ---------- */
+  --space-1: 10px;                 /* gap сетки и иконок */
+  --space-2: 20px;                 /* padding контейнера, поля форм */
+  --space-3: 34px;                 /* внутри карточек */
+  --space-4: 52px;                 /* блоки и карточки между собой */
+  --space-5: 74px;                 /* крупные секции (на мобайле 34) */
+  --space-6: 148px;                /* герой и полноэкранные секции */
+
+  /* ---------- Форма и сетка ---------- */
+  --radius: 0;                     /* скруглений нет нигде: кнопки, карточки, поля и попапы прямоугольные */
+  --container: 1560px;
+  --container-pad: 20px;
+
+  /* ---------- Шрифты ---------- */
+  --font-display: "Alumni Sans", "Arial Narrow", Impact, sans-serif;  /* заголовки h4–h6, крупные цифры */
+  --font-body: "Montserrat", Arial, sans-serif;                       /* текст, интерфейс, подписи */
+
+  /* ---------- Типографика ---------- */
+  --text-h4: 180px;                /* >1920px; до 1920 — 9.375vw */
+  --text-h5: 100px;                /* до 1920 — 5.2vw */
+  --text-h6: 40px;                 /* до 1920 — 2.08vw */
+  --text-body: 22px;               /* до 1920 — 1.14vw */
+  --text-small: 14px;
+  --text-micro: 12px;
+
+  /* ---------- Обратные алиасы ---------- */
+  /* Синонимы канонических имён: для кода, написанного на --color-surface-warm
+     и --color-accent-contrast. Новый код — только --color-beige и --color-on-dark. */
+  --color-surface-warm: var(--color-beige);
+  --color-accent-contrast: var(--color-on-dark);
+
+  /* ---------- Легаси-алиасы ---------- */
+  /* Чтобы файл подключался к текущему сайту без правок разметки и CSS. */
+  --o: var(--color-accent);        /* было #F74200 */
+  --y: var(--color-beige);         /* было #E8E3DD */
+  --w: var(--color-on-dark);       /* было #FFFFFF */
+  --b: var(--color-bg);            /* было #090316 */
+  --g: var(--color-beige);         /* было #E8E3DD — дубль --y, оставлен для совместимости */
+}
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 1000px) {
+  :root {
+    --text-body: 16px;
+  }
+}
+
+@media (max-width: 641px) {
+  :root {
+    --text-h4: 42px;
+    --text-h5: 36px;
+    --text-h6: 36px;
+    --container-pad: 10px;
+  }
+}

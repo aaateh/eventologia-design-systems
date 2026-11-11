@@ -10,7 +10,7 @@
 | **«Суровая премия»** | marketingawards.ru: почти чёрная сцена и живой огонь, Dela Award / Involve / Golos Award, четыре роли кнопок с бегущей рамкой и пламенем, прожиг секций, 9 разделов и живой стайлгайд. | [Открыть](https://aaateh.github.io/eventologia-design-systems/marketingawards-ru/) |
 | **«Белая конфа»** | whiteconf.ru: синий #0026FC, CA Saygon и Montserrat, заголовки без капса, кнопки с рамкой 4px, 12 разделов — сетка, спикеры, тарифы, корзина, токены `--wc-*`. | [Открыть](https://aaateh.github.io/eventologia-design-systems/whiteconf-ru/) |
 | **«Питерский промпт»** | spbprompt.ru: тёмная сцена #0A0A0A, неон #1AFE4C, пиксельные курсоры, EdMoscow и EdJura, 13 разделов — шапка-пилюля, герой, консоль программы, билеты, токены `--ed-*`. | [Открыть](https://aaateh.github.io/eventologia-design-systems/spbprompt-ru/) |
-| **SOLD OUT** | soldoutconf.ru: тёмная афишная сцена #090316, оранжевый #F74200, Alumni Sans и Montserrat, крупные тарифы и карточки спикеров, 13 разделов, паттерны, попапы, проверка доступности. | [Открыть](https://aaateh.github.io/eventologia-design-systems/soldoutconf-ru/) |
+| **SOLD OUT** | soldoutconf.ru: тёмная афишная сцена #090316, оранжевый #F74200, Alumni Sans и Montserrat, крупные тарифы и карточки спикеров, 14 разделов, паттерны, попапы, приложение с остальными блоками, токены `--color-*` и `tokens.css`, проверка доступности. | [Открыть](https://aaateh.github.io/eventologia-design-systems/soldoutconf-ru/) |
 
 **Каталог:** https://aaateh.github.io/eventologia-design-systems/
 
